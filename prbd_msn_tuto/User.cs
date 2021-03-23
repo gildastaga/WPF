@@ -4,30 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace prbd_msn_tuto {
+namespace School04{
      abstract class User {
-
-        public User( string name, string firstName, string mail, string password ) {
-        }
-
-        private string name; 
-        public string Name {
-            get; set; 
-        }
-
-        private string firstname;
-        public string FirstName {
-            get; set;
-        }
-
-        private string mail;
-        public string Mail {
-            get; set; 
-        }
-
-        private string password;
-        public string Password {
-            get; set;
-        }
+        public string name { get; set; }
+        public string firstName { get; set; }
+        public string mail { get; set; }
+        public string Password { get; set; }
     }
 }
