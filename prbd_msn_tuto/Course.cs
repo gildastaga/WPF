@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace prbd_msn_tuto {
+namespace School04 {
     class Course {
+        public string titleOfCourse { get; set; }
+
     }
 }

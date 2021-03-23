@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace prbd_msn_tuto {
-    class Class1 {
+namespace School04 {
+    class Student : User {
+        public Student( string name, string firstName, string mail, string password ) : base(name, firstName, mail, password) {
+        }
     }
 }
