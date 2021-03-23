@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace prbd_msn_tuto {
-    class User {
+     abstract class User {
 
         public User( string name, string firstName, string mail, string password ) {
         }
