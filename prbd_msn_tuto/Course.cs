@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace School04 {
-    class Course {
+    public class Course {
         public string titleOfCourse { get; set; }
 
     }
