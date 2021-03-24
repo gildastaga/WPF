@@ -3,8 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using PRBD_Framework;
 
-namespace prbd_msn_tuto {
-    public class Model : DbContextBase {
+namespace Msn.Model {
+    public class MsnContext : DbContextBase {
 
         public static readonly ILoggerFactory _loggerFactory = LoggerFactory.Create(builder => {
             builder.AddConsole();

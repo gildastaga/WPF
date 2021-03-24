@@ -1,8 +1,9 @@
 ﻿using System;
+using Msn.Model;
 using PRBD_Framework;
 
-namespace prbd_msn_tuto {
-    public class MainViewModel : ViewModelBase<Model> {
+namespace Msn.ViewModel {
+    public class MainViewModel : ViewModelCommon {
         public event Action<Member, bool> DisplayMember;
         public event Action<Member, string> RenameTab;
         public event Action<Member> CloseTab;

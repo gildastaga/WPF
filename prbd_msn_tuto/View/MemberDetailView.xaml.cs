@@ -1,7 +1,8 @@
 ﻿using Microsoft.Win32;
+using Msn.Model;
 using PRBD_Framework;
 
-namespace prbd_msn_tuto {
+namespace Msn.View {
     public partial class MemberDetailView : UserControlBase {
         public MemberDetailView(Member member, bool isNew) {
             InitializeComponent();

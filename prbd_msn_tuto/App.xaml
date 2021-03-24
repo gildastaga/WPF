@@ -1,10 +1,10 @@
-﻿<f:ApplicationBase x:Class="prbd_msn_tuto.App"
+﻿<f:ApplicationBase x:Class="Msn.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:prbd_msn_tuto"
+             xmlns:local="clr-namespace:Msn"
              xmlns:f="clr-namespace:PRBD_Framework;assembly=PRBD_Framework"
-             StartupUri="MainView.xaml">
+             StartupUri="View/LoginView.xaml">
     <Application.Resources>
-         
+        
     </Application.Resources>
 </f:ApplicationBase>

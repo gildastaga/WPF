@@ -1,7 +1,8 @@
 ﻿using System.Windows.Controls;
+using Msn.Model;
 using PRBD_Framework;
 
-namespace prbd_msn_tuto {
+namespace Msn.View {
     public partial class MainView : WindowBase {
         public MainView() {
             InitializeComponent();
