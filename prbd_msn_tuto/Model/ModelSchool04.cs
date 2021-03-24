@@ -9,7 +9,7 @@ namespace Msn.Model {
     class ModelSchool04 : DbContext {
         protected override void OnConfiguring( DbContextOptionsBuilder optionsBuilder ) {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=msn");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=school04");
         }
 
         public void SeedData() {
