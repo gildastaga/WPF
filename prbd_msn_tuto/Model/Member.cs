@@ -1,10 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 using PRBD_Framework;
 
-namespace prbd_msn_tuto {
-    public class Member : EntityBase<Model> {
+namespace Msn.Model {
+    public enum RelationshipType {
+        NotRelated,
+        Followee,
+        Follower,
+        Mutual
+    }
+
+    public class Member : EntityBase<MsnContext> {
+        public const int MAX_FOLLOWEES = 4;
+
         [Key]
         public string Pseudo { get; set; }
         public string Password { get; set; }
@@ -42,15 +53,48 @@ namespace prbd_msn_tuto {
         }
 
         public void Follow(Member member) {
-            Followees.Add(member);
-            member.Followers.Add(this);
-            Context.SaveChanges();
+            if (!Followees.Contains(member) && CanFollow) {
+                Followees.Add(member);
+                member.Followers.Add(this);
+                Context.SaveChanges();
+            }
         }
 
         public void Unfollow(Member member) {
             Followees.Remove(member);
             member.Followers.Remove(this);
             Context.SaveChanges();
+        }
+
+        public RelationshipType GetRelationshipType(Member otherMember) {
+            if (otherMember == null)
+                return RelationshipType.NotRelated;
+            var followee = Followees.Any(m => m.Pseudo == otherMember.Pseudo);
+            var follower = Followers.Any(m => m.Pseudo == otherMember.Pseudo);
+            if (followee && follower)
+                return RelationshipType.Mutual;
+            else if (followee)
+                return RelationshipType.Followee;
+            else if (follower)
+                return RelationshipType.Follower;
+            else
+                return RelationshipType.NotRelated;
+        }
+
+        public void ToggleFollowUnfollow(Member otherMember) {
+            if (otherMember == null)
+                throw new Exception("member may not be null");
+            switch (GetRelationshipType(otherMember)) {
+                case RelationshipType.Mutual:
+                case RelationshipType.Followee:
+                    Unfollow(otherMember);
+                    break;
+                case RelationshipType.Follower:
+                case RelationshipType.NotRelated:
+                default:
+                    Follow(otherMember);
+                    break;
+            }
         }
 
         public Message Send(Member recipient, string body, bool isPrivate = false) {
@@ -71,6 +115,22 @@ namespace prbd_msn_tuto {
             // Supprime le membre lui-même
             Context.Members.Remove(this);
             Context.SaveChanges();
+        }
+		
+		public static IQueryable<Member> GetAll() {
+            return Context.Members.OrderBy(m => m.Pseudo);
+        }
+
+        public static IQueryable<Member> GetFiltered(string Filter) {
+            var filtered = from m in Context.Members
+                           where m.Pseudo.Contains(Filter) || m.Profile.Contains(Filter)
+                           orderby m.Pseudo
+                           select m;
+            return filtered;
+        }
+
+        public bool CanFollow {
+            get => Followees.Count < MAX_FOLLOWEES;
         }
     }
 }

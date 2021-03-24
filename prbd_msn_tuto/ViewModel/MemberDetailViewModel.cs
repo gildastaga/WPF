@@ -2,10 +2,11 @@
 using System.IO;
 using System.Windows.Input;
 using Microsoft.EntityFrameworkCore;
+using Msn.Model;
 using PRBD_Framework;
 
-namespace prbd_msn_tuto {
-    public class MemberDetailViewModel : ViewModelBase<Model> {
+namespace Msn.ViewModel {
+    public class MemberDetailViewModel : ViewModelCommon {
         private ImageHelper imageHelper;
 
         public event Func<string> OnLoadImage;
@@ -15,6 +16,7 @@ namespace prbd_msn_tuto {
         public ICommand Delete { get; set; }
         public ICommand LoadImage { get; set; }
         public ICommand ClearImage { get; set; }
+        public ICommand FollowUnfollow { get; set; }
 
         private Member member;
         public Member Member { get => member; set => SetProperty(ref member, value); }
@@ -55,12 +57,40 @@ namespace prbd_msn_tuto {
             }
         }
 
+        public string FollowStatus {
+            get {
+                if (CurrentUser.Pseudo == Member?.Pseudo)
+                    return Properties.Resources.MembersDetailView_ThisIsYou;
+                return (CurrentUser.GetRelationshipType(Member)) switch {
+                    RelationshipType.Mutual => Properties.Resources.MembersDetailView_MutualFriend,
+                    RelationshipType.Followee => Properties.Resources.MembersDetailView_YouAreFollowing,
+                    RelationshipType.Follower => Properties.Resources.MembersDetailView_IsFollowingYou,
+                    _ => Properties.Resources.MembersDetailView_NotRelated,
+                };
+            }
+        }
+
+        public string FollowUnfollowLabel {
+            get {
+                return (CurrentUser.GetRelationshipType(Member)) switch {
+                    RelationshipType.Mutual or RelationshipType.Followee => Properties.Resources.MembersDetailView_Unfollow,
+                    _ => Properties.Resources.MembersDetailView_Follow,
+                };
+            }
+        }
+
+        public bool IsNotCurrentMember {
+            get => Member?.Pseudo != CurrentUser.Pseudo;
+        }
+
         public MemberDetailViewModel() : base() {
             Save = new RelayCommand(SaveAction, CanSaveAction);
             Cancel = new RelayCommand(CancelAction, CanCancelAction);
             Delete = new RelayCommand(DeleteAction, () => !IsNew);
             LoadImage = new RelayCommand(LoadImageAction);
             ClearImage = new RelayCommand(ClearImageAction, () => PicturePath != null);
+            FollowUnfollow = new RelayCommand(FollowUnfollowAction, 
+                () => CurrentUser != null && (CurrentUser.Followees.Contains(Member) || CurrentUser.CanFollow));
         }
 
         public void Init(Member member, bool isNew) {
@@ -130,6 +160,12 @@ namespace prbd_msn_tuto {
             Member.Delete();
             NotifyColleagues(AppMessages.MSG_MEMBER_CHANGED, Member);
             NotifyColleagues(AppMessages.MSG_CLOSE_TAB, Member);
+        }
+
+        private void FollowUnfollowAction() {
+            CurrentUser.ToggleFollowUnfollow(Member);
+            RaisePropertyChanged(nameof(FollowStatus), nameof(FollowUnfollowLabel));
+            NotifyColleagues(AppMessages.MSG_MEMBER_CHANGED, Member);
         }
 
         public override void Dispose() {

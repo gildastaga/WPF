@@ -1,4 +1,4 @@
-﻿namespace prbd_msn_tuto {
+﻿namespace Msn {
     public enum AppMessages {
         MSG_NEW_MEMBER,
         MSG_PSEUDO_CHANGED,

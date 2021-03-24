@@ -2,8 +2,8 @@
 using System.ComponentModel.DataAnnotations;
 using PRBD_Framework;
 
-namespace prbd_msn_tuto {
-    public class Message : EntityBase<Model> {
+namespace Msn.Model {
+    public class Message : EntityBase<MsnContext> {
         public int MessageId { get; set; }
         public DateTime DateTime { get; set; } = DateTime.Now;
         public string Body { get; set; }

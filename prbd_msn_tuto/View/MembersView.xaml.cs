@@ -1,6 +1,6 @@
 ﻿using PRBD_Framework;
 
-namespace prbd_msn_tuto {
+namespace Msn.View {
     public partial class MembersView : UserControlBase {
         public MembersView() {
             InitializeComponent();
