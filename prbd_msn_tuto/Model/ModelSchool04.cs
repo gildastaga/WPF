@@ -33,23 +33,22 @@ namespace Msn.Model {
         public DbSet<Course> Courses {
             get; set;
         }
-
-        public DbSet<Course> Answer {
+        public DbSet<Answer> Answers {
             get; set;
         }
-        public DbSet<Course> Category {
+        public DbSet<Category> Categories {
             get; set;
         }
-        public DbSet<Course> Proposition {
+        public DbSet<Proposition> Propositions {
             get; set;
         }
-        public DbSet<Course> Question {
+        public DbSet<Question> Questions {
             get; set;
         }
-        public DbSet<Course> QuestionQuizz {
+        public DbSet<QuestionQuizz> QuestionQuizzs {
             get; set;
         }
-        public DbSet<Course> Registration {
+        public DbSet<Registration> Registrations {
             get; set;
         }
     }
