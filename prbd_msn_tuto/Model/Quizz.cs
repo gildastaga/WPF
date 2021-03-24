@@ -6,8 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using PRBD_Framework;
 
-namespace prbd_msn_tuto {
-    public class Quizz : EntityBase<Model> {
+namespace Msn.Model {
+    public class Quizz : EntityBase<MsnContext> {
         public int QuizzId { get; set; }
 
         public string Title { get; set; }

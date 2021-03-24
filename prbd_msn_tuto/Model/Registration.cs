@@ -6,8 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using PRBD_Framework;
 
-namespace prbd_msn_tuto {
-    public class Registration : EntityBase<Model> {
+namespace Msn.Model {
+    public class Registration : EntityBase<MsnContext> {
         public int RegistrationId { get; set; }
 
         public enum State { ACTIVE, VALIDE, INACTIVE }
