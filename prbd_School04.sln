@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "prbd_msn_tuto", "prbd_msn_tuto\prbd_msn_tuto.csproj", "{6652C5CD-A010-4D0C-B1EB-CDAE4AFD2727}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "prbd_School04", "prbd_msn_tuto\prbd_School04.csproj", "{6652C5CD-A010-4D0C-B1EB-CDAE4AFD2727}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PRBD_Framework", "PRBD_Framework\PRBD_Framework.csproj", "{B727560E-A9B8-4188-A8BF-9671785755CD}"
 EndProject

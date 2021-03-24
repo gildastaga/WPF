@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 using PRBD_Framework;
 
 namespace Msn.Model {
-    public class Quizz : EntityBase<MsnContext> {
+    public class Quizz : EntityBase<ModelSchool04> {
+        public Quizz() {
+        }
+
         public int QuizzId { get; set; }
 
         public string Title { get; set; }

@@ -5,6 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Msn.Model {
-    class Teacher : User {
+    public class Teacher : User {
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using PRBD_Framework;
 
 namespace Msn.Model {
-    public class Answer : EntityBase<MsnContext> {
+    public class Answer : EntityBase<ModelSchool04> {
         public int AnswerId { get; set; }
 
         [Required]

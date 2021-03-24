@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PRBD_Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace Msn.Model {
         ManyAnswer
     }
 
-    public class Question {
+    public class Question : EntityBase<ModelSchool04> {
         public int QuestionId { get; set; }
         public string Enonce { get; set; }
         public Boolean IsUpdate { get; set; }

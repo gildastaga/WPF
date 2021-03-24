@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PRBD_Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace Msn.Model {
         False
     }
 
-    public class Proposition {
+    public class Proposition : EntityBase<ModelSchool04> {
         public int PropositionId { get; set; }
         public string Body { get; set; }
         public Type type { get; set; } = Type.True;

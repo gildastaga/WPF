@@ -11,9 +11,9 @@ using PRBD_Framework;
 
 namespace Msn {
     public partial class App : ApplicationBase {
-        public static MsnContext Context { get => Context<MsnContext>(); }
+        public static ModelSchool04 Context { get => Context<ModelSchool04>(); }
 
-        public static Member CurrentUser { get; private set; }
+        /*public static Member CurrentUser { get; private set; }
 
         public static void Login(Member member) {
             CurrentUser = member;
@@ -23,7 +23,7 @@ namespace Msn {
             CurrentUser = null;
         }
 
-        public static bool IsLoggedIn { get => CurrentUser != null; }
+        public static bool IsLoggedIn { get => CurrentUser != null; }*/
 
         public App() {
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(Settings.Default.Culture);

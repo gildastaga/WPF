@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using PRBD_Framework;
 
 namespace Msn.Model {
-    public class Registration : EntityBase<MsnContext> {
+    public class Registration : EntityBase<ModelSchool04> {
         public int RegistrationId { get; set; }
 
         public enum State { ACTIVE, VALIDE, INACTIVE }
