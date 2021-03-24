@@ -5,6 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Msn.Model {
-    class QuestionQuizz {
+    public class QuestionQuizz {
+        public int NbPoint { get; set; }
+
+        public QuestionQuizz(int nbPoint) {
+            NbPoint = nbPoint;
+        }
+
     }
 }

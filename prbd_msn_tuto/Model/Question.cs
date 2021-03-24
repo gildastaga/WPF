@@ -23,8 +23,6 @@ namespace Msn.Model {
             Enonce = enonce;
             IsUpdate = isUpdate;
             IsDelete = isDelete;
-
-
         }
     }
 }
