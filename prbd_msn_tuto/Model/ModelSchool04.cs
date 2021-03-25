@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Msn.Model {
+namespace School04.Model {
     public class ModelSchool04 : DbContextBase {
         protected override void OnConfiguring( DbContextOptionsBuilder optionsBuilder ) {
             base.OnConfiguring(optionsBuilder);
@@ -14,7 +14,8 @@ namespace Msn.Model {
         }
 
         public void SeedData() {
-            Database.EnsureCreated();
+            //Database.BeginTransaction();
+            
             var Katia = new Student() { firstName = "Katia", name = "Mijares", mail = "c.mijareskatia@outlook.com", Password = "Password1," };
             Students.Add(Katia);
             SaveChanges();

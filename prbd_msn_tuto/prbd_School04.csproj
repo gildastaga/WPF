@@ -4,10 +4,10 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
-    <StartupObject>Msn.App</StartupObject>
+    <StartupObject>School04.App</StartupObject>
 	<DisableWinExeOutputInference>true</DisableWinExeOutputInference>
-	<AssemblyName>Msn</AssemblyName>
-	<RootNamespace>Msn</RootNamespace>
+	<AssemblyName>School04</AssemblyName>
+	<RootNamespace>School04</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Msn.Model {
+namespace School04.Model {
     public abstract class User : EntityBase<ModelSchool04> {
         public int UserId {
             get; set;

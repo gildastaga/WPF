@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Msn.Properties {
+namespace School04.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

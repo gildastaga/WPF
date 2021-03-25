@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Msn.Model {
+namespace School04.Model {
     public class Category : EntityBase<ModelSchool04> {
         public int CategoryId { get; set; }
         public string Title { get; set; }

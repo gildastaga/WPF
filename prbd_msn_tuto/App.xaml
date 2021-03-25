@@ -1,7 +1,7 @@
-﻿<f:ApplicationBase x:Class="Msn.App"
+﻿<f:ApplicationBase x:Class="School04.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Msn"
+             xmlns:local="clr-namespace:School04"
              xmlns:f="clr-namespace:PRBD_Framework;assembly=PRBD_Framework">
     <!--StartupUri="View/LoginView.xaml">-->
     <Application.Resources>

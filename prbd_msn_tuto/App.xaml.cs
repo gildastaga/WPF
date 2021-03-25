@@ -5,11 +5,11 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Windows;
-using Msn.Model;
-using Msn.Properties;
+using School04.Model;
+using School04.Properties;
 using PRBD_Framework;
 
-namespace Msn {
+namespace School04 {
     public partial class App : ApplicationBase {
         public static ModelSchool04 Context { get => Context<ModelSchool04>(); }
 

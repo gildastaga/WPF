@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PRBD_Framework;
 
-namespace Msn.Model {
+namespace School04.Model {
     public class Quizz : EntityBase<ModelSchool04> {
         public Quizz() {
         }

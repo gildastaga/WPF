@@ -5,8 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Msn.Model {
+namespace School04.Model {
     public class QuestionQuizz : EntityBase<ModelSchool04> {
+        public int QuestionQuizzId {
+            get; set; 
+        }
         public int NbPoint { get; set; }
 
         public QuestionQuizz(int nbPoint) {
