@@ -22,5 +22,6 @@ namespace School04.Model {
         public string Password {
             get; set;
         }
+        
     }
 }

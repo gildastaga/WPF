@@ -14,13 +14,17 @@ namespace School04.Model {
         }
 
         public void SeedData() {
-            //Database.BeginTransaction();
+            Database.BeginTransaction();
             
             var Katia = new Student() { firstName = "Katia", name = "Mijares", mail = "c.mijareskatia@outlook.com", Password = "Password1," };
-            Students.Add(Katia);
+            var Penelle = new Teacher() { firstName = "Benoit", name = "Penelle" };
+            var Corentin = new Student() { firstName = "Corentin", name = "Heinix" };
+            Students.AddRange(Katia);
+            Teachers.Add(Penelle);
+            Users.Add(Corentin);
             SaveChanges();
 
-            //Database.CommitTransaction();
+            Database.CommitTransaction();
         }
         public DbSet<User> Users {
             get; set;
