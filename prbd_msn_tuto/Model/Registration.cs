@@ -18,6 +18,6 @@ namespace School04.Model {
         [Required]
         public virtual Course Course { get; set; }
 
-        public virtual ICollection<Proposition> ChoosedProposition { get; set; } = new HashSet<Proposition>();
+        //public virtual ICollection<Proposition> ChoosedProposition { get; set; } = new HashSet<Proposition>();
     }
 }

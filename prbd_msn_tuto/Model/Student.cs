@@ -12,6 +12,12 @@ namespace School04.Model {
             Mail = mail;
             Password = password;
         }
+        public virtual ICollection<Answer> AnswerList {
+            get; set;
+        } = new HashSet<Answer>();
+        public virtual ICollection<Course> StudentCourse {
+            get; set;
+        } = new HashSet<Course>();
 
     }
 }
