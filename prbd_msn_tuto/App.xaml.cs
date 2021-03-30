@@ -32,9 +32,13 @@ namespace School04 {
         protected override void OnStartup(StartupEventArgs e) {
             base.OnStartup(e);
 
+            Console.WriteLine("Chargement de BDD en cours");
+
             Context.Database.EnsureDeleted();
             Context.Database.EnsureCreated();
             Context.SeedData();
+
+            Console.WriteLine("Chargement de BDD finie");
         }
 
         protected override void OnRefreshData() {

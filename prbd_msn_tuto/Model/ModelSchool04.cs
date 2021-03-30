@@ -56,5 +56,9 @@ namespace School04.Model {
         public DbSet<Registration> Registrations {
             get; set;
         }
+
+        public DbSet<Quizz> Quizz {
+            get; set;
+        }
     }
 }
