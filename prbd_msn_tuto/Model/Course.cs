@@ -13,5 +13,9 @@ namespace School04.Model {
         public string titleOfCourse {
             get; set;
         }
+        //Un cours est donné par tel professeur
+        public virtual Teacher Teacher {
+            get; set;
+        }
     }
 }

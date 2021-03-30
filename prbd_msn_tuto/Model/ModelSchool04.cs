@@ -15,13 +15,9 @@ namespace School04.Model {
 
         public void SeedData() {
             Database.BeginTransaction();
-            
-            var Katia = new Student() { firstName = "Katia", name = "Mijares", mail = "c.mijareskatia@outlook.com", Password = "Password1," };
-            var Penelle = new Teacher() { firstName = "Benoit", name = "Penelle" };
-            var Corentin = new Student() { firstName = "Corentin", name = "Heinix" };
+
+            var Katia = new Student("Mijares", "Katia", "abc@def", "abcdef");
             Students.AddRange(Katia);
-            Teachers.Add(Penelle);
-            Users.Add(Corentin);
             SaveChanges();
 
             Database.CommitTransaction();
@@ -56,7 +52,6 @@ namespace School04.Model {
         public DbSet<Registration> Registrations {
             get; set;
         }
-
         public DbSet<Quizz> Quizz {
             get; set;
         }
