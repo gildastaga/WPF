@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace School04.Model {
     public class Course : EntityBase<ModelSchool04> {
+
         public int CourseId {
             get; set;
         }
@@ -16,7 +17,7 @@ namespace School04.Model {
         }
         //Un cours est donné par tel professeur
         [Required]
-        public virtual Teacher Teacher {
+        public virtual Teacher TeacherCourse {
             get; set;
         }
         public virtual ICollection<Question> QuestionList {
@@ -28,5 +29,6 @@ namespace School04.Model {
         public virtual ICollection<Student> CourseStrudent {
             get; set;
         } = new HashSet<Student>();
+
     }
 }

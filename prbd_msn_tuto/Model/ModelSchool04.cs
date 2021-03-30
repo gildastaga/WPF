@@ -17,7 +17,25 @@ namespace School04.Model {
             Database.BeginTransaction();
 
             var Katia = new Student("Mijares", "Katia", "abc@def", "abcdef");
+            var Corentin = new Student("Heinix", "Corentin", "abc@def", "abcdef");
+            var Benoit = new Teacher("Penelle", "Benoit", "benoit@penelle", "Penelle");
+            var prwb = new Course {
+                titleOfCourse = "PRBD",
+                TeacherCourse = Benoit,
+            };
+            var web = new Course {
+                titleOfCourse = "WEB",
+                TeacherCourse = Benoit,
+            };
+            //var quest = new Question("Quelle est ta couleur pref ?", false, false);
+            //var quest2 = new Question("Quelle est ta marque pref ?", false, false);
             Students.AddRange(Katia);
+            Teachers.AddRange(Benoit);
+            Courses.AddRange(prwb, web);
+            prwb.CourseStrudent.Add(Katia);
+            web.CourseStrudent.Add(Corentin);
+            //Questions.AddRange(quest, quest2);
+
             SaveChanges();
 
             Database.CommitTransaction();
