@@ -16,7 +16,7 @@ namespace School04.Model {
         public void SeedData() {
             Database.BeginTransaction();
 
-            var Katia = new Student("Mijares", "Katia", "abc@def", "abcdef");
+            /*var Katia = new Student("Mijares", "Katia", "abc@def", "abcdef");
             var Corentin = new Student("Heinix", "Corentin", "abc@def", "abcdef");
             var Benoit = new Teacher("Penelle", "Benoit", "benoit@penelle", "Penelle");
             var prwb = new Course {
@@ -29,12 +29,24 @@ namespace School04.Model {
             };
             //var quest = new Question("Quelle est ta couleur pref ?", false, false);
             //var quest2 = new Question("Quelle est ta marque pref ?", false, false);
-            Students.AddRange(Katia);
+            Courses.RemoveRange(Courses
+                .Include("StudentCourse")
+                .Include("AnswerList"));
+            Courses.RemoveRange(Courses
+                .Include("CourseStrudent")
+                .Include("QuizzCourse")
+                .Include("QuestionList"));
+            Students.AddRange(Katia, Corentin);
             Teachers.AddRange(Benoit);
             Courses.AddRange(prwb, web);
-            prwb.CourseStrudent.Add(Katia);
-            web.CourseStrudent.Add(Corentin);
-            //Questions.AddRange(quest, quest2);
+            
+            /*Benoit.CourseGiven.Add(prwb);
+            Benoit.CourseGiven.Add(web);
+            Katia.StudentCourse.Add(prwb);
+            Corentin.StudentCourse.Add(web);*/
+            //prwb.CourseStrudent.Add(Katia);
+            //web.CourseStrudent.Add(Corentin);
+            //Questions.AddRange(quest, quest2);*/
 
             SaveChanges();
 
