@@ -8,14 +8,21 @@ using System.Threading.Tasks;
 
 namespace School04.Model {
     public class QuestionQuizz : EntityBase<ModelSchool04> {
-        public int QuestionQuizzId {
-            get; set; 
+        //public int QuestionQuizzId {
+        //    get; set; 
+        //}
+        public int NbPoint {
+            get; set;
         }
-        public int NbPoint { get; set; }
-
+        public int QuestionId {
+            get; set;
+        }
         [Required]
-        public virtual Question Question {
-            get; set; 
+        public virtual Question Questions {
+            get; set;
+        }
+        public int QuizzId {
+            get; set;
         }
         [Required]
         public virtual Quizz Quizz {
@@ -25,7 +32,7 @@ namespace School04.Model {
             get; set;
         } = new HashSet<Answer>();
 
-        public QuestionQuizz(int nbPoint) {
+        public QuestionQuizz( int nbPoint ) {
             NbPoint = nbPoint;
         }
 

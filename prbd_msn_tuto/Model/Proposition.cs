@@ -20,9 +20,9 @@ namespace School04.Model {
         public virtual Question Question {
             get; set;
         }
-        public virtual ICollection<Answer> Answers {
+        /*public virtual ICollection<Answer> Answers {
             get; set;
-        } = new HashSet<Answer>();
+        } = new HashSet<Answer>();*/
 
         public Proposition(string body, Type type) {
             Body = body;

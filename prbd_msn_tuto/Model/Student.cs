@@ -15,9 +15,9 @@ namespace School04.Model {
         public virtual ICollection<Answer> AnswerList {
             get; set;
         } = new HashSet<Answer>();
-        public virtual ICollection<Course> StudentCourse {
+        public virtual ICollection<Registration> CoursesStudent {
             get; set;
-        } = new HashSet<Course>();
+        } = new HashSet<Registration>();
 
     }
 }
