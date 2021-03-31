@@ -8,7 +8,8 @@ using PRBD_Framework;
 
 namespace School04.Model {
     public class Quizz : EntityBase<ModelSchool04> {
-        public Quizz() {
+        public Quizz(string title) {
+            Title = title; 
         }
 
         public int QuizzId { get; set; }
@@ -17,8 +18,8 @@ namespace School04.Model {
         public DateTime CreationDate { get; set; }
         public DateTime ExaminationDate { get; set; }
 
-        [Required]
-        public virtual Course Course { get; set; }
+        /*[Required]
+        public virtual Course Course { get; set; }*/
 
         public virtual ICollection<QuestionQuizz> Questions { get; set; } = new HashSet<QuestionQuizz>();
     }

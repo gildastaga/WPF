@@ -7,10 +7,18 @@ using System.Threading.Tasks;
 using PRBD_Framework;
 
 namespace School04.Model {
+    public enum State { ACTIVE, VALIDE, INACTIVE }
     public class Registration : EntityBase<ModelSchool04> {
-        public int RegistrationId { get; set; }
 
-        public enum State { ACTIVE, VALIDE, INACTIVE }
+        public State RegistrationState {
+            get; set;
+        } = State.INACTIVE;
+        public int StudentId {
+            get; set;
+        }
+        public int CourseId {
+            get; set;
+        }
 
         [Required]
         public virtual Student Student { get; set; }
@@ -18,6 +26,9 @@ namespace School04.Model {
         [Required]
         public virtual Course Course { get; set; }
 
-        public virtual ICollection<Proposition> ChoosedProposition { get; set; } = new HashSet<Proposition>();
+        public Registration() {
+        }
+
+        //public virtual ICollection<Proposition> ChoosedProposition { get; set; } = new HashSet<Proposition>();*/
     }
 }

@@ -10,18 +10,25 @@ namespace School04.Model {
         public int UserId {
             get; set;
         }
-        public string name {
+        public string Name {
             get; set;
         }
-        public string firstName {
+        public string FirstName {
             get; set;
         }
-        public string mail {
+        public string Mail {
             get; set;
         }
         public string Password {
             get; set;
         }
         
+        public User(string name, string firstName, string mail, string password ) {
+            Name = name;
+            FirstName = firstName;
+            Mail = mail;
+            Password = password;
+        }
+
     }
 }
