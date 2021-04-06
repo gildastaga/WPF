@@ -18,35 +18,25 @@ namespace School04.Model {
             var Boris = new Teacher("Verhagen", "Boris", "boris@verhagen", "Boris1");
             Context.Students.AddRange(Katia, Corentin);
             Context.Teachers.AddRange(Benoit);
-            var prwb = new Course {
-                titleOfCourse = "PRBD",
-                TeacherCourse = Benoit,
-            };
-            var web = new Course {
-                titleOfCourse = "WEB",
-                TeacherCourse = Benoit,
-            };
-            var SGBD = new Course {
-                titleOfCourse = "SGBD",
-                TeacherCourse = Boris,
-            };
+            var prwb = new Course("PRBD", Benoit);
+            var web = new Course("WEB", Benoit);
+            var SGBD = new Course("SGBD", Boris);
             Context.Courses.AddRange(prwb, web, SGBD);
-            var enreg1 = new Registration {
-                Course = prwb,
-                Student = Corentin
-            };
-            var enreg2 = new Registration {
-                Course = web,
-                Student = Katia
-            };
+            var enreg1 = new Registration(Corentin, prwb);
+            var enreg2 = new Registration(Katia, web);
             Context.Registrations.AddRange(enreg1, enreg2);
             Katia.CoursesStudent.Add(enreg2);
             Corentin.CoursesStudent.Add(enreg1);
-
             web.StudentsCourse.Add(enreg2);
             prwb.StudentsCourse.Add(enreg1);
-            var quest1 = new Question("Quelle est ta couleur pref ?", false, false);
-            var quest2 = new Question("Quelle est ta marque pref ?", false, false);
+            var quest1 = new Question {
+                Enonce = "Quelle est le langage utilisé ?",
+                IsUpdate = false,
+                IsDelete = false,
+                Course = web
+            };
+            var quest2 = new Question("Qu'est-ce que le SQL?", false, false, SGBD);
+            Context.Questions.AddRange(quest1, quest2);
             //Benoit.CourseGiven.Add(prwb);
             //Benoit.CourseGiven.Add(web);
             //Katia.StudentCourse.Add(prwb);
@@ -54,9 +44,6 @@ namespace School04.Model {
             //prwb.CourseStrudent.Add(Katia);
             //web.CourseStrudent.Add(Corentin);
             //Questions.AddRange(quest, quest2);*/
-
-            
-
             Context.SaveChanges();
 
             Context.Database.CommitTransaction();

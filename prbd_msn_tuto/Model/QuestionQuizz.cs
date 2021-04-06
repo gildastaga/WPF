@@ -28,9 +28,9 @@ namespace School04.Model {
         public virtual Quizz Quizz {
             get; set;
         }
-        public virtual ICollection<Answer> Answers {
+        /*public virtual ICollection<Answer> Answers {
             get; set;
-        } = new HashSet<Answer>();
+        } = new HashSet<Answer>();*/
 
         public QuestionQuizz( int nbPoint ) {
             NbPoint = nbPoint;

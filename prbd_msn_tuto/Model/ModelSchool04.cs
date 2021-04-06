@@ -28,7 +28,7 @@ namespace School04.Model {
 
             modelBuilder.Entity<QuestionQuizz>()
                 .HasOne(qq => qq.Quizz)
-                .WithMany(q => q.Questions)
+                .WithMany(q => q.QuestionsQuizz)
                 .OnDelete(DeleteBehavior.ClientCascade);
 
             modelBuilder.Entity<Question>()

@@ -22,7 +22,8 @@ namespace School04.Model {
         public string Password {
             get; set;
         }
-        
+        public User() {
+        }
         public User(string name, string firstName, string mail, string password ) {
             Name = name;
             FirstName = firstName;
