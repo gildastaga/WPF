@@ -18,6 +18,10 @@ namespace School04.Model {
             var Boris = new Teacher("Verhagen", "Boris", "boris@verhagen", "Boris1");
             Context.Students.AddRange(Katia, Corentin);
             Context.Teachers.AddRange(Benoit);
+            var prwb = new Course {
+                titleOfCourse = "PRWB",
+                TeacherCourse = Benoit
+            };
             var web = new Course("WEB", Benoit);
             var SGBD = new Course("SGBD", Boris);
             Context.Courses.AddRange(prwb, web, SGBD);
@@ -36,7 +40,6 @@ namespace School04.Model {
             };
             var quest2 = new Question("Qu'est-ce que le SQL?", false, false, SGBD);
             Context.Questions.AddRange(quest1, quest2);
-            Benoit.CourseGiven.Add(prwb);
             Benoit.CourseGiven.Add(SGBD);
             Context.SaveChanges();
 

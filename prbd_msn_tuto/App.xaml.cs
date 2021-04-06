@@ -39,7 +39,7 @@ namespace School04 {
             ProgramSchool04.SeedData();
             Console.WriteLine("liste de tous les teachers");
             foreach (var t in Context.Teachers) {
-                Console.WriteLine($"{t.FirstName} {t.Name} {t.CourseGiven}");
+                Console.WriteLine($"{t.FirstName} {t.Name} {t.CourseGiven.Count}");
             }
 
             Console.WriteLine("Chargement de BDD finie");
