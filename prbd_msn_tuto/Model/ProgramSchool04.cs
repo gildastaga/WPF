@@ -9,7 +9,7 @@ namespace School04.Model {
         public static ModelSchool04 Context { get; private set; } = new ModelSchool04();
         public static void SeedData() {
             var context = ProgramSchool04.Context;
-            
+
             Context.Database.BeginTransaction();
 
             var Katia = new Student("Mijares", "Katia", "abc@def", "abcdef");
@@ -18,7 +18,6 @@ namespace School04.Model {
             var Boris = new Teacher("Verhagen", "Boris", "boris@verhagen", "Boris1");
             Context.Students.AddRange(Katia, Corentin);
             Context.Teachers.AddRange(Benoit);
-            var prwb = new Course("PRBD", Benoit);
             var web = new Course("WEB", Benoit);
             var SGBD = new Course("SGBD", Boris);
             Context.Courses.AddRange(prwb, web, SGBD);
@@ -37,13 +36,8 @@ namespace School04.Model {
             };
             var quest2 = new Question("Qu'est-ce que le SQL?", false, false, SGBD);
             Context.Questions.AddRange(quest1, quest2);
-            //Benoit.CourseGiven.Add(prwb);
-            //Benoit.CourseGiven.Add(web);
-            //Katia.StudentCourse.Add(prwb);
-            //Corentin.StudentCourse.Add(web);*/
-            //prwb.CourseStrudent.Add(Katia);
-            //web.CourseStrudent.Add(Corentin);
-            //Questions.AddRange(quest, quest2);*/
+            Benoit.CourseGiven.Add(prwb);
+            Benoit.CourseGiven.Add(SGBD);
             Context.SaveChanges();
 
             Context.Database.CommitTransaction();
