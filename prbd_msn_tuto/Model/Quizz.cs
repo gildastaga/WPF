@@ -11,16 +11,20 @@ namespace School04.Model {
         public Quizz(string title) {
             Title = title; 
         }
-
         public int QuizzId { get; set; }
-
         public string Title { get; set; }
-        public DateTime CreationDate { get; set; }
+        public DateTime CreationDate { get; set; } = DateTime.Now;
         public DateTime ExaminationDate { get; set; }
-
-        /*[Required]
-        public virtual Course Course { get; set; }*/
-
-        public virtual ICollection<QuestionQuizz> Questions { get; set; } = new HashSet<QuestionQuizz>();
+        [Required]
+        public virtual Course Course { get; set; }
+        public virtual ICollection<QuestionQuizz> QuestionsQuizz { get; set; } = new HashSet<QuestionQuizz>();
+        public Quizz() {
+        }
+        public Quizz( string title, DateTime creation, DateTime examination, Course course ) {
+            Title = title;
+            CreationDate = creation;
+            ExaminationDate = examination;
+            Course = course;
+        }
     }
 }
