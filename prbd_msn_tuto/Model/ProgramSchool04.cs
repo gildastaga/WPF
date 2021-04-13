@@ -17,15 +17,14 @@ namespace School04.Model {
             var Benoit = new Teacher("Penelle", "Benoit", "benoit@penelle", "Penelle1");
             var Boris = new Teacher("Verhagen", "Boris", "boris@verhagen", "Boris1");
             Context.Students.AddRange(Katia, Corentin);
-            Context.Teachers.AddRange(Benoit);
-            var prwb = new Course {
-                titleOfCourse = "PRWB",
-                TeacherCourse = Benoit
-            };
+            Context.Teachers.AddRange(Benoit,Boris);
+            var prwb = new Course("prwb", Benoit);
             var web = new Course("WEB", Benoit);
             var SGBD = new Course("SGBD", Boris);
             Context.Courses.AddRange( prwb, web, SGBD);
-            //Benoit.CourseGiven.Add(SGBD);
+            Benoit.CourseGiven.Add(SGBD);
+            Benoit.CourseGiven.Add(web);
+            Boris.CourseGiven.Add(prwb);
             var enreg1 = new Registration(Corentin, prwb);
             var enreg2 = new Registration(Katia, web);
             Context.Registrations.AddRange(enreg1, enreg2);
