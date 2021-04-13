@@ -13,18 +13,18 @@ namespace School04.Model {
             Context.Database.BeginTransaction();
 
             var Katia = new Student("Mijares", "Katia", "abc@def", "abcdef");
-            var Corentin = new Student("Heinix", "Corentin", "abc@def", "abcdef");
+            var Corentin = new Student("Heinix", "Corentin", "ghj@def", "abcdef");
             var Benoit = new Teacher("Penelle", "Benoit", "benoit@penelle", "Penelle1");
             var Boris = new Teacher("Verhagen", "Boris", "boris@verhagen", "Boris1");
             Context.Students.AddRange(Katia, Corentin);
-            Context.Teachers.AddRange(Benoit);
-            var prwb = new Course {
-                titleOfCourse = "PRWB",
-                TeacherCourse = Benoit
-            };
+            Context.Teachers.AddRange(Benoit,Boris);
+            var prwb = new Course("prwb", Benoit);
             var web = new Course("WEB", Benoit);
             var SGBD = new Course("SGBD", Boris);
-            Context.Courses.AddRange(prwb, web, SGBD);
+            Context.Courses.AddRange( prwb, web, SGBD);
+            Benoit.CourseGiven.Add(SGBD);
+            Benoit.CourseGiven.Add(web);
+            Boris.CourseGiven.Add(prwb);
             var enreg1 = new Registration(Corentin, prwb);
             var enreg2 = new Registration(Katia, web);
             Context.Registrations.AddRange(enreg1, enreg2);
@@ -40,7 +40,7 @@ namespace School04.Model {
             };
             var quest2 = new Question("Qu'est-ce que le SQL?", false, false, SGBD);
             Context.Questions.AddRange(quest1, quest2);
-            Benoit.CourseGiven.Add(SGBD);
+            
             Context.SaveChanges();
 
             Context.Database.CommitTransaction();

@@ -8,9 +8,6 @@ using PRBD_Framework;
 
 namespace School04.Model {
     public class Quizz : EntityBase<ModelSchool04> {
-        public Quizz(string title) {
-            Title = title; 
-        }
         public int QuizzId { get; set; }
         public string Title { get; set; }
         public DateTime CreationDate { get; set; } = DateTime.Now;

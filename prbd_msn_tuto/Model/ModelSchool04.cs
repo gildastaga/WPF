@@ -14,6 +14,9 @@ namespace School04.Model {
         }
         protected override void OnModelCreating( ModelBuilder modelBuilder ) {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.Mail)
+                .IsUnique();
 
             modelBuilder.Entity<QuestionQuizz>()
                 .HasKey(qq => new { qq.QuizzId, qq.QuestionId });
@@ -25,6 +28,11 @@ namespace School04.Model {
                 .HasMany(t => t.CourseGiven)
                 .WithOne(c => c.TeacherCourse)
                 .OnDelete(DeleteBehavior.ClientCascade);
+
+            modelBuilder.Entity<Course>()
+                .HasOne(c => c.TeacherCourse)
+                .WithMany(t => t.CourseGiven);
+              
 
             modelBuilder.Entity<QuestionQuizz>()
                 .HasOne(qq => qq.Quizz)
