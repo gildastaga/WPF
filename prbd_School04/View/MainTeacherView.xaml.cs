@@ -14,10 +14,10 @@ using System.Windows.Shapes;
 
 namespace School04.View {
     /// <summary>
-    /// Logique d'interaction pour LoginView.xaml
+    /// Logique d'interaction pour MainTeacherViewxaml.xaml
     /// </summary>
-    public partial class LoginView : Window {
-        public LoginView() {
+    public partial class MainTeacherView : Window {
+        public MainTeacherView() {
             InitializeComponent();
         }
     }
