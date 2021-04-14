@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace School04.Model {
     public class Teacher : User {
+        public Teacher() {
+        }
         public Teacher( string name, string firstName, string mail, string password ): base(name, firstName, mail, password) {
             Name = name;
             FirstName = firstName;
@@ -16,5 +18,7 @@ namespace School04.Model {
         public virtual ICollection<Course> CourseGiven {
             get; set;
         } = new HashSet<Course>();
+
+        //public List<Course> Courses { get; } = new List<Course>();
     }
 }

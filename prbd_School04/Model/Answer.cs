@@ -10,12 +10,12 @@ namespace School04.Model {
     public class Answer : EntityBase<ModelSchool04> {
         public int AnswerId { get; set; }
 
-        /*[Required]
+        [Required]
         public virtual Student Student { get; set; }
 
         [Required]
         public virtual QuestionQuizz Question { get; set; }
 
-        public virtual ICollection<Proposition> ChoosedProposition { get; set; } = new HashSet<Proposition>();*/
+        public virtual ICollection<Proposition> ChoosedProposition { get; set; } = new HashSet<Proposition>();
     }
 }

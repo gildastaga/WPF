@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace School04.Model {
-
     public enum Type {
         True,
         False
@@ -23,10 +22,12 @@ namespace School04.Model {
         /*public virtual ICollection<Answer> Answers {
             get; set;
         } = new HashSet<Answer>();*/
-
-        public Proposition(string body, Type type) {
+        public Proposition() {
+        }
+        public Proposition(string body, Type type, Question question) {
             Body = body;
             Type = type;
+            Question = question;
         }
     }
 }

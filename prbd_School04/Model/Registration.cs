@@ -28,7 +28,9 @@ namespace School04.Model {
 
         public Registration() {
         }
-
-        //public virtual ICollection<Proposition> ChoosedProposition { get; set; } = new HashSet<Proposition>();*/
+        public Registration( Student student, Course course ) {
+            Student = student;
+            Course = course;
+        }
     }
 }
