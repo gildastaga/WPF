@@ -1,4 +1,5 @@
-﻿using School04.Model;
+﻿using PRBD_Framework;
+using School04.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace School04.View {
     /// <summary>
     /// Logique d'interaction pour MainTeacherViewxaml.xaml
     /// </summary>
-    public partial class MainTeacherView : Window {
+    public partial class MainTeacherView : WindowBase {
         public List<Course> lsCourses = new List<Course>();
         public MainTeacherView() {
             InitializeComponent();
