@@ -1,5 +1,4 @@
-﻿using PRBD_Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +16,7 @@ namespace School04.View {
     /// <summary>
     /// Logique d'interaction pour LoginView.xaml
     /// </summary>
-    public partial class LoginView : WindowBase {
+    public partial class LoginView : Window {
         public LoginView() {
             InitializeComponent();
         }

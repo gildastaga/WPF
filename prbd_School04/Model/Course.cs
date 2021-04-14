@@ -12,7 +12,10 @@ namespace School04.Model {
         public int CourseId {
             get; set;
         }
-        public string titleOfCourse {
+        public string Title {
+            get; set;
+        }
+        public string Description {
             get; set;
         }
         //Un cours est donné par tel professeur
@@ -32,8 +35,9 @@ namespace School04.Model {
         
         public Course() {
         }
-        public Course( string title, Teacher teacher) {
-            titleOfCourse = title;
+        public Course( string title, string description, Teacher teacher) {
+            Title = title;
+            Description = Description;
             TeacherCourse = teacher;
         }
     }

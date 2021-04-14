@@ -28,20 +28,20 @@ namespace School04 {
         public App() {
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(Settings.Default.Culture);
         }
-
+        //surcharge la classe 
         protected override void OnStartup(StartupEventArgs e) {
             base.OnStartup(e);
 
             Console.WriteLine("Chargement de BDD en cours");
 
-            ProgramSchool04.Context.Database.EnsureDeleted();
-            ProgramSchool04.Context.Database.EnsureCreated();
-            ProgramSchool04.SeedData();
+            Context.Database.EnsureDeleted();
+            Context.Database.EnsureCreated();
+            Context.SeedData();
             Console.WriteLine("Liste de tous les teachers");
             foreach (var t in Context.Teachers) {
                 Console.Write($"{t.FirstName} {t.Name}");
                 foreach(var course in t.CourseGiven){
-                    Console.Write($"{course.titleOfCourse} ");
+                    Console.Write($"{ course.Title} ");
                 }
                 Console.WriteLine();
                 
