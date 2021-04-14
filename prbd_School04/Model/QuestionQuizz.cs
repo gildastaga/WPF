@@ -18,7 +18,7 @@ namespace School04.Model {
             get; set;
         }
         [Required]
-        public virtual Question Questions {
+        public virtual Question Question {
             get; set;
         }
         public int QuizzId {
@@ -32,6 +32,7 @@ namespace School04.Model {
             get; set;
         } = new HashSet<Answer>();*/
 
+        public QuestionQuizz() { }
         public QuestionQuizz( int nbPoint ) {
             NbPoint = nbPoint;
         }
