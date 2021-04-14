@@ -63,9 +63,9 @@ namespace School04.Model {
             var Boris = new Teacher("Verhagen", "Boris", "boris@verhagen", "Boris1");
             Students.AddRange(Katia, Corentin);
             Teachers.AddRange(Benoit, Boris);
-            var prwb = new Course("prwb", Benoit);
-            var web = new Course("WEB", Benoit);
-            var SGBD = new Course("SGBD", Boris);
+            var prwb = new Course("prwb", "cours de prwb", Benoit);
+            var web = new Course("WEB", "cours de web", Benoit);
+            var SGBD = new Course("SGBD", "cours de sgbd", Boris);
             Courses.AddRange(prwb, web, SGBD);
             Benoit.CourseGiven.Add(SGBD);
             Benoit.CourseGiven.Add(web);

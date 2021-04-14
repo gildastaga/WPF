@@ -21,16 +21,31 @@ namespace School04.View {
         public List<Course> lsCourses = new List<Course>();
         public MainTeacherView() {
             InitializeComponent();
+            MakeList();
         }
         private void Clear() {
             lvCourses.Items.Clear();
             txtBoxTitle.Clear();
             txtBoxDescription.Clear();
         }
+        private void MakeList() {
+            //Clear();
+            /*foreach (var c in lsCourses)
+                lvCourses.Items.Add(c);
+            lvCourses.SelectedIndex = 0; //On sélectionne le premier*/
+        }
 
         private void btcNew_Click( object sender, RoutedEventArgs e ) {
             txtBoxTitle.Clear();
             txtBoxDescription.Clear();
+        }
+
+        private void lvCourses_SelectionChanged( object sender, SelectionChangedEventArgs e ) {
+            var c = (Course)lvCourses.SelectedItem; // on récupère la ligne sélectionnée de la ListView
+            if (c == null)
+                return;
+            txtBoxTitle.Text = c.Title;
+            txtBoxDescription.Text = c.Description;
         }
     }
 }

@@ -13,7 +13,7 @@
     <Grid>
         <StackPanel Margin="15,10,449,261">
             <Label Content="CoursesTeach" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="-1,13,0,0"/>
-            <ListView x:Name="lvCourses" ItemsSource="{Binding Courses}" Width="315" HorizontalAlignment="Left" Margin="0,10,0,0" Height="111" >
+            <ListView x:Name="lvCourses" ItemsSource="{Binding Courses}" Width="315" HorizontalAlignment="Left" Margin="0,10,0,0" Height="111" SelectionChanged="lvCourses_SelectionChanged" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Title}"/>

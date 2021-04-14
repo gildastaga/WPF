@@ -15,6 +15,9 @@ namespace School04.Model {
         public string Title {
             get; set;
         }
+        public string Description {
+            get; set;
+        }
         //Un cours est donné par tel professeur
         [Required]
         public virtual Teacher TeacherCourse {
@@ -32,8 +35,9 @@ namespace School04.Model {
         
         public Course() {
         }
-        public Course( string title, Teacher teacher) {
+        public Course( string title, string description, Teacher teacher) {
             Title = title;
+            Description = Description;
             TeacherCourse = teacher;
         }
     }
