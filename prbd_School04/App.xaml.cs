@@ -41,7 +41,7 @@ namespace School04 {
             foreach (var t in Context.Teachers) {
                 Console.Write($"{t.FirstName} {t.Name}");
                 foreach(var course in t.CourseGiven){
-                    Console.Write($"{course.titleOfCourse} ");
+                    Console.Write($"{ course.Title} ");
                 }
                 Console.WriteLine();
                 

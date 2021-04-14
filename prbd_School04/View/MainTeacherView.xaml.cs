@@ -1,4 +1,5 @@
-﻿using System;
+﻿using School04.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,8 +18,19 @@ namespace School04.View {
     /// Logique d'interaction pour MainTeacherViewxaml.xaml
     /// </summary>
     public partial class MainTeacherView : Window {
+        public List<Course> lsCourses = new List<Course>();
         public MainTeacherView() {
             InitializeComponent();
+        }
+        private void Clear() {
+            lvCourses.Items.Clear();
+            txtBoxTitle.Clear();
+            txtBoxDescription.Clear();
+        }
+
+        private void btcNew_Click( object sender, RoutedEventArgs e ) {
+            txtBoxTitle.Clear();
+            txtBoxDescription.Clear();
         }
     }
 }

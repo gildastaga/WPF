@@ -9,11 +9,13 @@ using School04.Model;
 
 namespace School04.ViewModel {
     public class MainTeacherViewModel : ViewModelBase<ModelSchool04> {
-        public ObservableCollection<Student> Students {
-            get; set;
-        }
+        public ObservableCollection<Course> Courses { get; set; }
+        /*public ObservableCollection<Course> Courses {
+            get => courses;
+            set => SetProperty<ObservableCollection<Course>>(ref courses, value);
+        }*/
         public MainTeacherViewModel() : base() {
-            Students = new ObservableCollection<Student>(Context.Students);
+            Courses = new ObservableCollection<Course>(Context.Courses);
         }
 
         protected override void OnRefreshData() {
