@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PRBD_Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,7 @@ namespace School04.View {
     /// <summary>
     /// Logique d'interaction pour MainView.xaml
     /// </summary>
-    public partial class MainView : Page {
+    public partial class MainView : WindowBase {
         public MainView() {
             InitializeComponent();
         }

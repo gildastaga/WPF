@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PRBD_Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,10 +15,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace School04.View {
-    /// <summary>
-    /// Logique d'interaction pour QuestionView.xaml
-    /// </summary>
-    public partial class QuestionView : Page {
+ 
+    public partial class QuestionView : UserControlBase {
+
         public QuestionView() {
             InitializeComponent();
         }

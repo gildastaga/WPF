@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace School04.Model {
-    class CheckProposition {
+    public class CheckProposition {
+        public string Name { get; set; }
+        public bool Checked { get; set; }
     }
 }
