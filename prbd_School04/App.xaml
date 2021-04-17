@@ -3,7 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:School04"
              xmlns:f="clr-namespace:PRBD_Framework;assembly=PRBD_Framework"
+<<<<<<< HEAD
             StartupUri="View/MainView.xaml">
+=======
+            StartupUri="View/LoginView.xaml">
+>>>>>>> feat_corentin
     
     <Application.Resources>
         

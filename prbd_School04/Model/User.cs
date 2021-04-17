@@ -23,6 +23,8 @@ namespace School04.Model {
         public string Password {
             get; set;
         }
+
+        public string Discriminator { get; }
         public User() {
         }
         public User(string name, string firstName, string mail, string password ) {
@@ -30,6 +32,14 @@ namespace School04.Model {
             FirstName = firstName;
             Mail = mail;
             Password = password;
+        }
+
+        public bool IsTeacher() {
+            return Discriminator == "Teacher";
+        }
+
+        public static User GetByMail(string mail) {
+            return Context.Users.SingleOrDefault(m => m.Mail == mail);
         }
 
     }

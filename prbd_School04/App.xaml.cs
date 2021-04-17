@@ -12,19 +12,21 @@ using PRBD_Framework;
 namespace School04 {
     public partial class App : ApplicationBase {
         public static ModelSchool04 Context { get => Context<ModelSchool04>(); }
+<<<<<<< HEAD
         public static object ModelSchool04 { get; internal set; }
+=======
+        public static User CurrentUser { get; private set; }
+>>>>>>> feat_corentin
 
-        /*public static Member CurrentUser { get; private set; }
-
-        public static void Login(Member member) {
-            CurrentUser = member;
+        public static void Login(User user) {
+            CurrentUser = user;
         }
 
         public static void Logout() {
             CurrentUser = null;
         }
 
-        public static bool IsLoggedIn { get => CurrentUser != null; }*/
+        public static bool IsLoggedIn { get => CurrentUser != null; }
 
         public App() {
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(Settings.Default.Culture);

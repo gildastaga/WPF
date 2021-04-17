@@ -11,13 +11,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using PRBD_Framework;
 
 namespace School04.View {
     /// <summary>
-    /// Logique d'interaction pour MainStudent.xaml
+    /// Logique d'interaction pour MainStudentView.xaml
     /// </summary>
-    public partial class MainStudent : Window {
-        public MainStudent() {
+    public partial class MainStudentView : WindowBase {
+        public MainStudentView() {
             InitializeComponent();
         }
     }

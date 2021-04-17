@@ -1,8 +1,9 @@
-﻿<Window x:Class="School04.View.MainTeacherView"
+﻿<f:WindowBase x:Class="School04.View.MainTeacherView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:f="clr-namespace:PRBD_Framework;assembly=PRBD_Framework"
         xmlns:local="clr-namespace:School04.View"
         xmlns:vm="clr-namespace:School04.ViewModel"
         mc:Ignorable="d"
@@ -29,4 +30,4 @@
         <Button x:Name="btcAdd" Content="Add Course" HorizontalAlignment="Left" Margin="400,260,0,0" VerticalAlignment="Top" Width="115" />
         <Button x:Name="btcSuppr" Content="Delete" HorizontalAlignment="Left" Margin="400,300,0,0" VerticalAlignment="Top" Width="115" />
     </Grid>
-</Window>
+</f:WindowBase>
