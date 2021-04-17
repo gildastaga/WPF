@@ -15,10 +15,11 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace School04.View {
- 
-    public partial class QuestionView : UserControlBase {
-
-        public QuestionView() {
+    /// <summary>
+    /// Logique d'interaction pour MainView.xaml
+    /// </summary>
+    public partial class MainView : WindowBase {
+        public MainView() {
             InitializeComponent();
         }
     }

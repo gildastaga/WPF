@@ -9,7 +9,7 @@ using School04.Model;
 using School04.View;
 
 namespace School04.ViewModel {
-    public class LoginViewModel : ViewModelCommon {
+    public class SignupViewModel : ViewModelCommon {
 
         private string mail;
         public string Mail { get => mail; set => SetProperty(ref mail, value, () => Validate()); }
@@ -17,7 +17,7 @@ namespace School04.ViewModel {
         private string password;
         public string Password { get => password; set => SetProperty(ref password, value, () => Validate()); }
 
-        public event Action OnLoginSuccess;
+        public event Action OnSignupSuccess;
 
         public ICommand LoginCommand { get; set; }
         public ICommand SignUp { get; set; }
@@ -44,23 +44,23 @@ namespace School04.ViewModel {
             return !HasErrors;
         }
 
-        public LoginViewModel() {
+        public SignupViewModel() {
             LoginCommand = new RelayCommand(
                 LoginAction,
                 () => { return mail != null && password != null && !HasErrors; }
             );
-            SignUp = new RelayCommand(SignupAction); ;
+            SignUp = new RelayCommand(()=>Console.WriteLine("Test")); ;
         }
 
         private void SignupAction() {
-            App.NavigateTo<SignupView>();
+           
         }
 
         private void LoginAction() {
             if (Validate()) {
                 var user = User.GetByMail(mail);
                 Login(user);
-                OnLoginSuccess?.Invoke();
+                OnSignupSuccess?.Invoke();
             }
         }
 
