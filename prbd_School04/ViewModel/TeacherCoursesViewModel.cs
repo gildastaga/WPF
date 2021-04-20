@@ -8,7 +8,7 @@ using PRBD_Framework;
 using School04.Model;
 
 namespace School04.ViewModel {
-    public class MainTeacherViewModel : ViewModelCommon{
+    public class TeacherCoursesViewModel : ViewModelCommon{
         private ObservableCollection<Course> courses;
         public ObservableCollection<Course> Courses {
             get => courses;
@@ -20,7 +20,7 @@ namespace School04.ViewModel {
                     Courses = new ObservableCollection<Course>(teacher.CourseGiven);
                 }
         }
-        public MainTeacherViewModel() : base() {
+        public TeacherCoursesViewModel() : base() {
             makeList(); 
         }
         protected override void OnRefreshData() {

@@ -18,9 +18,9 @@ namespace School04.View {
     /// <summary>
     /// Logique d'interaction pour MainTeacherViewxaml.xaml
     /// </summary>
-    public partial class MainTeacherView : WindowBase {
+    public partial class TeacherCoursesView : WindowBase {
         public List<Course> lsCourses = new List<Course>();
-        public MainTeacherView() {
+        public TeacherCoursesView() {
             InitializeComponent();
             //MakeList();
         }

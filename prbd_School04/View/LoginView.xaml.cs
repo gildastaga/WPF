@@ -35,7 +35,7 @@ namespace School04.View {
         }
         private void Vm_OnLoginSuccess() {
             if(App.CurrentUser != null && App.CurrentUser.IsTeacher())
-                App.NavigateTo<MainTeacherView>();
+                App.NavigateTo<TeacherCoursesView>();
             else if(App.CurrentUser != null && !App.CurrentUser.IsTeacher())
                 App.NavigateTo<MainStudentView>();
         }
