@@ -27,7 +27,7 @@ namespace School04.ViewModel {
 
         }
 
-        private void LoadPropositionsChecked() {
+        /*private void LoadPropositionsChecked() {
             Propositions = new ObservableCollection<CheckProposition>();   // Pour le moment ma liste est vide,
             foreach (var proposition in App.ModelSchool04.Propositions)               //on parcours la DbSet de la BD et pour chaque TagName, je creer une new instance sur lui puis je me dde si ma liste de tag contient dejà ce tag; ma méthode contains renvoit true ou false
             {
@@ -38,6 +38,6 @@ namespace School04.ViewModel {
                 };
                 Propositions.Add(p);                              // Enfin j'ajoute ce tag ds la liste.
             }
-        }
+        }*/
     }
 }

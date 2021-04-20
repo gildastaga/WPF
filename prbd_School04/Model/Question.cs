@@ -24,9 +24,9 @@ namespace School04.Model {
         } = new HashSet<Category>();
         public virtual ICollection<QuestionQuizz> QuestionQuizz {get; set;} = new HashSet<QuestionQuizz>();
 
-       public virtual ICollection<QuestionProposition> QuestionPropositions{get; set;} = new HashSet<QuestionProposition>();
+       public virtual ICollection<Proposition> Propositions{get; set;} = new HashSet<Proposition>();
 
-        public IEnumerable<Proposition> Propositions { get { return QuestionPropositions.Select(p => p.Proposition); }}
+        //public IEnumerable<Proposition> Propositions { get { return QuestionPropositions.Select(p => p.Proposition); }}
 
         [Required]
         public virtual Course Course {get; set;}
