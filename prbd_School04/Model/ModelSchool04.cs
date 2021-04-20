@@ -163,6 +163,5 @@ namespace School04.Model {
         public DbSet<Quizz> Quizz {
             get; set;
         }
-        public DbSet<QuestionProposition> QuestionPropositions { get; set; }
     }
 }
