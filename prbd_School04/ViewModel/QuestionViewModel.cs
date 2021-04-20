@@ -31,14 +31,14 @@ namespace School04.ViewModel {
 
         private void LoadPropositionsChecked() {
             Propositions = new ObservableCollection<CheckProposition>();   // Pour le moment ma liste est vide,
-            foreach (var proposition in App.Context.Propositions)               //on parcours la DbSet de la BD et pour chaque TagName, je creer une new instance sur lui puis je me dde si ma liste de tag contient dejà ce tag; ma méthode contains renvoit true ou false
+            foreach (var proposition in App.Context.Propositions)               
             {
-                var p = new CheckProposition()                    // on creer une new instance de TagChecked (cette new classe me permet de savoir si un tag a été coché ou pas d'où cette new classe avec un TagName et un boolean pour savoir si oui ou non le tag a été coché ou pas
+                var p = new CheckProposition()                   
                 {
-                    Name = proposition.Body,                     // je prends le TagName sur lequel je suis
+                    Name = proposition.Body,                     
                     Checked = Question.Propositions.Contains(proposition)
                 };
-                Propositions.Add(p);                              // Enfin j'ajoute ce tag ds la liste.
+                Propositions.Add(p);                              
             }
         }
     }
