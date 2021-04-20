@@ -33,10 +33,15 @@ namespace School04.ViewModel {
                 } else {
                     if (member == null) {
                         AddError(nameof(Mail), "This mail don't exist");
-                    } else {
-                        if(member.Password != password) {
-                            AddError(nameof(Password), "The password is incorrect");
-                        }
+                    }
+                }
+            }
+            if (string.IsNullOrEmpty(Password)) {
+                AddError(nameof(Password), "Required");
+            } else {
+                if (member != null) {
+                    if (member.Password != password) {
+                        AddError(nameof(Password), "The password is incorrect");
                     }
                 }
             }

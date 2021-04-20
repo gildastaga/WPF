@@ -42,9 +42,7 @@ namespace School04.View {
             txtPasswordConfirm.SelectAll();
         }
         private void Vm_OnSignupSuccess() {
-            if (App.CurrentUser != null && App.CurrentUser.IsTeacher())
-                App.NavigateTo<MainTeacherView>();
-            else if (App.CurrentUser != null && !App.CurrentUser.IsTeacher())
+            if (App.CurrentUser != null)
                 App.NavigateTo<MainStudentView>();
         }
     }
