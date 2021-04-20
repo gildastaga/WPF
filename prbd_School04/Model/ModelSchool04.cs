@@ -38,7 +38,6 @@ namespace School04.Model {
                 .HasOne(c => c.TeacherCourse)
                 .WithMany(t => t.CourseGiven);
 
-
             modelBuilder.Entity<QuestionQuizz>()
                 .HasOne(qq => qq.Quizz)
                 .WithMany(q => q.QuestionsQuizz)
