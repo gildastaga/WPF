@@ -52,7 +52,7 @@ namespace School04.View {
 
         private void btcAdd_Click( object sender, RoutedEventArgs e ) {
             if (modAdd) {
-                C(
+                lsCourses.Add(
                     new Course {
                         Title = txtBoxTitle.Text,
                         Description = txtBoxDescription.Text
