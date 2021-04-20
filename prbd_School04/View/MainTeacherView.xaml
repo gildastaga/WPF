@@ -26,7 +26,7 @@
         <Label Content="Title" HorizontalAlignment="Left" Margin="15,191,0,0" VerticalAlignment="Top"/>
         <Label Content="Decription" HorizontalAlignment="Left" Margin="15,263,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btcNew" Content="New Course" HorizontalAlignment="Left" Margin="400,220,0,0" VerticalAlignment="Top" Width="115" Click="btcNew_Click"  />
-        <Button x:Name="btcAdd" Content="Add Course" HorizontalAlignment="Left" Margin="400,260,0,0" VerticalAlignment="Top" Width="115" />
-        <Button x:Name="btcSuppr" Content="Delete" HorizontalAlignment="Left" Margin="400,300,0,0" VerticalAlignment="Top" Width="115" />
+        <Button x:Name="btcAdd" Content="Add Course" HorizontalAlignment="Left" Margin="400,260,0,0" VerticalAlignment="Top" Width="115" Click="btcAdd_Click" />
+        <Button x:Name="btcSuppr" Content="Delete" HorizontalAlignment="Left" Margin="400,300,0,0" VerticalAlignment="Top" Width="115" Click="btcSuppr_Click" />
     </Grid>
 </Window>

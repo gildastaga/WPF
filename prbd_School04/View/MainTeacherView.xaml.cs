@@ -17,24 +17,24 @@ namespace School04.View {
     /// <summary>
     /// Logique d'interaction pour MainTeacherViewxaml.xaml
     /// </summary>
-    public partial class MainTeacherView : Window {
-        public List<Course> lsCourses = new List<Course>();
+    public partial class MainTeacherView : Window /*UserControlBase*/{
         public MainTeacherView() {
             InitializeComponent();
-            MakeList();
+            //MakeList();
         }
-        private void Clear() {
+        //initialiser la liste lors de la construction de la fenêtre
+        /*private void Clear() {
             lvCourses.Items.Clear();
             txtBoxTitle.Clear();
             txtBoxDescription.Clear();
         }
         private void MakeList() {
-            //Clear();
-            /*foreach (var c in lsCourses)
+            Clear();
+            foreach (var c in lsCourses)
                 lvCourses.Items.Add(c);
-            lvCourses.SelectedIndex = 0; //On sélectionne le premier*/
-        }
-
+            lvCourses.SelectedIndex = 0; //On sélectionne le premier
+        }*/
+        private bool modAdd = true; 
         private void btcNew_Click( object sender, RoutedEventArgs e ) {
             txtBoxTitle.Clear();
             txtBoxDescription.Clear();
@@ -46,6 +46,30 @@ namespace School04.View {
                 return;
             txtBoxTitle.Text = c.Title;
             txtBoxDescription.Text = c.Description;
+        }
+
+        private void btcAdd_Click( object sender, RoutedEventArgs e ) {
+            if (modAdd) {
+                C(
+                    new Course {
+                        Title = txtBoxTitle.Text,
+                        Description = txtBoxDescription.Text
+                    });
+                modAdd = false;
+            } else {
+                var c = (Course)lvCourses.SelectedItem;
+                if (c == null)
+                    return;
+                c.Title = txtBoxTitle.Text;
+                c.Description = txtBoxDescription.Text;
+            }
+        }
+
+        private void btcSuppr_Click( object sender, RoutedEventArgs e ) {
+            var c = (Course)lvCourses.SelectedItem;
+            if (c == null)
+                return;
+            lsCourses.Remove(c);
         }
     }
 }
