@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace School04.Model {
     public class Course : EntityBase<ModelSchool04> {
-
+        public List<Course> lsCourses = new List<Course>();
         public int CourseId {
             get; set;
         }
@@ -39,6 +39,16 @@ namespace School04.Model {
             Title = title;
             Description = Description;
             TeacherCourse = teacher;
+        }
+
+        public int NbElem => lsCourses.Count;
+
+        public void AddElem( Course c ) {
+            lsCourses.Add(c);
+        }
+
+        public bool RemoveElem( Course c ) {
+            return lsCourses.Remove(c);
         }
     }
 }

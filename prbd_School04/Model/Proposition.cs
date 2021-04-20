@@ -17,7 +17,6 @@ namespace School04.Model {
         public Type Type { get; set; } = Type.True;
         [Required]
         public virtual Question Question {get; set;}
-        //public virtual ICollection<QuestionProposition> QuestionPropositions { get; set; } = new HashSet<QuestionProposition>();
         public virtual ICollection<Answer> Answers {get; set;} = new HashSet<Answer>();
 
         public Proposition() {}

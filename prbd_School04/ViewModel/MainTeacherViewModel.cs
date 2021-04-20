@@ -8,16 +8,21 @@ using PRBD_Framework;
 using School04.Model;
 
 namespace School04.ViewModel {
-    public class MainTeacherViewModel : ViewModelBase<ModelSchool04> {
-        public ObservableCollection<Course> Courses { get; set; }
-        /*public ObservableCollection<Course> Courses {
+    public class MainTeacherViewModel : ViewModelCommon{
+        private ObservableCollection<Course> courses;
+        public ObservableCollection<Course> Courses {
             get => courses;
             set => SetProperty<ObservableCollection<Course>>(ref courses, value);
-        }*/
-        public MainTeacherViewModel() : base() {
-            Courses = new ObservableCollection<Course>(Context.Courses);
         }
-
+        public void makeList() {
+            if ((CurrentUser != null) && (CurrentUser.IsTeacher())) {
+                    Teacher teacher = (Teacher) CurrentUser;
+                    Courses = new ObservableCollection<Course>(teacher.CourseGiven);
+                }
+        }
+        public MainTeacherViewModel() : base() {
+            makeList(); 
+        }
         protected override void OnRefreshData() {
             // Pour plus tard
         }
