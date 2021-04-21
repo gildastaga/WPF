@@ -9,7 +9,7 @@
         xmlns:local="clr-namespace:School04.View"
         mc:Ignorable="d"
         Title="Login" WindowStartupLocation="CenterScreen"
-        FocusManager.FocusedElement="{Binding ElementName=txtPseudo}" ResizeMode="NoResize"
+        FocusManager.FocusedElement="{Binding ElementName=txtMail}" ResizeMode="NoResize"
         Width="250" Height="200"
         SizeToContent="WidthAndHeight" >
     <Window.DataContext>
@@ -50,7 +50,8 @@
             <TextBlock Height="auto" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" Width="220" >
                 <Run Text="If your don't have a login and a password, click"/>
                 <Hyperlink Command="{Binding SignUp}"><Run Text="here"/></Hyperlink>
-                <Run Text="to sign-up."/>
+                <Run Text="to sign-up."/><LineBreak></LineBreak>
+                <Run Text="(Only for new students)"/>
             </TextBlock>
         </DockPanel>
     </Grid>

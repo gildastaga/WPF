@@ -96,12 +96,20 @@ namespace School04.Model {
             };
             Questions.AddRange(quest3, quest4);
 
+<<<<<<< HEAD
             var prop1 = new Proposition ("Proposition 1 (X)", Type.False, quest1);
+=======
+            /*var prop1 = new Proposition ("Proposition 1 (X)", Type.False, quest1);
+>>>>>>> feat_corentin
             var prop2 = new Proposition ("Proposition 2 (V)", Type.True, quest1);
             var prop3 = new Proposition ("Proposition 3 (X)", Type.False, quest2);
             var prop4 = new Proposition("Proposition 4 (V)", Type.True, quest2) ;
             var prop5 = new Proposition ("Proposition 5 (V)", Type.True, quest3);
+<<<<<<< HEAD
             Propositions.AddRange(prop1, prop2, prop3, prop4, prop5);
+=======
+            Propositions.AddRange(prop1, prop2, prop3, prop4, prop5);*/
+>>>>>>> feat_corentin
 
             var quiz1 = new Quizz {
                 Course = prwb,
@@ -162,5 +170,6 @@ namespace School04.Model {
         public DbSet<Quizz> Quizz {
             get; set;
         }
+        public DbSet<QuestionProposition> QuestionPropositions { get; set; }
     }
 }
