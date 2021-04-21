@@ -102,22 +102,7 @@ namespace School04.Model {
             var prop4 = new Proposition("Proposition 4 (V)", Type.True, quest2) ;
             var prop5 = new Proposition ("Proposition 5 (V)", Type.True, quest3);
             Propositions.AddRange(prop1, prop2, prop3, prop4, prop5);
-
-            };
-            var prop3 = new Proposition {
-                Body = "Proposition 3 (X)",
-                Type = Type.False
-            };
-            var prop4 = new Proposition {
-                Body = "Proposition 4 (V)",
-                Type = Type.True
-            };
-            var prop5 = new Proposition {
-                Body = "Proposition 5 (V)",
-                Type = Type.True
-            };
-            Propositions.AddRange(prop1, prop2, prop3, prop4, prop5);
-
+            
             quest1.Propositions.Add(prop1);
             quest1.Propositions.Add(prop2);
             quest2.Propositions.Add(prop3);
