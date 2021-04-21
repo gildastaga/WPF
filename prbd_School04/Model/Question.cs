@@ -24,7 +24,6 @@ namespace School04.Model {
         } = new HashSet<Category>();
         public virtual ICollection<QuestionQuizz> QuestionQuizz {get; set;} = new HashSet<QuestionQuizz>();
 
-<<<<<<< HEAD
        public virtual ICollection<Answer> Answers{get; set;} = new HashSet<Answer>();
 
         public virtual ICollection<Proposition> Propositions { get; set; } = new HashSet<Proposition>();
@@ -32,16 +31,6 @@ namespace School04.Model {
         [Required]
         public virtual Course Course {get; set;}
 
-=======
-       public virtual ICollection<Proposition> Propositions{get; set;} = new HashSet<Proposition>();
-
-        //public virtual ICollection<QuestionProposition> QuestionPropositions { get; set; } = new HashSet<QuestionProposition>();
-
-        //public IEnumerable<Proposition> Propositions { get { return QuestionPropositions.Select(p => p.Proposition); }}
-
-        [Required]
-        public virtual Course Course {get; set;}
->>>>>>> feat_corentin
         public Question() {}
         public Question(string enonce, Boolean isUpdate, Boolean isDelete, Course course) {
             Enonce = enonce;
