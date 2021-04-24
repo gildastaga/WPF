@@ -20,6 +20,8 @@ namespace School04.ViewModel {
         public event Action OnLoginSuccess;
 
         public ICommand LoginCommand { get; set; }
+        public ICommand LoginAsStudent { get; set; }
+        public ICommand LoginAsTeacher { get; set; }
         public ICommand SignUp { get; set; }
 
         public override bool Validate() {
@@ -54,7 +56,9 @@ namespace School04.ViewModel {
                 LoginAction,
                 () => { return mail != null && password != null && !HasErrors; }
             );
-            SignUp = new RelayCommand(SignupAction); ;
+            SignUp = new RelayCommand(SignupAction);
+            LoginAsTeacher = new RelayCommand(LoginAsTeacherAction);
+            LoginAsStudent = new RelayCommand(LoginAsStudentAction);
         }
 
         private void SignupAction() {
@@ -62,6 +66,26 @@ namespace School04.ViewModel {
         }
 
         private void LoginAction() {
+            if (Validate()) {
+                var user = User.GetByMail(mail);
+                Login(user);
+                OnLoginSuccess?.Invoke();
+            }
+        }
+
+        private void LoginAsTeacherAction() {
+            Mail = "benoit@penelle";
+            Password = "Penelle1";
+            if (Validate()) {
+                var user = User.GetByMail(mail);
+                Login(user);
+                OnLoginSuccess?.Invoke();
+            }
+        }
+
+        private void LoginAsStudentAction() {
+            Mail = "abc@def";
+            Password = "abcdef";
             if (Validate()) {
                 var user = User.GetByMail(mail);
                 Login(user);

@@ -81,21 +81,19 @@ namespace School04.ViewModel {
                 if (Password.Length < 8) {
                     AddError(nameof(Password), "Passord must be at least 8 chars");
                 } else {
-                    /*Regex regex = new Regex("[A - Z]");
-                    Regex regex2 = new Regex("[0-9]");
-                    Regex regex3 = new Regex("[';:,./?\\-]");
+                    Regex regex = new Regex("[A-Z]+");
+                    Regex regex2 = new Regex("[0-9]+");
+                    Regex regex3 = new Regex("[a-z]+");
                     if (!(regex.IsMatch(Password) && regex2.IsMatch(Password) && regex3.IsMatch(Password))) {
-                        AddError(nameof(Password), "The password must contain a capital letter, a number and a non-alphanumeric character");
-                    } else {*/
-                    if (string.IsNullOrEmpty(PasswordConfirm)) {
+                        AddError(nameof(Password), "The password must contain at least one lowercase letter,\n one uppercase letter and one number");
+                    } else if (string.IsNullOrEmpty(PasswordConfirm)) {
                         AddError(nameof(PasswordConfirm), "Required");
-                     } else {
-                         if (Password != PasswordConfirm) {
-                             AddError(nameof(PasswordConfirm), "The passwords doesn't match");
-                         }
-                     }
+                    } else if (Password != PasswordConfirm) {
+                        AddError(nameof(PasswordConfirm), "The passwords doesn't match");
+                    }
                 }
             }
+
 
             RaiseErrors();
             return !HasErrors;
@@ -115,7 +113,7 @@ namespace School04.ViewModel {
 
         private void SignupAction() {
             if (Validate()) {
-                var newStudent = new Student(LastName , FirstName, Mail, Password);
+                var newStudent = new Student(LastName, FirstName, Mail, Password);
                 Context.Students.Add(newStudent);
                 Context.SaveChanges();
                 Login(newStudent);

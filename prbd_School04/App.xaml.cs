@@ -12,6 +12,8 @@ using PRBD_Framework;
 namespace School04 {
     public partial class App : ApplicationBase {
         public static ModelSchool04 Context { get => Context<ModelSchool04>(); }
+        public static object ModelSchool04 { get; internal set; }
+
         public static User CurrentUser { get; private set; }
 
         public static void Login(User user) {

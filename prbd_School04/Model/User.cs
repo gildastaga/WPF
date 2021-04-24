@@ -37,6 +37,9 @@ namespace School04.Model {
         public bool IsTeacher() {
             return Discriminator == "Teacher";
         }
+        public bool IsStudent() {
+            return Discriminator == "Student";
+        }
 
         public static User GetByMail(string mail) {
             return Context.Users.SingleOrDefault(m => m.Mail == mail);
