@@ -9,11 +9,19 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MainView">
 
-    <f:MyTabControl x:Name="tabControl" Margin="10" Grid.Row="1">
+    <f:MyTabControl x:Name="tabControlQuestion" Margin="10" Grid.Row="1">
         <TabItem x:Name="QuestionTab" Header="Questions" Tag="Questions">
             <ContentControl>
                 <local:QuestionView/>
             </ContentControl>
         </TabItem>
+
+        <f:MyTabControl x:Name="tabControlCategory" Margin="10" Grid.Row="1">
+            <TabItem x:Name="CatégorieTab" Header="Category" Tag="Category">
+                <ContentControl>
+                    <local:CategoryView/>
+                </ContentControl>
+            </TabItem>
+        </f:MyTabControl>
     </f:MyTabControl>
 </f:WindowBase>
