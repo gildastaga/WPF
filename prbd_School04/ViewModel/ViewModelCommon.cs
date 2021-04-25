@@ -35,6 +35,8 @@ namespace School04.ViewModel {
             throw new NotImplementedException();
         }
 
-        public static bool IsLoggedIn { get => App.IsLoggedIn; }
+        public static bool IsLoggedIn {
+            get => App.IsLoggedIn; 
+        }
     }
 }

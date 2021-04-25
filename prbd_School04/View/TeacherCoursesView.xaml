@@ -8,9 +8,7 @@
         xmlns:vm="clr-namespace:School04.ViewModel"
         mc:Ignorable="d"
         Title="TeacherCourses" Height="450" Width="800" Foreground="Black">
-    <Window.DataContext>
-        <vm:TeacherCoursesViewModel/>
-    </Window.DataContext>
+   
     <Grid>
         <Label Content="CoursesTeach" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="17,62,0,0"/>
         <ListView x:Name="lvCourses" ItemsSource="{Binding Courses}" Width="315" HorizontalAlignment="Left" Margin="17,93,0,164" SelectionChanged="lvCourses_SelectionChanged" >
