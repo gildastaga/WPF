@@ -12,16 +12,17 @@
     <Window.DataContext>
         <vm:LoginViewModel x:Name="vm" />
     </Window.DataContext>
+    
     <f:MyTabControl x:Name="tabControl" Margin="10" Grid.Row="1">
         <TabItem x:Name="CatégorieTab" Header="Category" Tag="Category">
             <ContentControl>
-                
+                <local:CategoryView/>
             </ContentControl>
         </TabItem>
 
         <TabItem x:Name="QuestionTab" Header="Questions" Tag="Questions">
             <ContentControl>
-                
+                <local:QuestionView/>
             </ContentControl>
         </TabItem>
 
