@@ -18,24 +18,24 @@
             <RowDefinition Height="149*"/>
         </Grid.RowDefinitions>
         <Grid Margin="10">
-            <!-- Name -->
-            <Label Content="Name : " HorizontalAlignment="Left" Margin="10,24,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="txtName" HorizontalAlignment="Left" Margin="136,28,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="610"/>
-            <!-- FirstName -->
-            <Label Content="FirstName : " HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="txtFstName" HorizontalAlignment="Left" Margin="136,58,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="610"/>
-            <!-- Mail -->
-            <Label Content="Mail : " HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="txtMail" HorizontalAlignment="Left" Margin="136,88,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="610"/>
-            <!-- Password -->
-            <Label Content="Password : " HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="txtPsw" HorizontalAlignment="Left" Margin="136,118,0,0" Text="Password" TextWrapping="Wrap" VerticalAlignment="Top" Width="610"/>
-            <!-- PasswordConfirm -->
-            <Label Content="PasswordConfirm : " HorizontalAlignment="Left" Margin="10,144,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="txtPswConfirm" HorizontalAlignment="Left" Margin="136,148,0,0" Text="Pass" TextWrapping="Wrap" VerticalAlignment="Top" Width="610"/>
-            <Button Content="Cancel" HorizontalAlignment="Left" Margin="136,210,0,0" VerticalAlignment="Top" Width="60"/>
-            <Button Content="Save" HorizontalAlignment="Left" Margin="236,210,0,0" VerticalAlignment="Top" Width="60"/>
-
+            <!-- Id -->
+            <Label Content="Id : " HorizontalAlignment="Left" Margin="10,24,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtId" HorizontalAlignment="Left" Margin="136,28,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="520"/>
+            <!-- Title -->
+            <Label Content="Title : " HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtTitle" HorizontalAlignment="Left" Margin="136,58,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="520"/>
+            <Button Content="Save" HorizontalAlignment="Left" Margin="680,58,0,0" VerticalAlignment="Top" Width="90"/>
+            <!-- Description -->
+            <Label Content="Description : " HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtDescription" HorizontalAlignment="Left" Margin="136,88,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="520"/>
+            <Button Content="Cancel" HorizontalAlignment="Left" Margin="680,88,0,0" VerticalAlignment="Top" Width="90"/>
+            <!-- Maximum Capacity -->
+            <Label Content="Maximum Capacity : " HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtMax" HorizontalAlignment="Left" Margin="136,118,0,0" Text="Password" TextWrapping="Wrap" VerticalAlignment="Top" Width="520"/>
+            <Button Content="Delete" HorizontalAlignment="Left" Margin="680,118,0,0" VerticalAlignment="Top" Width="90"/>
+            <!-- Teacher -->
+            <Label Content="Teacher : " HorizontalAlignment="Left" Margin="10,144,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtTeacher" HorizontalAlignment="Left" Margin="136,148,0,0" Text="Pass" TextWrapping="Wrap" VerticalAlignment="Top" Width="520"/>
         </Grid>
 
     </Grid>
