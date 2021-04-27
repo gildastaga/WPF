@@ -24,7 +24,7 @@ namespace School04.View {
         }
 
         private void MenuItem_Click( object sender, RoutedEventArgs e ) {
-
+            Close();
         }
     }
 }
