@@ -1,0 +1,42 @@
+﻿<f:WindowBase x:Class="School04.View.EditCourseView"
+        x:Name="window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:f="clr-namespace:PRBD_Framework;assembly=PRBD_Framework"
+        xmlns:vm="clr-namespace:School04.ViewModel"
+        xmlns:local="clr-namespace:School04.View"
+        mc:Ignorable="d"
+        Title="EditCourseView" Height="600" Width="800">
+    <Window.DataContext>
+        <vm:EditCourseViewModel/>
+    </Window.DataContext>
+    <Grid Margin="0,0,0,-95">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="68*"/>
+            <RowDefinition Height="149*"/>
+        </Grid.RowDefinitions>
+        <Grid Margin="10">
+            <!-- Name -->
+            <Label Content="Name : " HorizontalAlignment="Left" Margin="10,24,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtName" HorizontalAlignment="Left" Margin="136,28,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="610"/>
+            <!-- FirstName -->
+            <Label Content="FirstName : " HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtFstName" HorizontalAlignment="Left" Margin="136,58,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="610"/>
+            <!-- Mail -->
+            <Label Content="Mail : " HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtMail" HorizontalAlignment="Left" Margin="136,88,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="610"/>
+            <!-- Password -->
+            <Label Content="Password : " HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtPsw" HorizontalAlignment="Left" Margin="136,118,0,0" Text="Password" TextWrapping="Wrap" VerticalAlignment="Top" Width="610"/>
+            <!-- PasswordConfirm -->
+            <Label Content="PasswordConfirm : " HorizontalAlignment="Left" Margin="10,144,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtPswConfirm" HorizontalAlignment="Left" Margin="136,148,0,0" Text="Pass" TextWrapping="Wrap" VerticalAlignment="Top" Width="610"/>
+            <Button Content="Cancel" HorizontalAlignment="Left" Margin="136,210,0,0" VerticalAlignment="Top" Width="60"/>
+            <Button Content="Save" HorizontalAlignment="Left" Margin="236,210,0,0" VerticalAlignment="Top" Width="60"/>
+
+        </Grid>
+
+    </Grid>
+</f:WindowBase>

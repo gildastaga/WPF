@@ -35,7 +35,8 @@ namespace School04.Model {
         
         public Course() {
         }
-        public Course( string title, string description, Teacher teacher) {
+        public Course(int id, string title, string description, Teacher teacher) {
+            CourseId = id;
             Title = title;
             Description = Description;
             TeacherCourse = teacher;
