@@ -16,14 +16,11 @@ namespace School04.Model {
         public string Body { get; set; }
         public Type Type { get; set; } = Type.True;
         [Required]
-        public virtual Question Question {
-            get; set;
-        }
-        /*public virtual ICollection<Answer> Answers {
-            get; set;
-        } = new HashSet<Answer>();*/
-        public Proposition() {
-        }
+        public virtual Question Question {get; set;}
+        public virtual ICollection<Answer> Answers {get; set;} = new HashSet<Answer>();
+
+        public Proposition() {}
+
         public Proposition(string body, Type type, Question question) {
             Body = body;
             Type = type;

@@ -38,7 +38,6 @@ namespace School04.Model {
                 .HasOne(c => c.TeacherCourse)
                 .WithMany(t => t.CourseGiven);
 
-
             modelBuilder.Entity<QuestionQuizz>()
                 .HasOne(qq => qq.Quizz)
                 .WithMany(q => q.QuestionsQuizz)
@@ -85,6 +84,51 @@ namespace School04.Model {
             };
             var quest2 = new Question("Qu'est-ce que le SQL?", false, false, SGBD);
             Questions.AddRange(quest1, quest2);
+
+            var quest3 = new Question {
+                Enonce = "Choisir la réponse avec un (V) :",
+                Course = web
+            };
+            var quest4 = new Question {
+                Enonce = "Choisir la ou les réponses avec un (V) :",
+                Course = web,
+                typeQuestion = TypeQuestion.ManyAnswer
+            };
+            Questions.AddRange(quest3, quest4);
+
+            var prop1 = new Proposition ("Proposition 1 (X)", Type.False, quest1);
+            var prop2 = new Proposition ("Proposition 2 (V)", Type.True, quest1);
+            var prop3 = new Proposition ("Proposition 3 (X)", Type.False, quest2);
+            var prop4 = new Proposition("Proposition 4 (V)", Type.True, quest2) ;
+            var prop5 = new Proposition ("Proposition 5 (V)", Type.True, quest3);
+            Propositions.AddRange(prop1, prop2, prop3, prop4, prop5);
+            
+            quest1.Propositions.Add(prop1);
+            quest1.Propositions.Add(prop2);
+            quest2.Propositions.Add(prop3);
+            quest2.Propositions.Add(prop4);
+            quest2.Propositions.Add(prop5);
+
+            var quiz1 = new Quizz {
+                Course = prwb,
+                Title = "Premier quiz"
+            };
+            Quizz.AddRange(quiz1);
+
+            var questQuizz1 = new QuestionQuizz {
+                Quizz = quiz1,
+                Question = quest1,
+                NbPoint = 10
+            };
+            var questQuizz2 = new QuestionQuizz {
+                Quizz = quiz1,
+                Question = quest2,
+                NbPoint = 25
+            };
+            QuestionQuizzs.AddRange(questQuizz1, questQuizz2);
+
+            quiz1.QuestionsQuizz.Add(questQuizz1);
+            quiz1.QuestionsQuizz.Add(questQuizz2);
 
             SaveChanges();
 
