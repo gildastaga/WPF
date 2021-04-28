@@ -10,14 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PRBD_Framework;
 
 namespace School04.View {
     /// <summary>
-    /// Logique d'interaction pour SignInxaml.xaml
+    /// Logique d'interaction pour QuizzView.xaml
     /// </summary>
-    public partial class SignInxaml : Window {
-        public SignInxaml() {
+    public partial class QuizzView : UserControlBase {
+        public QuizzView() {
             InitializeComponent();
         }
     }

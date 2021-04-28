@@ -1,4 +1,4 @@
-﻿<f:WindowBase x:Class="School04.View.TeacherCoursesView"
+﻿<f:WindowBase x:Class="School04.View.StudentCoursesView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -9,14 +9,14 @@
         mc:Ignorable="d"
         Title="TeacherCourses" Height="450" Width="800" Foreground="Black">
     <Window.DataContext>
-        <vm:TeacherCoursesViewModel x:Name="vm"/>
+        <vm:StudentCoursesViewModel x:Name="vm"/>
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid Margin="10">
+        <Grid Margin="10,10,10,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="auto"/>
@@ -24,8 +24,8 @@
             <TextBox FontSize="14" />
             <Button Content="Clear" Grid.Column="1"  Margin="5,0,0,0" />
         </Grid>
-        <ListView x:Name="lvCourses" ItemsSource="{Binding Courses}" Width="111" HorizontalAlignment="Left" Margin="17,93,0,247" >
-            
+        <ListView x:Name="lvCourses" Width="111" HorizontalAlignment="Left" Margin="17,60,0,329" Grid.Row="1" >
+
         </ListView>
     </Grid>
 </f:WindowBase>

@@ -7,24 +7,25 @@
       xmlns:vm="clr-namespace:School04.ViewModel"
       xmlns:f="clr-namespace:PRBD_Framework;assembly=PRBD_Framework"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="MainView">
+      Title="MainView" Height="600" Width="800" WindowStartupLocation="CenterScreen">
     <Window.DataContext>
-        <vm:LoginViewModel x:Name="vm" />
+        <vm:MainViewModel x:Name="vm" />
     </Window.DataContext>
-    
-    <f:MyTabControl x:Name="tabControl" Margin="10" Grid.Row="1">
-        <TabItem x:Name="CatégorieTab" Header="Category" Tag="Category">
-            <ContentControl>
-                <local:CategoryView/>
-            </ContentControl>
-        </TabItem>
-
-        <TabItem x:Name="QuestionTab" Header="Questions" Tag="Questions">
-            <ContentControl>
-                <local:QuestionView/>
-            </ContentControl>
-        </TabItem>
-
-    </f:MyTabControl>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Menu FontFamily="Comic Sans MS" FontSize="14" VerticalAlignment="Center" Height="32" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center">
+            <MenuItem Header="Logout" Click="MenuItem_Click" RenderTransformOrigin="0.636,0.927" />
+            <MenuItem Header="Reload" />
+        </Menu>
+        <f:MyTabControl x:Name="tabControl" Margin="10" Grid.Row="1">
+            <TabItem x:Name="coursesTab" Header="Courses" Tag="Courses">
+                <ContentControl>
+                    <local:CoursesView/>
+                </ContentControl>
+            </TabItem>
+        </f:MyTabControl>
+    </Grid>
 </f:WindowBase>

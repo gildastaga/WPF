@@ -11,20 +11,15 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace School04.View {
     /// <summary>
-    /// Logique d'interaction pour MainView.xaml
+    /// Logique d'interaction pour StudentCoursesView.xaml
     /// </summary>
-    public partial class MainView : WindowBase {
-        public MainView() {
+    public partial class StudentCoursesView : WindowBase {
+        public StudentCoursesView() {
             InitializeComponent();
-        }
-
-        private void MenuItem_Click( object sender, RoutedEventArgs e ) {
-            Close();
         }
     }
 }

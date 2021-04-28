@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace School04.ViewModel {
-    class ProfileUserViewModel {
+    class MainViewModel : ViewModelCommon {
+        public MainViewModel() {
+        }
     }
 }

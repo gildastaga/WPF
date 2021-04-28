@@ -10,15 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PRBD_Framework;
 
 namespace School04.View {
     /// <summary>
-    /// Logique d'interaction pour MainStudentView.xaml
+    /// Logique d'interaction pour CoursesView.xaml
     /// </summary>
-    public partial class MainStudentView : WindowBase {
-        public MainStudentView() {
+    public partial class CoursesView : UserControlBase {
+        public CoursesView() {
             InitializeComponent();
         }
     }
