@@ -37,8 +37,12 @@ namespace School04.View {
             /*if(App.CurrentUser != null && App.CurrentUser.IsTeacher())
                 App.NavigateTo<TeacherCoursesView>();
             else if(App.CurrentUser != null && !App.CurrentUser.IsTeacher())
+
+                App.NavigateTo<MainView>();
+
                 App.NavigateTo<TeacherCoursesView>();*/
             App.NavigateTo<MainView>();
+
         }
     }
 }

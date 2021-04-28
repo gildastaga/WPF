@@ -21,41 +21,38 @@
 
             <Border BorderBrush="Black" BorderThickness="3" Grid.ColumnSpan="2" Width="550">
                 <StackPanel Margin="10" Width="520" Grid.ColumnSpan="2">
-                    <DockPanel  HorizontalAlignment="Center" >
-                        <TextBlock Text="Question" Background="AliceBlue" Width="100" FontSize="25" Foreground="Blue"/>
-                    </DockPanel>
-                    <DockPanel  HorizontalAlignment="Center" >
-                        <TextBlock Text="Que signifie PHP?" Background="AliceBlue" Width="1000" FontSize="25" Foreground="Black" Margin="20" Padding="5"/>
-                    </DockPanel>
 
-                    <Label Visibility="{Binding Visible, UpdateSourceTrigger=PropertyChanged}" Content="Propositions :" Grid.Row="4" />
-                    <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="4">
-                        <ListView ScrollViewer.VerticalScrollBarVisibility="Disabled" BorderBrush="Transparent" ItemsSource="{Binding Propositions}"  SelectionMode="Single">
-                            <ListBox.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <UniformGrid Columns="5"/>
-                                </ItemsPanelTemplate>
-                            </ListBox.ItemsPanel>
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <CheckBox Content="{Binding Name}" IsChecked="{Binding Checked}" Command="{Binding CheckProposition, ElementName=root}" CommandParameter="{Binding}" Margin="10"/>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
+                <Label Visibility="{Binding Visible, UpdateSourceTrigger=PropertyChanged}" Content="Categories :" Grid.Row="4" />
+                <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="4">
+                    <ListView ScrollViewer.VerticalScrollBarVisibility="Disabled" BorderBrush="Transparent" ItemsSource="{Binding Tags}"  SelectionMode="Single">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="5"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <CheckBox Content="{Binding Name}" IsChecked="{Binding Checked}" Command="{Binding CheckTag, ElementName=root}" CommandParameter="{Binding}" Margin="10"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                        <Button x:Name="All"  Content="All" HorizontalAlignment="Left"   Command="{Binding Save}" VerticalAlignment="Top" Width="75"/>
+                        <Button x:Name="None"  Content="None" HorizontalAlignment="Left" Margin="20, 0, 0, 0"   Command="{Binding Save}" VerticalAlignment="Top" Width="75"/>
                     </StackPanel>
 
-                  
-                    <DockPanel Grid.Row="3" >
-                        <TextBlock Height="50" 
-                       TextWrapping="Wrap" 
-                       TextAlignment="Center"
-                       HorizontalAlignment="Center" 
-                       Width="220" 
-                       Margin="20">
-                       <Hyperlink Command="{Binding Create}"> <Run Text="Publish Your Question"/> </Hyperlink>
-                        </TextBlock>
-                    </DockPanel>
+                <Label Content="Available Questions(5/5)" 
+                    Grid.Row="2"
+                    VerticalAlignment="Center" Padding="10"/>
+
+                    <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="4">
+                        <Button x:Name="newQuestion"  Content="NewQuestion" HorizontalAlignment="Left"   Command="{Binding NewQuestion}" VerticalAlignment="Top" Width="75"/>
+                        <Button x:Name="save"  Content="Save" HorizontalAlignment="Left"   Command="{Binding Save}"  Margin="20, 0, 0, 0" VerticalAlignment="Top" Width="75"/>
+                        <Button x:Name="cancel"  Content="Cancel" HorizontalAlignment="Left"   Command="{Binding Cancel}"  Margin="20, 0, 0, 0" VerticalAlignment="Top" Width="75"/>
+                        <Button x:Name="delete"  Content="Delete" HorizontalAlignment="Left"   Command="{Binding Delete}"  Margin="20, 0, 0, 0" VerticalAlignment="Top" Width="75"/>
+                    </StackPanel>
+
                 </StackPanel>
+                
             </Border>
         </Grid>
     </ScrollViewer>
