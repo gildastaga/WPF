@@ -22,7 +22,7 @@
         </Grid.ColumnDefinitions>
         <TextBox FontSize="14" Margin="10" />
         <Button Content="Clear" Grid.Column="1" Margin="10"/>
-        <ListView x:Name="lvCourses" ItemsSource="{Binding Courses}" Grid.ColumnSpan="2" Grid.Row="1" BorderBrush="Transparent" SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+        <ListView x:Name="lvCourses" ItemsSource="{Binding Courses}" Grid.ColumnSpan="2" Grid.Row="1" BorderBrush="Transparent" SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseDoubleClick="lvCourses_MouseDoubleClick" >
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel/>

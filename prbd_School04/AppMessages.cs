@@ -1,5 +1,6 @@
 ﻿namespace School04.ViewModel {
     public enum AppMessages {
-        NEW_STUDENT_ADDED
+        NEW_STUDENT_ADDED,
+        MSG_DISPLAY_COURSE
     }
 }

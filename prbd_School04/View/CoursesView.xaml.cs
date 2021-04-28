@@ -22,5 +22,9 @@ namespace School04.View {
         public CoursesView() {
             InitializeComponent();
         }
+
+        private void lvCourses_MouseDoubleClick( object sender, System.Windows.Input.MouseButtonEventArgs e ) {
+            vm.DisplayCourseDetails.Execute(lvCourses.SelectedItem);
+        }
     }
 }

@@ -43,7 +43,7 @@ namespace School04.View {
         }
         private void Vm_OnSignupSuccess() {
             if (App.CurrentUser != null)
-                App.NavigateTo<TeacherCoursesView>();
+                App.NavigateTo<MainView>();
         }
     }
 }
