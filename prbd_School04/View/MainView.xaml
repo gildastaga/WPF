@@ -9,7 +9,7 @@
       mc:Ignorable="d" 
       Title="MainView" Height="600" Width="800" WindowStartupLocation="CenterScreen">
     <Window.DataContext>
-        <vm:MainViewModel x:Name="vm" />
+        <vm:MainViewModel x:Name="vm" DisplayCourse="Vm_DisplayCourse" />
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>

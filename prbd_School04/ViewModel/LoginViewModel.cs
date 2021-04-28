@@ -62,7 +62,7 @@ namespace School04.ViewModel {
         }
 
         private void SignupAction() {
-            //App.NavigateTo<SignupView>();
+            App.NavigateTo<SignupView>();
         }
 
         private void LoginAction() {
