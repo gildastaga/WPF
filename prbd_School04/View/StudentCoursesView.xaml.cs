@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PRBD_Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,10 +15,10 @@ using System.Windows.Shapes;
 
 namespace School04.View {
     /// <summary>
-    /// Logique d'interaction pour SignInxaml.xaml
+    /// Logique d'interaction pour StudentCoursesView.xaml
     /// </summary>
-    public partial class SignInxaml : Window {
-        public SignInxaml() {
+    public partial class StudentCoursesView : WindowBase {
+        public StudentCoursesView() {
             InitializeComponent();
         }
     }

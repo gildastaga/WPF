@@ -12,6 +12,9 @@ namespace School04.Model {
         public int CourseId {
             get; set;
         }
+        public int Code {
+            get; set; 
+        }
         public string Title {
             get; set;
         }
@@ -35,7 +38,8 @@ namespace School04.Model {
         
         public Course() {
         }
-        public Course( string title, string description, Teacher teacher) {
+        public Course(int code, string title, string description, Teacher teacher) {
+            Code = code;
             Title = title;
             Description = Description;
             TeacherCourse = teacher;

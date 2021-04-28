@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PRBD_Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,14 +12,13 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using PRBD_Framework;
 
 namespace School04.View {
     /// <summary>
-    /// Logique d'interaction pour MainStudentView.xaml
+    /// Logique d'interaction pour EditCourseView.xaml
     /// </summary>
-    public partial class MainStudentView : WindowBase {
-        public MainStudentView() {
+    public partial class EditCourseView : WindowBase {
+        public EditCourseView() {
             InitializeComponent();
         }
     }

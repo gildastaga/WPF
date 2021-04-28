@@ -22,5 +22,9 @@ namespace School04.View {
         public MainView() {
             InitializeComponent();
         }
+
+        private void MenuItem_Click( object sender, RoutedEventArgs e ) {
+            Close();
+        }
     }
 }

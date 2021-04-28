@@ -35,7 +35,7 @@ namespace School04.View {
             foreach (var c in lsCourses)
                 lvCourses.Items.Add(c);
             lvCourses.SelectedIndex = 0; //On sélectionne le premier
-        }*/
+        }
         private bool modAdd = true; 
         private void btcNew_Click( object sender, RoutedEventArgs e ) {
             txtBoxTitle.Clear();
@@ -72,6 +72,6 @@ namespace School04.View {
             if (c == null)
                 return;
             lsCourses.Remove(c);
-        }
+        }*/
     }
 }
