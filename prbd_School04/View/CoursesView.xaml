@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:School04.View"
         xmlns:vm="clr-namespace:School04.ViewModel"
         mc:Ignorable="d"
-        d:DesignHeight="450" d:DesignWidth="800" Foreground="Black">
+        d:DesignHeight="600" d:DesignWidth="800">
     <UserControl.DataContext>
         <vm:CoursesViewModel x:Name="vm"/>
     </UserControl.DataContext>
@@ -30,11 +30,19 @@
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
-                        <TextBlock FontSize="14" FontWeight="Bold" Width="80" TextAlignment="Center" Text="{Binding Code}" />
-                        <TextBlock FontSize="14" FontWeight="Bold" Width="80" TextAlignment="Center" Text="{Binding Title}" />
-                        <TextBlock FontSize="14" FontWeight="Bold" Width="80" TextAlignment="Center" Text="{Binding TeacherCourse.FirstName}" />
-                    </StackPanel>
+                    <Border CornerRadius="6"
+                        BorderBrush="Gray"
+                        Background="LightGray"
+                        BorderThickness="2"
+                        Padding="8">
+                        <StackPanel>
+                            <TextBlock FontSize="14" FontStyle="Italic" Width="120" TextAlignment="Center" Text="{Binding Code}"/>
+                            <TextBlock FontSize="14" FontStyle="Italic" Width="120" TextAlignment="Center" Text="{Binding Title}" />
+                            <TextBlock FontSize="14" FontStyle="Italic" Width="120" TextAlignment="Center" Text="{Binding Description}" />
+                            <TextBlock FontSize="14" FontStyle="Italic" Width="120" FontWeight="Bold"  TextAlignment="Center" Text="Teacher : " />
+                            <TextBlock FontSize="14" FontStyle="Italic" Width="120" TextAlignment="Center" Text="{Binding TeacherCourse.FirstName}" />
+                        </StackPanel>
+                    </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
