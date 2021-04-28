@@ -44,13 +44,14 @@ namespace School04.Model {
             Description = description;
             TeacherCourse = teacher;
         }
-
+        public string codeTitle() {
+            return Code + " - " + Title;
+        }
         public int NbElem => lsCourses.Count;
 
         public void AddElem( Course c ) {
             lsCourses.Add(c);
         }
-
         public bool RemoveElem( Course c ) {
             return lsCourses.Remove(c);
         }
