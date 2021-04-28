@@ -7,20 +7,25 @@
       xmlns:vm="clr-namespace:School04.ViewModel"
       xmlns:f="clr-namespace:PRBD_Framework;assembly=PRBD_Framework"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="MainView" VerticalContentAlignment="Stretch">
+      Title="MainView" Height="600" Width="800" WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <vm:MainViewModel x:Name="vm" />
     </Window.DataContext>
-    <Grid Margin="0,10,0,400" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="32">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
         <Menu FontFamily="Comic Sans MS" FontSize="14" VerticalAlignment="Center" Height="32" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center">
             <MenuItem Header="Logout" Click="MenuItem_Click" RenderTransformOrigin="0.636,0.927" />
             <MenuItem Header="Reload" />
         </Menu>
-        <TabControl Margin="0,51,0,-392">
-            <TabItem Header="TabItem">
-                <Grid Background="#FFAA2929"/>
+        <f:MyTabControl x:Name="tabControl" Margin="10" Grid.Row="1">
+            <TabItem x:Name="coursesTab" Header="Courses" Tag="Courses">
+                <ContentControl>
+                    <local:CoursesView/>
+                </ContentControl>
             </TabItem>
-        </TabControl>
+        </f:MyTabControl>
     </Grid>
 </f:WindowBase>

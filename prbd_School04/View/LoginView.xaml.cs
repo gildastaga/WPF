@@ -34,10 +34,11 @@ namespace School04.View {
             txtPassword.SelectAll();
         }
         private void Vm_OnLoginSuccess() {
-            if(App.CurrentUser != null && App.CurrentUser.IsTeacher())
+            /*if(App.CurrentUser != null && App.CurrentUser.IsTeacher())
                 App.NavigateTo<TeacherCoursesView>();
             else if(App.CurrentUser != null && !App.CurrentUser.IsTeacher())
-                App.NavigateTo<TeacherCoursesView>();
+                App.NavigateTo<TeacherCoursesView>();*/
+            App.NavigateTo<MainView>();
         }
     }
 }
