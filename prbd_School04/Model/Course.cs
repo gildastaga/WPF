@@ -21,6 +21,10 @@ namespace School04.Model {
         public string Description {
             get; set;
         }
+        public int MaxStudent {
+            get; set;
+        }
+
         //Un cours est donné par tel professeur
         [Required]
         public virtual Teacher TeacherCourse {
@@ -38,10 +42,11 @@ namespace School04.Model {
         
         public Course() {
         }
-        public Course(int code, string title, string description, Teacher teacher) {
+        public Course(int code, string title, string description, int maxStudent, Teacher teacher) {
             Code = code;
             Title = title;
             Description = description;
+            MaxStudent = maxStudent;
             TeacherCourse = teacher;
         }
         public string codeTitle() {

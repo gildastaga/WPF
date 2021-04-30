@@ -32,10 +32,10 @@ namespace School04.View {
             if (course != null) {
                 var tab = tabControl.FindByTag(course.Title);
                 if (tab == null)
-                    tabControl.Add(
-                        new EditCourseView(course, isNew),
-                        isNew ? "<new course>" : course.Title, course.Title //header, tag
-                    );
+                        tabControl.Add(
+                            new EditCourseView(course, isNew),
+                            isNew ? "<new course>" : course.Title, course.Title //header, tag
+                        );
                 else
                     tabControl.SetFocus(tab);
             }
