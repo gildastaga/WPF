@@ -19,7 +19,8 @@ namespace School04.ViewModel {
                 Courses = new ObservableCollection<Course>(teacher.CourseGiven);
             } else if ((CurrentUser != null) && (!CurrentUser.IsTeacher())) {
                 Student student = (Student)CurrentUser;
-                Courses = new ObservableCollection<Course>(App.Context.Courses);
+                if(student.CoursesStudent == student)
+                    Courses = new ObservableCollection<Course>((IEnumerable<Course>)student.CoursesStudent);
             }*/
         }
         public EditCourseViewModel() : base() {
