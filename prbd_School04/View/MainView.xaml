@@ -7,9 +7,9 @@
       xmlns:vm="clr-namespace:School04.ViewModel"
       xmlns:f="clr-namespace:PRBD_Framework;assembly=PRBD_Framework"
       mc:Ignorable="d" 
-      Title="MainView" Height="600" Width="800" WindowStartupLocation="CenterScreen">
+      Title="MainView" Height="600" Width="900" WindowStartupLocation="CenterScreen">
     <Window.DataContext>
-        <vm:MainViewModel x:Name="vm" />
+        <vm:MainViewModel x:Name="vm" DisplayCourse="Vm_DisplayCourse" />
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>

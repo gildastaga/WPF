@@ -1,4 +1,5 @@
 ﻿using PRBD_Framework;
+using School04.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,8 +18,12 @@ namespace School04.View {
     /// <summary>
     /// Logique d'interaction pour EditCourseView.xaml
     /// </summary>
-    public partial class EditCourseView : WindowBase {
+    public partial class EditCourseView : UserControlBase {
         public EditCourseView() {
+            InitializeComponent();
+        }
+
+        public EditCourseView(Course course, bool isNew) {
             InitializeComponent();
         }
     }
