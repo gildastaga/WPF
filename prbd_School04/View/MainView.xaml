@@ -23,7 +23,7 @@
         <f:MyTabControl x:Name="tabControl" Margin="10" Grid.Row="1">
             <TabItem x:Name="coursesTab" Header="Courses" Tag="Courses">
                 <ContentControl>
-                    <local:CoursesView/>
+                    <local:QuestionView/>
                 </ContentControl>
             </TabItem>
         </f:MyTabControl>
