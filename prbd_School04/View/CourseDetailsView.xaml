@@ -35,26 +35,6 @@
         <Label Content="Teacher : " HorizontalAlignment="Left" Margin="10,144,0,0" VerticalAlignment="Top" Grid.RowSpan="2"/>
         <TextBox x:Name="txtTeacher" HorizontalAlignment="Left" Margin="136,148,0,0" Text="Pass" TextWrapping="Wrap" VerticalAlignment="Top" Width="520"/>
         <f:MyTabControl x:Name="tabControl" Margin="10,10,10,10" Grid.Row="1">
-            <TabItem x:Name="registrationsTab" Header="Registrations" Tag="Registrations">
-                <ContentControl>
-                    <local:RegistrationsView/>
-                </ContentControl>
-            </TabItem>
-            <TabItem x:Name="categoriesTab" Header="Categories" Tag="Categories">
-                <ContentControl>
-                    <local:CategoryView/>
-                </ContentControl>
-            </TabItem>
-            <TabItem x:Name="questionsTab" Header="Questions" Tag="Questions">
-                <ContentControl>
-                    <local:QuestionView/>
-                </ContentControl>
-            </TabItem>
-            <TabItem x:Name="QuizzesTab" Header="Quizzes" Tag="Quizzes">
-                <ContentControl>
-                    <local:QuizzesView/>
-                </ContentControl>
-            </TabItem>
             <TabItem x:Name="gradesTab" Header="Grades" Tag="Grades">
                 <ContentControl>
                     <local:CoursesView/>

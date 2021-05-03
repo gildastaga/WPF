@@ -1,4 +1,5 @@
 ﻿using PRBD_Framework;
+using School04.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,8 +18,14 @@ using System.Windows.Shapes;
 namespace School04.View {
  
     public partial class QuestionView : UserControlBase {
+        private Course course;
 
         public QuestionView() {
+            InitializeComponent();
+        }
+
+        public QuestionView(Course course) {
+            this.course = course;
             InitializeComponent();
         }
 

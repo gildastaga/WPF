@@ -20,12 +20,36 @@ namespace School04.View {
     /// Logique d'interaction pour CourseDetailsView.xaml
     /// </summary>
     public partial class CourseDetailsView : UserControlBase {
+        private Course course;
         public CourseDetailsView() {
             InitializeComponent();
         }
 
         public CourseDetailsView(Course course, bool isNew) {
             InitializeComponent();
+            if (course != null) {
+                this.course = course;
+                tabControl.Add(
+                       new RegistrationsView(course),
+                       "Registrations", "registationsTab"
+                );
+                tabControl.Add(
+                       new CategoryView(course),
+                       "Categories", "categoriesTab"
+                );
+                tabControl.Add(
+                       new QuestionView(course),
+                       "Questions", "questionsTab"
+                );
+                tabControl.Add(
+                       new QuizzesView(course),
+                       "Quizzes", "quizzesTab"
+                );
+                /*tabControl.Add(
+                       new registrationsView(course),
+                       "Registrations", "registationsTab"
+                );*/
+            }
         }
     }
 }

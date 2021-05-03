@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PRBD_Framework;
+using School04.Model;
 
 namespace School04.View {
     /// <summary>
@@ -20,6 +21,10 @@ namespace School04.View {
     /// </summary>
     public partial class QuizzesView : UserControlBase {
         public QuizzesView() {
+            InitializeComponent();
+        }
+
+        public QuizzesView(Course course) {
             InitializeComponent();
         }
     }
