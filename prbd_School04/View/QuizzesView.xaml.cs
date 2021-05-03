@@ -20,11 +20,13 @@ namespace School04.View {
     /// Logique d'interaction pour QuizzesView.xaml
     /// </summary>
     public partial class QuizzesView : UserControlBase {
+        private Course course;
         public QuizzesView() {
             InitializeComponent();
         }
 
         public QuizzesView(Course course) {
+            this.course = course;
             InitializeComponent();
         }
     }
