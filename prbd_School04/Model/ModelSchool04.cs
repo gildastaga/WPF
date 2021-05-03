@@ -62,36 +62,43 @@ namespace School04.Model {
             var Boris = new Teacher("Verhagen", "Boris", "boris@verhagen", "Boris1");
             Students.AddRange(Katia, Corentin);
             Teachers.AddRange(Benoit, Boris);
-            var prwb = new Course(1920, "prwb", "cours de prwb", Benoit);
-            var web = new Course(1930, "WEB", "cours de web", Benoit);
-            var SGBD = new Course(1950, "SGBD", "cours de sgbd", Boris);
-            Courses.AddRange(prwb, web, SGBD);
-            Benoit.CourseGiven.Add(SGBD);
-            Benoit.CourseGiven.Add(web);
-            Boris.CourseGiven.Add(prwb);
-            var enreg1 = new Registration(Corentin, prwb);
-            var enreg2 = new Registration(Katia, web);
-            Registrations.AddRange(enreg1, enreg2);
+            var anc3 = new Course(1868, "ANC3", "Projet d'analyse et de conception", 10, Benoit);
+            var map4 = new Course(1914, "MAP4", "Mathématique appliquées à l'informatique", 12, Benoit);
+            var prbd = new Course(1975, "PRBD", "Projet de développement SGBD", 15, Benoit);
+            var sgbd = new Course(1976, "PRBB", "Projet de développement SGBD", 13, Boris);
+            var prm2 = new Course(1900, "PRM2", "Principes algorithmiques et programmation", 5, Boris);
+            var prwb = new Course(1930, "PRWB", "Projet de développement Web", 2, Benoit);
+            var tgpr = new Course(1963, "TGPR", "Technique de gestion de projets", 8, Benoit);
+            Courses.AddRange(anc3, map4, prbd, sgbd, prm2, prwb, tgpr);
+            Benoit.CourseGiven.Add(sgbd);
+            Boris.CourseGiven.Add(prbd);
+            var enreg1 = new Registration(Corentin, prbd);
+            var enreg2 = new Registration(Katia, map4);
+            var enreg3 = new Registration(Katia, prwb);
+            var enreg4 = new Registration(Katia, tgpr);
+            var enreg5 = new Registration(Corentin, tgpr);
+            var enreg6 = new Registration(Katia, prbd);
+            Registrations.AddRange(enreg1, enreg2, enreg3, enreg4, enreg5, enreg6);
             Katia.CoursesStudent.Add(enreg2);
             Corentin.CoursesStudent.Add(enreg1);
-            web.StudentsCourse.Add(enreg2);
-            prwb.StudentsCourse.Add(enreg1);
+            anc3.StudentsCourse.Add(enreg2);
+            prbd.StudentsCourse.Add(enreg1);
             var quest1 = new Question {
                 Enonce = "Quelle est le langage utilisé ?",
                 IsUpdate = false,
                 IsDelete = false,
-                Course = web
+                Course = prwb
             };
-            var quest2 = new Question("Qu'est-ce que le SQL?", false, false, SGBD);
+            var quest2 = new Question("Qu'est-ce que le SQL?", false, false, sgbd);
             Questions.AddRange(quest1, quest2);
 
             var quest3 = new Question {
                 Enonce = "Choisir la réponse avec un (V) :",
-                Course = web
+                Course = prwb
             };
             var quest4 = new Question {
                 Enonce = "Choisir la ou les réponses avec un (V) :",
-                Course = web,
+                Course = anc3,
                 typeQuestion = TypeQuestion.ManyAnswer
             };
             Questions.AddRange(quest3, quest4);
@@ -110,7 +117,7 @@ namespace School04.Model {
             quest2.Propositions.Add(prop5);
 
             var quiz1 = new Quizz {
-                Course = prwb,
+                Course = prbd,
                 Title = "Premier quiz"
             };
             Quizz.AddRange(quiz1);
@@ -133,6 +140,13 @@ namespace School04.Model {
             SaveChanges();
 
             Database.CommitTransaction();
+
+            var cat1 = new Category("Arithmétique");
+            var cat2 = new Category("Géométrie");
+            var cat3 = new Category("Logique");
+            var cat4 = new Category("Mathématiques");
+            var cat5 = new Category("Questions facultatives");
+            Categories.AddRange(cat1, cat2, cat3, cat4, cat5);
         }
 
         public DbSet<User> Users {

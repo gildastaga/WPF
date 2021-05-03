@@ -33,6 +33,9 @@ namespace School04.Model {
             Mail = mail;
             Password = password;
         }
+        public override string ToString() {
+            return FirstName + " " + Name;
+        }
 
         public bool IsTeacher() {
             return Discriminator == "Teacher";

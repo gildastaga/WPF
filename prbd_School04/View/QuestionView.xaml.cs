@@ -21,5 +21,9 @@ namespace School04.View {
         public QuestionView() {
             InitializeComponent();
         }
+
+        private void Cancell_Click(object sender, RoutedEventArgs e) {
+
+        }
     }
 }
