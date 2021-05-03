@@ -140,6 +140,13 @@ namespace School04.Model {
             SaveChanges();
 
             Database.CommitTransaction();
+
+            var cat1 = new Category("Arithmétique");
+            var cat2 = new Category("Géométrie");
+            var cat3 = new Category("Logique");
+            var cat4 = new Category("Mathématiques");
+            var cat5 = new Category("Questions facultatives");
+            Categories.AddRange(cat1, cat2, cat3, cat4, cat5);
         }
 
         public DbSet<User> Users {
