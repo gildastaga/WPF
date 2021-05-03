@@ -21,13 +21,13 @@ namespace School04.ViewModel {
         }
 
         public void makeList() {
-            /*if ((CurrentUser != null) && (CurrentUser.IsTeacher())) {
+            if ((CurrentUser != null) && (CurrentUser.IsTeacher())) {
                 Teacher teacher = (Teacher)CurrentUser;
                 Courses = new ObservableCollection<Course>(teacher.CourseGiven);
             } else if ((CurrentUser != null) && (!CurrentUser.IsTeacher())) {
                 Student student = (Student)CurrentUser;
                 Courses = new ObservableCollection<Course>(App.Context.Courses);
-            }*/
+            }
         }
         public CoursesViewModel() : base() {
             makeList();
