@@ -33,7 +33,7 @@ namespace School04.View {
                 var tab = tabControl.FindByTag(course.Title);
                 if (tab == null)
                     tabControl.Add(
-                        new EditCourseView(course, isNew),
+                        new CourseDetailsView(course, isNew),
                         isNew ? "<new course>" : course.Title, course.Title
                     );
                 else

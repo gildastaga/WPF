@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:School04.View"
         xmlns:vm="clr-namespace:School04.ViewModel"
         mc:Ignorable="d"
-        d:DesignHeight="450" d:DesignWidth="800" Foreground="Black">
+        d:DesignHeight="600" d:DesignWidth="800" Foreground="Black">
     <UserControl.DataContext>
         <vm:CoursesViewModel x:Name="vm"/>
     </UserControl.DataContext>

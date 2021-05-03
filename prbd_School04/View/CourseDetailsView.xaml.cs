@@ -1,6 +1,4 @@
-﻿using PRBD_Framework;
-using School04.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,18 +10,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PRBD_Framework;
+using School04.Model;
 
 namespace School04.View {
     /// <summary>
-    /// Logique d'interaction pour EditCourseView.xaml
+    /// Logique d'interaction pour CourseDetailsView.xaml
     /// </summary>
-    public partial class EditCourseView : UserControlBase {
-        public EditCourseView() {
+    public partial class CourseDetailsView : UserControlBase {
+        public CourseDetailsView() {
             InitializeComponent();
         }
 
-        public EditCourseView(Course course, bool isNew) {
+        public CourseDetailsView(Course course, bool isNew) {
             InitializeComponent();
         }
     }
