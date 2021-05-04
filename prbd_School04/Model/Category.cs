@@ -14,6 +14,10 @@ namespace School04.Model {
 
         public Category() {}
 
+        public Category(string Name) {
+            this.Name = Name;
+        }
+
         public Category(string Name, Question Question) {
             this.Name = Name;
             this.Question = Question;

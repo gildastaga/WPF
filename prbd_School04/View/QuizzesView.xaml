@@ -17,14 +17,14 @@
         <vm:QuizzesViewModel x:Name="vm" />
     </UserControl.DataContext>
     <StackPanel>
-        <f:MyDataGrid x:Name="grid" ItemsSource="{Binding MessagesView}"
+        <f:MyDataGrid x:Name="grid" ItemsSource="{Binding QuizzesView}"
                   AutoGenerateColumns="False" FontSize="12" IsReadOnly="False" Margin="5" CanUserAddRows="False" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" MaxHeight="160"
                   SelectedItemsList="{Binding SelectedItems}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Title" Binding="{Binding Path=DateTime}" IsReadOnly="True" SortDirection="Descending" Width="auto" MinWidth="80"/>
-                <DataGridTextColumn Header="Start" Binding="{Binding Path=Author.Pseudo, StringFormat=\{0:dd/MM/yyyy HH:mm:ss\}}" IsReadOnly="True" Width="auto" MinWidth="80" />
-                <DataGridTextColumn Header="Finish" Binding="{Binding Path=Author.Pseudo, StringFormat=\{0:dd/MM/yyyy HH:mm:ss\}}" IsReadOnly="True" Width="auto" MinWidth="80" />
-                <DataGridTextColumn Header="# Questions" Binding="{Binding Path=IsPrivate}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Title" Binding="{Binding Path=Title}" IsReadOnly="True" SortDirection="Descending" Width="auto" MinWidth="80"/>
+                <DataGridTextColumn Header="Start" Binding="{Binding Path=CreationDate, StringFormat=\{0:dd/MM/yyyy HH:mm:ss\}}" IsReadOnly="True" Width="auto" MinWidth="80" />
+                <DataGridTextColumn Header="Finish" Binding="{Binding Path=ExaminationDate, StringFormat=\{0:dd/MM/yyyy HH:mm:ss\}}" IsReadOnly="True" Width="auto" MinWidth="80" />
+                <DataGridTextColumn Header="# Questions" Binding="{Binding Path=QuizzId}" IsReadOnly="True"/>
             </DataGrid.Columns>
             <DataGrid.InputBindings>
                 <KeyBinding Key="Delete" Command="{Binding DeleteMessages}" CommandParameter="{Binding SelectedItemsList, ElementName=grid}" />
