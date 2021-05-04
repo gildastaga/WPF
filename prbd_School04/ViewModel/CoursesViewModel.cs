@@ -15,16 +15,14 @@ namespace School04.ViewModel {
 
         public ObservableCollection<Course> Courses {
             get => courses;
-            //set => SetProperty<ObservableCollection<Course>>(ref courses, value);
-            set {
-                courses = value;
-                RaisePropertyChanged(nameof(courses)); //mis à jour de l'affichage
-            }
+            set => SetProperty<ObservableCollection<Course>>(ref courses, value);
         }
+        private string filter;
         public string Filter {
-            get; set;
+            get => filter;
+            set => SetProperty(ref filter, value, ApplyFilterAction);
         }
-        public ICommand ApplyFilter {
+        public ICommand ClearFilter {
             get; set;
         }
         public ICommand DisplayCourseDetails {
@@ -44,10 +42,8 @@ namespace School04.ViewModel {
         }
         public CoursesViewModel() : base() {
             makeList();
-            //possède une valeur qui est une référence vers une nouvelle instance de la classe ApplyFilterCommand
-            ApplyFilter = new RelayCommand(ApplyFilterAction, () => {
-                return true;
-            });
+            
+            ClearFilter = new RelayCommand(() => Filter = "");
 
             DisplayCourseDetails = new RelayCommand<Course>(course => {
                 Console.WriteLine(course.Title);
