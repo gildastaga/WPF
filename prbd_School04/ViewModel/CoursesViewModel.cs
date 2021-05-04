@@ -21,13 +21,16 @@ namespace School04.ViewModel {
         }
 
         public void makeList() {
-            /*if ((CurrentUser != null) && (CurrentUser.IsTeacher())) {
+            //Affiche la bonne liste des cours : soit le user connecté est un prof 
+            // et donc affiche les cours que ce prof donne
+            //soit le user connecté est un etudiant et affiche tout les cours
+            if ((CurrentUser != null) && (CurrentUser.IsTeacher())) {
                 Teacher teacher = (Teacher)CurrentUser;
                 Courses = new ObservableCollection<Course>(teacher.CourseGiven);
             } else if ((CurrentUser != null) && (!CurrentUser.IsTeacher())) {
                 Student student = (Student)CurrentUser;
                 Courses = new ObservableCollection<Course>(App.Context.Courses);
-            }*/
+            }
         }
         public CoursesViewModel() : base() {
             makeList();
