@@ -19,9 +19,16 @@ namespace School04.View {
     /// Logique d'interaction pour CategoryView.xaml
     /// </summary>
     public partial class CategoryView : UserControlBase {
+        private Course course;
+
         public CategoryView() {
             InitializeComponent();
             //vmc.Init(category, isNew);
+        }
+
+        public CategoryView(Course course) {
+            this.course = course;
+            InitializeComponent();
         }
     }
 }

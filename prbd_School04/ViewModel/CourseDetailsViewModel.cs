@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using PRBD_Framework;
 
-namespace School04.View {
-    public partial class EditCourseView : UserControlBase {
+namespace School04.ViewModel {
+    class CourseDetailsViewModel : ViewModelCommon {
+
     }
 }

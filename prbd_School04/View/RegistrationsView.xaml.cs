@@ -13,13 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PRBD_Framework;
+using School04.Model;
 
 namespace School04.View {
     /// <summary>
     /// Logique d'interaction pour Registrations.xaml
     /// </summary>
     public partial class RegistrationsView : UserControlBase {
+        private Course course;
+
         public RegistrationsView() {
+            InitializeComponent();
+        }
+
+        public RegistrationsView(Course course) {
+            this.course = course;
             InitializeComponent();
         }
     }

@@ -13,13 +13,20 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PRBD_Framework;
+using School04.Model;
 
 namespace School04.View {
     /// <summary>
     /// Logique d'interaction pour QuizzesView.xaml
     /// </summary>
     public partial class QuizzesView : UserControlBase {
+        private Course course;
         public QuizzesView() {
+            InitializeComponent();
+        }
+
+        public QuizzesView(Course course) {
+            this.course = course;
             InitializeComponent();
         }
     }

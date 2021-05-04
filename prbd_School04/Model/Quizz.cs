@@ -23,5 +23,8 @@ namespace School04.Model {
             ExaminationDate = examination;
             Course = course;
         }
+        public static IQueryable<Quizz> GetAll() {
+            return Context.Quizz.OrderByDescending(m => m.ExaminationDate);
+        }
     }
 }

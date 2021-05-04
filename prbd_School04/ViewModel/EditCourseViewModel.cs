@@ -14,14 +14,14 @@ namespace School04.ViewModel {
             set => SetProperty<ObservableCollection<Course>>(ref courses, value);
         }
         public void makeList() {
-            /*if ((CurrentUser != null) && (CurrentUser.IsTeacher())) {
+            if ((CurrentUser != null) && (CurrentUser.IsTeacher())) {
                 Teacher teacher = (Teacher)CurrentUser;
                 Courses = new ObservableCollection<Course>(teacher.CourseGiven);
             } else if ((CurrentUser != null) && (!CurrentUser.IsTeacher())) {
                 Student student = (Student)CurrentUser;
                 if(student.CoursesStudent == student)
                     Courses = new ObservableCollection<Course>((IEnumerable<Course>)student.CoursesStudent);
-            }*/
+            }
         }
         public EditCourseViewModel() : base() {
             makeList();
