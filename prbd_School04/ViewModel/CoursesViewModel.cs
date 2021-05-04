@@ -21,12 +21,9 @@ namespace School04.ViewModel {
         }
 
         public void makeList() {
-<<<<<<< HEAD
             //Affiche la bonne liste des cours : soit le user connecté est un prof 
             // et donc affiche les cours que ce prof donne
             //soit le user connecté est un etudiant et affiche tout les cours
-=======
->>>>>>> 6d90f2b108a600c779381532f6110be9ce66fada
             if ((CurrentUser != null) && (CurrentUser.IsTeacher())) {
                 Teacher teacher = (Teacher)CurrentUser;
                 Courses = new ObservableCollection<Course>(teacher.CourseGiven);
