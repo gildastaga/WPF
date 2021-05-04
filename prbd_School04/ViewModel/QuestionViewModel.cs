@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace School04.ViewModel {
     public class QuestionViewModel : ViewModelBase<ModelSchool04> {
@@ -14,31 +15,37 @@ namespace School04.ViewModel {
         }
 
         public Question Question { get; set; }
+        private bool listCategotyChange = false;
 
-        private ObservableCollection<CheckProposition> propositions;  // toute liste qu'on doit affiché ds la vue doit etre observable et donc on doit pouvoir remplir cette liste avec la methode LoadTagsChecked()
-        public ObservableCollection<CheckProposition> Propositions {
-            get => propositions;
+        private ObservableCollection<CheckCategory> categories;  // toute liste qu'on doit affiché ds la vue doit etre observable et donc on doit pouvoir remplir cette liste avec la methode LoadTagsChecked()
+        public ObservableCollection<CheckCategory> Categories {
+            get => categories;
             set {
-                propositions = value;
-                RaisePropertyChanged(nameof(Propositions));
+                categories = value;
+                RaisePropertyChanged(nameof(Categories));
             }
         }
 
+        public ICommand CheckCategory { get; set; }
         public QuestionViewModel(Question question) : base() {
             Question = question;
-            LoadPropositionsChecked();
+            LoadCategoryChecked();
+            CheckCategory = new RelayCommand<CheckCategory>(checkCategory => {
+                listCategotyChange = true;
+            });
+
         }
 
-        private void LoadPropositionsChecked() {
-            Propositions = new ObservableCollection<CheckProposition>();   // Pour le moment ma liste est vide,
-            foreach (var proposition in App.Context.Propositions)               
+        private void LoadCategoryChecked() {
+            Categories = new ObservableCollection<CheckCategory>();   // Pour le moment ma liste est vide,
+            foreach (var category in App.Context.Categories)               
             {
-                var p = new CheckProposition()                   
+                var p = new CheckCategory()                   
                 {
-                    Name = proposition.Body,                     
-                    Checked = Question.Propositions.Contains(proposition)
+                    Name = category.Name,                     
+                    Checked = Question.Categories.Contains(category)
                 };
-                Propositions.Add(p);                              
+                Categories.Add(p);                              
             }
         }
     }
