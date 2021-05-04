@@ -6,7 +6,7 @@
         xmlns:f="clr-namespace:PRBD_Framework;assembly=PRBD_Framework"
         xmlns:vm="clr-namespace:School04.ViewModel"
         xmlns:local="clr-namespace:School04.View"
-        mc:Ignorable="d" Height="650" Width="900">
+        mc:Ignorable="d" Height="700" Width="850">
     <UserControl.DataContext>
         <vm:CourseDetailsViewModel/>
     </UserControl.DataContext>
