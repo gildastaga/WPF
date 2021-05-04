@@ -45,7 +45,9 @@ namespace School04.ViewModel {
         public CoursesViewModel() : base() {
             makeList();
             //possède une valeur qui est une référence vers une nouvelle instance de la classe ApplyFilterCommand
-            ApplyFilter = new ApplyFilterCommand(ApplyFilterAction);
+            ApplyFilter = new RelayCommand(ApplyFilterAction, () => {
+                return true;
+            });
 
             DisplayCourseDetails = new RelayCommand<Course>(course => {
                 Console.WriteLine(course.Title);
@@ -64,25 +66,5 @@ namespace School04.ViewModel {
         protected override void OnRefreshData() {
             // Pour plus tard
         }
-    }
-    public class ApplyFilterCommand : ICommand {
-        private Action action;
-        public event EventHandler CanExecuteChanged;
-        //On veut que cette commande interroge le modèle pour retourner une liste filtrée de cours
-        // et que l'affichage soit ensuite mis-à-jour pour afficher cette liste filtrée
-        public ApplyFilterCommand( Action action ) {
-            this.action = action;
-        }
-        //retourne un booléen qui est utilisé par le composant visuel (ici le bouton) 
-        //pour savoir s'il doit être actif et permettre l'exécution de la commande, ou pas
-        //si on retourne false, on verra que notre bouton sera désactivé et ne déclenchera
-        //aucune action si on clique dessus
-        public bool CanExecute( object parameter ) {
-            return true;
-        }
-        public void Execute( object parameter ) {
-            action();
-        }
-    
     }
 }
