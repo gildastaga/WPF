@@ -27,6 +27,7 @@ namespace School04.View {
 
         public CourseDetailsView(Course course, bool isNew) {
             InitializeComponent();
+            vm.Init(course, isNew);
             if (course != null) {
                 this.course = course;
                 tabControl.Add(
@@ -49,6 +50,7 @@ namespace School04.View {
                        new registrationsView(course),
                        "Registrations", "registationsTab"
                 );*/
+                tabControl.SetFocus(tabControl.FindByTag("registationsTab"));
             }
         }
     }

@@ -33,6 +33,7 @@ namespace School04.Model {
         public virtual ICollection<Question> QuestionList {
             get; set;
         } = new HashSet<Question>();
+
         public virtual ICollection<Quizz> QuizzCourse {
             get; set;
         } = new HashSet<Quizz>();
@@ -59,6 +60,9 @@ namespace School04.Model {
         }
         public bool RemoveElem( Course c ) {
             return lsCourses.Remove(c);
+        }
+        public static Course GetById(int courseId) {
+            return Context.Courses.SingleOrDefault(c => c.CourseId == courseId);
         }
     }
 }
