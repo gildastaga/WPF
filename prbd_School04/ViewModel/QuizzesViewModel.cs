@@ -9,10 +9,12 @@ using School04.Model;
 
 namespace School04.ViewModel {
     public class QuizzesViewModel : ViewModelCommon {
+        private Course course;
+        public Course Course { get => course; set => SetProperty(ref course, value); }
         public QuizzesViewModel() : base() {
-            Quizzes = new ObservableCollectionFast<Quizz>(Quizz.GetAll());
+            
         }
-        private ObservableCollectionFast<Quizz> quizzes;
+        private ObservableCollectionFast<Quizz> quizzes = new ObservableCollectionFast<Quizz>();
         public ObservableCollectionFast<Quizz> Quizzes {
             get { return quizzes; }
             set {
@@ -21,5 +23,13 @@ namespace School04.ViewModel {
             }
         }
         public ICollectionView QuizzesView => Quizzes.GetCollectionView(nameof(DateTime), ListSortDirection.Descending);
+
+        public void Init(Course course) {
+            // Il faut recharger ce membre dans le contexte courant pour pouvoir le modifier
+            Course = Course.GetById(course.CourseId);
+            Quizzes = new ObservableCollectionFast<Quizz>(Quizz.GetQuizzesFromCourse(Course));
+
+            RaisePropertyChanged();
+        }
     }
 }
