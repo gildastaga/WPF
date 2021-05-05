@@ -13,6 +13,17 @@ namespace School04.ViewModel {
                 Console.WriteLine("Test");
                 DisplayCourse?.Invoke(course, false);
             });
+
+            Register(this, AppMessages.MSG_NEW_COURSE, () => {
+                //créer une nouvelle instance pour un nouveau cours "vide"
+                var course = new Course();
+                //demande à la vue de créer dynamiquement un nouvel onglet avec le titre "new course"
+                DisplayCourse?.Invoke(course, true);
+            });
+        }
+
+        protected override void OnRefreshData() {
+            //pour plus tard
         }
     }
 }
