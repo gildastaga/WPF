@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:School04.View"
         mc:Ignorable="d" Height="700" Width="850">
     <UserControl.DataContext>
-        <vm:CourseDetailsViewModel/>
+        <vm:CourseDetailsViewModel x:Name="vm"/>
     </UserControl.DataContext>
     <Grid>
         <Grid.RowDefinitions>
@@ -18,29 +18,24 @@
         <Grid>
             <!-- Id -->
             <Label Content="Id : " HorizontalAlignment="Left" Margin="10,24,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="txtId" HorizontalAlignment="Left" Margin="136,28,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="520"/>
+            <TextBox x:Name="txtId" HorizontalAlignment="Left" Margin="136,28,0,0" Text="{Binding CourseId, Mode=OneWay}" TextWrapping="Wrap" VerticalAlignment="Top" Width="520" IsReadOnly="true"/>
             <!-- Title -->
             <Label Content="Title : " HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="txtTitle" HorizontalAlignment="Left" Margin="136,58,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="520"/>
+            <TextBox x:Name="txtTitle" HorizontalAlignment="Left" Margin="136,58,0,0" Text="{Binding Title}" TextWrapping="Wrap" VerticalAlignment="Top" Width="520"/>
             <Button Content="Save" HorizontalAlignment="Left" Margin="680,58,0,0" VerticalAlignment="Top" Width="90" Grid.ColumnSpan="2"/>
             <!-- Description -->
             <Label Content="Description : " HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="txtDescription" HorizontalAlignment="Left" Margin="136,88,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="520"/>
+            <TextBox x:Name="txtDescription" HorizontalAlignment="Left" Margin="136,88,0,0" Text="{Binding Description}" TextWrapping="Wrap" VerticalAlignment="Top" Width="520"/>
             <Button Content="Cancel" HorizontalAlignment="Left" Margin="680,88,0,0" VerticalAlignment="Top" Width="90" Grid.ColumnSpan="2"/>
             <!-- Maximum Capacity -->
             <Label Content="Maximum Capacity : " HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="txtMax" HorizontalAlignment="Left" Margin="136,118,0,0" Text="Password" TextWrapping="Wrap" VerticalAlignment="Top" Width="520"/>
+            <TextBox x:Name="txtMax" HorizontalAlignment="Left" Margin="136,118,0,0" Text="{Binding MaxCapacity}" TextWrapping="Wrap" VerticalAlignment="Top" Width="520"/>
             <Button Content="Delete" HorizontalAlignment="Left" Margin="680,118,0,0" VerticalAlignment="Top" Width="90" Grid.ColumnSpan="2"/>
             <!-- Teacher -->
             <Label Content="Teacher : " HorizontalAlignment="Left" Margin="10,144,0,0" VerticalAlignment="Top" Grid.RowSpan="2"/>
-            <TextBox x:Name="txtTeacher" HorizontalAlignment="Left" Margin="136,148,0,0" Text="Pass" TextWrapping="Wrap" VerticalAlignment="Top" Width="520"/>
+            <TextBox x:Name="txtTeacher" HorizontalAlignment="Left" Margin="136,148,0,0" Text="{Binding Teacher, Mode=OneWay}" TextWrapping="Wrap" VerticalAlignment="Top" Width="520" IsReadOnly="true"/>
         </Grid>
         <f:MyTabControl x:Name="tabControl" Margin="10,10,10,10" Grid.Row="1">
-            <TabItem x:Name="gradesTab" Header="Grades" Tag="Grades">
-                <ContentControl>
-                    <local:CoursesView />
-                </ContentControl>
-            </TabItem>
         </f:MyTabControl>
     </Grid>
 </f:UserControlBase>
