@@ -26,5 +26,9 @@ namespace School04.Model {
         public static IQueryable<Quizz> GetAll() {
             return Context.Quizz.OrderByDescending(m => m.ExaminationDate);
         }
+
+        public static IQueryable<Quizz> GetQuizzesFromCourse(Course course) {
+            return Context.Quizz.Where(q => q.Course == course);
+        }
     }
 }

@@ -28,6 +28,7 @@ namespace School04.View {
         public QuizzesView(Course course) {
             this.course = course;
             InitializeComponent();
+            vm.Init(course);
         }
     }
 }
