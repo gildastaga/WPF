@@ -22,6 +22,10 @@ namespace School04.ViewModel {
             });
         }
 
+        public string TitleWindow {
+            get => $"School04 ({CurrentUser.ToString()})";
+        }
+
         protected override void OnRefreshData() {
             //pour plus tard
         }
