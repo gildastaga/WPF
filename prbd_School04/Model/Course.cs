@@ -12,7 +12,7 @@ namespace School04.Model {
         public int CourseId {
             get; set;
         }
-        public int Code {
+        public int? Code {
             get; set; 
         }
         public string Title {
@@ -21,7 +21,7 @@ namespace School04.Model {
         public string Description {
             get; set;
         }
-        public int MaxStudent {
+        public int? MaxStudent {
             get; set;
         }
 
@@ -43,7 +43,7 @@ namespace School04.Model {
         
         public Course() {
         }
-        public Course(int code, string title, string description, int maxStudent, Teacher teacher) {
+        public Course(int? code, string title, string description, int? maxStudent, Teacher teacher) {
             Code = code;
             Title = title;
             Description = description;
