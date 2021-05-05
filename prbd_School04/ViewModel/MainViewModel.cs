@@ -8,10 +8,21 @@ using School04.Model;
 namespace School04.ViewModel {
     public class MainViewModel : ViewModelCommon {
         public event Action<Course, bool> DisplayCourse;
+        public event Action<Quizz, bool> DisplayQuizz;
         public MainViewModel() : base() {
             Register<Course>(this, AppMessages.MSG_DISPLAY_COURSE, course => {
                 Console.WriteLine("Test");
                 DisplayCourse?.Invoke(course, false);
+            });
+
+            Register<Quizz>(this, AppMessages.MSG_DISPLAY_QUIZZ, quizz => {
+                Console.WriteLine("Test");
+                DisplayQuizz?.Invoke(quizz, false);
+            });
+
+            Register<Quizz>(this, AppMessages.MSG_NEW_QUIZZ, quizz => {
+                Console.WriteLine("Test");
+                DisplayQuizz?.Invoke(quizz, true);
             });
 
             Register(this, AppMessages.MSG_NEW_COURSE, () => {

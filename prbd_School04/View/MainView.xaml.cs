@@ -40,5 +40,18 @@ namespace School04.View {
                     tabControl.SetFocus(tab);
             }
         }
+
+        private void Vm_DisplayQuizz(Quizz quizz, bool isNew) {
+            if (quizz != null) {
+                var tab = tabControl.FindByTag(quizz.QuizzId.ToString());
+                if (tab == null)
+                    tabControl.Add(
+                        new QuizzView(quizz, isNew),
+                        isNew ? "<new quizz>" : quizz.Title, quizz.QuizzId.ToString()
+                    );
+                else
+                    tabControl.SetFocus(tab);
+            }
+        }
     }
 }

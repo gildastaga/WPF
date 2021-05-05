@@ -30,5 +30,8 @@ namespace School04.View {
             InitializeComponent();
             vm.Init(course);
         }
+        private void lsQuizzes_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e) {
+            vm.DisplayQuizz.Execute(lsQuizzes.SelectedItem);
+        }
     }
 }

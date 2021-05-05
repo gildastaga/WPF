@@ -17,9 +17,9 @@
         <vm:QuizzesViewModel x:Name="vm" />
     </UserControl.DataContext>
     <StackPanel>
-        <f:MyDataGrid x:Name="grid" ItemsSource="{Binding QuizzesView}"
+        <f:MyDataGrid x:Name="lsQuizzes" ItemsSource="{Binding QuizzesView}"
                   AutoGenerateColumns="False" FontSize="12" IsReadOnly="False" Margin="5" CanUserAddRows="False" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" MaxHeight="160"
-                  SelectedItemsList="{Binding SelectedItems}">
+                  SelectedItemsList="{Binding SelectedItems}" MouseDoubleClick="lsQuizzes_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Title" Binding="{Binding Path=Title}" IsReadOnly="True" SortDirection="Descending" Width="auto" MinWidth="80"/>
                 <DataGridTextColumn Header="Start" Binding="{Binding Path=CreationDate, StringFormat=\{0:dd/MM/yyyy HH:mm:ss\}}" IsReadOnly="True" Width="auto" MinWidth="80" />
@@ -30,6 +30,6 @@
                 <KeyBinding Key="Delete" Command="{Binding DeleteMessages}" CommandParameter="{Binding SelectedItemsList, ElementName=grid}" />
             </DataGrid.InputBindings>
         </f:MyDataGrid>
-        <Button HorizontalAlignment="Right" Content="New Quiz" Margin="5" Command="{Binding DeleteMessages}" CommandParameter="{Binding SelectedItemsList, ElementName=grid}"/>
+        <Button HorizontalAlignment="Right" Content="New Quiz" Margin="5" Command="{Binding CreateQuizz}" CommandParameter="{Binding SelectedItemsList, ElementName=grid}"/>
     </StackPanel>
 </f:UserControlBase>

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using PRBD_Framework;
 using School04.Model;
 
@@ -12,7 +13,12 @@ namespace School04.ViewModel {
         private Course course;
         public Course Course { get => course; set => SetProperty(ref course, value); }
         public QuizzesViewModel() : base() {
-            
+            DisplayQuizz = new RelayCommand<Quizz>(quizz => {
+                Console.WriteLine(quizz.Title);
+                NotifyColleagues(AppMessages.MSG_DISPLAY_QUIZZ, quizz);
+            });
+
+            CreateQuizz = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_NEW_QUIZZ, new Quizz("", null, null, Course)); });
         }
         private ObservableCollectionFast<Quizz> quizzes = new ObservableCollectionFast<Quizz>();
         public ObservableCollectionFast<Quizz> Quizzes {
@@ -30,6 +36,14 @@ namespace School04.ViewModel {
             Quizzes = new ObservableCollectionFast<Quizz>(Quizz.GetQuizzesFromCourse(Course));
 
             RaisePropertyChanged();
+        }
+
+        public ICommand DisplayQuizz {
+            get; set;
+        }
+
+        public ICommand CreateQuizz {
+            get; set;
         }
     }
 }
