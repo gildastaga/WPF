@@ -30,8 +30,12 @@ namespace School04.ViewModel {
             RaisePropertyChanged();
         }
 
-        public int? CourseId {
-            get { return Course?.CourseId; }
+        public int? Code {
+            get { return Course?.Code; }
+            set {
+                Course.Code = value;
+                RaisePropertyChanged(nameof(Code));
+            }
         }
 
         public string Title {

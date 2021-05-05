@@ -16,7 +16,7 @@ namespace School04.ViewModel {
 
             Register(this, AppMessages.MSG_NEW_COURSE, () => {
                 //créer une nouvelle instance pour un nouveau cours "vide"
-                var course = new Course();
+                var course = new Course(null,"","",null,(Teacher)CurrentUser);
                 //demande à la vue de créer dynamiquement un nouvel onglet avec le titre "new course"
                 DisplayCourse?.Invoke(course, true);
             });
