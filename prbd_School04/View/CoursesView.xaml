@@ -15,6 +15,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -47,5 +48,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button x:Name="btnNewCourse" Content="New Course" Command="{Binding NewCourse}" HorizontalAlignment="Left" Grid.Row="2" Margin="10,10" />
     </Grid>
 </f:UserControlBase>

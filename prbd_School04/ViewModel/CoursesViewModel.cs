@@ -10,9 +10,7 @@ using School04.Model;
 
 namespace School04.ViewModel {
     class CoursesViewModel : ViewModelCommon {
-
         private ObservableCollection<Course> courses;
-
         public ObservableCollection<Course> Courses {
             get => courses;
             set => SetProperty<ObservableCollection<Course>>(ref courses, value);
@@ -24,6 +22,9 @@ namespace School04.ViewModel {
         }
         public ICommand ClearFilter {
             get; set;
+        }
+        public ICommand NewCourse {
+            get; set; 
         }
         public ICommand DisplayCourseDetails {
             get; set;
@@ -44,6 +45,8 @@ namespace School04.ViewModel {
             makeList();
             
             ClearFilter = new RelayCommand(() => Filter = "");
+
+            NewCourse = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_NEW_COURSE); });
 
             DisplayCourseDetails = new RelayCommand<Course>(course => {
                 Console.WriteLine(course.Title);
