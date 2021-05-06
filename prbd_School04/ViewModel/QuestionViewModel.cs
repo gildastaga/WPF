@@ -15,9 +15,8 @@ namespace School04.ViewModel {
         }
 
         public Question Question { get; set; }
-        private bool listCategotyChange = false;
 
-        private ObservableCollection<CheckCategory> categories;  // toute liste qu'on doit affiché ds la vue doit etre observable et donc on doit pouvoir remplir cette liste avec la methode LoadTagsChecked()
+        private ObservableCollection<CheckCategory> categories;  // toute liste qu'on doit affiché ds la vue doit etre observable et donc on doit pouvoir remplir cette liste avec la methode LoadCategoryChecked()
         public ObservableCollection<CheckCategory> Categories {
             get => categories;
             set {
@@ -27,23 +26,25 @@ namespace School04.ViewModel {
         }
 
         public ICommand CheckCategory { get; set; }
-        public QuestionViewModel(Question question) : base() {
-            Question = question;
+        public QuestionViewModel() : base() {
+            //Question = question;
             LoadCategoryChecked();
+            
             CheckCategory = new RelayCommand<CheckCategory>(checkCategory => {
-                listCategotyChange = true;
             });
-
+            
         }
 
         private void LoadCategoryChecked() {
+            Console.WriteLine("1");
             Categories = new ObservableCollection<CheckCategory>();   // Pour le moment ma liste est vide,
+            
             foreach (var category in App.Context.Categories)               
             {
-                var p = new CheckCategory()                   
-                {
-                    Name = category.Name,                     
-                    Checked = Question.Categories.Contains(category)
+                Console.WriteLine(category.Name);
+                var p = new CheckCategory() {
+                    Name = category.Name,
+                    //Checked = Question.Categories.Contains(category)
                 };
                 Categories.Add(p);                              
             }

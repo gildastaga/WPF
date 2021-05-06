@@ -9,7 +9,13 @@
       xmlns:i="clrnamespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
+      xmlns:vm="clr-namespace:School04.ViewModel"
       d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.DataContext>
+        <vm:QuestionViewModel x:Name="vm"/>
+    </UserControl.DataContext>
+
     <UserControl.Resources>
         <Style x:Key="wrapColumn">
             <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -50,7 +56,7 @@
                         </ListBox.ItemsPanel>
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <CheckBox Content="{Binding Name}" IsChecked="{Binding Checked}" Command="{Binding CheckCategory, ElementName=root}" CommandParameter="{Binding}" Margin="10"/>
+                                <CheckBox Content="{Binding Name}" IsChecked="{Binding Checked}" Command="{Binding CheckCategory}" CommandParameter="{Binding}" Margin="10"/>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
@@ -64,7 +70,7 @@
  
                 </StackPanel>
                 
-                <TextBlock TextAlignment="Left" FontWeight="Bold" FontSize="16" Width="338" RenderTransformOrigin="0.494,2.89" Height="19"><Run Text="Available Questions"/></TextBlock>
+                <TextBlock TextAlignment="Left" FontWeight="Bold" FontSize="16" Width="338" RenderTransformOrigin="0.494,2.89" Height="19"><Run Text="Available Questions()"/></TextBlock>
             
 
             </StackPanel>
@@ -110,23 +116,6 @@
                         Padding="05"
                        Margin="5"/>
                 
-                 <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="4">
-                    <ListView ScrollViewer.VerticalScrollBarVisibility="Disabled" BorderBrush="Transparent" ItemsSource="{Binding Categories}"  SelectionMode="Single">
-                            <ListBox.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <UniformGrid Columns="5"/>
-                                </ItemsPanelTemplate>
-                            </ListBox.ItemsPanel>
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                <CheckBox Content="{Binding Name}" IsChecked="{Binding Checked}" Command="{Binding CheckCategory, ElementName=root}" CommandParameter="{Binding}" Margin="10"/>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackPanel>
-                
-                
-
                 <StackPanel Grid.Column="2" Grid.RowSpan="5" Orientation="Horizontal" Height="174" RenderTransformOrigin="0.497,0.962" Width="352" >
                     <Button x:Name="NewQuestion"  Content="New Question" HorizontalAlignment="Left" Margin="10, 130, 0, 0" 
                             Command="{Binding NewQuestion}" VerticalAlignment="Top" Width="75" Click="Cancell_Click"/>

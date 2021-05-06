@@ -137,16 +137,18 @@ namespace School04.Model {
             quiz1.QuestionsQuizz.Add(questQuizz1);
             quiz1.QuestionsQuizz.Add(questQuizz2);
 
-            SaveChanges();
-
-            Database.CommitTransaction();
-
             var cat1 = new Category("Arithmétique");
             var cat2 = new Category("Géométrie");
             var cat3 = new Category("Logique");
             var cat4 = new Category("Mathématiques");
             var cat5 = new Category("Questions facultatives");
             Categories.AddRange(cat1, cat2, cat3, cat4, cat5);
+
+            SaveChanges();
+
+            Database.CommitTransaction();
+
+            
         }
 
         public DbSet<User> Users {
