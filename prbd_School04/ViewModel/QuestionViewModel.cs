@@ -14,7 +14,19 @@ namespace School04.ViewModel {
             throw new NotImplementedException();
         }
 
-        public Question Question { get; set; }
+
+        private ObservableCollection<Question> questions;
+        public ObservableCollection<Question> Questions {
+            get {
+                return questions;
+            }
+            set {
+                questions = value;
+                RaisePropertyChanged(nameof(Questions));
+            }
+        }
+
+        //public Question Question { get; set; }
 
         private ObservableCollection<CheckCategory> categories;  // toute liste qu'on doit affiché ds la vue doit etre observable et donc on doit pouvoir remplir cette liste avec la methode LoadCategoryChecked()
         public ObservableCollection<CheckCategory> Categories {
@@ -28,15 +40,14 @@ namespace School04.ViewModel {
         public ICommand CheckCategory { get; set; }
         public QuestionViewModel() : base() {
             //Question = question;
+            Questions = new ObservableCollection<Question>(App.Context.Questions);
             LoadCategoryChecked();
-            
-            CheckCategory = new RelayCommand<CheckCategory>(checkCategory => {
-            });
+           
+            CheckCategory = new RelayCommand<CheckCategory>(checkCategory => {});
             
         }
 
         private void LoadCategoryChecked() {
-            Console.WriteLine("1");
             Categories = new ObservableCollection<CheckCategory>();   // Pour le moment ma liste est vide,
             
             foreach (var category in App.Context.Categories)               
@@ -49,5 +60,7 @@ namespace School04.ViewModel {
                 Categories.Add(p);                              
             }
         }
+
+
     }
 }
