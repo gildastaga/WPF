@@ -19,9 +19,7 @@ namespace School04.Model {
         public Boolean IsUpdate { get; set; }
         public Boolean IsDelete { get; set; }
         public TypeQuestion typeQuestion { get; set; } = TypeQuestion.OneAnswer;
-        public virtual ICollection<Category> Categories{
-            get; set;
-        } = new HashSet<Category>();
+        public virtual ICollection<Category> Categories{get; set;} = new HashSet<Category>();
         public virtual ICollection<QuestionQuizz> QuestionQuizz {get; set;} = new HashSet<QuestionQuizz>();
 
        public virtual ICollection<Answer> Answers{get; set;} = new HashSet<Answer>();

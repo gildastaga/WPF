@@ -14,9 +14,9 @@ namespace School04.Model {
 
         public Category() {}
 
-        public Category(string Name, Question Question) {
+        public Category(string Name) {
+
             this.Name = Name;
-            this.Question = Question;
         }
 
         public void Delete() {

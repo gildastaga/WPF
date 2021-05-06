@@ -1,6 +1,4 @@
-﻿using PRBD_Framework;
-using School04.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,24 +12,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PRBD_Framework;
+using School04.Model;
 
 namespace School04.View {
- 
-    public partial class QuestionView : UserControlBase {
+    /// <summary>
+    /// Logique d'interaction pour Registrations.xaml
+    /// </summary>
+    public partial class RegistrationsView : UserControlBase {
         private Course course;
 
-        /*public QuestionView() {
-            InitializeComponent();
-            DataContext = this;
-        }*/
-
-        public QuestionView(Course course) {
-            this.course = course;
+        public RegistrationsView() {
             InitializeComponent();
         }
 
-        private void Cancell_Click(object sender, RoutedEventArgs e) {
-
+        public RegistrationsView(Course course) {
+            this.course = course;
+            InitializeComponent();
         }
     }
 }

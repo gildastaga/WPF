@@ -1,4 +1,5 @@
 ﻿using PRBD_Framework;
+using School04.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,32 @@ namespace School04.View {
 
         private void MenuItem_Click( object sender, RoutedEventArgs e ) {
             Close();
+        }
+
+        private void Vm_DisplayCourse(Course course, bool isNew) {
+            if (course != null) {
+                var tab = tabControl.FindByTag(course.Title);
+                if (tab == null)
+                    tabControl.Add(
+                        new CourseDetailsView(course, isNew),
+                        isNew ? "<new course>" : course.Title, course.Title
+                    );
+                else
+                    tabControl.SetFocus(tab);
+            }
+        }
+
+        private void Vm_DisplayQuizz(Quizz quizz, bool isNew) {
+            if (quizz != null) {
+                var tab = tabControl.FindByTag(quizz.QuizzId.ToString());
+                if (tab == null)
+                    tabControl.Add(
+                        new QuizzView(quizz, isNew),
+                        isNew ? "<new quizz>" : quizz.Title, quizz.QuizzId.ToString()
+                    );
+                else
+                    tabControl.SetFocus(tab);
+            }
         }
     }
 }

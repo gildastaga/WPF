@@ -12,7 +12,7 @@ namespace School04.Model {
         public int CourseId {
             get; set;
         }
-        public int Code {
+        public int? Code {
             get; set; 
         }
         public string Title {
@@ -21,6 +21,10 @@ namespace School04.Model {
         public string Description {
             get; set;
         }
+        public int? MaxStudent {
+            get; set;
+        }
+
         //Un cours est donné par tel professeur
         [Required]
         public virtual Teacher TeacherCourse {
@@ -29,6 +33,7 @@ namespace School04.Model {
         public virtual ICollection<Question> QuestionList {
             get; set;
         } = new HashSet<Question>();
+
         public virtual ICollection<Quizz> QuizzCourse {
             get; set;
         } = new HashSet<Quizz>();
@@ -38,21 +43,26 @@ namespace School04.Model {
         
         public Course() {
         }
-        public Course(int code, string title, string description, Teacher teacher) {
+        public Course(int? code, string title, string description, int? maxStudent, Teacher teacher) {
             Code = code;
             Title = title;
-            Description = Description;
+            Description = description;
+            MaxStudent = maxStudent;
             TeacherCourse = teacher;
         }
-
+        public string codeTitle() {
+            return Code + " - " + Title;
+        }
         public int NbElem => lsCourses.Count;
 
         public void AddElem( Course c ) {
             lsCourses.Add(c);
         }
-
         public bool RemoveElem( Course c ) {
             return lsCourses.Remove(c);
+        }
+        public static Course GetById(int courseId) {
+            return Context.Courses.SingleOrDefault(c => c.CourseId == courseId);
         }
     }
 }
