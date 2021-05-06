@@ -141,7 +141,7 @@ namespace School04.Model {
             var cat2 = new Category("Géométrie");
             var cat3 = new Category("Logique");
             var cat4 = new Category("Mathématiques");
-            var cat5 = new Category("Questions facultatives");
+            var cat5 = new Category("Test");
             Categories.AddRange(cat1, cat2, cat3, cat4, cat5);
 
             SaveChanges();
