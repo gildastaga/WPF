@@ -87,34 +87,69 @@ namespace School04.Model {
                 Enonce = "Quelle est le langage utilisé ?",
                 IsUpdate = false,
                 IsDelete = false,
-                Course = prwb
+                Course = prwb,
+                typeQuestion = TypeQuestion.ManyAnswer
+
             };
-            var quest2 = new Question("Qu'est-ce que le SQL?", false, false, sgbd);
+
+            var quest2 = new Question {
+                Enonce = "Qu'est-ce que le SQL Server?",
+                IsUpdate = false,
+                IsDelete = false,
+                Course = sgbd,
+                typeQuestion = TypeQuestion.OneAnswer
+
+            };
             Questions.AddRange(quest1, quest2);
 
             var quest3 = new Question {
                 Enonce = "Choisir la réponse avec un (V) :",
-                Course = prwb
-            };
-            var quest4 = new Question {
-                Enonce = "Choisir la ou les réponses avec un (V) :",
-                Course = anc3,
+                IsUpdate = false,
+                IsDelete = false,
+                Course = prm2,
                 typeQuestion = TypeQuestion.ManyAnswer
             };
-            Questions.AddRange(quest3, quest4);
+            var quest4 = new Question {
+                Enonce = "Qu'est ce que le PHP:",
+                Course = anc3,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+            var quest5 = new Question {
+                Enonce = "Choisir les nombres pairs",
+                Course = map4,
+                typeQuestion = TypeQuestion.ManyAnswer
+            };
+            Questions.AddRange(quest3, quest4, quest5);
 
-            var prop1 = new Proposition ("Proposition 1 (X)", Type.False, quest1);
-            var prop2 = new Proposition ("Proposition 2 (V)", Type.True, quest1);
-            var prop3 = new Proposition ("Proposition 3 (X)", Type.False, quest2);
-            var prop4 = new Proposition("Proposition 4 (V)", Type.True, quest2) ;
-            var prop5 = new Proposition ("Proposition 5 (V)", Type.True, quest3);
-            Propositions.AddRange(prop1, prop2, prop3, prop4, prop5);
+            var prop1 = new Proposition ("C#", Type.True);
+            var prop11 = new Proposition("javaFX", Type.False);
+            var prop111 = new Proposition("wpf", Type.True);
+            var prop2 = new Proposition ("server mobile", Type.False);
+            var prop22 = new Proposition("système de gestion de BD", Type.True) ;
+            var prop3 = new Proposition ("acess", Type.False);
+            var prop33 = new Proposition("programmation", Type.True);
+            var prop333 = new Proposition("informatique", Type.True);
+            var prop4 = new Proposition("langage", Type.False);
+            var prop44 = new Proposition("langage informatique", Type.True);
+            var prop5 = new Proposition("6", Type.True);
+            var prop55 = new Proposition("1", Type.False);
+            var prop555 = new Proposition("8", Type.True);
+            Propositions.AddRange(prop1, prop11, prop111, prop2, prop22, prop3, prop33, prop333, prop4, prop44,
+                prop5, prop55, prop555);
             
             quest1.Propositions.Add(prop1);
-            quest1.Propositions.Add(prop2);
-            quest2.Propositions.Add(prop3);
-            quest2.Propositions.Add(prop4);
-            quest2.Propositions.Add(prop5);
+            quest1.Propositions.Add(prop11);
+            quest1.Propositions.Add(prop111);
+            quest2.Propositions.Add(prop2);
+            quest2.Propositions.Add(prop22);
+            quest3.Propositions.Add(prop3);
+            quest3.Propositions.Add(prop33);
+            quest3.Propositions.Add(prop333);
+            quest4.Propositions.Add(prop4);
+            quest4.Propositions.Add(prop44);
+            quest5.Propositions.Add(prop5);
+            quest5.Propositions.Add(prop55);
+            quest5.Propositions.Add(prop555);
 
             var quiz1 = new Quizz {
                 Course = prbd,
@@ -137,11 +172,11 @@ namespace School04.Model {
             quiz1.QuestionsQuizz.Add(questQuizz1);
             quiz1.QuestionsQuizz.Add(questQuizz2);
 
-            var cat1 = new Category("Arithmétique");
-            var cat2 = new Category("Géométrie");
-            var cat3 = new Category("Logique");
-            var cat4 = new Category("Mathématiques");
-            var cat5 = new Category("Test");
+            var cat1 = new Category("Arithmétique", quest1);
+            var cat2 = new Category("Géométrie", quest1);
+            var cat3 = new Category("Logique", quest2);
+            var cat4 = new Category("Mathématiques", quest3);
+            var cat5 = new Category("Test", quest4);
             Categories.AddRange(cat1, cat2, cat3, cat4, cat5);
 
             SaveChanges();

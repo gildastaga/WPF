@@ -21,10 +21,9 @@ namespace School04.Model {
 
         public Proposition() {}
 
-        public Proposition(string body, Type type, Question question) {
+        public Proposition(string body, Type type) {
             Body = body;
             Type = type;
-            Question = question;
         }
     }
 }
