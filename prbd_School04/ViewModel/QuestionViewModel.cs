@@ -44,7 +44,7 @@ namespace School04.ViewModel {
                 Console.WriteLine(category.Name);
                 var p = new CheckCategory() {
                     Name = category.Name,
-                    Checked = Question.Categories.Contains(category)
+                    //Checked = Question.Categories.Contains(category)
                 };
                 Categories.Add(p);                              
             }
