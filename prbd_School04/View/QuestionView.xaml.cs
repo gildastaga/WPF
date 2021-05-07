@@ -20,10 +20,10 @@ namespace School04.View {
     public partial class QuestionView : UserControlBase {
         private Course course;
 
-        /*public QuestionView() {
+        public QuestionView() {
             InitializeComponent();
             DataContext = this;
-        }*/
+        }
 
         public QuestionView(Course course) {
             this.course = course;

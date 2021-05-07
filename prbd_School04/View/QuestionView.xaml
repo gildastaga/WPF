@@ -43,8 +43,8 @@
             <StackPanel Grid.RowSpan="3">
 
                 <Label x:Name="catégory"  Content="Categories:" VerticalAlignment="Center" Padding="05" Margin="5"/>
-                <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="6" Height="25" Width="350" >
-                    <ListView  ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderBrush="Transparent" ItemsSource="{Binding Categories}"  SelectionMode="Single" Height="27" Width="339" RenderTransformOrigin="0.508,0.869" >
+                <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="6" Height="25" >
+                    <ListView  ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderBrush="Transparent" ItemsSource="{Binding Categories}"  SelectionMode="Single" Height="22" Width="324" RenderTransformOrigin="0.508,0.869" >
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <UniformGrid Columns="5"/>
@@ -58,15 +58,30 @@
                     </ListView>
                 </StackPanel>
 
-                <StackPanel Grid.Column="2" Grid.RowSpan="2" Orientation="Horizontal" Height="65" RenderTransformOrigin="0.497,0.962" Width="272" Margin="0" >
+                <StackPanel Grid.Column="2" Grid.RowSpan="2" Orientation="Horizontal" Height="63" RenderTransformOrigin="0.497,0.962" Width="339" Margin="0" >
                     <Button x:Name="All"  Content="All" HorizontalAlignment="Left" Margin="02, 30, 0, 0" 
                             Command="{Binding All}" VerticalAlignment="Top" Width="75" Click="Cancell_Click"/>
                     <Button x:Name="None"  Content="None" HorizontalAlignment="Left" Margin="10, 30, 0, 0" 
                             Command="{Binding None}" VerticalAlignment="Top" Width="75"/>
-
                 </StackPanel>
-
                 <TextBlock TextAlignment="Left" FontWeight="Bold" FontSize="16" Width="338" RenderTransformOrigin="0.494,2.89" Height="19" Margin="20"><Run Text="Available Questions()"/></TextBlock>
+
+                <ListView x:Name="listView" Grid.Row="1" ItemsSource="{Binding Questions}" BorderBrush="Transparent">
+                    
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="1"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Enonce}" Margin="0"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+
+
+                </ListView>
 
 
             </StackPanel>
