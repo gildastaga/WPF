@@ -24,10 +24,6 @@ namespace School04.View {
             InitializeComponent();
         }
 
-        private void MenuItem_Click( object sender, RoutedEventArgs e ) {
-            Close();
-        }
-
         private void Vm_DisplayCourse(Course course, bool isNew) {
             if (course != null) {
                 var tab = tabControl.FindByTag(course.Title);
@@ -52,6 +48,13 @@ namespace School04.View {
                 else
                     tabControl.SetFocus(tab);
             }
+        }
+
+        //KeyDown="WindowBase_KeyDown" -> handler à l'événement KeyDown afin de pouvoir fermer 
+        //la fenêtre quand on presse la touche 
+        private void WindowBase_KeyDown( object sender, KeyEventArgs e ) {
+            if (e.Key == Key.Escape)
+                Close();
         }
     }
 }
