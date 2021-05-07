@@ -29,13 +29,13 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.RowSpan="3">
             <TextBlock TextAlignment="Center" FontWeight="Bold" FontSize="16" Width="338" RenderTransformOrigin="0.494,2.89"><Run Text="Registered Students"/></TextBlock>
-            <f:MyDataGrid x:Name="grid" ItemsSource="{Binding MessagesView}"
+            <f:MyDataGrid x:Name="grid" ItemsSource="{Binding Registrations}"
                   AutoGenerateColumns="False" FontSize="12" IsReadOnly="False" Margin="5" CanUserAddRows="False" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" MaxHeight="160"
                   SelectedItemsList="{Binding SelectedItems}" Width="324">
                 <f:MyDataGrid.Columns>
-                    <DataGridTextColumn Header="Student" Binding="{Binding DateTime}" Width="*" IsReadOnly="True" SortDirection="Descending"/>
-                    <DataGridTextColumn Header="State" Binding="{Binding Author.Pseudo}" Width="50" IsReadOnly="True" />
-                    <DataGridHyperlinkColumn Header="Actions" Binding="{Binding Body}" Width="75" ElementStyle="{StaticResource wrapColumn}"/>
+                    <DataGridTextColumn Header="Student" Binding="{Binding Student}" Width="*" IsReadOnly="True" SortDirection="Descending"/>
+                    <DataGridTextColumn Header="State" Binding="{Binding RegistrationState}" Width="50" IsReadOnly="True" />
+                    <DataGridHyperlinkColumn Header="Actions" Binding="{Binding Course}" Width="75" ElementStyle="{StaticResource wrapColumn}"/>
                 </f:MyDataGrid.Columns>
                 <f:MyDataGrid.InputBindings>
                     <KeyBinding Key="Delete" Command="{Binding DeleteMessages}" CommandParameter="{Binding SelectedItemsList, ElementName=grid}" />
@@ -50,11 +50,11 @@
                          " />
                 <Button Content="Clear" Command="{Binding ClearFilter}" Width="auto" Margin="5,0,0,0" />
             </DockPanel>
-            <f:MyDataGrid x:Name="grid2" ItemsSource="{Binding MessagesView}"
+            <f:MyDataGrid x:Name="grid2" ItemsSource="{Binding NotRegistered}"
                   AutoGenerateColumns="False" FontSize="12" IsReadOnly="False" Margin="5" CanUserAddRows="False" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" MaxHeight="160"
                   SelectedItemsList="{Binding SelectedItems}" Width="324">
                 <f:MyDataGrid.Columns>
-                    <DataGridTextColumn Header="Student" Binding="{Binding DateTime}" Width="*" IsReadOnly="True" SortDirection="Descending"/>
+                    <DataGridTextColumn Header="Student" Binding="{Binding FirstName}" Width="*" IsReadOnly="True" SortDirection="Descending"/>
                 </f:MyDataGrid.Columns>
                 <f:MyDataGrid.InputBindings>
                     <KeyBinding Key="Delete" Command="{Binding DeleteMessages}" CommandParameter="{Binding SelectedItemsList, ElementName=grid}" />

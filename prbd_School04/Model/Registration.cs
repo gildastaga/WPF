@@ -32,5 +32,15 @@ namespace School04.Model {
             Student = student;
             Course = course;
         }
+        public static IQueryable<Registration> GetCurrentRegistrationsFromCourse(Course course) {
+            return Context.Registrations.Where(r => r.Course == course);
+        }
+        public static IQueryable<User> GetNoRegistrationsFromCourse(Course course) {
+            var filtered = from s in Context.Students
+                           where s.CoursesStudent.All(s => s.Course != course)
+                           orderby s.FirstName
+                           select s;
+            return filtered;
+        }
     }
 }
