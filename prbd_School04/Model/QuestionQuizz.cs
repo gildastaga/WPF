@@ -36,6 +36,9 @@ namespace School04.Model {
         public QuestionQuizz( int nbPoint ) {
             NbPoint = nbPoint;
         }
+        public static IQueryable<QuestionQuizz> GetQuestionsFromQuizz(Quizz quizz) {
+            return Context.QuestionQuizzs.Where(q => q.Quizz == quizz);
+        }
 
     }
 }

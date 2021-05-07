@@ -31,28 +31,28 @@
             <RowDefinition Height="500"></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock Text="Id:" FontSize="20" TextAlignment="Left" Margin="5,5,5,0"></TextBlock>
-        <TextBox Grid.Column="1" IsReadOnly="true" Margin="5,5,5,5"></TextBox>
+        <TextBox Text="{Binding QuizzId, Mode=OneWay}" Grid.Column="1" IsReadOnly="true" Margin="5,5,5,5"></TextBox>
         <TextBlock Text="Title:" Grid.Row="1" FontSize="20" TextAlignment="Left" Margin="5,5,5,0"></TextBlock>
-        <TextBox Grid.Column="1" Grid.Row="1" Margin="5,5,5,5"></TextBox>
+        <TextBox Text="{Binding Title}" Grid.Column="1" Grid.Row="1" Margin="5,5,5,5"></TextBox>
         <TextBlock Text="Start:" Grid.Row="2" FontSize="20" TextAlignment="Left" Margin="5,5,5,0"></TextBlock>
-        <f:MyDateTimePicker Grid.Column="1" Grid.Row="2" Margin="5,5,5,5" HorizontalAlignment="Left"></f:MyDateTimePicker>
+        <f:MyDateTimePicker SelectedDateTime="{Binding StartDate}" Grid.Column="1" Grid.Row="2" Margin="5,5,5,5" HorizontalAlignment="Left"></f:MyDateTimePicker>
         <TextBlock Text="Finish:" Grid.Row="3" FontSize="20" TextAlignment="Left" Margin="5,5,5,0"></TextBlock>
-        <f:MyDateTimePicker Grid.Column="1" Grid.Row="3" Margin="5,5,5,5" HorizontalAlignment="Left"></f:MyDateTimePicker>
+        <f:MyDateTimePicker SelectedDateTime="{Binding EndDate}" Grid.Column="1" Grid.Row="3" Margin="5,5,5,5" HorizontalAlignment="Left"></f:MyDateTimePicker>
         <TextBlock Text="Course:" Grid.Row="4" FontSize="20" TextAlignment="Left" Margin="5,5,5,0"></TextBlock>
-        <TextBox Grid.Column="1" Grid.Row="4" Margin="5,5,5,5" IsReadOnly="true"></TextBox>
+        <TextBox Text="{Binding Course, Mode=OneWay}" Grid.Column="1" Grid.Row="4" Margin="5,5,5,5" IsReadOnly="true"></TextBox>
         <StackPanel Grid.Column="2" Grid.Row="1" Grid.RowSpan="3">
             <Button Content="Save" Height="25" Margin="5,5,5,5"></Button>
             <Button Content="Cancel" Height="25" Margin="5,5,5,5"></Button>
             <Button Content="Delete" Height="25" Margin="5,5,5,5"></Button>
         </StackPanel>
         <StackPanel Grid.ColumnSpan="3" Grid.Row="5" Margin="5,5,5,5">
-            <f:MyDataGrid x:Name="grid" ItemsSource="{Binding MessagesView}"
+            <f:MyDataGrid x:Name="lsQuestions" ItemsSource="{Binding Questions}"
                   AutoGenerateColumns="False" FontSize="12" IsReadOnly="False" Margin="5" CanUserAddRows="False" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" MaxHeight="160"
                   SelectedItemsList="{Binding SelectedItems}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Position" Binding="{Binding Path=DateTime}" IsReadOnly="True" SortDirection="Descending" Width="auto" MinWidth="70"/>
-                    <DataGridTextColumn Header="Weight" Binding="{Binding Path=Author.Pseudo}" IsReadOnly="True" Width="auto" MinWidth="70" />
-                    <DataGridTextColumn Header="Questions" Binding="{Binding Path=Author.Pseudo}" IsReadOnly="True" Width="auto" />
+                    <DataGridTextColumn Header="Position" Binding="{Binding Path=QuestionId}" IsReadOnly="True" SortDirection="Descending" Width="auto" MinWidth="70"/>
+                    <DataGridTextColumn Header="Weight" Binding="{Binding Path=NbPoint}" IsReadOnly="True" Width="auto" MinWidth="70" />
+                    <DataGridTextColumn Header="Questions" Binding="{Binding Path=Question.Enonce}" IsReadOnly="True" Width="auto" />
                 </DataGrid.Columns>
                 <DataGrid.InputBindings>
                     <KeyBinding Key="Delete" Command="{Binding DeleteMessages}" CommandParameter="{Binding SelectedItemsList, ElementName=grid}" />

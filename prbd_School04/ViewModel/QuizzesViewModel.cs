@@ -18,7 +18,7 @@ namespace School04.ViewModel {
                 NotifyColleagues(AppMessages.MSG_DISPLAY_QUIZZ, quizz);
             });
 
-            CreateQuizz = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_NEW_QUIZZ, new Quizz("", null, null, Course)); });
+            CreateQuizz = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_NEW_QUIZZ, new Quizz("", null, null, null, Course)); });
         }
         private ObservableCollectionFast<Quizz> quizzes = new ObservableCollectionFast<Quizz>();
         public ObservableCollectionFast<Quizz> Quizzes {

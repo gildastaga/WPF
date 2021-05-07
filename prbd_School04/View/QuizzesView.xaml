@@ -22,8 +22,8 @@
                   SelectedItemsList="{Binding SelectedItems}" MouseDoubleClick="lsQuizzes_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Title" Binding="{Binding Path=Title}" IsReadOnly="True" SortDirection="Descending" Width="auto" MinWidth="80"/>
-                <DataGridTextColumn Header="Start" Binding="{Binding Path=CreationDate, StringFormat=\{0:dd/MM/yyyy HH:mm:ss\}}" IsReadOnly="True" Width="auto" MinWidth="80" />
-                <DataGridTextColumn Header="Finish" Binding="{Binding Path=ExaminationDate, StringFormat=\{0:dd/MM/yyyy HH:mm:ss\}}" IsReadOnly="True" Width="auto" MinWidth="80" />
+                <DataGridTextColumn Header="Start" Binding="{Binding Path=ExaminationStartDate, StringFormat=\{0:dd/MM/yyyy HH:mm:ss\}}" IsReadOnly="True" Width="auto" MinWidth="80" />
+                <DataGridTextColumn Header="Finish" Binding="{Binding Path=ExaminationEndDate, StringFormat=\{0:dd/MM/yyyy HH:mm:ss\}}" IsReadOnly="True" Width="auto" MinWidth="80" />
                 <DataGridTextColumn Header="# Questions" Binding="{Binding Path=QuizzId}" IsReadOnly="True"/>
             </DataGrid.Columns>
             <DataGrid.InputBindings>
