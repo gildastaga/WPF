@@ -49,9 +49,12 @@ namespace School04.View {
                     tabControl.SetFocus(tab);
             }
         }
-
-        //KeyDown="WindowBase_KeyDown" -> handler à l'événement KeyDown afin de pouvoir fermer 
-        //la fenêtre quand on presse la touche 
+        //handler qui réalise le logout simplement en "redirigeant" vers la page de login
+        private void Vm_OnLogout() {
+            App.NavigateTo<LoginView>();
+        }
+        //handler qui de fermer la fenêtre courant (Close()), ce qui a pour effet de 
+        //quitter l'application car c'est la fenêtre principale de l'application.
         private void WindowBase_KeyDown( object sender, KeyEventArgs e ) {
             if (e.Key == Key.Escape)
                 Close();
