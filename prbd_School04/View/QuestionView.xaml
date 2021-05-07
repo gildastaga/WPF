@@ -75,9 +75,30 @@
                     </ListBox.ItemsPanel>
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Enonce}" Margin="0"/>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Enonce}" Margin="0"/>
+
+                                <ListView BorderBrush="Transparent" HorizontalAlignment="Center" ItemsSource="{Binding Propositions}"  SelectionMode="Single">
+                                    <ListView.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel></WrapPanel>
+                                        </ItemsPanelTemplate>
+                                    </ListView.ItemsPanel>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock FontSize="12" TextAlignment="Center" >
+                                                    <Hyperlink Command="{Binding PropositionSelected,  ElementName=root}" CommandParameter="{Binding}"><Run Text="{Binding Body}"/></Hyperlink>
+                                            </TextBlock>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+
+                            </StackPanel>
+                                
                         </DataTemplate>
                     </ListView.ItemTemplate>
+                    
+                    
 
 
 
