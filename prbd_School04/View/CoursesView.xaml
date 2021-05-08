@@ -21,7 +21,8 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
-        <!-- UpdateSourceTrigger=PropertyChanged : met à jour directement quand on tape dans le textBox -->
+        <!-- UpdateSourceTrigger=PropertyChanged : data binding doit être déclenché à chaque 
+        fois que la propriété Text du champ de recherche est modifiée -->
         <TextBox Text="{Binding Filter, UpdateSourceTrigger=PropertyChanged}" FontSize="14" Margin="10,10,10,10" />
         <Button Content="Clear" Command="{Binding ClearFilter}" Grid.Column="1" Margin="10"/>
         <ListView x:Name="lvCourses" ItemsSource="{Binding Courses}" Grid.ColumnSpan="2" Grid.Row="1" BorderBrush="Transparent" SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseDoubleClick="lvCourses_MouseDoubleClick" >

@@ -20,11 +20,23 @@ namespace School04.ViewModel {
         }
         public MainViewModel() : base() {
             LogoutCommand = new RelayCommand(LogoutAction);
-            ReloadDataCommand = new RelayCommand(() => {
-                NotifyColleagues(ApplicationBaseMessages.MSG_REFRESH_DATA);
-            });
+
             Register<Course>(this, AppMessages.MSG_DISPLAY_COURSE, course => {
                 Console.WriteLine("Test");
+                DisplayCourse?.Invoke(course, false);
+            });
+
+            Register<Course>(this, AppMessages.MSG_SAVE_COURSE, course => {
+                School04.Model.Course.AddElem(course);
+
+            });
+
+            Register<Course>(this, AppMessages.MSG_CANCEL_COURSE, course => {
+                DisplayCourse?.Invoke(course, false);
+            });
+
+            Register<Course>(this, AppMessages.MSG_DELETE_COURSE, course => {
+                Course.RemoveElem(course);
                 DisplayCourse?.Invoke(course, false);
             });
 
@@ -44,8 +56,8 @@ namespace School04.ViewModel {
                 //sinon ne rien afficher
                 if (IsTeacher) {
                     var course = new Course(null,"","",null,(Teacher)CurrentUser);
-                //demande à la vue de créer dynamiquement un nouvel onglet avec le titre "new course"
-                DisplayCourse?.Invoke(course, true);
+                    //demande à la vue de créer dynamiquement un nouvel onglet avec le titre "new course"
+                    DisplayCourse?.Invoke(course, true);
                 }
             });
         }
