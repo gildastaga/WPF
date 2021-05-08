@@ -73,7 +73,13 @@ namespace School04.ViewModel {
         }
 
         private void CheckedNoneCategoryAction() {
-            
+            var Categs = new ObservableCollection<CheckCategory>();   // Pour le moment ma liste est vide,
+
+            foreach (var category in Categories) {
+                category.Checked = false;
+                Categs.Add(category);
+            }
+            Categories = new ObservableCollection<CheckCategory>(Categs);
         }
 
 
