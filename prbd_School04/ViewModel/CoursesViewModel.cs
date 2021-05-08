@@ -61,7 +61,6 @@ namespace School04.ViewModel {
             Courses = new ObservableCollection<Course>(query);
             Console.WriteLine($"{query.Count()} courses found");
         }
-
         protected override void OnRefreshData() {
             // Pour plus tard
         }
