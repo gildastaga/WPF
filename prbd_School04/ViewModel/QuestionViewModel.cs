@@ -43,17 +43,16 @@ namespace School04.ViewModel {
             Questions = new ObservableCollection<Question>(App.Context.Questions);
             LoadCategoryChecked();
            
-            CheckCategory = new RelayCommand<CheckCategory>(checkCategory => {});
+            //CheckCategory = new RelayCommand<CheckCategory>(checkCategory => {});
             None = new RelayCommand(CheckedNoneCategoryAction);
             All = new RelayCommand(CheckedAllCategoryAction);
         }
 
         private void LoadCategoryChecked() {
-            Categories = new ObservableCollection<CheckCategory>();   // Pour le moment ma liste est vide,
+            Categories = new ObservableCollection<CheckCategory>();// je cree une liste vide, ensuite je parcoure ma BD, je récupère les noms de chaque catégorie et j'ajoute à ma nouvelle liste
             
             foreach (var category in App.Context.Categories)               
             {
-                Console.WriteLine(category.Name);
                 var p = new CheckCategory() {
                     Name = category.Name,
                     //Checked = Question.Categories.Contains(category)
@@ -62,8 +61,9 @@ namespace School04.ViewModel {
             }
         }
 
+        //implémentation du bouton All
         private void CheckedAllCategoryAction() {
-            var Categs = new ObservableCollection<CheckCategory>();   // Pour le moment ma liste est vide,
+            var Categs = new ObservableCollection<CheckCategory>(); //je creer une nouvelle liste de catégorie que je mets à jour avec ma liste de catégorie.
 
             foreach (var category in Categories) {
                 category.Checked = true;
@@ -72,8 +72,9 @@ namespace School04.ViewModel {
             Categories = new ObservableCollection<CheckCategory>(Categs);
         }
 
+        //implémentation du bouton None
         private void CheckedNoneCategoryAction() {
-            var Categs = new ObservableCollection<CheckCategory>();   // Pour le moment ma liste est vide,
+            var Categs = new ObservableCollection<CheckCategory>();   
 
             foreach (var category in Categories) {
                 category.Checked = false;
