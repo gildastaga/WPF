@@ -26,17 +26,6 @@ namespace School04.ViewModel {
             }
         }
 
-        private bool checkAllCategory;
-        public bool CheckAllCategory {
-            get {
-                return checkAllCategory;
-            }
-            set {
-                checkAllCategory = value;
-                RaisePropertyChanged(nameof(CheckAllCategory));
-            }
-        }
-
         private ObservableCollection<CheckCategory> categories;  // toute liste qu'on doit affiché ds la vue doit etre observable et donc on doit pouvoir remplir cette liste avec la methode LoadCategoryChecked()
         public ObservableCollection<CheckCategory> Categories {
             get => categories;
@@ -74,7 +63,11 @@ namespace School04.ViewModel {
         private void CheckedAllCategoryAction() {
             var Categs = new ObservableCollection<CheckCategory>();   // Pour le moment ma liste est vide,
 
-            CheckAllCategory = true;
+            foreach (var category in Categories) {
+                category.Checked = true;
+                Categs.Add(category);
+            }
+            Categories = new ObservableCollection<CheckCategory>(Categs);
         }
 
 
