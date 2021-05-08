@@ -82,6 +82,7 @@ namespace School04.Model {
             var enreg4 = new Registration(Katia, tgpr);
             var enreg5 = new Registration(Corentin, tgpr);
             var enreg6 = new Registration(Katia, prbd);
+            enreg5.RegistrationState = State.Active;
             Registrations.AddRange(enreg1, enreg2, enreg3, enreg4, enreg5, enreg6);
             Katia.CoursesStudent.Add(enreg2);
             Corentin.CoursesStudent.Add(enreg1);

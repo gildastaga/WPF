@@ -38,7 +38,7 @@
                     <DataGridTemplateColumn Header="Actions" Width="75">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="{Binding RegistrationState}" Command="{Binding ChangeRegistrationMode}"/>
+                                <Button Content="{Binding SwitchLabel}" Command="{Binding ChangeRegistrationMode}"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>

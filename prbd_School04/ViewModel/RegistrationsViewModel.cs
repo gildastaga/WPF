@@ -42,5 +42,7 @@ namespace School04.ViewModel {
 
             RaisePropertyChanged();
         }
+
+        
     }
 }
