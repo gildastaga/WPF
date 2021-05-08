@@ -38,11 +38,13 @@ namespace School04.ViewModel {
         public ICommand CheckCategory { get; set; }
         public ICommand None { get; set; }
         public ICommand All { get; set; }
+
         public QuestionViewModel() : base() {
             Questions = new ObservableCollection<Question>(App.Context.Questions);
             LoadCategoryChecked();
            
             CheckCategory = new RelayCommand<CheckCategory>(checkCategory => {});
+            None = new RelayCommand(CheckedNoneCategoryAction);
             All = new RelayCommand(CheckedAllCategoryAction);
         }
 
@@ -68,6 +70,10 @@ namespace School04.ViewModel {
                 Categs.Add(category);
             }
             Categories = new ObservableCollection<CheckCategory>(Categs);
+        }
+
+        private void CheckedNoneCategoryAction() {
+            
         }
 
 
