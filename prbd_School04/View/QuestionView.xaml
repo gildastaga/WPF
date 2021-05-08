@@ -81,13 +81,13 @@
                                 <ListView BorderBrush="Transparent" VerticalAlignment ="Center" ItemsSource="{Binding Propositions}"  SelectionMode="Single">
                                     <ListView.ItemsPanel>
                                         <ItemsPanelTemplate>
-                                            <WrapPanel></WrapPanel>
+                                            <WrapPanel/>
                                         </ItemsPanelTemplate>
                                     </ListView.ItemsPanel>
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <TextBlock FontSize="12" TextAlignment="Left" >
-                                                    <CheckBox IsChecked="{Binding PropositionSelected,  ElementName=root}" CommandParameter="{Binding}"><Run Text="{Binding Body}"/></CheckBox>
+                                                    <CheckBox IsChecked="{Binding PropositionSelected,  ElementName=root}" CommandParameter="{Binding}"><Run Text="{Binding Body}" /></CheckBox>
                                             </TextBlock>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
