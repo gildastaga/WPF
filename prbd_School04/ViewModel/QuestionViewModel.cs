@@ -13,7 +13,7 @@ namespace School04.ViewModel {
         protected override void OnRefreshData() {
             throw new NotImplementedException();
         }
-
+        // ATTRIBUT BINDER AVEC TOUS LES CHECKBOUTTON avec leur attribut checked pour cocher si le bouton est sélectionné
 
         private ObservableCollection<Question> questions;
         public ObservableCollection<Question> Questions {
@@ -26,7 +26,16 @@ namespace School04.ViewModel {
             }
         }
 
-        //public Question Question { get; set; }
+        private bool checkAllCategory;
+        public bool CheckAllCategory {
+            get {
+                return checkAllCategory;
+            }
+            set {
+                checkAllCategory = value;
+                RaisePropertyChanged(nameof(CheckAllCategory));
+            }
+        }
 
         private ObservableCollection<CheckCategory> categories;  // toute liste qu'on doit affiché ds la vue doit etre observable et donc on doit pouvoir remplir cette liste avec la methode LoadCategoryChecked()
         public ObservableCollection<CheckCategory> Categories {
@@ -38,13 +47,14 @@ namespace School04.ViewModel {
         }
 
         public ICommand CheckCategory { get; set; }
+        public ICommand None { get; set; }
+        public ICommand All { get; set; }
         public QuestionViewModel() : base() {
-            //Question = question;
             Questions = new ObservableCollection<Question>(App.Context.Questions);
             LoadCategoryChecked();
            
             CheckCategory = new RelayCommand<CheckCategory>(checkCategory => {});
-            
+            All = new RelayCommand(CheckedAllCategoryAction);
         }
 
         private void LoadCategoryChecked() {
@@ -59,6 +69,12 @@ namespace School04.ViewModel {
                 };
                 Categories.Add(p);                              
             }
+        }
+
+        private void CheckedAllCategoryAction() {
+            var Categs = new ObservableCollection<CheckCategory>();   // Pour le moment ma liste est vide,
+
+            CheckAllCategory = true;
         }
 
 
