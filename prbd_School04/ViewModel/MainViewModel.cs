@@ -10,6 +10,7 @@ namespace School04.ViewModel {
         public event Action<Course, bool> DisplayCourse;
         public event Action<Quizz, bool> DisplayQuizz;
         public event Action<Quizz, string> RenameTabQuizz;
+        public event Action<Quizz> CloseTabQuizz;
         public MainViewModel() : base() {
             Register<Course>(this, AppMessages.MSG_DISPLAY_COURSE, course => {
                 Console.WriteLine("Test");
@@ -28,6 +29,10 @@ namespace School04.ViewModel {
 
             Register<Quizz>(this, AppMessages.MSG_TITLE_QUIZZ_CHANGED, quizz => {
                 RenameTabQuizz?.Invoke(quizz, quizz.Title);
+            });
+
+            Register<Quizz>(this, AppMessages.MSG_CLOSE_QUIZZ_TAB, quizz => {
+                CloseTabQuizz?.Invoke(quizz);
             });
 
             Register(this, AppMessages.MSG_NEW_COURSE, () => {

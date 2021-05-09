@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Microsoft.EntityFrameworkCore;
 using PRBD_Framework;
 using School04.Model;
 
@@ -38,7 +39,7 @@ namespace School04.ViewModel {
 
 
         public void Init(Quizz quizz, bool isNew) {
-            Quizz = quizz;
+            Quizz = isNew ? quizz : Quizz.GetById(quizz.QuizzId);
             IsNew = isNew;
             Questions = new ObservableCollectionFast<QuestionQuizz>(QuestionQuizz.GetQuestionsFromQuizz(Quizz));
 
@@ -61,7 +62,9 @@ namespace School04.ViewModel {
         public DateTime? StartDate {
             get { return Quizz?.ExaminationStartDate; }
             set {
-                Quizz.ExaminationStartDate = value;
+                Quizz.ExaminationStartDate = null;
+                if (value != null)
+                    Quizz.ExaminationStartDate = value.Value;
                 RaisePropertyChanged(nameof(StartDate));
             }
         }
@@ -69,13 +72,70 @@ namespace School04.ViewModel {
         public DateTime? EndDate {
             get { return Quizz?.ExaminationEndDate; }
             set {
-                Quizz.ExaminationEndDate = value.Value;
+                Quizz.ExaminationEndDate = null;
+                if (value != null)
+                    Quizz.ExaminationEndDate = value.Value;
                 RaisePropertyChanged(nameof(EndDate));
             }
         }
 
         public string Course {
             get { return Quizz?.Course.Description; }
+        }
+
+        public QuizzViewModel() : base() {
+            Save = new RelayCommand(SaveAction, CanSaveAction);
+            Cancel = new RelayCommand(CancelAction, CanCancelAction);
+            Delete = new RelayCommand(DeleteAction, () => !IsNew);
+        }
+
+        private void SaveAction() {
+            if (IsNew) {
+                // Un petit raccourci ;-)
+                Quizz.Title = Title;
+                Context.Add(Quizz);
+                IsNew = false;
+            }
+            Context.SaveChanges();
+            OnRefreshData();
+            NotifyColleagues(AppMessages.MSG_QUIZZ_CHANGED, Quizz);
+        }
+
+        private bool CanSaveAction() {
+            if (IsNew)
+                return !string.IsNullOrEmpty(Title);
+            if(StartDate != null || EndDate != null)
+                return Quizz != null && StartDate != null && EndDate != null && StartDate < EndDate && (Context?.Entry(Quizz)?.State == EntityState.Modified);
+            return Quizz != null && (Context?.Entry(Quizz)?.State == EntityState.Modified);
+        }
+
+        private void CancelAction() {
+            if (IsNew) {
+                NotifyColleagues(AppMessages.MSG_CLOSE_QUIZZ_TAB, Quizz);
+            } else {
+                Context.Reload(Quizz);
+                RaisePropertyChanged();
+            }
+        }
+
+        private bool CanCancelAction() {
+            return Quizz != null && (IsNew || Context?.Entry(Quizz)?.State == EntityState.Modified);
+        }
+
+        private void DeleteAction() {
+            CancelAction();
+            Quizz.Delete();
+            NotifyColleagues(AppMessages.MSG_QUIZZ_CHANGED, Quizz);
+            NotifyColleagues(AppMessages.MSG_CLOSE_QUIZZ_TAB, Quizz);
+        }
+
+        public override void Dispose() {
+            base.Dispose();
+        }
+        protected override void OnRefreshData() {
+            if (IsNew || Quizz == null) return;
+            Quizz = Quizz.GetById(Quizz.QuizzId);
+            RaisePropertyChanged();
         }
     }
 }

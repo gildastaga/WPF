@@ -19,6 +19,10 @@ namespace School04.ViewModel {
             });
 
             CreateQuizz = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_NEW_QUIZZ, new Quizz("", null, null, null, Course)); });
+
+            Register<Quizz>(this, AppMessages.MSG_QUIZZ_CHANGED, quizz => {
+                OnRefreshData();
+            });
         }
         private ObservableCollectionFast<Quizz> quizzes = new ObservableCollectionFast<Quizz>();
         public ObservableCollectionFast<Quizz> Quizzes {
@@ -44,6 +48,22 @@ namespace School04.ViewModel {
 
         public ICommand CreateQuizz {
             get; set;
+        }
+
+        protected override void OnRefreshData() {
+            IQueryable<Quizz> Quizzes = /*string.IsNullOrEmpty(Filter) ?*/ Quizz.GetQuizzesFromCourse(Course) /*: Member.GetFiltered(Filter)*/;
+            /*var filteredMembers = from m in members
+                                  where (
+                                      // on veut les followees de l'utilisateur courant => on prend tous ceux qui ont 
+                                      // le pseudo courant dans leurs followers 
+                                      FolloweesSelected && m.Followers.Any(f => CurrentUser != null && f.Pseudo == CurrentUser.Pseudo) ||
+                                      // on veut les followers de l'utilisateur courant => on prend tous ceux qui ont 
+                                      // le pseudo courant dans leurs followees 
+                                      FollowersSelected && m.Followees.Any(f => CurrentUser != null && f.Pseudo == CurrentUser.Pseudo) ||
+                                      // on veut tous les membres
+                                      AllSelected)
+                                  select m;
+            Members = new ObservableCollection<Member>(filteredMembers);*/
         }
     }
 }

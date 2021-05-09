@@ -5,6 +5,8 @@
         MSG_NEW_COURSE,
         MSG_DISPLAY_QUIZZ,
         MSG_NEW_QUIZZ,
-        MSG_TITLE_QUIZZ_CHANGED
+        MSG_TITLE_QUIZZ_CHANGED,
+        MSG_QUIZZ_CHANGED,
+        MSG_CLOSE_QUIZZ_TAB
     }
 }

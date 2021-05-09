@@ -26,12 +26,20 @@ namespace School04.Model {
             ExaminationEndDate = examinationEnd;
             Course = course;
         }
+        public static Quizz GetById(int id) {
+            return Context.Quizz.SingleOrDefault(q => q.QuizzId == id);
+        }
         public static IQueryable<Quizz> GetAll() {
             return Context.Quizz.OrderByDescending(m => m.ExaminationStartDate);
         }
 
         public static IQueryable<Quizz> GetQuizzesFromCourse(Course course) {
             return Context.Quizz.Where(q => q.Course == course);
+        }
+
+        public void Delete() { //TODO: Remove the linked QuestionsQuizz
+            Context.Quizz.Remove(this);
+            Context.SaveChanges();
         }
     }
 }

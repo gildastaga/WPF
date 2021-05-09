@@ -9,7 +9,7 @@
       mc:Ignorable="d" 
       Title="{Binding TitleWindow}" Height="750" Width="900" WindowStartupLocation="CenterScreen">
     <Window.DataContext>
-        <vm:MainViewModel x:Name="vm" DisplayCourse="Vm_DisplayCourse" DisplayQuizz="Vm_DisplayQuizz" RenameTabQuizz="Vm_RenameTabQuizz" />
+        <vm:MainViewModel x:Name="vm" DisplayCourse="Vm_DisplayCourse" DisplayQuizz="Vm_DisplayQuizz" RenameTabQuizz="Vm_RenameTabQuizz" CloseTabQuizz="Vm_CloseTabQuizz" />
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>

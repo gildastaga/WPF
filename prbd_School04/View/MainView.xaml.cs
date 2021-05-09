@@ -60,5 +60,10 @@ namespace School04.View {
                 tab.Header = tab.Tag = header = string.IsNullOrEmpty(header) ? "<new quizz>" : header;
             }
         }
+
+        private void Vm_CloseTabQuizz(Quizz quizz) {
+            var tab = tabControl.FindByTag(quizz.Title);
+            tabControl.Items.Remove(tab);
+        }
     }
 }
