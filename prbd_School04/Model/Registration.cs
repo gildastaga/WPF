@@ -49,7 +49,7 @@ namespace School04.Model {
                     case 0:
                         return "Deactivate";
                     case 1:
-                        return "";
+                        return "Validate";
                     case 2:
                         return "Activate";
                     default:
