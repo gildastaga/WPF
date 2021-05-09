@@ -34,9 +34,12 @@ namespace School04.ViewModel {
         public CoursesDetailsViewModel() : base() {
             makeList();
 
-            SaveCourse = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_SAVE_COURSE); });
+            //SaveCourse = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_SAVE_COURSE); });
             CancelCourse = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_CANCEL_COURSE); });
-            DeleteCourse = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_DELETE_COURSE); });
+            DeleteCourse = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_DELETE_COURSE);});
+            SaveCourse = new RelayCommand(SaveActionCourse);
+            //Cancel = new RelayCommand(CancelAction, CanCancelAction);
+            //Delete = new RelayCommand(DeleteAction, () => !IsNew);
         }
 
         public void Init(Course course, bool isNew) {
@@ -48,6 +51,22 @@ namespace School04.ViewModel {
             IsNew = isNew;
 
             RaisePropertyChanged();
+        }
+        protected override void OnRefreshData() {
+            if (IsNew || Course == null)
+                return;
+            Course = Course.GetById(Course.CourseId);
+            RaisePropertyChanged();
+        }
+        private void SaveActionCourse() {
+            if (IsNew) {
+                // Un petit raccourci ;-)
+                Context.Add(Course);
+                IsNew = false;
+            }
+            Context.SaveChanges();
+            OnRefreshData();
+            NotifyColleagues(AppMessages.MSG_SAVE_COURSE, Course);
         }
         public int? Code {
             get { return Course?.Code; }
