@@ -33,7 +33,7 @@
         <TextBlock Text="Id:" FontSize="20" TextAlignment="Left" Margin="5,5,5,0"></TextBlock>
         <TextBox Text="{Binding QuizzId, Mode=OneWay}" Grid.Column="1" IsReadOnly="true" Margin="5,5,5,5"></TextBox>
         <TextBlock Text="Title:" Grid.Row="1" FontSize="20" TextAlignment="Left" Margin="5,5,5,0"></TextBlock>
-        <TextBox Text="{Binding Title}" Grid.Column="1" Grid.Row="1" Margin="5,5,5,5"></TextBox>
+        <TextBox Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="1" Margin="5,5,5,5"></TextBox>
         <TextBlock Text="Start:" Grid.Row="2" FontSize="20" TextAlignment="Left" Margin="5,5,5,0"></TextBlock>
         <f:MyDateTimePicker SelectedDateTime="{Binding StartDate}" Grid.Column="1" Grid.Row="2" Margin="5,5,5,5" HorizontalAlignment="Left"></f:MyDateTimePicker>
         <TextBlock Text="Finish:" Grid.Row="3" FontSize="20" TextAlignment="Left" Margin="5,5,5,0"></TextBlock>
@@ -41,9 +41,9 @@
         <TextBlock Text="Course:" Grid.Row="4" FontSize="20" TextAlignment="Left" Margin="5,5,5,0"></TextBlock>
         <TextBox Text="{Binding Course, Mode=OneWay}" Grid.Column="1" Grid.Row="4" Margin="5,5,5,5" IsReadOnly="true"></TextBox>
         <StackPanel Grid.Column="2" Grid.Row="1" Grid.RowSpan="3">
-            <Button Content="Save" Height="25" Margin="5,5,5,5"></Button>
-            <Button Content="Cancel" Height="25" Margin="5,5,5,5"></Button>
-            <Button Content="Delete" Height="25" Margin="5,5,5,5"></Button>
+            <Button Content="Save" Command="{Binding Save}" Height="25" Margin="5,5,5,5"></Button>
+            <Button Content="Cancel" Command="{Binding Cancel}" Height="25" Margin="5,5,5,5"></Button>
+            <Button Content="Delete" Command="{Binding Delete}" Height="25" Margin="5,5,5,5"></Button>
         </StackPanel>
         <StackPanel Grid.ColumnSpan="3" Grid.Row="5" Margin="5,5,5,5">
             <f:MyDataGrid x:Name="lsQuestions" ItemsSource="{Binding Questions}"

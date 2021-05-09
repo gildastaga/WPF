@@ -9,6 +9,7 @@ namespace School04.ViewModel {
     public class MainViewModel : ViewModelCommon {
         public event Action<Course, bool> DisplayCourse;
         public event Action<Quizz, bool> DisplayQuizz;
+        public event Action<Quizz, string> RenameTabQuizz;
         public MainViewModel() : base() {
             Register<Course>(this, AppMessages.MSG_DISPLAY_COURSE, course => {
                 Console.WriteLine("Test");
@@ -23,6 +24,10 @@ namespace School04.ViewModel {
             Register<Quizz>(this, AppMessages.MSG_NEW_QUIZZ, quizz => {
                 Console.WriteLine("Test");
                 DisplayQuizz?.Invoke(quizz, true);
+            });
+
+            Register<Quizz>(this, AppMessages.MSG_TITLE_QUIZZ_CHANGED, quizz => {
+                RenameTabQuizz?.Invoke(quizz, quizz.Title);
             });
 
             Register(this, AppMessages.MSG_NEW_COURSE, () => {

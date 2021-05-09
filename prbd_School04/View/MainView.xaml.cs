@@ -53,5 +53,12 @@ namespace School04.View {
                     tabControl.SetFocus(tab);
             }
         }
+
+        private void Vm_RenameTabQuizz(Quizz quizz, string header) {
+            var tab = tabControl.SelectedItem as TabItem;
+            if (tab != null) {
+                tab.Header = tab.Tag = header = string.IsNullOrEmpty(header) ? "<new quizz>" : header;
+            }
+        }
     }
 }

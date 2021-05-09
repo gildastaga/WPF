@@ -4,11 +4,16 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using PRBD_Framework;
 using School04.Model;
 
 namespace School04.ViewModel {
     class QuizzViewModel : ViewModelCommon {
+        public ICommand Save { get; set; }
+        public ICommand Cancel { get; set; }
+        public ICommand Delete { get; set; }
+
         private Quizz quizz;
         public Quizz Quizz { get => quizz; set => SetProperty(ref quizz, value); }
 
@@ -49,6 +54,7 @@ namespace School04.ViewModel {
             set {
                 Quizz.Title = value;
                 RaisePropertyChanged(nameof(Title));
+                NotifyColleagues(AppMessages.MSG_TITLE_QUIZZ_CHANGED, quizz);
             }
         }
 
