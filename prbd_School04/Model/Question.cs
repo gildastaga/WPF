@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +36,13 @@ namespace School04.Model {
             IsUpdate = isUpdate;
             IsDelete = isDelete;
             Course = course;
+        }
+
+        [NotMapped]     //Indique qu'une propriété ou une classe doit être exclue du mappage de base de données.
+        public int CountQuestions {
+            get {
+                return (from q in QuestionQuizz select q).Count();
+            }
         }
     }
 }

@@ -13,7 +13,6 @@ namespace School04.ViewModel {
         protected override void OnRefreshData() {
             throw new NotImplementedException();
         }
-        // ATTRIBUT BINDER AVEC TOUS LES CHECKBOUTTON avec leur attribut checked pour cocher si le bouton est sélectionné
 
         private ObservableCollection<Question> questions;
         public ObservableCollection<Question> Questions {
@@ -35,7 +34,7 @@ namespace School04.ViewModel {
             }
         }
 
-        public ICommand CheckCategory { get; set; }
+        //public ICommand CheckCategory { get; set; }
         public ICommand None { get; set; }
         public ICommand All { get; set; }
 

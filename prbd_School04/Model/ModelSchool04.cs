@@ -84,7 +84,7 @@ namespace School04.Model {
             anc3.StudentsCourse.Add(enreg2);
             prbd.StudentsCourse.Add(enreg1);
             var quest1 = new Question {
-                Enonce = "Quelle est le langage utilisé ?",
+                Enonce = "-Quelle est le langage utilisé ?",
                 IsUpdate = false,
                 IsDelete = false,
                 Course = prwb,
@@ -93,7 +93,7 @@ namespace School04.Model {
             };
 
             var quest2 = new Question {
-                Enonce = "Qu'est-ce que le SQL Server?",
+                Enonce = "-Qu'est-ce que le SQL Server?",
                 IsUpdate = false,
                 IsDelete = false,
                 Course = sgbd,
@@ -103,19 +103,19 @@ namespace School04.Model {
             Questions.AddRange(quest1, quest2);
 
             var quest3 = new Question {
-                Enonce = "Choisir la réponse avec un (V) :",
+                Enonce = "-Choisir la réponse avec un (V) :",
                 IsUpdate = false,
                 IsDelete = false,
                 Course = prm2,
                 typeQuestion = TypeQuestion.ManyAnswer
             };
             var quest4 = new Question {
-                Enonce = "Qu'est ce que le PHP:",
+                Enonce = "-Qu'est ce que le PHP:",
                 Course = anc3,
                 typeQuestion = TypeQuestion.OneAnswer
             };
             var quest5 = new Question {
-                Enonce = "Choisir les nombres pairs",
+                Enonce = "-Choisir les nombres pairs",
                 Course = map4,
                 typeQuestion = TypeQuestion.ManyAnswer
             };

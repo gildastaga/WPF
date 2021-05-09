@@ -1,6 +1,7 @@
 ﻿using PRBD_Framework;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,5 +26,6 @@ namespace School04.Model {
             Context.Categories.Remove(this);
             Context.SaveChanges();
         }
+
     }
 }
