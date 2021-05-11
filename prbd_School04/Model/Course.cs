@@ -59,8 +59,8 @@ namespace School04.Model {
             lsCourses.Add(c);
             Context.SaveChanges();
         }
-        public static bool RemoveElem( Course c ) {
-            return lsCourses.Remove(c);
+        public static void RemoveElem( Course c ) {
+            lsCourses.Remove(c);
             Context.SaveChanges();
         }
         public static Course GetById(int courseId) {
