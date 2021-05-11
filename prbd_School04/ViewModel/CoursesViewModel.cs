@@ -51,8 +51,8 @@ namespace School04.ViewModel {
 
        
 
-        DisplayCourseDetails = new RelayCommand<Course>(course => {
-                NotifyColleagues(AppMessages.MSG_DISPLAY_COURSE, course);
+            DisplayCourseDetails = new RelayCommand<Course>(course => {
+                 NotifyColleagues(AppMessages.MSG_DISPLAY_COURSE, course);
             });
         }
         private void ApplyFilterAction() {

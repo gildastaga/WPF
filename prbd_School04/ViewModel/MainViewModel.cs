@@ -9,6 +9,8 @@ using School04.Model;
 
 namespace School04.ViewModel {
     public class MainViewModel : ViewModelCommon {
+        //Action pour le renommage de l'en-tete de l'onglet
+        public event Action<Course, string> RenameTabCourseDetail;
         public event Action<Course, bool> DisplayCourse;
         public event Action<Quizz, bool> DisplayQuizz;
         public event Action OnLogout;
@@ -24,6 +26,10 @@ namespace School04.ViewModel {
             Register<Course>(this, AppMessages.MSG_DISPLAY_COURSE, course => {
                 Console.WriteLine("Test");
                 DisplayCourse?.Invoke(course, false);
+            });
+
+            Register<Course>(this, AppMessages.MSG_COURSE_CHANGED, course => {
+                RenameTabCourseDetail?.Invoke(course, course.Title);
             });
 
             Register<Course>(this, AppMessages.MSG_SAVE_COURSE, course => {
@@ -51,7 +57,7 @@ namespace School04.ViewModel {
             });
 
             Register(this, AppMessages.MSG_NEW_COURSE, () => {
-                ///créer une nouvelle instance pour un nouveau cours "vide"
+                ///créer une nouvelle instance pour un nouveau course "vide"
                 //si le user connecté est un teacher 
                 //sinon ne rien afficher
                 if (IsTeacher) {

@@ -49,6 +49,14 @@ namespace School04.View {
                     tabControl.SetFocus(tab);
             }
         }
+        //handler pour l'en-tete de l'onglet du nouveau course
+        private void Vm_RenameTabCourseDetail( Course course, string header ) {
+            var tab = tabControl.SelectedItem as TabItem;
+            if (tab != null) {
+                tab.Header = tab.Tag = header = string.IsNullOrEmpty(header) ? "<new course>" : header;
+            }
+        }
+        
         //handler qui réalise le logout simplement en "redirigeant" vers la page de login
         private void Vm_OnLogout() {
             App.NavigateTo<LoginView>();

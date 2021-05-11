@@ -21,16 +21,19 @@ namespace School04.ViewModel {
                 RaisePropertyChanged(nameof(IsNew));
             }
         }
-        public ICommand SaveCourse {
+        public ICommand SaveCourse { //commande du binding sur le bouton pour sauvegarder un cours
             get; set;
         }
-        public ICommand CancelCourse {
+        public ICommand CancelCourse { //commande du binding sur le bouton pour annuler les changements d'un cours
             get; set;
         }
-        public ICommand DeleteCourse {
+        public ICommand DeleteCourse { //commande du binding sur le bouton pour delete un cours
             get; set;
         }
         public void makeList() {
+        }
+        public bool IsExisting {
+            get => !isNew;
         }
         public CoursesDetailsViewModel() : base() {
             makeList();
@@ -38,7 +41,8 @@ namespace School04.ViewModel {
             //SaveCourse = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_SAVE_COURSE); });
             CancelCourse = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_CANCEL_COURSE); });
             DeleteCourse = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_DELETE_COURSE);});
-            SaveCourse = new RelayCommand(SaveActionCourse, CanSaveActionCourse);
+            //premier parametre est une action. Deuxieme paramètre va determiner si le bouton peut etre actif ou pas
+            SaveCourse = new RelayCommand(SaveActionCourse, CanSaveOrCancelActionCourse); 
             //Cancel = new RelayCommand(CancelAction, CanCancelAction);
             //Delete = new RelayCommand(DeleteAction, () => !IsNew);
         }
@@ -60,21 +64,24 @@ namespace School04.ViewModel {
             RaisePropertyChanged();
         }
         private void SaveActionCourse() {
+            //On verifie si le course est nouveau
             if (IsNew) {
-                // Un petit raccourci ;-)
-                Course.
+                // il faut ajouter l'entité dans la collection des entités gérées par EF
                 Context.Add(Course);
                 IsNew = false;
             }
             Context.SaveChanges();
             OnRefreshData();
-            NotifyColleagues(AppMessages.MSG_SAVE_COURSE, Course);
+            NotifyColleagues(AppMessages.MSG_COURSE_CHANGED, Course);
         }
-        private bool CanSaveActionCourse() {
+
+        // determine si le bouton peut etre actif ou pas
+        private bool CanSaveOrCancelActionCourse() {
             if (IsNew)
                 return !string.IsNullOrEmpty(Title);
             return Course != null && (Context?.Entry(Course)?.State == EntityState.Modified);
         }
+        //ici, on crée les propriétés pour les différents champs qui sont bindés dans la CourseDetailsView.xaml
         public int? Code {
             get { return Course?.Code; }
             set {
@@ -88,6 +95,8 @@ namespace School04.ViewModel {
             set {
                 Course.Title = value;
                 RaisePropertyChanged(nameof(Title));
+                // Pour pouvoir mettre à jour l'en-tête de l'onglet en cas de changement de titre de course
+                NotifyColleagues(AppMessages.MSG_COURSE_CHANGED, Course);
             }
         }
 

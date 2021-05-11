@@ -24,7 +24,9 @@ namespace School04.View {
         public CourseDetailsView() {
             InitializeComponent();
         }
-
+        // premier paramètre contient le course dont on veut afficher / éditer les données. 
+        //Le second paramètre est un booléen qui indique si le cours en question est un nouveau course en cours de définition, 
+        //ou un course déjà existant( et donc déjà stocké en base de données )
         public CourseDetailsView(Course course, bool isNew) {
             InitializeComponent();
             vm.Init(course, isNew);
