@@ -47,7 +47,7 @@ namespace School04.ViewModel {
             ClearFilter = new RelayCommand(() => Filter = "");
 
             NewCourse = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_NEW_COURSE); });
-            Register<Course>(this, AppMessages.MSG_SAVE_COURSE, member => { ApplyFilterAction(); });
+            //Register<Course>(this, AppMessages.MSG_SAVE_COURSE, member => { ApplyFilterAction(); });
 
        
 

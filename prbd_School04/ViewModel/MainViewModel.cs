@@ -32,7 +32,7 @@ namespace School04.ViewModel {
                 RenameTabCourseDetail?.Invoke(course, course.Title);
             });
 
-            Register<Course>(this, AppMessages.MSG_SAVE_COURSE, course => {
+            /*Register<Course>(this, AppMessages.MSG_SAVE_COURSE, course => {
                 School04.Model.Course.AddElem(course);
 
             });
@@ -44,7 +44,7 @@ namespace School04.ViewModel {
             Register<Course>(this, AppMessages.MSG_DELETE_COURSE, course => {
                 Course.RemoveElem(course);
                 DisplayCourse?.Invoke(course, false);
-            });
+            });*/
 
             Register<Quizz>(this, AppMessages.MSG_DISPLAY_QUIZZ, quizz => {
                 Console.WriteLine("Test");

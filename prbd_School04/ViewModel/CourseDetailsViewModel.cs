@@ -39,8 +39,8 @@ namespace School04.ViewModel {
             makeList();
 
             //SaveCourse = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_SAVE_COURSE); });
-            CancelCourse = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_CANCEL_COURSE); });
-            DeleteCourse = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_DELETE_COURSE);});
+            //CancelCourse = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_CANCEL_COURSE); });
+            //DeleteCourse = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_DELETE_COURSE);});
             //premier parametre est une action. Deuxieme paramètre va determiner si le bouton peut etre actif ou pas
             SaveCourse = new RelayCommand(SaveActionCourse, CanSaveOrCancelActionCourse); 
             //Cancel = new RelayCommand(CancelAction, CanCancelAction);
