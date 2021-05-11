@@ -27,6 +27,8 @@ namespace School04 {
         //surcharge la classe 
         protected override void OnStartup( StartupEventArgs e ) {
             base.OnStartup(e);
+            // Définit l'intervalle de temps (en secondes) pour le rafraîchissement des données
+            RefreshDelay = Settings.Default.RefreshDelay;
 
             Console.WriteLine("Chargement de BDD en cours");
 
@@ -69,7 +71,8 @@ namespace School04 {
         }*/
 
         protected override void OnRefreshData() {
-            // pour plus tard
+            if (CurrentUser?.Mail != null)
+                CurrentUser = User.GetByMail(CurrentUser.Mail);
         }
     }
 }

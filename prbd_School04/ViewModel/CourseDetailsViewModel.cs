@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using Microsoft.EntityFrameworkCore;
 using PRBD_Framework;
 using School04.Model;
 
 namespace School04.ViewModel {
-    class CourseDetailsViewModel : ViewModelCommon {
+    class CoursesDetailsViewModel : ViewModelCommon {
         private Course course;
         public Course Course { get => course; set => SetProperty(ref course, value); }
 
@@ -19,6 +21,28 @@ namespace School04.ViewModel {
                 RaisePropertyChanged(nameof(IsNew));
             }
         }
+        public ICommand SaveCourse {
+            get; set;
+        }
+        public ICommand CancelCourse {
+            get; set;
+        }
+        public ICommand DeleteCourse {
+            get; set;
+        }
+        public void makeList() {
+        }
+        public CoursesDetailsViewModel() : base() {
+            makeList();
+
+            //SaveCourse = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_SAVE_COURSE); });
+            CancelCourse = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_CANCEL_COURSE); });
+            DeleteCourse = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_DELETE_COURSE);});
+            SaveCourse = new RelayCommand(SaveActionCourse, CanSaveActionCourse);
+            //Cancel = new RelayCommand(CancelAction, CanCancelAction);
+            //Delete = new RelayCommand(DeleteAction, () => !IsNew);
+        }
+
         public void Init(Course course, bool isNew) {
             // Bind properties of child ViewModel
             //this.BindOneWay(nameof(Course), MemberMessages, nameof(MemberMessages.Member));
@@ -29,7 +53,28 @@ namespace School04.ViewModel {
 
             RaisePropertyChanged();
         }
-
+        protected override void OnRefreshData() {
+            if (IsNew || Course == null)
+                return;
+            Course = Course.GetById(Course.CourseId);
+            RaisePropertyChanged();
+        }
+        private void SaveActionCourse() {
+            if (IsNew) {
+                // Un petit raccourci ;-)
+                Course.
+                Context.Add(Course);
+                IsNew = false;
+            }
+            Context.SaveChanges();
+            OnRefreshData();
+            NotifyColleagues(AppMessages.MSG_SAVE_COURSE, Course);
+        }
+        private bool CanSaveActionCourse() {
+            if (IsNew)
+                return !string.IsNullOrEmpty(Title);
+            return Course != null && (Context?.Entry(Course)?.State == EntityState.Modified);
+        }
         public int? Code {
             get { return Course?.Code; }
             set {
