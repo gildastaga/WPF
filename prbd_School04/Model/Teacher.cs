@@ -19,6 +19,6 @@ namespace School04.Model {
             get; set;
         } = new HashSet<Course>();
 
-        public List<Course> lsCourses { get; } = new List<Course>();
+        public virtual List<Course> lsCourses { get; } = new List<Course>();
     }
 }

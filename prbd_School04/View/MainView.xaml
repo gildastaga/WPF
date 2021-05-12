@@ -7,9 +7,9 @@
       xmlns:vm="clr-namespace:School04.ViewModel"
       xmlns:f="clr-namespace:PRBD_Framework;assembly=PRBD_Framework"
       mc:Ignorable="d" 
-      Title="{Binding TitleWindow}" Height="750" Width="900" WindowStartupLocation="CenterScreen">
+      Title="{Binding TitleWindow}" Height="750" Width="900" WindowStartupLocation="CenterScreen" KeyDown="WindowBase_KeyDown">
     <Window.DataContext>
-        <vm:MainViewModel x:Name="vm" DisplayCourse="Vm_DisplayCourse" DisplayQuizz="Vm_DisplayQuizz" RenameTabQuizz="Vm_RenameTabQuizz" CloseTabQuizz="Vm_CloseTabQuizz" />
+        <vm:MainViewModel x:Name="vm" DisplayCourse="Vm_DisplayCourse" RenameTabCourseDetail="Vm_RenameTabCourseDetail" DisplayQuizz="Vm_DisplayQuizz" OnLogout="Vm_OnLogout" RenameTabQuizz="Vm_RenameTabQuizz" CloseTabQuizz="Vm_CloseTabQuizz"/>
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
@@ -17,8 +17,8 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Menu FontFamily="Comic Sans MS" FontSize="14" VerticalAlignment="Center" Height="32" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center">
-            <MenuItem Header="Logout" Click="MenuItem_Click" RenderTransformOrigin="0.636,0.927" />
-            <MenuItem Header="Reload" />
+            <MenuItem Header="Logout" Command="{Binding LogoutCommand}" RenderTransformOrigin="0.636,0.927" />
+            <MenuItem Header="Reload" Command="{Binding ReloadDataCommand}" />
         </Menu>
         <f:MyTabControl x:Name="tabControl" Margin="10" Grid.Row="1">
             <TabItem x:Name="coursesTab" Header="Courses" Tag="Courses">

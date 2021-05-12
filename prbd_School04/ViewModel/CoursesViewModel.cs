@@ -47,21 +47,24 @@ namespace School04.ViewModel {
             ClearFilter = new RelayCommand(() => Filter = "");
 
             NewCourse = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_NEW_COURSE); });
+            Register<Course>(this, AppMessages.MSG_COURSE_CHANGED, member => { ApplyFilterAction(); });
+
+       
 
             DisplayCourseDetails = new RelayCommand<Course>(course => {
-                Console.WriteLine(course.Title);
-                NotifyColleagues(AppMessages.MSG_DISPLAY_COURSE, course);
+                 NotifyColleagues(AppMessages.MSG_DISPLAY_COURSE, course);
             });
         }
         private void ApplyFilterAction() {
             Console.WriteLine("Search clicked! " + Filter);
-            var query = from m in Context.Courses
+            IEnumerable<Course> query = Context.Courses;
+            if(!string.IsNullOrEmpty(Filter))
+                query = from m in Context.Courses
                         where m.Title.Contains(Filter)
                         select m;
             Courses = new ObservableCollection<Course>(query);
             Console.WriteLine($"{query.Count()} courses found");
-        }
-
+        } 
         protected override void OnRefreshData() {
             // Pour plus tard
         }

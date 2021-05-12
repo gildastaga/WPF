@@ -94,7 +94,6 @@ namespace School04.ViewModel {
         }
 
         protected override void OnRefreshData() {
-            throw new NotImplementedException();
         }
     }
 }
