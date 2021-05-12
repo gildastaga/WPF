@@ -165,12 +165,14 @@ namespace School04.Model {
             var questQuizz1 = new QuestionQuizz {
                 Quizz = quiz1,
                 Question = quest1,
-                NbPoint = 10
+                NbPoint = 10,
+                PosQuestionInQuizz = 1
             };
             var questQuizz2 = new QuestionQuizz {
                 Quizz = quiz1,
                 Question = quest2,
-                NbPoint = 25
+                NbPoint = 25,
+                PosQuestionInQuizz = 2
             };
             QuestionQuizzs.AddRange(questQuizz1, questQuizz2);
 
