@@ -9,7 +9,7 @@ using PRBD_Framework;
 using School04.Model;
 
 namespace School04.ViewModel {
-    class CoursesDetailsViewModel : ViewModelCommon {
+    class CourseDetailsViewModel : ViewModelCommon {
         private Course course;
         public Course Course { get => course; set => SetProperty(ref course, value); }
 
@@ -35,7 +35,7 @@ namespace School04.ViewModel {
         public bool IsExisting {
             get => !isNew;
         }
-        public CoursesDetailsViewModel() : base() {
+        public CourseDetailsViewModel() : base() {
             makeList();
 
             //SaveCourse = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_SAVE_COURSE); });
@@ -64,8 +64,10 @@ namespace School04.ViewModel {
             RaisePropertyChanged();
         }
         private void SaveActionCourse() {
+            Console.WriteLine("SaveCourse");
             //On verifie si le course est nouveau
             if (IsNew) {
+                
                 // il faut ajouter l'entité dans la collection des entités gérées par EF
                 Context.Add(Course);
                 IsNew = false;
