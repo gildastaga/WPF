@@ -9,6 +9,7 @@
       mc:Ignorable="d" 
       Title="{Binding TitleWindow}" Height="750" Width="900" WindowStartupLocation="CenterScreen" KeyDown="WindowBase_KeyDown">
     <Window.DataContext>
+        <vm:MainViewModel x:Name="vm" DisplayCourse="Vm_DisplayCourse" RenameTabCourseDetail="Vm_RenameTabCourseDetail" DisplayQuizz="Vm_DisplayQuizz" OnLogout="Vm_OnLogout" RenameTabQuizz="Vm_RenameTabQuizz" CloseTabQuizz="Vm_CloseTabQuizz"/>
         <vm:MainViewModel x:Name="vm" DisplayCourse="Vm_DisplayCourse" RenameTabCourseDetail="Vm_RenameTabCourseDetail" DisplayQuizz="Vm_DisplayQuizz" CloseTab="Vm_CloseTab" OnLogout="Vm_OnLogout"/>
     </Window.DataContext>
     <Grid>

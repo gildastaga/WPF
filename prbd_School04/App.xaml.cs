@@ -36,7 +36,7 @@ namespace School04 {
             Context.Database.EnsureCreated();
             Context.SeedData();
             Console.WriteLine("Liste de tous les teachers");
-            foreach (var t in Context.Teachers) {
+            foreach (var t in Context.Teachers.ToList()) {
                 Console.Write($"{t.FirstName} {t.Name}");
                 foreach (var course in t.CourseGiven) {
                     Console.Write($"{ course.Title} ");

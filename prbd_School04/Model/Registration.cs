@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using PRBD_Framework;
 
 namespace School04.Model {
-    public enum State { ACTIVE, VALIDE, INACTIVE }
+    public enum State { Active, Valide, Inactive }
     public class Registration : EntityBase<ModelSchool04> {
 
         public State RegistrationState {
             get; set;
-        } = State.INACTIVE;
+        } = State.Inactive;
         public int StudentId {
             get; set;
         }
@@ -31,6 +31,31 @@ namespace School04.Model {
         public Registration( Student student, Course course ) {
             Student = student;
             Course = course;
+        }
+        public static IQueryable<Registration> GetCurrentRegistrationsFromCourse(Course course) {
+            return Context.Registrations.Where(r => r.Course == course);
+        }
+        public static IQueryable<User> GetNoRegistrationsFromCourse(Course course) {
+            var filtered = from s in Context.Students
+                           where s.CoursesStudent.All(s => s.Course != course)
+                           orderby s.FirstName
+                           select s;
+            return filtered;
+        }
+
+        public string SwitchLabel {
+            get {
+                switch (((State)RegistrationState).GetHashCode()) {
+                    case 0:
+                        return "Deactivate";
+                    case 1:
+                        return "Validate";
+                    case 2:
+                        return "Activate";
+                    default:
+                        return "Deactivate";
+                }
+            }
         }
     }
 }

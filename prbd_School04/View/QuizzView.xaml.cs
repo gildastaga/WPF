@@ -27,6 +27,7 @@ namespace School04.View {
         public QuizzView(Quizz quizz, bool isNew) {
             this.quizz = quizz;
             InitializeComponent();
+            vm.Init(quizz, isNew);
         }
     }
 }

@@ -21,6 +21,8 @@ namespace School04.ViewModel {
         public ICommand ReloadDataCommand {
             get; set;
         }
+        public event Action<Quizz, string> RenameTabQuizz;
+        public event Action<Quizz> CloseTabQuizz;
         public MainViewModel() : base() {
             LogoutCommand = new RelayCommand(LogoutAction);
 
@@ -55,6 +57,14 @@ namespace School04.ViewModel {
             Register<Quizz>(this, AppMessages.MSG_NEW_QUIZZ, quizz => {
                 Console.WriteLine("Test");
                 DisplayQuizz?.Invoke(quizz, true);
+            });
+
+            Register<Quizz>(this, AppMessages.MSG_TITLE_QUIZZ_CHANGED, quizz => {
+                RenameTabQuizz?.Invoke(quizz, quizz.Title);
+            });
+
+            Register<Quizz>(this, AppMessages.MSG_CLOSE_QUIZZ_TAB, quizz => {
+                CloseTabQuizz?.Invoke(quizz);
             });
 
             Register(this, AppMessages.MSG_NEW_COURSE, () => {
