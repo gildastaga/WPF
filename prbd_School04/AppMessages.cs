@@ -7,8 +7,7 @@
         MSG_NEW_QUIZZ,
         MSG_TITLE_QUIZZ_CHANGED,
         MSG_QUIZZ_CHANGED,
-        MSG_CLOSE_QUIZZ_TAB
-        MSG_NEW_QUIZZ,
+        MSG_CLOSE_QUIZZ_TAB,
         MSG_COURSE_CHANGED
     }
 }
