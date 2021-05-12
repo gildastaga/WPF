@@ -12,7 +12,7 @@ namespace School04.Model {
 
         protected override void OnConfiguring( DbContextOptionsBuilder optionsBuilder ) {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=school04");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=school04").UseLazyLoadingProxies(true); //Charge les liens entre les objets sql de façon automatique
         }
         protected override void OnModelCreating( ModelBuilder modelBuilder ) {
             base.OnModelCreating(modelBuilder);
