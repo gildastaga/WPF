@@ -63,6 +63,11 @@ namespace School04.Model {
             lsCourses.Remove(c);
             Context.SaveChanges();
         }
+
+        public void Delete() {
+            Context.Courses.Remove(this);
+            Context.SaveChanges();
+        }
         public static Course GetById(int courseId) {
             return Context.Courses.SingleOrDefault(c => c.CourseId == courseId);
         }

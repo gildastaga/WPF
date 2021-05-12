@@ -155,7 +155,12 @@ namespace School04.Model {
                 Course = prbd,
                 Title = "Premier quiz"
             };
-            Quizz.AddRange(quiz1);
+            
+            var quiz2 = new Quizz {
+                Course = tgpr,
+                Title = "Deuxième quiz"
+            };
+            Quizz.AddRange(quiz1, quiz2);
 
             var questQuizz1 = new QuestionQuizz {
                 Quizz = quiz1,

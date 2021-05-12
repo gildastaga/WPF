@@ -56,7 +56,11 @@ namespace School04.View {
                 tab.Header = tab.Tag = header = string.IsNullOrEmpty(header) ? "<new course>" : header;
             }
         }
-        
+        private void Vm_CloseTab( Course course ) {
+            var tab = tabControl.FindByTag(course.Title);
+            tabControl.Items.Remove(tab);
+        }
+
         //handler qui réalise le logout simplement en "redirigeant" vers la page de login
         private void Vm_OnLogout() {
             App.NavigateTo<LoginView>();

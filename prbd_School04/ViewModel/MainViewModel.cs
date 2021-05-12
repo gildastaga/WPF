@@ -13,6 +13,7 @@ namespace School04.ViewModel {
         public event Action<Course, string> RenameTabCourseDetail;
         public event Action<Course, bool> DisplayCourse;
         public event Action<Quizz, bool> DisplayQuizz;
+        public event Action<Course> CloseTab;
         public event Action OnLogout;
         public ICommand LogoutCommand {
             get; set;
@@ -65,6 +66,10 @@ namespace School04.ViewModel {
                     //demande à la vue de créer dynamiquement un nouvel onglet avec le titre "new course"
                     DisplayCourse?.Invoke(course, true);
                 }
+            });
+
+            Register<Course>(this, AppMessages.MSG_CLOSE_TAB, course => {
+                CloseTab?.Invoke(course);
             });
         }
         private void LogoutAction() {

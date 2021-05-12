@@ -42,9 +42,9 @@ namespace School04.ViewModel {
             //CancelCourse = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_CANCEL_COURSE); });
             //DeleteCourse = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_DELETE_COURSE);});
             //premier parametre est une action. Deuxieme paramètre va determiner si le bouton peut etre actif ou pas
-            SaveCourse = new RelayCommand(SaveActionCourse, CanSaveOrCancelActionCourse); 
-            //Cancel = new RelayCommand(CancelAction, CanCancelAction);
-            //Delete = new RelayCommand(DeleteAction, () => !IsNew);
+            SaveCourse = new RelayCommand(SaveActionCourse, CanSaveActionCourse); 
+            CancelCourse = new RelayCommand(CancelActionCourse, CanCancelActionCourse);
+            DeleteCourse = new RelayCommand(DeleteActionCourse, () => !IsNew);
         }
 
         public void Init(Course course, bool isNew) {
@@ -76,12 +76,28 @@ namespace School04.ViewModel {
             OnRefreshData();
             NotifyColleagues(AppMessages.MSG_COURSE_CHANGED, Course);
         }
-
         // determine si le bouton peut etre actif ou pas
-        private bool CanSaveOrCancelActionCourse() {
+        private bool CanSaveActionCourse() {
             if (IsNew)
                 return !string.IsNullOrEmpty(Title);
             return Course != null && (Context?.Entry(Course)?.State == EntityState.Modified);
+        }
+        private void CancelActionCourse() {
+            if (IsNew) {
+                NotifyColleagues(AppMessages.MSG_CLOSE_TAB, course);
+            } else {
+                Context.Reload(Course);
+                RaisePropertyChanged();
+            }
+        }
+        private bool CanCancelActionCourse() {
+            return Course != null && (IsNew || Context?.Entry(Course)?.State == EntityState.Modified);
+        }
+        private void DeleteActionCourse() {
+            CancelActionCourse();
+            Course.Delete();
+            NotifyColleagues(AppMessages.MSG_COURSE_CHANGED, Course);
+            NotifyColleagues(AppMessages.MSG_CLOSE_TAB, Course);
         }
         //ici, on crée les propriétés pour les différents champs qui sont bindés dans la CourseDetailsView.xaml
         public int? Code {
