@@ -21,7 +21,7 @@ namespace School04.Model {
         public Boolean IsDelete { get; set; }
         public TypeQuestion typeQuestion { get; set; } = TypeQuestion.OneAnswer;
         public virtual ICollection<Category> Categories{get; set;} = new HashSet<Category>();
-        public virtual ICollection<Question> Quizz { get; set;} = new HashSet<Question>();
+        public virtual ICollection<Question> QuestionQuizz {get; set;} = new HashSet<Question>();
 
        public virtual ICollection<Answer> Answers{get; set;} = new HashSet<Answer>();
 
@@ -41,7 +41,7 @@ namespace School04.Model {
         [NotMapped]     //Indique qu'une propriété ou une classe doit être exclue du mappage de base de données.
         public int CountQuestions {
             get {
-                return (from q in Quizz select q).Count();
+                return (from q in QuestionQuizz select q).Count();
             }
         }
 
