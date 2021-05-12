@@ -22,7 +22,7 @@ namespace School04.ViewModel {
                 RaisePropertyChanged(nameof(CurrentRegistrations), nameof(Registrations));
             }
         }
-        public ICollectionView Registrations => CurrentRegistrations.GetCollectionView(nameof(DateTime), ListSortDirection.Descending);
+        public ICollectionView Registrations => CurrentRegistrations.GetCollectionView(nameof(Registration.StudentName), ListSortDirection.Ascending);
 
         private ObservableCollectionFast<User> noRegistrations = new ObservableCollectionFast<User>();
         public ObservableCollectionFast<User> NoRegistrations {
@@ -32,7 +32,7 @@ namespace School04.ViewModel {
                 RaisePropertyChanged(nameof(NoRegistrations), nameof(NotRegistered));
             }
         }
-        public ICollectionView NotRegistered => NoRegistrations.GetCollectionView(nameof(DateTime), ListSortDirection.Descending);
+        public ICollectionView NotRegistered => NoRegistrations.GetCollectionView(nameof(User.FullName), ListSortDirection.Ascending);
 
         public void Init(Course course) {
             // Il faut recharger ce membre dans le contexte courant pour pouvoir le modifier

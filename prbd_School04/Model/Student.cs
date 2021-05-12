@@ -20,6 +20,5 @@ namespace School04.Model {
         public virtual ICollection<Registration> CoursesStudent {
             get; set;
         } = new HashSet<Registration>();
-
     }
 }

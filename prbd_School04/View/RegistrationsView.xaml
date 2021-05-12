@@ -33,7 +33,7 @@
                   AutoGenerateColumns="False" FontSize="12" IsReadOnly="False" Margin="5" CanUserAddRows="False" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" MaxHeight="160"
                   SelectedItemsList="{Binding SelectedItems}" Width="324">
                 <f:MyDataGrid.Columns>
-                    <DataGridTextColumn Header="Student" Binding="{Binding Student}" Width="*" IsReadOnly="True" SortDirection="Descending"/>
+                    <DataGridTextColumn Header="Student" Binding="{Binding StudentName}" Width="*" IsReadOnly="True" SortDirection="Descending"/>
                     <DataGridTextColumn Header="State" Binding="{Binding RegistrationState}" IsReadOnly="True" />
                     <DataGridTemplateColumn Header="Actions" Width="75">
                         <DataGridTemplateColumn.CellTemplate>
@@ -59,7 +59,7 @@
                   AutoGenerateColumns="False" FontSize="12" IsReadOnly="False" Margin="5" CanUserAddRows="False" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" MaxHeight="160"
                   SelectedItemsList="{Binding SelectedItems}" Width="324">
                 <f:MyDataGrid.Columns>
-                    <DataGridTextColumn Header="Student" Binding="{Binding}" Width="*" IsReadOnly="True" SortDirection="Descending"/>
+                    <DataGridTextColumn Header="Student" Binding="{Binding FullName}" Width="*" IsReadOnly="True" SortDirection="Descending"/>
                 </f:MyDataGrid.Columns>
                 <f:MyDataGrid.InputBindings>
                     <KeyBinding Key="Delete" Command="{Binding DeleteMessages}" CommandParameter="{Binding SelectedItemsList, ElementName=grid}" />

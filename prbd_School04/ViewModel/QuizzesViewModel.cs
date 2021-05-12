@@ -32,7 +32,7 @@ namespace School04.ViewModel {
                 RaisePropertyChanged(nameof(Quizzes), nameof(QuizzesView));
             }
         }
-        public ICollectionView QuizzesView => Quizzes.GetCollectionView(nameof(DateTime), ListSortDirection.Descending);
+        public ICollectionView QuizzesView => Quizzes.GetCollectionView(nameof(Quizz.Title), ListSortDirection.Ascending);
 
         public void Init(Course course) {
             // Il faut recharger ce membre dans le contexte courant pour pouvoir le modifier
@@ -50,8 +50,8 @@ namespace School04.ViewModel {
             get; set;
         }
 
-        protected override void OnRefreshData() {
-            Quizzes = new ObservableCollectionFast<Quizz>(Quizz.GetQuizzesFromCourse(Course));
+        protected override void OnRefreshData() { 
+            Quizzes.Reset(Quizz.GetQuizzesFromCourse(Course));
         }
     }
 }
