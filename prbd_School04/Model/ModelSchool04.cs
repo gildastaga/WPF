@@ -58,9 +58,13 @@ namespace School04.Model {
 
             var Katia = new Student("Mijares", "Katia", "abc@def", "abcdef");
             var Corentin = new Student("Heinix", "Corentin", "ghj@def", "abcdef");
+            var Marceline = new Student("Momosoh", "Marceline", "marceline@epfc.eu", "Marceline1.");
+            var Jean = new Student("Sérien", "Jean", "jean@mail.be", "JeanPass1.");
+            var Pierre = new Student("Kiroule", "Pierre", "pierre@epfc.eu", "Pierre1.");
+            var Paul = new Student("Itesse", "Paul", "paul@gmail.com", "PaulPass1.");
             var Benoit = new Teacher("Penelle", "Benoit", "benoit@penelle", "Penelle1");
             var Boris = new Teacher("Verhagen", "Boris", "boris@verhagen", "Boris1");
-            Students.AddRange(Katia, Corentin);
+            Students.AddRange(Katia, Corentin, Marceline, Jean, Pierre, Paul);
             Teachers.AddRange(Benoit, Boris);
             var anc3 = new Course(1868, "ANC3", "Projet d'analyse et de conception", 10, Benoit);
             var map4 = new Course(1914, "MAP4", "Mathématique appliquées à l'informatique", 12, Benoit);
@@ -78,6 +82,7 @@ namespace School04.Model {
             var enreg4 = new Registration(Katia, tgpr);
             var enreg5 = new Registration(Corentin, tgpr);
             var enreg6 = new Registration(Katia, prbd);
+            enreg5.RegistrationState = State.Active;
             Registrations.AddRange(enreg1, enreg2, enreg3, enreg4, enreg5, enreg6);
             Katia.CoursesStudent.Add(enreg2);
             Corentin.CoursesStudent.Add(enreg1);

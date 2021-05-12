@@ -18,7 +18,11 @@ namespace School04.ViewModel {
                 NotifyColleagues(AppMessages.MSG_DISPLAY_QUIZZ, quizz);
             });
 
-            CreateQuizz = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_NEW_QUIZZ, new Quizz("", null, null, Course)); });
+            CreateQuizz = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_NEW_QUIZZ, new Quizz("", null, null, null, Course)); });
+
+            Register<Quizz>(this, AppMessages.MSG_QUIZZ_CHANGED, quizz => {
+                OnRefreshData();
+            });
         }
         private ObservableCollectionFast<Quizz> quizzes = new ObservableCollectionFast<Quizz>();
         public ObservableCollectionFast<Quizz> Quizzes {
@@ -44,6 +48,10 @@ namespace School04.ViewModel {
 
         public ICommand CreateQuizz {
             get; set;
+        }
+
+        protected override void OnRefreshData() {
+            Quizzes = new ObservableCollectionFast<Quizz>(Quizz.GetQuizzesFromCourse(Course));
         }
     }
 }

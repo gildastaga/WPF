@@ -29,6 +29,7 @@ namespace School04.View {
         public RegistrationsView(Course course) {
             this.course = course;
             InitializeComponent();
+            vm.Init(course);
         }
     }
 }

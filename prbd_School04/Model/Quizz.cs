@@ -11,24 +11,35 @@ namespace School04.Model {
         public int QuizzId { get; set; }
         public string Title { get; set; }
         public DateTime? CreationDate { get; set; } = DateTime.Now;
-        public DateTime? ExaminationDate { get; set; }
+        public DateTime? ExaminationStartDate { get; set; }
+
+        public DateTime? ExaminationEndDate { get; set; }
         [Required]
         public virtual Course Course { get; set; }
         public virtual ICollection<QuestionQuizz> QuestionsQuizz { get; set; } = new HashSet<QuestionQuizz>();
         public Quizz() {
         }
-        public Quizz( string title, DateTime? creation, DateTime? examination, Course course ) {
+        public Quizz( string title, DateTime? creation, DateTime? examinationStart, DateTime? examinationEnd, Course course ) {
             Title = title;
             CreationDate = creation;
-            ExaminationDate = examination;
+            ExaminationStartDate = examinationStart;
+            ExaminationEndDate = examinationEnd;
             Course = course;
         }
+        public static Quizz GetById(int id) {
+            return Context.Quizz.SingleOrDefault(q => q.QuizzId == id);
+        }
         public static IQueryable<Quizz> GetAll() {
-            return Context.Quizz.OrderByDescending(m => m.ExaminationDate);
+            return Context.Quizz.OrderByDescending(m => m.ExaminationStartDate);
         }
 
         public static IQueryable<Quizz> GetQuizzesFromCourse(Course course) {
             return Context.Quizz.Where(q => q.Course == course);
+        }
+
+        public void Delete() { //TODO: Remove the linked QuestionsQuizz
+            Context.Quizz.Remove(this);
+            Context.SaveChanges();
         }
     }
 }
