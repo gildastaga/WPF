@@ -67,7 +67,6 @@ namespace School04.ViewModel {
             Console.WriteLine("SaveCourse");
             //On verifie si le course est nouveau
             if (IsNew) {
-                
                 // il faut ajouter l'entité dans la collection des entités gérées par EF
                 Context.Add(Course);
                 IsNew = false;
@@ -79,8 +78,8 @@ namespace School04.ViewModel {
         // determine si le bouton peut etre actif ou pas
         private bool CanSaveActionCourse() {
             if (IsNew)
-                return !string.IsNullOrEmpty(Title);
-            return Course != null && (Context?.Entry(Course)?.State == EntityState.Modified);
+                return !string.IsNullOrEmpty(Title) && Code != null;
+            return Course != null && Code != null && !string.IsNullOrEmpty(Title) && MaxCapacity >= Course.StudentsCourse.Count() && (Context?.Entry(Course)?.State == EntityState.Modified);
         }
         private void CancelActionCourse() {
             if (IsNew) {
