@@ -53,6 +53,7 @@
 
   <ItemGroup>
     <Folder Include="Ressources\" />
+  <Resource Include="Ressources\background.png" />
   </ItemGroup>
 
 </Project>

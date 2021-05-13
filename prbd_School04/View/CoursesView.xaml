@@ -17,7 +17,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition/>
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -26,9 +26,9 @@
         </Grid.ColumnDefinitions>
         <!-- UpdateSourceTrigger=PropertyChanged : data binding doit être déclenché à chaque 
         fois que la propriété Text du champ de recherche est modifiée -->
-        <TextBox Text="{Binding Filter, UpdateSourceTrigger=PropertyChanged}" FontSize="14" Margin="10,10,10,10" />
-        <Button Content="Clear" Command="{Binding ClearFilter}" Grid.Column="1" Margin="10"/>
-        <ListView x:Name="lvCourses" ItemsSource="{Binding Courses}" Grid.ColumnSpan="2" Grid.Row="1" BorderBrush="Transparent" SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseDoubleClick="lvCourses_MouseDoubleClick" >
+        <TextBox Text="{Binding Filter, UpdateSourceTrigger=PropertyChanged}" FontSize="14" Margin="10,10,10,10" Background="{x:Null}" Foreground="White" BorderBrush="Gray" BorderThickness="2" Padding="8" />
+        <Button Content="Clear" Command="{Binding ClearFilter}" Grid.Column="1" Margin="10,10,10,10" Background="{x:Null}"  OpacityMask="#FF2B2323" Foreground="White" BorderBrush="Gray" BorderThickness="2" Padding="8"/>
+        <ListView x:Name="lvCourses" ItemsSource="{Binding Courses}" Grid.ColumnSpan="2" Grid.Row="1" BorderBrush="Transparent" SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseDoubleClick="lvCourses_MouseDoubleClick" Background="{x:Null}" >
             <!--Afin de mettre la liste des courses cote à cote-->
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -39,20 +39,19 @@
                 <DataTemplate>
                     <Border CornerRadius="6"
                         BorderBrush="Gray"
-                        Background="LightGray"
                         BorderThickness="2"
                         Padding="8">
                         <StackPanel>
-                            <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" Text="{Binding Code}"/>
-                            <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" Text="{Binding Title}" />
-                            <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" TextWrapping="Wrap" Text="{Binding Description}" />
-                            <TextBlock FontSize="14" FontStyle="Italic" Width="180" FontWeight="Bold" TextAlignment="Center" Text="Teacher : " />
-                            <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" Text="{Binding TeacherCourse}" />
+                            <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" Text="{Binding Code}" Foreground="White"/>
+                            <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" Text="{Binding Title}" Foreground="White" />
+                            <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" TextWrapping="Wrap" Text="{Binding Description}" Foreground="White"/>
+                            <TextBlock FontSize="14" FontStyle="Italic" Width="180" FontWeight="Bold" TextAlignment="Center" Text="Teacher : " Foreground="White"/>
+                            <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" Text="{Binding TeacherCourse}" Foreground="White"/>
                         </StackPanel>
                     </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button x:Name="btnNewCourse" Content="New Course" Command="{Binding NewCourse}" Visibility="{Binding IsTeacher, Converter={StaticResource BoolToVis}}" HorizontalAlignment="Left" Grid.Row="2" Margin="10,10" />
+        <Button x:Name="btnNewCourse" Content="New Course" Command="{Binding NewCourse}" Visibility="{Binding IsTeacher, Converter={StaticResource BoolToVis}}" HorizontalAlignment="Left" Grid.Row="2" Margin="10,10" Foreground="White" BorderBrush="Gray" BorderThickness="2" Padding="8" Background="{x:Null}" />
     </Grid>
 </f:UserControlBase>
