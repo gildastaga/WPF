@@ -19,19 +19,29 @@ namespace School04.Model {
         public string Mail {
             get; set;
         }
-
         public string Password {
             get; set;
         }
-
+        public string Profile {
+            get; set;
+        }
         public string Discriminator { get; }
         public User() {
         }
-        public User(string name, string firstName, string mail, string password ) {
+        public User(string name, string firstName, string mail, string password, string profile = null ) {
             Name = name;
             FirstName = firstName;
+            Profile = profile; 
             Mail = mail;
             Password = password;
+        }
+        public override bool Validate() {
+            ClearErrors();
+            if (Name == null)
+                AddError(nameof(Name), "required");
+            if (FirstName == null)
+                AddError(nameof(FirstName), "required");
+            return !HasErrors;
         }
         public override string ToString() {
             return FirstName + " " + Name;
@@ -43,7 +53,6 @@ namespace School04.Model {
         public bool IsStudent() {
             return Discriminator == "Student";
         }
-
         public static User GetByMail(string mail) {
             return Context.Users.SingleOrDefault(m => m.Mail == mail);
         }

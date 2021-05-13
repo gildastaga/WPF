@@ -8,6 +8,12 @@ namespace School04.Model {
     public class Student : User {
         public Student() {
         }
+        public Student( string name, string firstName, string profile, string mail, string password ) : base(name, firstName, profile, mail, password) {
+            Name = name;
+            FirstName = firstName;
+            Mail = mail;
+            Password = password;
+        }
         public Student( string name, string firstName, string mail, string password ) : base(name, firstName, mail, password) {
             Name = name;
             FirstName = firstName;

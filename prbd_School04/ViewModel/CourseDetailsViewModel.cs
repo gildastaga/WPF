@@ -21,13 +21,16 @@ namespace School04.ViewModel {
                 RaisePropertyChanged(nameof(IsNew));
             }
         }
-        public ICommand SaveCourse { //commande du binding sur le bouton pour sauvegarder un cours
+        //commande du binding sur le bouton pour sauvegarder un cours
+        public ICommand SaveCourse { 
             get; set;
         }
-        public ICommand CancelCourse { //commande du binding sur le bouton pour annuler les changements d'un cours
+        //commande du binding sur le bouton pour annuler les changements d'un cours
+        public ICommand CancelCourse { 
             get; set;
         }
-        public ICommand DeleteCourse { //commande du binding sur le bouton pour delete un cours
+        //commande du binding sur le bouton pour delete un cours
+        public ICommand DeleteCourse { 
             get; set;
         }
         public void makeList() {
@@ -37,10 +40,6 @@ namespace School04.ViewModel {
         }
         public CourseDetailsViewModel() : base() {
             makeList();
-
-            //SaveCourse = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_SAVE_COURSE); });
-            //CancelCourse = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_CANCEL_COURSE); });
-            //DeleteCourse = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_DELETE_COURSE);});
             //premier parametre est une action. Deuxieme paramètre va determiner si le bouton peut etre actif ou pas
             SaveCourse = new RelayCommand(SaveActionCourse, CanSaveActionCourse); 
             CancelCourse = new RelayCommand(CancelActionCourse, CanCancelActionCourse);
@@ -83,7 +82,7 @@ namespace School04.ViewModel {
         }
         private void CancelActionCourse() {
             if (IsNew) {
-                NotifyColleagues(AppMessages.MSG_CLOSE_TAB, course);
+                NotifyColleagues(AppMessages.MSG_CLOSE_TAB_COURSE, course);
             } else {
                 Context.Reload(Course);
                 RaisePropertyChanged();
@@ -96,7 +95,7 @@ namespace School04.ViewModel {
             CancelActionCourse();
             Course.Delete();
             NotifyColleagues(AppMessages.MSG_COURSE_CHANGED, Course);
-            NotifyColleagues(AppMessages.MSG_CLOSE_TAB, Course);
+            NotifyColleagues(AppMessages.MSG_CLOSE_TAB_COURSE, Course);
         }
         //ici, on crée les propriétés pour les différents champs qui sont bindés dans la CourseDetailsView.xaml
         public int? Code {

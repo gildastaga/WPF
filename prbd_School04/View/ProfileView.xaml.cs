@@ -16,8 +16,8 @@ namespace School04.View {
     /// <summary>
     /// Logique d'interaction pour ProfileUser.xaml
     /// </summary>
-    public partial class ProfileUser : Window {
-        public ProfileUser() {
+    public partial class ProfileView : UserControl {
+        public ProfileView() {
             InitializeComponent();
         }
     }

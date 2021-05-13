@@ -69,11 +69,18 @@ namespace School04.View {
             tabControl.Items.Remove(tab);
         }
         
-        private void Vm_CloseTab( Course course ) {
+        private void Vm_CloseTabCourse( Course course ) {
             var tab = tabControl.FindByTag(course.Title);
             tabControl.Items.Remove(tab);
         }
 
+        private void Menu_ProfileUser_Click( object sender, RoutedEventArgs e ) {
+            var tab = tabControl.FindByTag("Profile");
+            if (tab == null)
+                tabControl.Add(new ProfileView(), "Profile", "Profile");
+            else
+                tabControl.SetFocus(tab);
+        }
         //handler qui réalise le logout simplement en "redirigeant" vers la page de login
         private void Vm_OnLogout() {
             App.NavigateTo<LoginView>();
