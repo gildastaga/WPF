@@ -82,6 +82,7 @@ namespace School04.ViewModel {
         }
         private void CancelActionCourse() {
             if (IsNew) {
+                //ferme le tabControl
                 NotifyColleagues(AppMessages.MSG_CLOSE_TAB_COURSE, course);
             } else {
                 Context.Reload(Course);
@@ -95,6 +96,7 @@ namespace School04.ViewModel {
             CancelActionCourse();
             Course.Delete();
             NotifyColleagues(AppMessages.MSG_COURSE_CHANGED, Course);
+            //ferme le tabControl
             NotifyColleagues(AppMessages.MSG_CLOSE_TAB_COURSE, Course);
         }
         //ici, on crée les propriétés pour les différents champs qui sont bindés dans la CourseDetailsView.xaml

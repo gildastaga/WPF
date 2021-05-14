@@ -39,14 +39,15 @@
                 <DataTemplate>
                     <Border CornerRadius="6"
                         BorderBrush="Gray"
+                        Background="#FFB0A8A8"
                         BorderThickness="2"
                         Padding="8">
-                        <StackPanel>
+                        <StackPanel >
                             <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" Text="{Binding Code}" Foreground="White"/>
                             <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" Text="{Binding Title}" Foreground="White" />
                             <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" TextWrapping="Wrap" Text="{Binding Description}" Foreground="White"/>
                             <TextBlock FontSize="14" FontStyle="Italic" Width="180" FontWeight="Bold" TextAlignment="Center" Text="Teacher : " Foreground="White"/>
-                            <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" Text="{Binding TeacherCourse}" Foreground="White"/>
+                            <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" Text="{Binding TeacherCourse}" Foreground="White" />
                         </StackPanel>
                     </Border>
                 </DataTemplate>

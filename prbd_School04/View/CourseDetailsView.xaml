@@ -6,7 +6,7 @@
         xmlns:f="clr-namespace:PRBD_Framework;assembly=PRBD_Framework"
         xmlns:vm="clr-namespace:School04.ViewModel"
         xmlns:local="clr-namespace:School04.View"
-        mc:Ignorable="d" Height="700" Width="850">
+        mc:Ignorable="d" Height="700" Width="900">
     <UserControl.DataContext>
         <vm:CourseDetailsViewModel x:Name="vm"/>
     </UserControl.DataContext>
@@ -35,9 +35,9 @@
             <Label Content="Teacher : " HorizontalAlignment="Left" Margin="10,144,0,0" VerticalAlignment="Top" Grid.RowSpan="2" Foreground="White" FontSize="14" FontWeight="Bold"/>
             <TextBox x:Name="txtTeacher" HorizontalAlignment="Left" Margin="186,148,0,0" Text="{Binding Teacher, Mode=OneWay}" TextWrapping="Wrap" VerticalAlignment="Top" Width="570" IsReadOnly="true" Foreground="White" BorderBrush="Gray" BorderThickness="2" Padding="2" Background="{x:Null}"/>
             <!--Bouttons -->
-            <Button Content="Save" Command="{Binding SaveCourse}" Visibility="{Binding IsTeacher, Converter={StaticResource BoolToVis}}" HorizontalAlignment="Left" Margin="750,57,0,0" VerticalAlignment="Top" Width="50"/>
-            <Button Content="Cancel" Command="{Binding CancelCourse}" Visibility="{Binding IsTeacher, Converter={StaticResource BoolToVis}}" HorizontalAlignment="Left" Margin="750,88,0,0" VerticalAlignment="Top" Width="50" IsCancel="True"/>
-            <Button Content="Delete" Command="{Binding DeleteCourse}" Visibility="{Binding IsTeacher, Converter={StaticResource BoolToVis}}" HorizontalAlignment="Left" Margin="750,118,0,0" VerticalAlignment="Top" Width="50"/>
+            <Button Content="Save" Command="{Binding SaveCourse}" Visibility="{Binding IsTeacher, Converter={StaticResource BoolToVis}}" HorizontalAlignment="Left" Margin="770,57,0,0" VerticalAlignment="Top" Width="80"/>
+            <Button Content="Cancel" Command="{Binding CancelCourse}" Visibility="{Binding IsTeacher, Converter={StaticResource BoolToVis}}" HorizontalAlignment="Left" Margin="770,88,0,0" VerticalAlignment="Top" Width="80" IsCancel="True"/>
+            <Button Content="Delete" Command="{Binding DeleteCourse}" Visibility="{Binding IsTeacher, Converter={StaticResource BoolToVis}}" HorizontalAlignment="Left" Margin="770,118,0,0" VerticalAlignment="Top" Width="80"/>
         </Grid>
         <f:MyTabControl x:Name="tabControl" Margin="10,10,10,10" Grid.Row="1" Background="{x:Null}">
         </f:MyTabControl>

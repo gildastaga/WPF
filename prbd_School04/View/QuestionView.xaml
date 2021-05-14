@@ -23,11 +23,8 @@
     </UserControl.Resources>
 
     <ScrollViewer>
-
         <Grid>
-
             <Grid.RowDefinitions>
-
                 <RowDefinition></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition></RowDefinition>
@@ -39,12 +36,10 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-
             <StackPanel Grid.RowSpan="3">
-
                 <Label x:Name="catégory"  Content="Categories:" VerticalAlignment="Center" Padding="05" Margin="5"/>
                 <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="6" Height="25" >
-                    <ListView  ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderBrush="Transparent" ItemsSource="{Binding Categories}"  SelectionMode="Single" Height="22" Width="324" RenderTransformOrigin="0.508,0.869" >
+                    <ListView  ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderBrush="Transparent" ItemsSource="{Binding Categories}"  SelectionMode="Single" Height="22" Width="324" RenderTransformOrigin="0.508,0.869" Background="{x:Null}" >
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <UniformGrid Columns="5"/>
@@ -52,7 +47,7 @@
                         </ListBox.ItemsPanel>
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <CheckBox Content="{Binding Name}" IsChecked="{Binding Checked, UpdateSourceTrigger=PropertyChanged}" Command="{Binding CheckCategory}" CommandParameter="{Binding}" Margin="0"/>
+                                <CheckBox Content="{Binding Name}" IsChecked="{Binding Checked, UpdateSourceTrigger=PropertyChanged}" Command="{Binding CheckCategory}" CommandParameter="{Binding}" Margin="0" Background="{x:Null}" Foreground="White"/>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
@@ -65,16 +60,14 @@
                             Command="{Binding None}" VerticalAlignment="Top" Width="75"/>
                 </StackPanel>
 
-                <TextBlock TextAlignment="Left" FontWeight="Bold" FontSize="16" Width="338" RenderTransformOrigin="0.494,2.89" Height="19" Margin="20">
+                <TextBlock TextAlignment="Left" FontWeight="Bold" FontSize="16" Width="338" RenderTransformOrigin="0.494,2.89" Height="19" Margin="20" Foreground="White">
                     <Run Text="Available Questions" />
                     <Run Text="(" />
                     <Run Text="{Binding Questions.Count, Mode=OneWay}" />
                     <Run Text=")" />
                 </TextBlock>
 
-                <ListView x:Name="listView" Grid.Row="1" ItemsSource="{Binding Questions}" BorderBrush="Transparent">
-
-                    
+                <ListView x:Name="listView" Grid.Row="1" ItemsSource="{Binding Questions}" BorderBrush="White" Foreground="White" Background="{x:Null}">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <UniformGrid Columns="1"/>
@@ -83,12 +76,9 @@
 
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            
                             <StackPanel>
                                 <TextBlock Text="{Binding Enonce}" Margin="0"/>
-
-                                
-                                <ListView BorderBrush="Transparent" VerticalAlignment ="Center" ItemsSource="{Binding Propositions}"  SelectionMode="Single">
+                                <ListView BorderBrush="White" VerticalAlignment ="Center" ItemsSource="{Binding Propositions}"  SelectionMode="Single" Background="{x:Null}" Foreground="White">
                                     <ListView.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <WrapPanel/>

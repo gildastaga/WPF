@@ -73,7 +73,13 @@ namespace School04.Model {
             var prm2 = new Course(1900, "PRM2", "Principes algorithmiques et programmation", 5, Boris);
             var prwb = new Course(1930, "PRWB", "Projet de développement Web", 2, Benoit);
             var tgpr = new Course(1963, "TGPR", "Technique de gestion de projets", 8, Benoit);
-            Courses.AddRange(anc3, map4, prbd, sgbd, prm2, prwb, tgpr);
+            var bnet = new Course(1958, "BNET", "réseaux et sécurité", 8, Benoit);
+            var snet = new Course(1964, "SNET", "réseaux et sécurité", 8, Benoit);
+            var algo = new Course(1854, "ALGO", "cours d'algo", 8, Benoit);
+            var chimie = new Course(1987, "CHM", "cours de chimie", 8, Benoit);
+            var phys = new Course(1985, "PHY", "cours de physique", 8, Benoit);
+            var ang = new Course(1966, "ANG", "cours d'anglais", 8, Benoit);
+            Courses.AddRange(anc3, map4, prbd, sgbd, prm2, prwb, tgpr, bnet, snet, algo, chimie, phys, ang);
             Benoit.CourseGiven.Add(sgbd);
             Boris.CourseGiven.Add(prbd);
             var enreg1 = new Registration(Corentin, prbd);
