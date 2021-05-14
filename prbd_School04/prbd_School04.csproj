@@ -53,11 +53,19 @@
 
   <ItemGroup>
     <Folder Include="Ressources\" />
-	  <Resource Include="Ressources\background.png"/>
-	  <Resource Include="Ressources\proviseur.jpg"/>
-	  <Resource Include="Ressources\livre.jpg"/>
-	  <Resource Include="Ressources\auditoire.jpg"/>
-	  <Resource Include="Ressources\auditoire1.jpg"/>
+	  <Resource Include="Ressources\background.png" />
+	  <Resource Include="Ressources\proviseur.jpg" />
+	  <Resource Include="Ressources\livre.jpg" />
+	  <Resource Include="Ressources\auditoire.jpg" />
+	  <Resource Include="Ressources\auditoire1.jpg" />
   </ItemGroup>
+	  
+  <ItemGroup>
+    <Folder Include="Images\" />
+	  <Resource Include="Images\ProfileUser.png" />
+	  <Resource Include="Images\user_white.png" />
+  </ItemGroup>
+	
+
 
 </Project>

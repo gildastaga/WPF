@@ -8,21 +8,21 @@
         mc:Ignorable="d"
         d:DesignHeight="600" d:DesignWidth="900" >
     <UserControl.DataContext>
-        <vm:ProfileViewModel/>
+        <vm:ProfileViewModel x:Name="vm"/>
     </UserControl.DataContext>
     <Grid Margin="10">
         <!-- Name -->
-        <Label Content="Name : " HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Foreground="White"/>
-        <TextBox x:Name="txtName" HorizontalAlignment="Center" Margin="0,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="610" Height="25"/>
+        <Label Content="Name : " HorizontalAlignment="Center" Margin="0,180,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Foreground="White"/>
+        <TextBox x:Name="txtName" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="0,220,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="610" Height="25"/>
         <!-- FirstName -->
-        <Label Content="FirstName : " HorizontalAlignment="Center" Margin="0,80,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Foreground="White"/>
-        <TextBox x:Name="txtFstName" HorizontalAlignment="Center" Margin="0,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="610" Height="25"/>
+        <Label Content="FirstName : " HorizontalAlignment="Center" Margin="0,260,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Foreground="White"/>
+        <TextBox x:Name="txtFstName" Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="0,300,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="610" Height="25"/>
         <!-- Profile -->
-        <Label Content="Profile : " HorizontalAlignment="Center" Margin="0,150,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Foreground="White"/>
-        <TextBox x:Name="txtProfile" HorizontalAlignment="Center" Margin="0,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="610" Height="70"/>
+        <Label Content="Profile : " HorizontalAlignment="Center" Margin="0,340,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Foreground="White"/>
+        <TextBox x:Name="txtProfile" Text="{Binding Profile, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="0,380,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="610" Height="70"/>
 
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="320,311,0,0" VerticalAlignment="Top" Width="90" Height="40" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="Gray" BorderThickness="4"  Background="{x:Null}"/>
-        <Button Content="Save" HorizontalAlignment="Left" Margin="480,311,0,0" VerticalAlignment="Top" Width="90" Height="40" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="Gray" BorderThickness="4" Background="{x:Null}"/>
-
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="315,491,0,0" VerticalAlignment="Top" Width="90" Height="40" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="Gray" BorderThickness="4"  Background="{x:Null}"/>
+        <Button Content="Save" HorizontalAlignment="Left" Margin="504,491,0,0" VerticalAlignment="Top" Width="90" Height="40" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="Gray" BorderThickness="4" Background="{x:Null}"/>
+        <Image Source="/Images/user_white.png" Margin="114,10,114,415"/>
     </Grid>
 </UserControl>
