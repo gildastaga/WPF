@@ -73,6 +73,10 @@ namespace School04.View {
             var tab = tabControl.FindByTag(course.Title);
             tabControl.Items.Remove(tab);
         }
+        private void Vm_CloseTabProfile( User user ) {
+            var tab = tabControl.FindByTag("Profile");
+            tabControl.Items.Remove(tab);
+        }
 
         private void Menu_ProfileUser_Click( object sender, RoutedEventArgs e ) {
             var tab = tabControl.FindByTag("Profile");
