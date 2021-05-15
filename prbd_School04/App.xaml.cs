@@ -48,8 +48,8 @@ namespace School04 {
             Console.WriteLine("Chargement de BDD finie");
         }
         protected override void OnRefreshData() {
-            if (CurrentUser?.Mail != null)
-                CurrentUser = User.GetByMail(CurrentUser.Mail);
+            if (CurrentUser?.UserId != null)
+                CurrentUser = User.GetByUserId(CurrentUser.UserId);
         }
     }
 }
