@@ -32,12 +32,12 @@ namespace School04.ViewModel {
 
             SubscribeOne = new RelayCommand<IList>(AddRegistrationsAction, selectedItemsUnregistered => {
                 return !Context.ChangeTracker.HasChanges() && selectedItemsUnregistered?.Count > 0
-                    && currentRegistrations?.Count + selectedItemsUnregistered?.Count <= course.MaxStudent;
+                    && currentRegistrations?.Count + selectedItemsUnregistered?.Count <= course?.MaxStudent;
             });
 
             SubscribeAll = new RelayCommand(AddAllRegistrationsAction, () => {
                 return !Context.ChangeTracker.HasChanges() && noRegistrations?.Count > 0
-                    && currentRegistrations?.Count + noRegistrations?.Count <= course.MaxStudent;
+                    && currentRegistrations?.Count + noRegistrations?.Count <= course?.MaxStudent;
             });
 
             ChangeRegistrationState = new RelayCommand<Registration>(ChangeRegistrationStateAction);

@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:School04.View"
         mc:Ignorable="d" Height="700" Width="900">
     <UserControl.DataContext>
-        <vm:CourseDetailsViewModel x:Name="vm"/>
+        <vm:CourseDetailsViewModel x:Name="vm" DisplayCourseTabs="Vm_DisplayCourseTabs"/>
     </UserControl.DataContext>
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />

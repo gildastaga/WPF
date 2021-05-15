@@ -10,6 +10,8 @@ using School04.Model;
 
 namespace School04.ViewModel {
     class CourseDetailsViewModel : ViewModelCommon {
+        public event Action<Course> DisplayCourseTabs;
+
         private Course course;
         public Course Course { get => course; set => SetProperty(ref course, value); }
 
@@ -71,8 +73,11 @@ namespace School04.ViewModel {
                 // il faut ajouter l'entité dans la collection des entités gérées par EF
                 Context.Add(Course);
                 IsNew = false;
+                Context.SaveChanges();
+                DisplayCourseTabs?.Invoke(Course);
+            } else {
+                Context.SaveChanges();
             }
-            Context.SaveChanges();
             OnRefreshData();
             NotifyColleagues(AppMessages.MSG_COURSE_CHANGED, Course);
         }

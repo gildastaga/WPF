@@ -30,6 +30,32 @@ namespace School04.View {
         public CourseDetailsView(Course course, bool isNew) {
             InitializeComponent();
             vm.Init(course, isNew);
+            if (course != null && !isNew) {
+                this.course = course;
+                tabControl.Add(
+                       new RegistrationsView(course),
+                       "Registrations", "registationsTab"
+                );
+                tabControl.Add(
+                       new CategoryView(course),
+                       "Categories", "categoriesTab"
+                );
+                tabControl.Add(
+                       new QuestionView(course),
+                       "Questions", "questionsTab"
+                );
+                tabControl.Add(
+                       new QuizzesView(course),
+                       "Quizzes", "quizzesTab"
+                );
+                /*tabControl.Add(
+                       new registrationsView(course),
+                       "Registrations", "registationsTab"
+                );*/
+                tabControl.SetFocus(tabControl.FindByTag("registationsTab"));
+            }
+        }
+        private void Vm_DisplayCourseTabs(Course course) {
             if (course != null) {
                 this.course = course;
                 tabControl.Add(

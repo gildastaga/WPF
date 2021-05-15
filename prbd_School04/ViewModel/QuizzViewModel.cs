@@ -80,7 +80,7 @@ namespace School04.ViewModel {
         }
 
         public string Course {
-            get { return Quizz?.Course.Description; }
+            get { return Quizz?.Course?.Description; }
         }
 
         public QuizzViewModel() : base() {
