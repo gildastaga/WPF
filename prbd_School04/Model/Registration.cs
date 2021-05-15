@@ -57,5 +57,7 @@ namespace School04.Model {
                 }
             }
         }
+
+        public string StudentName => Student.ToString();
     }
 }

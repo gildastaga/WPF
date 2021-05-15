@@ -56,6 +56,6 @@ namespace School04.Model {
         public static User GetByMail(string mail) {
             return Context.Users.SingleOrDefault(m => m.Mail == mail);
         }
-
+        public string FullName => this.ToString();
     }
 }

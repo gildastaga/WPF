@@ -41,5 +41,7 @@ namespace School04.Model {
             Context.Quizz.Remove(this);
             Context.SaveChanges();
         }
+
+        public int QuestionsCount => QuestionsQuizz.Count();
     }
 }
