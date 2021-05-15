@@ -69,5 +69,26 @@ namespace School04.Model {
         }
 
         public string StudentName => Student.ToString();
+
+        public static Registration[] DeleteRegistrations(params Registration[] registrations) {
+            var deleted = new List<Registration>();
+            foreach (var r in registrations) {
+                Context.Registrations.Remove(r);
+                deleted.Add(r);
+            }
+            //Context.SaveChanges();
+            return deleted.ToArray();
+        }
+        public static Registration[] AddRegistrations(Course course, params User[] students) {
+            var added = new List<Registration>();
+            foreach (Student s in students) {
+                var r = new Registration(s, course);
+                r.RegistrationState = State.Active;
+                Context.Registrations.Add(r);
+                added.Add(r);
+            }
+            //Context.SaveChanges();
+            return added.ToArray();
+        }
     }
 }

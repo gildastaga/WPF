@@ -83,7 +83,7 @@ namespace School04.Model {
             Benoit.CourseGiven.Add(sgbd);
             Boris.CourseGiven.Add(prbd);
             var enreg1 = new Registration(Corentin, prbd);
-            /*var enreg2 = new Registration(Katia, map4);
+            var enreg2 = new Registration(Katia, map4);
             var enreg3 = new Registration(Katia, prwb);
             var enreg4 = new Registration(Katia, tgpr);
             var enreg5 = new Registration(Corentin, tgpr);
@@ -91,10 +91,10 @@ namespace School04.Model {
             var enreg7 = new Registration(Marceline, prbd);
             var enreg8 = new Registration(Pierre, prbd);
             var enreg9 = new Registration(Paul, prbd);
-            var enreg10 = new Registration(Jean, prbd);*/
-            //enreg5.RegistrationState = State.Active;
-            Registrations.AddRange(enreg1/*, enreg2, enreg3, enreg4, enreg5, enreg6, enreg7, enreg8, enreg9, enreg10*/);
-            /*Katia.CoursesStudent.Add(enreg2);
+            var enreg10 = new Registration(Jean, prbd);
+            enreg5.RegistrationState = State.Active;
+            Registrations.AddRange(enreg1, enreg2, enreg3, enreg4, enreg5, enreg6, enreg7, enreg8, enreg9, enreg10);
+            Katia.CoursesStudent.Add(enreg2);
             Corentin.CoursesStudent.Add(enreg1);
             anc3.StudentsCourse.Add(enreg2);
             prbd.StudentsCourse.Add(enreg1);
@@ -102,7 +102,7 @@ namespace School04.Model {
             prbd.StudentsCourse.Add(enreg7);
             prbd.StudentsCourse.Add(enreg8);
             prbd.StudentsCourse.Add(enreg9);
-            prbd.StudentsCourse.Add(enreg10);*/
+            prbd.StudentsCourse.Add(enreg10);
 
             var quest1 = new Question {
                 Enonce = "-Quelle est le langage utilisé ?",

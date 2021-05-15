@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -20,6 +21,24 @@ namespace School04.ViewModel {
         }
         public RegistrationsViewModel() : base() {
             ClearFilter = new RelayCommand(() => Filter = "");
+
+            UnsubscribeOne = new RelayCommand(() => DeleteRegistrationsAction(selectedItemsRegistrations), () => {
+                return !Context.ChangeTracker.HasChanges() && selectedItemsRegistrations?.Count > 0;
+            });
+
+            UnsubscribeAll = new RelayCommand(DeleteAllRegistrationsAction, () => {
+                return !Context.ChangeTracker.HasChanges() && currentRegistrations?.Count > 0;
+            });
+
+            SubscribeOne = new RelayCommand(() => AddRegistrationsAction(selectedItemsUnregistered), () => {
+                return !Context.ChangeTracker.HasChanges() && selectedItemsUnregistered?.Count > 0
+                    && currentRegistrations?.Count + selectedItemsUnregistered?.Count <= course.MaxStudent;
+            });
+
+            SubscribeAll = new RelayCommand(AddAllRegistrationsAction, () => {
+                return !Context.ChangeTracker.HasChanges() && noRegistrations?.Count > 0
+                    && currentRegistrations?.Count + noRegistrations?.Count <= course.MaxStudent;
+            });
         }
         private ObservableCollectionFast<Registration> currentRegistrations = new ObservableCollectionFast<Registration>();
         public ObservableCollectionFast<Registration> CurrentRegistrations {
@@ -41,6 +60,22 @@ namespace School04.ViewModel {
         }
         public ICollectionView NotRegistered => NoRegistrations.GetCollectionView(nameof(User.FullName), ListSortDirection.Ascending);
         public ICommand ClearFilter { get; set; }
+        public ICommand UnsubscribeAll { get; set; }
+        public ICommand UnsubscribeOne { get; set; }
+        public ICommand SubscribeOne { get; set; }
+        public ICommand SubscribeAll { get; set; }
+
+        private IList selectedItemsRegistrations = new ArrayList();
+        public IList SelectedItemsRegistrations {
+            get => selectedItemsRegistrations;
+            set => SetProperty(ref selectedItemsRegistrations, value);
+        }
+
+        private IList selectedItemsUnregistered = new ArrayList();
+        public IList SelectedItemsUnregistered {
+            get => selectedItemsUnregistered;
+            set => SetProperty(ref selectedItemsUnregistered, value);
+        }
         public void Init(Course course) {
             // Il faut recharger ce membre dans le contexte courant pour pouvoir le modifier
             Course = Course.GetById(course.CourseId);
@@ -50,7 +85,51 @@ namespace School04.ViewModel {
             RaisePropertyChanged();
         }
 
+        private void DeleteRegistrationsAction(IList registrations) {
+            // demande au modèle de supprimer les messages au nom de l'utilisateur courant
+            var deleted = Registration.DeleteRegistrations(registrations.Cast<Registration>().ToArray());
+            Context.Registrations.RemoveRange(deleted);
+            Context.SaveChanges();
+            OnRefreshData();
+            // notifie le reste de l'application que les messages de ce membre ont été modifiés
+            //NotifyColleagues(AppMessages.MSG_REFRESH_REGISTRATIONS, null);
+        }
+
+        private void DeleteAllRegistrationsAction() {
+            // demande au modèle de supprimer les messages au nom de l'utilisateur courant
+            var deleted = Registration.DeleteRegistrations(currentRegistrations.ToArray());
+            Context.Registrations.RemoveRange(deleted);
+            Context.SaveChanges();
+            OnRefreshData();
+            // notifie le reste de l'application que les messages de ce membre ont été modifiés
+            //NotifyColleagues(AppMessages.MSG_REFRESH_REGISTRATIONS, null);
+        }
+
+        private void AddRegistrationsAction(IList unregistered) {
+            // demande au modèle de supprimer les messages au nom de l'utilisateur courant
+            var added = Registration.AddRegistrations(Course, unregistered.Cast<User>().ToArray());
+            Context.Registrations.AddRange(added);
+            Context.SaveChanges();
+            OnRefreshData();
+            // notifie le reste de l'application que les messages de ce membre ont été modifiés
+            //NotifyColleagues(AppMessages.MSG_REFRESH_REGISTRATIONS, null);
+        }
+
+        private void AddAllRegistrationsAction() {
+            // demande au modèle de supprimer les messages au nom de l'utilisateur courant
+            var added = Registration.AddRegistrations(Course, NoRegistrations.ToArray());
+            Context.Registrations.AddRange(added);
+            Context.SaveChanges();
+            OnRefreshData();
+            // notifie le reste de l'application que les messages de ce membre ont été modifiés
+            //NotifyColleagues(AppMessages.MSG_REFRESH_REGISTRATIONS, null);
+        }
+
         protected override void OnRefreshData() {
+            if (Course == null) return;
+            Course = Course.GetById(Course.CourseId);
+            SelectedItemsRegistrations.Clear();
+            SelectedItemsUnregistered.Clear();
             CurrentRegistrations.Reset(Registration.GetCurrentRegistrationsFromCourse(Course));
             NoRegistrations.Reset(string.IsNullOrEmpty(Filter) ? Registration.GetNoRegistrationsFromCourse(Course) : Registration.GetFiltredNoRegistrationsFromCourse(Course, Filter));
         }

@@ -67,10 +67,10 @@
             </f:MyDataGrid>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="1">
-            <Button Content=">>" Command="{Binding ClearFilter}" Width="auto" Margin="5,5,5,5" />
-            <Button Content=">" Command="{Binding ClearFilter}" Width="auto" Margin="5,5,5,5" />
-            <Button Content="&lt;" Command="{Binding ClearFilter}" Width="auto" Margin="5,5,5,5" />
-            <Button Content="&lt;&lt;" Command="{Binding ClearFilter}" Width="auto" Margin="5,5,5,5" />
+            <Button Content=">>" Command="{Binding UnsubscribeAll}" Width="auto" Margin="5,5,5,5" />
+            <Button Content=">" Command="{Binding UnsubscribeOne}" Width="auto" Margin="5,5,5,5" />
+            <Button Content="&lt;" Command="{Binding SubscribeOne}" Width="auto" Margin="5,5,5,5" />
+            <Button Content="&lt;&lt;" Command="{Binding SubscribeAll}" Width="auto" Margin="5,5,5,5" />
         </StackPanel>
     </Grid>
 </f:UserControlBase>
