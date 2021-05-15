@@ -113,11 +113,20 @@ namespace School04.Model {
 
             };
 
-            var quest111 = new Question {
+            var quest11 = new Question {
                 Enonce = "-Quelle est le langage utilisé ?",
                 IsUpdate = false,
                 IsDelete = false,
                 Course = sgbd,
+                typeQuestion = TypeQuestion.ManyAnswer
+
+            };
+
+            var quest111 = new Question {
+                Enonce = "-Quelle est le langage utilisé ?",
+                IsUpdate = false,
+                IsDelete = false,
+                Course = prm2,
                 typeQuestion = TypeQuestion.ManyAnswer
 
             };
@@ -130,11 +139,19 @@ namespace School04.Model {
                 typeQuestion = TypeQuestion.OneAnswer
             };
 
-            var quest222 = new Question {
+            var quest22 = new Question {
                 Enonce = "-Qu'est-ce que le SQL Server?",
                 IsUpdate = false,
                 IsDelete = false,
                 Course = prwb,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
+            var quest222 = new Question {
+                Enonce = "-Qu'est-ce que le SQL Server?",
+                IsUpdate = false,
+                IsDelete = false,
+                Course = prm2,
                 typeQuestion = TypeQuestion.OneAnswer
             };
 
@@ -163,13 +180,14 @@ namespace School04.Model {
                 typeQuestion = TypeQuestion.ManyAnswer
             };
 
-            Questions.AddRange(quest1, quest2, quest3);
+            Questions.AddRange(quest1, quest11, quest111, quest2, quest22, quest222, quest3, quest33, quest333);
 
             var quest4 = new Question {
                 Enonce = "-Qu'est ce que le PHP:",
                 Course = anc3,
                 typeQuestion = TypeQuestion.OneAnswer
             };
+
             var quest5 = new Question {
                 Enonce = "-Choisir les nombres pairs",
                 Course = map4,
@@ -177,21 +195,21 @@ namespace School04.Model {
             };
 
             var quest6 = new Question {
+                Enonce = "-Qu'est ce que l'informatique",
+                Course = prbd,
+                typeQuestion = TypeQuestion.ManyAnswer
+            };
+
+            var quest7 = new Question {
                 Enonce = "-Que signifie TGPR",
                 Course = tgpr,
                 typeQuestion = TypeQuestion.OneAnswer
             };
 
-            var quest7 = new Question {
+            var quest8 = new Question {
                 Enonce = "-Qu'est ce que la géométrie",
                 Course = map4,
                 typeQuestion = TypeQuestion.OneAnswer
-            };
-
-            var quest8 = new Question {
-                Enonce = "-Qu'est ce que l'informatique",
-                Course = prbd,
-                typeQuestion = TypeQuestion.ManyAnswer
             };
 
             var quest9 = new Question {
@@ -206,11 +224,11 @@ namespace School04.Model {
                 typeQuestion = TypeQuestion.OneAnswer
             };
 
-            var quest11 = new Question {
+            /*var quest11 = new Question {
                 Enonce = "Que signifie hétérogène",
                 Course = chimie,
                 typeQuestion = TypeQuestion.ManyAnswer
-            };
+            };*/
 
             var quest12 = new Question {
                 Enonce = "what is the push of Archimedes",
