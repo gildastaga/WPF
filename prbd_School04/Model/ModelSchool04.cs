@@ -83,7 +83,7 @@ namespace School04.Model {
             Benoit.CourseGiven.Add(sgbd);
             Boris.CourseGiven.Add(prbd);
             var enreg1 = new Registration(Corentin, prbd);
-            /*var enreg2 = new Registration(Katia, map4);
+            var enreg2 = new Registration(Katia, map4);
             var enreg3 = new Registration(Katia, prwb);
             var enreg4 = new Registration(Katia, tgpr);
             var enreg5 = new Registration(Corentin, tgpr);
@@ -91,10 +91,10 @@ namespace School04.Model {
             var enreg7 = new Registration(Marceline, prbd);
             var enreg8 = new Registration(Pierre, prbd);
             var enreg9 = new Registration(Paul, prbd);
-            var enreg10 = new Registration(Jean, prbd);*/
-            //enreg5.RegistrationState = State.Active;
-            Registrations.AddRange(enreg1/*, enreg2, enreg3, enreg4, enreg5, enreg6, enreg7, enreg8, enreg9, enreg10*/);
-            /*Katia.CoursesStudent.Add(enreg2);
+            var enreg10 = new Registration(Jean, prbd);
+            enreg5.RegistrationState = State.Active;
+            Registrations.AddRange(enreg1, enreg2, enreg3, enreg4, enreg5, enreg6, enreg7, enreg8, enreg9, enreg10);
+            Katia.CoursesStudent.Add(enreg2);
             Corentin.CoursesStudent.Add(enreg1);
             anc3.StudentsCourse.Add(enreg2);
             prbd.StudentsCourse.Add(enreg1);
@@ -102,7 +102,7 @@ namespace School04.Model {
             prbd.StudentsCourse.Add(enreg7);
             prbd.StudentsCourse.Add(enreg8);
             prbd.StudentsCourse.Add(enreg9);
-            prbd.StudentsCourse.Add(enreg10);*/
+            prbd.StudentsCourse.Add(enreg10);
 
             var quest1 = new Question {
                 Enonce = "-Quelle est le langage utilisé ?",
@@ -113,15 +113,47 @@ namespace School04.Model {
 
             };
 
+            var quest11 = new Question {
+                Enonce = "-Quelle est le langage utilisé ?",
+                IsUpdate = false,
+                IsDelete = false,
+                Course = sgbd,
+                typeQuestion = TypeQuestion.ManyAnswer
+
+            };
+
+            var quest111 = new Question {
+                Enonce = "-Quelle est le langage utilisé ?",
+                IsUpdate = false,
+                IsDelete = false,
+                Course = prm2,
+                typeQuestion = TypeQuestion.ManyAnswer
+
+            };
+
             var quest2 = new Question {
                 Enonce = "-Qu'est-ce que le SQL Server?",
                 IsUpdate = false,
                 IsDelete = false,
                 Course = sgbd,
                 typeQuestion = TypeQuestion.OneAnswer
-
             };
-            Questions.AddRange(quest1, quest2);
+
+            var quest22 = new Question {
+                Enonce = "-Qu'est-ce que le SQL Server?",
+                IsUpdate = false,
+                IsDelete = false,
+                Course = prwb,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
+            var quest222 = new Question {
+                Enonce = "-Qu'est-ce que le SQL Server?",
+                IsUpdate = false,
+                IsDelete = false,
+                Course = prm2,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
 
             var quest3 = new Question {
                 Enonce = "-Choisir la réponse avec un (V) :",
@@ -130,17 +162,210 @@ namespace School04.Model {
                 Course = prm2,
                 typeQuestion = TypeQuestion.ManyAnswer
             };
+
+
+            var quest33 = new Question {
+                Enonce = "-Choisir la réponse avec un (V) :",
+                IsUpdate = false,
+                IsDelete = false,
+                Course = prwb,
+                typeQuestion = TypeQuestion.ManyAnswer
+            };
+
+            var quest333 = new Question {
+                Enonce = "-Choisir la réponse avec un (V) :",
+                IsUpdate = false,
+                IsDelete = false,
+                Course = sgbd,
+                typeQuestion = TypeQuestion.ManyAnswer
+            };
+
+            Questions.AddRange(quest1, quest11, quest111, quest2, quest22, quest222, quest3, quest33, quest333);
+
             var quest4 = new Question {
                 Enonce = "-Qu'est ce que le PHP:",
                 Course = anc3,
                 typeQuestion = TypeQuestion.OneAnswer
             };
+
+            var quest44 = new Question {
+                Enonce = "-Qu'est ce que le PHP:",
+                Course = map4,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
+            var quest444 = new Question {
+                Enonce = "-Qu'est ce que le PHP:",
+                Course = prbd,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
             var quest5 = new Question {
                 Enonce = "-Choisir les nombres pairs",
                 Course = map4,
                 typeQuestion = TypeQuestion.ManyAnswer
             };
-            Questions.AddRange(quest3, quest4, quest5);
+
+            var quest55 = new Question {
+                Enonce = "-Choisir les nombres pairs",
+                Course = anc3,
+                typeQuestion = TypeQuestion.ManyAnswer
+            };
+
+            var quest555 = new Question {
+                Enonce = "-Choisir les nombres pairs",
+                Course = prbd,
+                typeQuestion = TypeQuestion.ManyAnswer
+            };
+
+            var quest6 = new Question {
+                Enonce = "-Qu'est ce que l'informatique",
+                Course = prbd,
+                typeQuestion = TypeQuestion.ManyAnswer
+            };
+
+            var quest66 = new Question {
+                Enonce = "-Qu'est ce que l'informatique",
+                Course = map4,
+                typeQuestion = TypeQuestion.ManyAnswer
+            };
+
+            var quest665 = new Question {
+                Enonce = "-Qu'est ce que l'informatique",
+                Course = anc3,
+                typeQuestion = TypeQuestion.ManyAnswer
+            };
+
+            var quest7 = new Question {
+                Enonce = "-Que signifie TGPR",
+                Course = tgpr,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+            var quest77 = new Question {
+                Enonce = "-Que signifie TGPR",
+                Course = bnet,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
+            var quest777 = new Question {
+                Enonce = "-Que signifie TGPR",
+                Course = snet,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
+            var quest8 = new Question {
+                Enonce = "-Qu'est ce que la géométrie",
+                Course = bnet,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
+            var quest88 = new Question {
+                Enonce = "-Qu'est ce que la géométrie",
+                Course = snet,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
+            var quest888 = new Question {
+                Enonce = "-Qu'est ce que la géométrie",
+                Course = tgpr,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
+            var quest9 = new Question {
+                Enonce = "-Qu'est ce que le réseau",
+                Course = snet,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
+
+            var quest99 = new Question {
+                Enonce = "-Qu'est ce que le réseau",
+                Course = bnet,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
+
+            var quest999 = new Question {
+                Enonce = "-Qu'est ce que le réseau",
+                Course = tgpr,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
+            var quest10 = new Question {
+                Enonce = "-Qu'entend-t-on par automatisation",
+                Course = phys,
+                typeQuestion = TypeQuestion.ManyAnswer
+            };
+
+            var quest100 = new Question {
+                Enonce = "Qu'est ce que l'homogénéité",
+                Course = chimie,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
+            var quest1000 = new Question {
+                Enonce = "Qu'est ce que l'homogénéité",
+                Course = algo,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
+            var quest12 = new Question {
+                Enonce = "Que signifie hétérogène",
+                Course = chimie,
+                typeQuestion = TypeQuestion.ManyAnswer
+            };
+
+            var quest122 = new Question {
+                Enonce = "Que signifie hétérogène",
+                Course = phys,
+                typeQuestion = TypeQuestion.ManyAnswer
+            };
+
+            var quest1222 = new Question {
+                Enonce = "Que signifie hétérogène",
+                Course = algo,
+                typeQuestion = TypeQuestion.ManyAnswer
+            };
+
+            var quest13 = new Question {
+                Enonce = "what is the push of Archimedes",
+                Course = ang,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
+            var quest133 = new Question {
+                Enonce = "what is the push of Archimedes",
+                Course = phys,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
+            var quest1333 = new Question {
+                Enonce = "what is the push of Archimedes",
+                Course = algo,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
+            var quest14 = new Question {
+                Enonce = "what is parity",
+                Course = ang,
+                typeQuestion = TypeQuestion.ManyAnswer
+            };
+
+            var quest144 = new Question {
+                Enonce = "what is parity",
+                Course = chimie,
+                typeQuestion = TypeQuestion.ManyAnswer
+            };
+
+            var quest1444 = new Question {
+                Enonce = "what is management",
+                Course = ang,
+                typeQuestion = TypeQuestion.ManyAnswer
+            };
+            Questions.AddRange(quest4, quest44, quest444, quest5, quest55, quest555, quest6, quest66, quest665, 
+                quest7, quest77, quest777, quest8, quest88, quest888, quest9, quest99, quest999, 
+                quest10, quest100, quest1000, quest12, quest122, quest1222, quest13, quest133, quest1333,
+                quest14, quest144, quest1444);
 
             var prop1 = new Proposition ("C#", Type.True);
             var prop11 = new Proposition("javaFX", Type.False);
@@ -186,12 +411,14 @@ namespace School04.Model {
             var questQuizz1 = new QuestionQuizz {
                 Quizz = quiz1,
                 Question = quest1,
-                NbPoint = 10
+                NbPoint = 10,
+                PosQuestionInQuizz = 1
             };
             var questQuizz2 = new QuestionQuizz {
                 Quizz = quiz1,
                 Question = quest2,
-                NbPoint = 25
+                NbPoint = 25,
+                PosQuestionInQuizz = 2
             };
             QuestionQuizzs.AddRange(questQuizz1, questQuizz2);
 
@@ -208,7 +435,6 @@ namespace School04.Model {
             SaveChanges();
 
             Database.CommitTransaction();
-
             
         }
 

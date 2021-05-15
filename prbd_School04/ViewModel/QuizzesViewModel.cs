@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -32,7 +33,13 @@ namespace School04.ViewModel {
                 RaisePropertyChanged(nameof(Quizzes), nameof(QuizzesView));
             }
         }
-        public ICollectionView QuizzesView => Quizzes.GetCollectionView(nameof(DateTime), ListSortDirection.Descending);
+        public ICollectionView QuizzesView => Quizzes.GetCollectionView(nameof(Quizz.Title), ListSortDirection.Ascending);
+
+        private IList selectedItems = new ArrayList();
+        public IList SelectedItems {
+            get => selectedItems;
+            set => SetProperty(ref selectedItems, value);
+        }
 
         public void Init(Course course) {
             // Il faut recharger ce membre dans le contexte courant pour pouvoir le modifier
@@ -42,16 +49,12 @@ namespace School04.ViewModel {
             RaisePropertyChanged();
         }
 
-        public ICommand DisplayQuizz {
-            get; set;
-        }
+        public ICommand DisplayQuizz { get; set; }
 
-        public ICommand CreateQuizz {
-            get; set;
-        }
+        public ICommand CreateQuizz { get; set; }
 
-        protected override void OnRefreshData() {
-            Quizzes = new ObservableCollectionFast<Quizz>(Quizz.GetQuizzesFromCourse(Course));
+        protected override void OnRefreshData() { 
+            Quizzes.Reset(Quizz.GetQuizzesFromCourse(Course));
         }
     }
 }

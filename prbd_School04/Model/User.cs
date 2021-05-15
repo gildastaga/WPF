@@ -66,5 +66,6 @@ namespace School04.Model {
             return Context.Users.SingleOrDefault(m => m.UserId == id);
         }
 
+        public string FullName => this.ToString();
     }
 }

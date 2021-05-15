@@ -31,18 +31,12 @@ namespace School04.Model {
         public virtual Course Course {get; set;}
 
         public Question() {}
+
         public Question(string enonce, Boolean isUpdate, Boolean isDelete, Course course) {
             Enonce = enonce;
             IsUpdate = isUpdate;
             IsDelete = isDelete;
             Course = course;
-        }
-
-        [NotMapped]     //Indique qu'une propriété ou une classe doit être exclue du mappage de base de données.
-        public int CountQuestions {
-            get {
-                return (from q in QuestionQuizz select q).Count();
-            }
         }
 
     }

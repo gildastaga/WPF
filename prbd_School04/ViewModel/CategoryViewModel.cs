@@ -60,7 +60,7 @@ namespace School04.ViewModel {
         }
 
         private void SaveAction() {
-            if (IsNew) {
+            if (IsNew) {   
                 Category.Name = Category.Name;
                 Context.Add(Category);
                 IsNew = false;

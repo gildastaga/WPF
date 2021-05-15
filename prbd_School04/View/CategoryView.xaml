@@ -6,9 +6,12 @@
         xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:f="clr-namespace:PRBD_Framework;assembly=PRBD_Framework"
+        xmlns:vm="clr-namespace:School04.ViewModel"
         xmlns:local="clr-namespace:School04.View"
         mc:Ignorable="d"
        Height="450" Width="800">
+
+    
 
 
     <Grid>

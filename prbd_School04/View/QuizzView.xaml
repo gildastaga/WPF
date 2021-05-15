@@ -46,11 +46,11 @@
             <Button Content="Delete" Command="{Binding Delete}" Height="25" Margin="5,5,5,5"></Button>
         </StackPanel>
         <StackPanel Grid.ColumnSpan="3" Grid.Row="5" Margin="5,5,5,5">
-            <f:MyDataGrid x:Name="lsQuestions" ItemsSource="{Binding Questions}"
+            <f:MyDataGrid x:Name="lsQuestions" ItemsSource="{Binding QuestionsView}"
                   AutoGenerateColumns="False" FontSize="12" IsReadOnly="False" Margin="5" CanUserAddRows="False" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" MaxHeight="160"
                   SelectedItemsList="{Binding SelectedItems}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Position" Binding="{Binding Path=QuestionId}" IsReadOnly="True" SortDirection="Descending" Width="auto" MinWidth="70"/>
+                    <DataGridTextColumn Header="Position" Binding="{Binding Path=PosQuestionInQuizz}" IsReadOnly="True" SortDirection="Descending" Width="auto" MinWidth="70"/>
                     <DataGridTextColumn Header="Weight" Binding="{Binding Path=NbPoint}" IsReadOnly="True" Width="auto" MinWidth="70" />
                     <DataGridTextColumn Header="Questions" Binding="{Binding Path=Question.Enonce}" IsReadOnly="True" Width="auto" />
                 </DataGrid.Columns>

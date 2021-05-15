@@ -32,10 +32,10 @@ namespace School04.ViewModel {
             get { return questions; }
             set {
                 questions = value;
-                RaisePropertyChanged(nameof(Questions), nameof(QuizzesView));
+                RaisePropertyChanged(nameof(Questions), nameof(QuestionsView));
             }
         }
-        public ICollectionView QuizzesView => Questions.GetCollectionView(nameof(DateTime), ListSortDirection.Descending);
+        public ICollectionView QuestionsView => Questions.GetCollectionView(nameof(QuestionQuizz.PosQuestionInQuizz), ListSortDirection.Ascending);
 
 
         public void Init(Quizz quizz, bool isNew) {
