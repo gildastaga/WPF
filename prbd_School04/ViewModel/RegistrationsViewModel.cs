@@ -39,6 +39,8 @@ namespace School04.ViewModel {
                 return !Context.ChangeTracker.HasChanges() && noRegistrations?.Count > 0
                     && currentRegistrations?.Count + noRegistrations?.Count <= course.MaxStudent;
             });
+
+            ChangeRegistrationState = new RelayCommand<Registration>(ChangeRegistrationStateAction);
         }
         private ObservableCollectionFast<Registration> currentRegistrations = new ObservableCollectionFast<Registration>();
         public ObservableCollectionFast<Registration> CurrentRegistrations {
@@ -64,6 +66,7 @@ namespace School04.ViewModel {
         public ICommand UnsubscribeOne { get; set; }
         public ICommand SubscribeOne { get; set; }
         public ICommand SubscribeAll { get; set; }
+        public ICommand ChangeRegistrationState { get; set; }
 
         private IList selectedItemsRegistrations = new ArrayList();
         public IList SelectedItemsRegistrations {
@@ -119,6 +122,27 @@ namespace School04.ViewModel {
             // demande au modèle de supprimer les messages au nom de l'utilisateur courant
             var added = Registration.AddRegistrations(Course, NoRegistrations.ToArray());
             Context.Registrations.AddRange(added);
+            Context.SaveChanges();
+            OnRefreshData();
+            // notifie le reste de l'application que les messages de ce membre ont été modifiés
+            //NotifyColleagues(AppMessages.MSG_REFRESH_REGISTRATIONS, null);
+        }
+
+        private void ChangeRegistrationStateAction(Registration registration) {
+            if (registration == null) return;
+            switch (registration.RegistrationState.GetHashCode()) {
+                case 0:
+                    registration.RegistrationState = State.Inactive;
+                    break;
+                case 1:
+                    registration.RegistrationState = State.Active;
+                    break;
+                case 2:
+                    registration.RegistrationState = State.Active;
+                    break;
+                default:
+                    break;
+            }
             Context.SaveChanges();
             OnRefreshData();
             // notifie le reste de l'application que les messages de ce membre ont été modifiés

@@ -38,7 +38,7 @@
                     <DataGridTemplateColumn Header="Actions" Width="75">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="{Binding SwitchLabel}" Command="{Binding ChangeRegistrationMode}"/>
+                                <Button Content="{Binding SwitchLabel}" Command="{Binding ChangeRegistrationState, ElementName=vm}" CommandParameter="{Binding}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -68,8 +68,8 @@
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="1">
             <Button Content=">>" Command="{Binding UnsubscribeAll}" Width="auto" Margin="5,5,5,5" />
-            <Button Content=">" Command="{Binding UnsubscribeOne}" Width="auto" Margin="5,5,5,5" />
-            <Button Content="&lt;" Command="{Binding SubscribeOne}" Width="auto" Margin="5,5,5,5" />
+            <Button Content=">" Command="{Binding UnsubscribeOne}" CommandParameter="{Binding SelectedItemsRegistrations}" Width="auto" Margin="5,5,5,5" />
+            <Button Content="&lt;" Command="{Binding SubscribeOne}" CommandParameter="{Binding SelectedItemsUnregistered}" Width="auto" Margin="5,5,5,5" />
             <Button Content="&lt;&lt;" Command="{Binding SubscribeAll}" Width="auto" Margin="5,5,5,5" />
         </StackPanel>
     </Grid>
