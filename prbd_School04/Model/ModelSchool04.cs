@@ -305,7 +305,7 @@ namespace School04.Model {
 
             var quest1000 = new Question {
                 Enonce = "Qu'est ce que l'homogénéité",
-                Course = chimie,
+                Course = algo,
                 typeQuestion = TypeQuestion.OneAnswer
             };
 
@@ -315,9 +315,33 @@ namespace School04.Model {
                 typeQuestion = TypeQuestion.ManyAnswer
             };
 
+            var quest122 = new Question {
+                Enonce = "Que signifie hétérogène",
+                Course = phys,
+                typeQuestion = TypeQuestion.ManyAnswer
+            };
+
+            var quest1222 = new Question {
+                Enonce = "Que signifie hétérogène",
+                Course = algo,
+                typeQuestion = TypeQuestion.ManyAnswer
+            };
+
             var quest13 = new Question {
                 Enonce = "what is the push of Archimedes",
                 Course = ang,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
+            var quest133 = new Question {
+                Enonce = "what is the push of Archimedes",
+                Course = phys,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
+            var quest1333 = new Question {
+                Enonce = "what is the push of Archimedes",
+                Course = algo,
                 typeQuestion = TypeQuestion.OneAnswer
             };
 
@@ -326,8 +350,22 @@ namespace School04.Model {
                 Course = ang,
                 typeQuestion = TypeQuestion.ManyAnswer
             };
+
+            var quest144 = new Question {
+                Enonce = "what is parity",
+                Course = ang,
+                typeQuestion = TypeQuestion.ManyAnswer
+            };
+
+            var quest1444 = new Question {
+                Enonce = "what is parity",
+                Course = ang,
+                typeQuestion = TypeQuestion.ManyAnswer
+            };
             Questions.AddRange(quest4, quest44, quest444, quest5, quest55, quest555, quest6, quest66, quest665, 
-                quest7, quest8, quest9, quest10, quest11, quest12, quest13);
+                quest7, quest77, quest777, quest8, quest88, quest888, quest9, quest99, quest999, 
+                quest10, quest100, quest1000, quest11, quest12, quest122, quest1222, quest13, quest133, quest1333,
+                quest14, quest144, quest1444);
 
             var prop1 = new Proposition ("C#", Type.True);
             var prop11 = new Proposition("javaFX", Type.False);
