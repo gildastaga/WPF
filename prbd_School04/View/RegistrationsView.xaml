@@ -43,9 +43,6 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                 </f:MyDataGrid.Columns>
-                <f:MyDataGrid.InputBindings>
-                    <KeyBinding Key="Delete" Command="{Binding DeleteMessages}" CommandParameter="{Binding SelectedItemsList, ElementName=grid}" />
-                </f:MyDataGrid.InputBindings>
             </f:MyDataGrid>
         </StackPanel>
         <StackPanel Grid.Column="2" Grid.RowSpan="3">
@@ -61,9 +58,6 @@
                 <f:MyDataGrid.Columns>
                     <DataGridTextColumn Header="Student" Binding="{Binding FullName}" Width="*" IsReadOnly="True" SortDirection="Descending"/>
                 </f:MyDataGrid.Columns>
-                <f:MyDataGrid.InputBindings>
-                    <KeyBinding Key="Delete" Command="{Binding DeleteMessages}" CommandParameter="{Binding SelectedItemsList, ElementName=grid}" />
-                </f:MyDataGrid.InputBindings>
             </f:MyDataGrid>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="1">
