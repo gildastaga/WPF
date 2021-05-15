@@ -353,18 +353,18 @@ namespace School04.Model {
 
             var quest144 = new Question {
                 Enonce = "what is parity",
-                Course = ang,
+                Course = chimie,
                 typeQuestion = TypeQuestion.ManyAnswer
             };
 
             var quest1444 = new Question {
-                Enonce = "what is parity",
+                Enonce = "what is management",
                 Course = ang,
                 typeQuestion = TypeQuestion.ManyAnswer
             };
             Questions.AddRange(quest4, quest44, quest444, quest5, quest55, quest555, quest6, quest66, quest665, 
                 quest7, quest77, quest777, quest8, quest88, quest888, quest9, quest99, quest999, 
-                quest10, quest100, quest1000, quest11, quest12, quest122, quest1222, quest13, quest133, quest1333,
+                quest10, quest100, quest1000, quest12, quest122, quest1222, quest13, quest133, quest1333,
                 quest14, quest144, quest1444);
 
             var prop1 = new Proposition ("C#", Type.True);
