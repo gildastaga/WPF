@@ -56,6 +56,15 @@ namespace School04.Model {
         public static User GetByMail(string mail) {
             return Context.Users.SingleOrDefault(m => m.Mail == mail);
         }
+        public static User GetByName( string name ) {
+            return Context.Users.SingleOrDefault(m => m.Name == name);
+        }
+        public static User GetByFirstName( string firstname ) {
+            return Context.Users.SingleOrDefault(m => m.FirstName == firstname);
+        }
+        public static User GetByUserId( int id ) {
+            return Context.Users.SingleOrDefault(m => m.UserId == id);
+        }
 
     }
 }

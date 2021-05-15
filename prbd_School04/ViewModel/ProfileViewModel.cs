@@ -14,6 +14,7 @@ namespace School04.ViewModel {
 
         public User Person {
             get => CurrentUser;
+            set => SetProperty(ref person, value);
         }
 
         public ProfileViewModel() : base(){
@@ -24,8 +25,7 @@ namespace School04.ViewModel {
             Profile = Person.Profile;
 
             SaveUser = new RelayCommand(SaveActionUser, CanSaveActionUser);
-            CancelUser = new RelayCommand(CancelActionUser, CanCancelActionUser);
-
+            CancelUser = new RelayCommand(CancelActionUser);
         }
         public ICommand CancelUser {
             get; set;
@@ -34,21 +34,16 @@ namespace School04.ViewModel {
             get; set;
         }
         private void SaveActionUser() {
-            // il faut ajouter l'entité dans la collection des entités gérées par EF
-            Context.Add(Person);
-            Context.SaveChanges();
+            if(Validate())
+                Context.SaveChanges();
             OnRefreshData();
-            NotifyColleagues(AppMessages.MSG_PROFILE_CHANGED, Person);
         }
         // determine si le bouton peut etre actif ou pas
         private bool CanSaveActionUser() {
-            return Person != null && !string.IsNullOrEmpty(Name) && !string.IsNullOrEmpty(FirstName) && (Context?.Entry(Person)?.State == EntityState.Modified);
+            return person != null && !string.IsNullOrEmpty(Name) && !string.IsNullOrEmpty(FirstName) && (Context?.Entry(Person)?.State == EntityState.Modified);
         }
         private void CancelActionUser() {
-            NotifyColleagues(AppMessages.MSG_CLOSE_TAB_PROFILE, person);
-        }
-        private bool CanCancelActionUser() {
-            return Person != null && Context?.Entry(Person)?.State == EntityState.Modified;
+            NotifyColleagues(AppMessages.MSG_CLOSE_TAB_PROFILE);
         }
         public void makeList() {
         }
@@ -80,7 +75,10 @@ namespace School04.ViewModel {
             }
         }
         protected override void OnRefreshData() {
-
+            if (Person == null)
+                return;
+            Person = User.GetByUserId(Person.UserId); 
+            RaisePropertyChanged();
         }
     }
 }

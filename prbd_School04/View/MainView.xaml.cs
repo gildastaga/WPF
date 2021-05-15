@@ -23,7 +23,6 @@ namespace School04.View {
         public MainView() {
             InitializeComponent();
         }
-
         private void Vm_DisplayCourse(Course course, bool isNew) {
             if (course != null) {
                 var tab = tabControl.FindByTag(course.Title);
@@ -36,7 +35,6 @@ namespace School04.View {
                     tabControl.SetFocus(tab);
             }
         }
-
         private void Vm_DisplayQuizz(Quizz quizz, bool isNew) {
             if (quizz != null) {
                 var tab = tabControl.FindByTag(quizz.QuizzId.ToString());
@@ -56,28 +54,24 @@ namespace School04.View {
                 tab.Header = tab.Tag = header = string.IsNullOrEmpty(header) ? "<new course>" : header;
             }
         }
-
         private void Vm_RenameTabQuizz(Quizz quizz, string header) {
             var tab = tabControl.SelectedItem as TabItem;
             if (tab != null) {
                 tab.Header = tab.Tag = header = string.IsNullOrEmpty(header) ? "<new quizz>" : header;
             }
         }
-
         private void Vm_CloseTabQuizz(Quizz quizz) {
             var tab = tabControl.FindByTag(quizz.Title);
             tabControl.Items.Remove(tab);
         }
-        
         private void Vm_CloseTabCourse( Course course ) {
             var tab = tabControl.FindByTag(course.Title);
             tabControl.Items.Remove(tab);
         }
-        private void Vm_CloseTabProfile( User user ) {
+        private void Vm_CloseTabProfile() {
             var tab = tabControl.FindByTag("Profile");
             tabControl.Items.Remove(tab);
         }
-
         private void Menu_ProfileUser_Click( object sender, RoutedEventArgs e ) {
             var tab = tabControl.FindByTag("Profile");
             if (tab == null)

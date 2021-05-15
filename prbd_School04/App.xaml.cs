@@ -47,29 +47,6 @@ namespace School04 {
 
             Console.WriteLine("Chargement de BDD finie");
         }
-        /*private void TestMessage() {
-            //instancie le service de message
-            var message = new Messenger();
-
-            //enregistre deux handles différents pour le même messages "coucou"
-            message.Register(message.COUCOU, () => {
-                Console.WriteLine("coucou received by handler 1");
-            });
-            message.Register(AppMessages.COUCOU, () => {
-                Console.WriteLine("coucou received by handler 2");
-            });
-
-            //enregistre un hndler pour le message "brol" qui prend en paramète un entier
-            message.Register<int>(AppMessages.BROL, (i) => {
-                Console.WriteLine("brol received with parameter " + i );
-            });
-
-            //notifie les "observers" (ici appelés les collègues") 
-            //enregistrés avec le message "coucou" puis "brol"
-            message.NotifyColleagues(AppMessages.COUCOU);
-            message.NotifyColleagues(AppMessages.BROL, 123);
-        }*/
-
         protected override void OnRefreshData() {
             if (CurrentUser?.Mail != null)
                 CurrentUser = User.GetByMail(CurrentUser.Mail);

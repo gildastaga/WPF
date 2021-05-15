@@ -17,7 +17,7 @@ namespace School04.ViewModel {
         public event Action<Quizz, bool> DisplayQuizz;
         //action pour fermer une fenetre (userControl) Course
         public event Action<Course> CloseTabCourse;
-        public event Action<User> CloseTabProfile;
+        public event Action CloseTabProfile;
         //action pour se déconnecter
         public event Action OnLogout;
         //Action pour le renommage de l'en-tete de l'onglet du Quizz
@@ -86,8 +86,8 @@ namespace School04.ViewModel {
                 CloseTabCourse?.Invoke(course);
             });
             
-            Register<User>(this, AppMessages.MSG_CLOSE_TAB_PROFILE, user => {
-                CloseTabProfile?.Invoke(user);
+            Register(this, AppMessages.MSG_CLOSE_TAB_PROFILE, () => {
+                CloseTabProfile?.Invoke();
             });
         }
         private void LogoutAction() {
