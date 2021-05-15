@@ -119,9 +119,7 @@ namespace School04.Model {
                 IsDelete = false,
                 Course = sgbd,
                 typeQuestion = TypeQuestion.OneAnswer
-
             };
-            Questions.AddRange(quest1, quest2);
 
             var quest3 = new Question {
                 Enonce = "-Choisir la réponse avec un (V) :",
@@ -130,6 +128,9 @@ namespace School04.Model {
                 Course = prm2,
                 typeQuestion = TypeQuestion.ManyAnswer
             };
+
+            Questions.AddRange(quest1, quest2, quest3);
+
             var quest4 = new Question {
                 Enonce = "-Qu'est ce que le PHP:",
                 Course = anc3,
@@ -140,7 +141,55 @@ namespace School04.Model {
                 Course = map4,
                 typeQuestion = TypeQuestion.ManyAnswer
             };
-            Questions.AddRange(quest3, quest4, quest5);
+
+            var quest6 = new Question {
+                Enonce = "-Que signifie TGPR",
+                Course = tgpr,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
+            var quest7 = new Question {
+                Enonce = "-Qu'est ce que la géométrie",
+                Course = map4,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
+            var quest8 = new Question {
+                Enonce = "-Qu'est ce que l'informatique",
+                Course = prbd,
+                typeQuestion = TypeQuestion.ManyAnswer
+            };
+
+            var quest9 = new Question {
+                Enonce = "-Qu'entend-t-on par automatisation",
+                Course = phys,
+                typeQuestion = TypeQuestion.ManyAnswer
+            };
+
+            var quest10 = new Question {
+                Enonce = "Qu'est ce que l'homogénéité",
+                Course = chimie,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
+            var quest11 = new Question {
+                Enonce = "Que signifie hétérogène",
+                Course = chimie,
+                typeQuestion = TypeQuestion.ManyAnswer
+            };
+
+            var quest12 = new Question {
+                Enonce = "what is the push of Archimedes",
+                Course = ang,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
+            var quest13 = new Question {
+                Enonce = "what is parity",
+                Course = ang,
+                typeQuestion = TypeQuestion.ManyAnswer
+            };
+            Questions.AddRange(quest4, quest5, quest6, quest7, quest8, quest9, quest10, quest11, quest12, quest13);
 
             var prop1 = new Proposition ("C#", Type.True);
             var prop11 = new Proposition("javaFX", Type.False);
@@ -210,7 +259,6 @@ namespace School04.Model {
             SaveChanges();
 
             Database.CommitTransaction();
-
             
         }
 
