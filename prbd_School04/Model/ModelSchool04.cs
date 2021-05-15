@@ -188,9 +188,33 @@ namespace School04.Model {
                 typeQuestion = TypeQuestion.OneAnswer
             };
 
+            var quest44 = new Question {
+                Enonce = "-Qu'est ce que le PHP:",
+                Course = map4,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
+            var quest444 = new Question {
+                Enonce = "-Qu'est ce que le PHP:",
+                Course = prbd,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
             var quest5 = new Question {
                 Enonce = "-Choisir les nombres pairs",
                 Course = map4,
+                typeQuestion = TypeQuestion.ManyAnswer
+            };
+
+            var quest55 = new Question {
+                Enonce = "-Choisir les nombres pairs",
+                Course = anc3,
+                typeQuestion = TypeQuestion.ManyAnswer
+            };
+
+            var quest555 = new Question {
+                Enonce = "-Choisir les nombres pairs",
+                Course = prbd,
                 typeQuestion = TypeQuestion.ManyAnswer
             };
 
@@ -200,48 +224,110 @@ namespace School04.Model {
                 typeQuestion = TypeQuestion.ManyAnswer
             };
 
+            var quest66 = new Question {
+                Enonce = "-Qu'est ce que l'informatique",
+                Course = map4,
+                typeQuestion = TypeQuestion.ManyAnswer
+            };
+
+            var quest665 = new Question {
+                Enonce = "-Qu'est ce que l'informatique",
+                Course = anc3,
+                typeQuestion = TypeQuestion.ManyAnswer
+            };
+
             var quest7 = new Question {
                 Enonce = "-Que signifie TGPR",
                 Course = tgpr,
                 typeQuestion = TypeQuestion.OneAnswer
             };
+            var quest77 = new Question {
+                Enonce = "-Que signifie TGPR",
+                Course = bnet,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
+            var quest777 = new Question {
+                Enonce = "-Que signifie TGPR",
+                Course = snet,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
 
             var quest8 = new Question {
                 Enonce = "-Qu'est ce que la géométrie",
-                Course = map4,
+                Course = bnet,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
+            var quest88 = new Question {
+                Enonce = "-Qu'est ce que la géométrie",
+                Course = snet,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
+            var quest888 = new Question {
+                Enonce = "-Qu'est ce que la géométrie",
+                Course = tgpr,
                 typeQuestion = TypeQuestion.OneAnswer
             };
 
             var quest9 = new Question {
+                Enonce = "-Qu'est ce que le réseau",
+                Course = snet,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
+
+            var quest99 = new Question {
+                Enonce = "-Qu'est ce que le réseau",
+                Course = bnet,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
+
+            var quest999 = new Question {
+                Enonce = "-Qu'est ce que le réseau",
+                Course = tgpr,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
+            var quest10 = new Question {
                 Enonce = "-Qu'entend-t-on par automatisation",
                 Course = phys,
                 typeQuestion = TypeQuestion.ManyAnswer
             };
 
-            var quest10 = new Question {
+            var quest100 = new Question {
                 Enonce = "Qu'est ce que l'homogénéité",
                 Course = chimie,
                 typeQuestion = TypeQuestion.OneAnswer
             };
 
-            /*var quest11 = new Question {
+            var quest1000 = new Question {
+                Enonce = "Qu'est ce que l'homogénéité",
+                Course = chimie,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
+            var quest12 = new Question {
                 Enonce = "Que signifie hétérogène",
                 Course = chimie,
                 typeQuestion = TypeQuestion.ManyAnswer
-            };*/
+            };
 
-            var quest12 = new Question {
+            var quest13 = new Question {
                 Enonce = "what is the push of Archimedes",
                 Course = ang,
                 typeQuestion = TypeQuestion.OneAnswer
             };
 
-            var quest13 = new Question {
+            var quest14 = new Question {
                 Enonce = "what is parity",
                 Course = ang,
                 typeQuestion = TypeQuestion.ManyAnswer
             };
-            Questions.AddRange(quest4, quest5, quest6, quest7, quest8, quest9, quest10, quest11, quest12, quest13);
+            Questions.AddRange(quest4, quest44, quest444, quest5, quest55, quest555, quest6, quest66, quest665, 
+                quest7, quest8, quest9, quest10, quest11, quest12, quest13);
 
             var prop1 = new Proposition ("C#", Type.True);
             var prop11 = new Proposition("javaFX", Type.False);
