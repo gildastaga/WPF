@@ -26,10 +26,7 @@
                 <DataGridTextColumn Header="Finish" Binding="{Binding Path=ExaminationEndDate, StringFormat=\{0:dd/MM/yyyy HH:mm:ss\}}" IsReadOnly="True" Width="auto" MinWidth="80" />
                 <DataGridTextColumn Header="# Questions" Binding="{Binding Path=QuestionsCount}" IsReadOnly="True"/>
             </DataGrid.Columns>
-            <DataGrid.InputBindings>
-                <KeyBinding Key="Delete" Command="{Binding DeleteMessages}" CommandParameter="{Binding SelectedItemsList, ElementName=grid}" />
-            </DataGrid.InputBindings>
         </f:MyDataGrid>
-        <Button HorizontalAlignment="Right" Content="New Quiz" Margin="5" Command="{Binding CreateQuizz}" CommandParameter="{Binding SelectedItemsList, ElementName=grid}"/>
+        <Button HorizontalAlignment="Right" Content="New Quiz" Margin="5" Command="{Binding CreateQuizz}"/>
     </StackPanel>
 </f:UserControlBase>

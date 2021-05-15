@@ -36,11 +36,21 @@ namespace School04.Model {
             return Context.Registrations.Where(r => r.Course == course);
         }
         public static IQueryable<User> GetNoRegistrationsFromCourse(Course course) {
-            var filtered = from s in Context.Students
+            var noRegistrations = from s in Context.Students
                            where s.CoursesStudent.All(s => s.Course != course)
                            orderby s.FirstName
                            select s;
+            return noRegistrations;
+        }
+
+        public static IQueryable<User> GetFiltredNoRegistrationsFromCourse(Course course, string Filter) {
+            var filtered = GetNoRegistrationsFromCourse(course).Where(s => s.FirstName.Contains(Filter) || s.Name.Contains(Filter));
             return filtered;
+            /*var filtered = from s in Context.Students
+                           where s.CoursesStudent.All(s => s.Course != course) && (s.FirstName.Contains(Filter) || s.Name.Contains(Filter))
+                           orderby s.FirstName
+                           select s;
+            return filtered;*/
         }
 
         public string SwitchLabel {
@@ -59,5 +69,26 @@ namespace School04.Model {
         }
 
         public string StudentName => Student.ToString();
+
+        public static Registration[] DeleteRegistrations(params Registration[] registrations) {
+            var deleted = new List<Registration>();
+            foreach (var r in registrations) {
+                Context.Registrations.Remove(r);
+                deleted.Add(r);
+            }
+            //Context.SaveChanges();
+            return deleted.ToArray();
+        }
+        public static Registration[] AddRegistrations(Course course, params User[] students) {
+            var added = new List<Registration>();
+            foreach (Student s in students) {
+                var r = new Registration(s, course);
+                r.RegistrationState = State.Active;
+                Context.Registrations.Add(r);
+                added.Add(r);
+            }
+            //Context.SaveChanges();
+            return added.ToArray();
+        }
     }
 }
