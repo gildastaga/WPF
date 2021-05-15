@@ -30,5 +30,27 @@ namespace School04.View {
             this.course = course;
             InitializeComponent();
         }
+
+        private void bt_save_Click(object sender, RoutedEventArgs e) {
+            string name = tb_name.Text;
+            //int question = tb_question.CaretIndex;
+           // Question question = tb_question;
+
+            //Category category = new Category(name, question);
+           // dataGrid.Items.Add(category);
+        }
+
+        private void bt_cancel_Click(object sender, RoutedEventArgs e) {
+            
+        }
+
+        private void bt_delete_Click(object sender, RoutedEventArgs e) {
+            string name = tb_name.Text;
+            //int question = tb_question.CaretIndex;
+            //Question question = tb_question;
+
+            //Category category = new Category(name, question);
+           // dataGrid.Items.Remove(category);
+        }
     }
 }
