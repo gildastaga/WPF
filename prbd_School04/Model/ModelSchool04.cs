@@ -113,6 +113,15 @@ namespace School04.Model {
 
             };
 
+            var quest111 = new Question {
+                Enonce = "-Quelle est le langage utilisé ?",
+                IsUpdate = false,
+                IsDelete = false,
+                Course = sgbd,
+                typeQuestion = TypeQuestion.ManyAnswer
+
+            };
+
             var quest2 = new Question {
                 Enonce = "-Qu'est-ce que le SQL Server?",
                 IsUpdate = false,
@@ -121,11 +130,36 @@ namespace School04.Model {
                 typeQuestion = TypeQuestion.OneAnswer
             };
 
+            var quest222 = new Question {
+                Enonce = "-Qu'est-ce que le SQL Server?",
+                IsUpdate = false,
+                IsDelete = false,
+                Course = prwb,
+                typeQuestion = TypeQuestion.OneAnswer
+            };
+
             var quest3 = new Question {
                 Enonce = "-Choisir la réponse avec un (V) :",
                 IsUpdate = false,
                 IsDelete = false,
                 Course = prm2,
+                typeQuestion = TypeQuestion.ManyAnswer
+            };
+
+
+            var quest33 = new Question {
+                Enonce = "-Choisir la réponse avec un (V) :",
+                IsUpdate = false,
+                IsDelete = false,
+                Course = prwb,
+                typeQuestion = TypeQuestion.ManyAnswer
+            };
+
+            var quest333 = new Question {
+                Enonce = "-Choisir la réponse avec un (V) :",
+                IsUpdate = false,
+                IsDelete = false,
+                Course = sgbd,
                 typeQuestion = TypeQuestion.ManyAnswer
             };
 
