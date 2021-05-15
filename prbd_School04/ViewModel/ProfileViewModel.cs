@@ -34,9 +34,14 @@ namespace School04.ViewModel {
             get; set;
         }
         private void SaveActionUser() {
-            if(Validate())
+            if (Validate()) {
+                
                 Context.SaveChanges();
+            }
+                
             OnRefreshData();
+            NotifyColleagues(AppMessages.MSG_UPDATE_PROFILE);
+            NotifyColleagues(AppMessages.MSG_CLOSE_TAB_PROFILE);
         }
         // determine si le bouton peut etre actif ou pas
         private bool CanSaveActionUser() {

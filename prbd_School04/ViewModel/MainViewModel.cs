@@ -89,6 +89,7 @@ namespace School04.ViewModel {
             Register(this, AppMessages.MSG_CLOSE_TAB_PROFILE, () => {
                 CloseTabProfile?.Invoke();
             });
+            Register(this, AppMessages.MSG_UPDATE_PROFILE, OnRefreshData);
         }
         private void LogoutAction() {
             Logout();
@@ -100,7 +101,7 @@ namespace School04.ViewModel {
             get => $"School04 ({CurrentUser.ToString()})";
         }
         protected override void OnRefreshData() {
-            //pour plus tard
+            RaisePropertyChanged(nameof(TitleWindow)); 
         }
     }
 }

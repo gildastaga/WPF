@@ -53,6 +53,8 @@ namespace School04.ViewModel {
             DisplayCourseDetails = new RelayCommand<Course>(course => {
                  NotifyColleagues(AppMessages.MSG_DISPLAY_COURSE, course);
             });
+
+            Register(this, AppMessages.MSG_UPDATE_PROFILE, OnRefreshData);
         }
         private void ApplyFilterAction() {
             Console.WriteLine("Search clicked! " + Filter);
@@ -65,7 +67,7 @@ namespace School04.ViewModel {
             Console.WriteLine($"{query.Count()} courses found");
         } 
         protected override void OnRefreshData() {
-            // Pour plus tard
+            makeList();
         }
     }
 }

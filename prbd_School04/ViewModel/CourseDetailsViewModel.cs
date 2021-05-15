@@ -44,6 +44,8 @@ namespace School04.ViewModel {
             SaveCourse = new RelayCommand(SaveActionCourse, CanSaveActionCourse); 
             CancelCourse = new RelayCommand(CancelActionCourse, CanCancelActionCourse);
             DeleteCourse = new RelayCommand(DeleteActionCourse, () => !IsNew);
+
+            Register(this, AppMessages.MSG_UPDATE_PROFILE, OnRefreshData);
         }
 
         public void Init(Course course, bool isNew) {

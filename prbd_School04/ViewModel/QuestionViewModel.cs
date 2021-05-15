@@ -11,7 +11,6 @@ using System.Windows.Input;
 namespace School04.ViewModel {
     public class QuestionViewModel : ViewModelBase<ModelSchool04> {
         protected override void OnRefreshData() {
-            throw new NotImplementedException();
         }
 
         private ObservableCollection<Question> questions;

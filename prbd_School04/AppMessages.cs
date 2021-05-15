@@ -13,6 +13,7 @@
         MSG_REFRESH_DATA,
         MSG_PROFILE,
         MSG_PROFILE_CHANGED,
-        MSG_CLOSE_TAB_PROFILE
+        MSG_CLOSE_TAB_PROFILE,
+        MSG_UPDATE_PROFILE
     }
 }
