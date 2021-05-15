@@ -23,9 +23,6 @@ namespace School04.ViewModel {
             Name = Person.Name;
             FirstName = Person.FirstName;
             Profile = Person.Profile;
-
-            SaveUser = new RelayCommand(SaveActionUser, CanSaveActionUser);
-            CancelUser = new RelayCommand(CancelActionUser);
         }
         public ICommand CancelUser {
             get; set;

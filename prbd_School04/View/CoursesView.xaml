@@ -48,6 +48,7 @@
                             <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" TextWrapping="Wrap" Text="{Binding Description}" Foreground="White"/>
                             <TextBlock FontSize="14" FontStyle="Italic" Width="180" FontWeight="Bold" TextAlignment="Center" Text="Teacher : " Foreground="White"/>
                             <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" Text="{Binding TeacherCourse}" Foreground="White" />
+                            <Button x:Name="btnRegistration" Content="Code" Visibility="{Binding CanSubscribe, ElementName=vm, Converter={StaticResource BoolToVis}}"/>
                         </StackPanel>
                     </Border>
                 </DataTemplate>
