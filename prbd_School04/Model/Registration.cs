@@ -36,11 +36,21 @@ namespace School04.Model {
             return Context.Registrations.Where(r => r.Course == course);
         }
         public static IQueryable<User> GetNoRegistrationsFromCourse(Course course) {
-            var filtered = from s in Context.Students
+            var noRegistrations = from s in Context.Students
                            where s.CoursesStudent.All(s => s.Course != course)
                            orderby s.FirstName
                            select s;
+            return noRegistrations;
+        }
+
+        public static IQueryable<User> GetFiltredNoRegistrationsFromCourse(Course course, string Filter) {
+            var filtered = GetNoRegistrationsFromCourse(course).Where(s => s.FirstName.Contains(Filter) || s.Name.Contains(Filter));
             return filtered;
+            /*var filtered = from s in Context.Students
+                           where s.CoursesStudent.All(s => s.Course != course) && (s.FirstName.Contains(Filter) || s.Name.Contains(Filter))
+                           orderby s.FirstName
+                           select s;
+            return filtered;*/
         }
 
         public string SwitchLabel {
