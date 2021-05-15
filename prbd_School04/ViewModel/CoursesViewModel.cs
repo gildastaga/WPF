@@ -48,7 +48,7 @@ namespace School04.ViewModel {
 
             NewCourse = new RelayCommand(() => { NotifyColleagues(AppMessages.MSG_NEW_COURSE); });
             
-            Register<Course>(this, AppMessages.MSG_COURSE_CHANGED, course => { ApplyFilterAction(); });
+            Register<Course>(this, AppMessages.MSG_COURSE_CHANGED, course => { makeList(); });
 
             DisplayCourseDetails = new RelayCommand<Course>(course => {
                  NotifyColleagues(AppMessages.MSG_DISPLAY_COURSE, course);
@@ -66,6 +66,12 @@ namespace School04.ViewModel {
             Courses = new ObservableCollection<Course>(query);
             Console.WriteLine($"{query.Count()} courses found");
         } 
+
+        public bool CanSubscribe() {
+            /*if ()
+                return true;*/
+            return false;
+        }
         protected override void OnRefreshData() {
             makeList();
         }
