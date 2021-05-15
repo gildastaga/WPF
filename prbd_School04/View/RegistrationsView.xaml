@@ -31,21 +31,18 @@
             <TextBlock TextAlignment="Center" FontWeight="Bold" FontSize="16" Width="338" RenderTransformOrigin="0.494,2.89"><Run Text="Registered Students"/></TextBlock>
             <f:MyDataGrid x:Name="grid" ItemsSource="{Binding Registrations}"
                   AutoGenerateColumns="False" FontSize="12" IsReadOnly="False" Margin="5" CanUserAddRows="False" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" MaxHeight="160"
-                  SelectedItemsList="{Binding SelectedItems}" Width="324">
+                  SelectedItemsList="{Binding SelectedItemsRegistrations}" Width="324">
                 <f:MyDataGrid.Columns>
                     <DataGridTextColumn Header="Student" Binding="{Binding StudentName}" Width="*" IsReadOnly="True" SortDirection="Descending"/>
                     <DataGridTextColumn Header="State" Binding="{Binding RegistrationState}" IsReadOnly="True" />
                     <DataGridTemplateColumn Header="Actions" Width="75">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="{Binding SwitchLabel}" Command="{Binding ChangeRegistrationMode}"/>
+                                <Button Content="{Binding SwitchLabel}" Command="{Binding ChangeRegistrationState, ElementName=vm}" CommandParameter="{Binding}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                 </f:MyDataGrid.Columns>
-                <f:MyDataGrid.InputBindings>
-                    <KeyBinding Key="Delete" Command="{Binding DeleteMessages}" CommandParameter="{Binding SelectedItemsList, ElementName=grid}" />
-                </f:MyDataGrid.InputBindings>
             </f:MyDataGrid>
         </StackPanel>
         <StackPanel Grid.Column="2" Grid.RowSpan="3">
@@ -57,20 +54,17 @@
             </DockPanel>
             <f:MyDataGrid x:Name="grid2" ItemsSource="{Binding NotRegistered}"
                   AutoGenerateColumns="False" FontSize="12" IsReadOnly="False" Margin="5" CanUserAddRows="False" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" MaxHeight="160"
-                  SelectedItemsList="{Binding SelectedItems}" Width="324">
+                  SelectedItemsList="{Binding SelectedItemsUnregistered}" Width="324">
                 <f:MyDataGrid.Columns>
                     <DataGridTextColumn Header="Student" Binding="{Binding FullName}" Width="*" IsReadOnly="True" SortDirection="Descending"/>
                 </f:MyDataGrid.Columns>
-                <f:MyDataGrid.InputBindings>
-                    <KeyBinding Key="Delete" Command="{Binding DeleteMessages}" CommandParameter="{Binding SelectedItemsList, ElementName=grid}" />
-                </f:MyDataGrid.InputBindings>
             </f:MyDataGrid>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="1">
-            <Button Content=">>" Command="{Binding ClearFilter}" Width="auto" Margin="5,5,5,5" />
-            <Button Content=">" Command="{Binding ClearFilter}" Width="auto" Margin="5,5,5,5" />
-            <Button Content="&lt;" Command="{Binding ClearFilter}" Width="auto" Margin="5,5,5,5" />
-            <Button Content="&lt;&lt;" Command="{Binding ClearFilter}" Width="auto" Margin="5,5,5,5" />
+            <Button Content=">>" Command="{Binding UnsubscribeAll}" Width="auto" Margin="5,5,5,5" />
+            <Button Content=">" Command="{Binding UnsubscribeOne}" CommandParameter="{Binding SelectedItemsRegistrations}" Width="auto" Margin="5,5,5,5" />
+            <Button Content="&lt;" Command="{Binding SubscribeOne}" CommandParameter="{Binding SelectedItemsUnregistered}" Width="auto" Margin="5,5,5,5" />
+            <Button Content="&lt;&lt;" Command="{Binding SubscribeAll}" Width="auto" Margin="5,5,5,5" />
         </StackPanel>
     </Grid>
 </f:UserControlBase>
