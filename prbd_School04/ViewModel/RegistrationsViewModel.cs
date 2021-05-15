@@ -22,7 +22,7 @@ namespace School04.ViewModel {
         public RegistrationsViewModel() : base() {
             ClearFilter = new RelayCommand(() => Filter = "");
 
-            UnsubscribeOne = new RelayCommand(() => DeleteRegistrationsAction(selectedItemsRegistrations), () => {
+            UnsubscribeOne = new RelayCommand<IList>(DeleteRegistrationsAction, selectedItemsRegistrations => {
                 return !Context.ChangeTracker.HasChanges() && selectedItemsRegistrations?.Count > 0;
             });
 
@@ -30,7 +30,7 @@ namespace School04.ViewModel {
                 return !Context.ChangeTracker.HasChanges() && currentRegistrations?.Count > 0;
             });
 
-            SubscribeOne = new RelayCommand(() => AddRegistrationsAction(selectedItemsUnregistered), () => {
+            SubscribeOne = new RelayCommand<IList>(AddRegistrationsAction, selectedItemsUnregistered => {
                 return !Context.ChangeTracker.HasChanges() && selectedItemsUnregistered?.Count > 0
                     && currentRegistrations?.Count + selectedItemsUnregistered?.Count <= course.MaxStudent;
             });
@@ -96,6 +96,11 @@ namespace School04.ViewModel {
             OnRefreshData();
             // notifie le reste de l'application que les messages de ce membre ont été modifiés
             //NotifyColleagues(AppMessages.MSG_REFRESH_REGISTRATIONS, null);
+        }
+
+        private bool CanDeleteRegistration() {
+            return !Context.ChangeTracker.HasChanges() && selectedItemsUnregistered?.Count > 0
+                    && currentRegistrations?.Count + selectedItemsUnregistered?.Count <= course.MaxStudent;
         }
 
         private void DeleteAllRegistrationsAction() {
