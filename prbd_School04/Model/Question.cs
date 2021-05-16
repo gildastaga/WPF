@@ -39,5 +39,14 @@ namespace School04.Model {
             Course = course;
         }
 
+        public static IQueryable<Question> GetAvailableQuestionsForQuizz(Quizz quizz) {
+            return Context.Questions.Where(q => q.Course == quizz.Course/* && q.QuestionQuizz.All(q => q.QuestionQuizz != quizz.QuestionsQuizz)*/);
+            /*var availableQuestions = from qq in Context.QuestionQuizzs
+                where qq.Question.Course == quizz.Course
+                orderby qq.Question.Enonce
+                select qq.Question;
+            return availableQuestions;*/
+        }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -14,6 +15,9 @@ namespace School04.ViewModel {
         public ICommand Save { get; set; }
         public ICommand Cancel { get; set; }
         public ICommand Delete { get; set; }
+        public ICommand AddQuestion { get; set; }
+        public ICommand RemoveQuestion { get; set; }
+        public ICommand ChangeWeight { get; set; }
 
         private Quizz quizz;
         public Quizz Quizz { get => quizz; set => SetProperty(ref quizz, value); }
@@ -27,21 +31,42 @@ namespace School04.ViewModel {
             }
         }
 
-        private ObservableCollectionFast<QuestionQuizz> questions = new ObservableCollectionFast<QuestionQuizz>();
-        public ObservableCollectionFast<QuestionQuizz> Questions {
-            get { return questions; }
+        private ObservableCollectionFast<Question> availableQuestions = new ObservableCollectionFast<Question>();
+        public ObservableCollectionFast<Question> AvailableQuestions {
+            get { return availableQuestions; }
             set {
-                questions = value;
-                RaisePropertyChanged(nameof(Questions), nameof(QuestionsView));
+                availableQuestions = value;
+                RaisePropertyChanged(nameof(AvailableQuestions), nameof(QuestionsQuizz));
             }
         }
-        public ICollectionView QuestionsView => Questions.GetCollectionView(nameof(QuestionQuizz.PosQuestionInQuizz), ListSortDirection.Ascending);
+        public ICollectionView QuestionsBank => AvailableQuestions.GetCollectionView(nameof(Question.Enonce), ListSortDirection.Ascending);
 
+        private ObservableCollectionFast<QuestionQuizz> currentQuestions = new ObservableCollectionFast<QuestionQuizz>();
+        public ObservableCollectionFast<QuestionQuizz> CurrentQuestions {
+            get { return currentQuestions; }
+            set {
+                currentQuestions = value;
+                RaisePropertyChanged(nameof(CurrentQuestions), nameof(QuestionsQuizz));
+            }
+        }
+        public ICollectionView QuestionsQuizz => CurrentQuestions.GetCollectionView(nameof(QuestionQuizz.PosQuestionInQuizz), ListSortDirection.Ascending);
 
+        private IList selectedItemsQuestionsQuizz = new ArrayList();
+        public IList SelectedItemsQuestionsQuizz {
+            get => selectedItemsQuestionsQuizz;
+            set => SetProperty(ref selectedItemsQuestionsQuizz, value);
+        }
+
+        private IList selectedItemsQuestionsBank = new ArrayList();
+        public IList SelectedItemsQuestionsBank {
+            get => selectedItemsQuestionsBank;
+            set => SetProperty(ref selectedItemsQuestionsBank, value);
+        }
         public void Init(Quizz quizz, bool isNew) {
             Quizz = isNew ? quizz : Quizz.GetById(quizz.QuizzId);
             IsNew = isNew;
-            Questions = new ObservableCollectionFast<QuestionQuizz>(QuestionQuizz.GetQuestionsFromQuizz(Quizz));
+            CurrentQuestions = new ObservableCollectionFast<QuestionQuizz>(QuestionQuizz.GetQuestionsFromQuizz(Quizz));
+            AvailableQuestions = new ObservableCollectionFast<Question>(Question.GetAvailableQuestionsForQuizz(Quizz));
 
             RaisePropertyChanged();
         }
@@ -83,10 +108,16 @@ namespace School04.ViewModel {
             get { return Quizz?.Course?.Description; }
         }
 
+        public int? Weight { get; set; }
+
         public QuizzViewModel() : base() {
             Save = new RelayCommand(SaveAction, CanSaveAction);
             Cancel = new RelayCommand(CancelAction, CanCancelAction);
             Delete = new RelayCommand(DeleteAction, () => !IsNew);
+            ChangeWeight = new RelayCommand<IList>(ChangeWeightAction, selectedItemsQuestionsQuizz => {
+                return !Context.ChangeTracker.HasChanges() && selectedItemsQuestionsQuizz?.Count == 1
+                    && Weight > 0;
+            });
         }
 
         private void SaveAction() {
@@ -128,6 +159,13 @@ namespace School04.ViewModel {
             NotifyColleagues(AppMessages.MSG_QUIZZ_CHANGED, Quizz);
             NotifyColleagues(AppMessages.MSG_CLOSE_QUIZZ_TAB, Quizz);
         }
+        private void ChangeWeightAction(IList questionQuizz) {
+            var selectedQuestionQuizz = questionQuizz.Cast<QuestionQuizz>().ToList();
+            selectedQuestionQuizz.FirstOrDefault().NbPoint = (int)Weight;
+            Context.SaveChanges();
+            OnRefreshData();
+            //NotifyColleagues(AppMessages.MSG_QUIZZ_CHANGED, Quizz);
+        }
 
         public override void Dispose() {
             base.Dispose();
@@ -135,6 +173,11 @@ namespace School04.ViewModel {
         protected override void OnRefreshData() {
             if (IsNew || Quizz == null) return;
             Quizz = Quizz.GetById(Quizz.QuizzId);
+            CurrentQuestions.Reset(QuestionQuizz.GetQuestionsFromQuizz(Quizz));
+            AvailableQuestions.Reset(Question.GetAvailableQuestionsForQuizz(Quizz));
+            SelectedItemsQuestionsQuizz.Clear();
+            SelectedItemsQuestionsBank.Clear();
+            Weight = 0;
             RaisePropertyChanged();
         }
     }

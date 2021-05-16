@@ -32,9 +32,9 @@ namespace School04 {
 
             Console.WriteLine("Chargement de BDD en cours");
 
-            //Context.Database.EnsureDeleted();
+            Context.Database.EnsureDeleted();
             Context.Database.EnsureCreated();
-            //Context.SeedData();
+            Context.SeedData();
             Console.WriteLine("Liste de tous les teachers");
             foreach (var t in Context.Teachers.ToList()) {
                 Console.Write($"{t.FirstName} {t.Name}");
