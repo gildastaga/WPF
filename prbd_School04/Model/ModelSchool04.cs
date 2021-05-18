@@ -365,7 +365,7 @@ namespace School04.Model {
             Questions.AddRange(quest4, quest44, quest444, quest5, quest55, quest555, quest6, quest66, quest665, 
                 quest7, quest77, quest777, quest8, quest88, quest888, quest9, quest99, quest999, 
                 quest10, quest100, quest1000, quest12, quest122, quest1222, quest13, quest133, quest1333,
-                quest14, quest144, quest1444);
+                quest14, quest144, quest1444);  
 
             var prop1 = new Proposition ("C#", Type.True);
             var prop11 = new Proposition("javaFX", Type.False);
