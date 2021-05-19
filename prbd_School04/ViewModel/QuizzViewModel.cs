@@ -51,11 +51,6 @@ namespace School04.ViewModel {
         }
         public ICollectionView QuestionsQuizz => CurrentQuestions.GetCollectionView(nameof(QuestionQuizz.PosQuestionInQuizz), ListSortDirection.Ascending);
 
-        private IList selectedItemsQuestionsBank = new ArrayList();
-        public IList SelectedItemsQuestionsBank {
-            get => selectedItemsQuestionsBank;
-            set => SetProperty(ref selectedItemsQuestionsBank, value);
-        }
         public void Init(Quizz quizz, bool isNew) {
             Quizz = isNew ? quizz : Quizz.GetById(quizz.QuizzId);
             IsNew = isNew;
@@ -117,6 +112,15 @@ namespace School04.ViewModel {
             }
         }
 
+        private Question selectedQuestion;
+        public Question SelectedQuestion {
+            get => selectedQuestion;
+            set {
+                SetProperty(ref selectedQuestion, value);
+                Weight = 0;
+            }
+        }
+
         public QuizzViewModel() : base() {
             Save = new RelayCommand(SaveAction, CanSaveAction);
             Cancel = new RelayCommand(CancelAction, CanCancelAction);
@@ -124,6 +128,10 @@ namespace School04.ViewModel {
             ChangeWeight = new RelayCommand(ChangeWeightAction, () => {
                 return !Context.ChangeTracker.HasChanges() && selectedQuestionQuizz != null
                     && Weight > 0;
+            });
+            AddQuestion = new RelayCommand(AddQuestionAction, () => {
+                return !Context.ChangeTracker.HasChanges() && selectedQuestion != null
+                    && Weight > 0 && !IsNew;
             });
         }
 
@@ -173,6 +181,20 @@ namespace School04.ViewModel {
             //OnRefreshData();
             //NotifyColleagues(AppMessages.MSG_QUIZZ_CHANGED, Quizz);
         }
+        private void AddQuestionAction() {
+            var qq = new QuestionQuizz {
+                Quizz = quizz,
+                Question = SelectedQuestion,
+                NbPoint = Weight,
+                PosQuestionInQuizz = quizz.QuestionsCount + 1
+            };
+            Context.Add(qq);
+            Context.SaveChanges();
+            //RaisePropertyChanged(SelectedQuestionQuizz, nameof(QuestionQuizz.NbPoint));
+            NotifyColleagues(AppMessages.MSG_QUIZZ_CHANGED, Quizz);
+            OnRefreshData();
+            //NotifyColleagues(AppMessages.MSG_QUIZZ_CHANGED, Quizz);
+        }
 
         public override void Dispose() {
             base.Dispose();
@@ -182,7 +204,6 @@ namespace School04.ViewModel {
             Quizz = Quizz.GetById(Quizz.QuizzId);
             CurrentQuestions.Reset(QuestionQuizz.GetQuestionsFromQuizz(Quizz));
             AvailableQuestions.Reset(Question.GetAvailableQuestionsForQuizz(Quizz));
-            SelectedItemsQuestionsBank.Clear();
             Weight = 0;
             RaisePropertyChanged();
         }
