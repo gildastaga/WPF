@@ -33,11 +33,11 @@ namespace School04.View {
 
         private void bt_save_Click(object sender, RoutedEventArgs e) {
             string name = tb_name.Text;
-            //int question = tb_question.CaretIndex;
-           // Question question = tb_question;
+            string enonce = tb_question.Text;
+            Question question = App.Context.Questions.Where(q => q.Enonce == enonce).FirstOrDefault();
 
-            //Category category = new Category(name, question);
-           // dataGrid.Items.Add(category);
+            Category category = new Category(name, question);
+            dataGrid.Items.Add(category);
         }
 
         private void bt_cancel_Click(object sender, RoutedEventArgs e) {
@@ -45,12 +45,7 @@ namespace School04.View {
         }
 
         private void bt_delete_Click(object sender, RoutedEventArgs e) {
-            string name = tb_name.Text;
-            //int question = tb_question.CaretIndex;
-            //Question question = tb_question;
-
-            //Category category = new Category(name, question);
-           // dataGrid.Items.Remove(category);
+            dataGrid.Items.Clear();
         }
     }
 }
