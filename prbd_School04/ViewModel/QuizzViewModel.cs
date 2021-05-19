@@ -51,12 +51,6 @@ namespace School04.ViewModel {
         }
         public ICollectionView QuestionsQuizz => CurrentQuestions.GetCollectionView(nameof(QuestionQuizz.PosQuestionInQuizz), ListSortDirection.Ascending);
 
-        private IList selectedItemsQuestionsQuizz = new ArrayList();
-        public IList SelectedItemsQuestionsQuizz {
-            get => selectedItemsQuestionsQuizz;
-            set => SetProperty(ref selectedItemsQuestionsQuizz, value);
-        }
-
         private IList selectedItemsQuestionsBank = new ArrayList();
         public IList SelectedItemsQuestionsBank {
             get => selectedItemsQuestionsBank;
@@ -108,14 +102,27 @@ namespace School04.ViewModel {
             get { return Quizz?.Course?.Description; }
         }
 
-        public int? Weight { get; set; }
+        private int weight;
+        public int Weight {
+            get => weight;
+            set => SetProperty(ref weight, value);
+        }
+
+        private QuestionQuizz selectedQuestionQuizz;
+        public QuestionQuizz SelectedQuestionQuizz {
+            get => selectedQuestionQuizz;
+            set {
+                SetProperty(ref selectedQuestionQuizz, value);
+                Weight = value.NbPoint;
+            }
+        }
 
         public QuizzViewModel() : base() {
             Save = new RelayCommand(SaveAction, CanSaveAction);
             Cancel = new RelayCommand(CancelAction, CanCancelAction);
             Delete = new RelayCommand(DeleteAction, () => !IsNew);
-            ChangeWeight = new RelayCommand<IList>(ChangeWeightAction, selectedItemsQuestionsQuizz => {
-                return !Context.ChangeTracker.HasChanges() && selectedItemsQuestionsQuizz?.Count == 1
+            ChangeWeight = new RelayCommand(ChangeWeightAction, () => {
+                return !Context.ChangeTracker.HasChanges() && selectedQuestionQuizz != null
                     && Weight > 0;
             });
         }
@@ -159,11 +166,11 @@ namespace School04.ViewModel {
             NotifyColleagues(AppMessages.MSG_QUIZZ_CHANGED, Quizz);
             NotifyColleagues(AppMessages.MSG_CLOSE_QUIZZ_TAB, Quizz);
         }
-        private void ChangeWeightAction(IList questionQuizz) {
-            var selectedQuestionQuizz = questionQuizz.Cast<QuestionQuizz>().ToList();
-            selectedQuestionQuizz.FirstOrDefault().NbPoint = (int)Weight;
+        private void ChangeWeightAction() {
+            SelectedQuestionQuizz.NbPoint = Weight;
             Context.SaveChanges();
-            OnRefreshData();
+            RaisePropertyChanged(SelectedQuestionQuizz, nameof(QuestionQuizz.NbPoint));
+            //OnRefreshData();
             //NotifyColleagues(AppMessages.MSG_QUIZZ_CHANGED, Quizz);
         }
 
@@ -175,7 +182,6 @@ namespace School04.ViewModel {
             Quizz = Quizz.GetById(Quizz.QuizzId);
             CurrentQuestions.Reset(QuestionQuizz.GetQuestionsFromQuizz(Quizz));
             AvailableQuestions.Reset(Question.GetAvailableQuestionsForQuizz(Quizz));
-            SelectedItemsQuestionsQuizz.Clear();
             SelectedItemsQuestionsBank.Clear();
             Weight = 0;
             RaisePropertyChanged();

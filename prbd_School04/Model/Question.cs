@@ -21,7 +21,7 @@ namespace School04.Model {
         public Boolean IsDelete { get; set; }
         public TypeQuestion typeQuestion { get; set; } = TypeQuestion.OneAnswer;
         public virtual ICollection<Category> Categories{get; set;} = new HashSet<Category>();
-        public virtual ICollection<Question> QuestionQuizz {get; set;} = new HashSet<Question>();
+        public virtual ICollection<QuestionQuizz> QuestionQuizz {get; set;} = new HashSet<QuestionQuizz>();
 
        public virtual ICollection<Answer> Answers{get; set;} = new HashSet<Answer>();
 
@@ -40,7 +40,7 @@ namespace School04.Model {
         }
 
         public static IQueryable<Question> GetAvailableQuestionsForQuizz(Quizz quizz) {
-            return Context.Questions.Where(q => q.Course == quizz.Course/* && q.QuestionQuizz.All(q => q.QuestionQuizz != quizz.QuestionsQuizz)*/);
+            return Context.Questions.Where(q => q.Course == quizz.Course && !q.QuestionQuizz.Any(qq => qq.QuestionId == q.QuestionId));
             /*var availableQuestions = from qq in Context.QuestionQuizzs
                 where qq.Question.Course == quizz.Course
                 orderby qq.Question.Enonce

@@ -49,7 +49,7 @@
         </StackPanel>
         <f:MyDataGrid x:Name="lsQuestionsQuizz" ItemsSource="{Binding QuestionsQuizz}" Grid.ColumnSpan="2" Grid.Row="5"
                   AutoGenerateColumns="False" FontSize="12" IsReadOnly="False" Margin="5" CanUserAddRows="False" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True"
-                  SelectedItemsList="{Binding SelectedItemsQuestionsQuizz}" SelectionChanged="lsQuestionsQuizz_SelectionChanged">
+                  SelectionMode="Single" SelectedItem="{Binding SelectedQuestionQuizz}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Position" Binding="{Binding Path=PosQuestionInQuizz}" IsReadOnly="True" SortDirection="Descending" Width="auto" MinWidth="70"/>
                 <DataGridTextColumn Header="Weight" Binding="{Binding Path=NbPoint}" IsReadOnly="True" Width="auto" MinWidth="70" />
@@ -60,8 +60,8 @@
             <Button HorizontalAlignment="Center" Content="Add Question" Margin="5" Command="{Binding AddQuestion}" CommandParameter="{Binding SelectedItemsQuestionsBank}"/>
             <Button HorizontalAlignment="Center" Content="Remove Question" Margin="5" Command="{Binding RemoveQuestion}" CommandParameter="{Binding SelectedItemsQuestionsQuizz}"/>
             <TextBlock Text="Number of points :" HorizontalAlignment="Center"/>
-            <TextBox x:Name="Weight" Text="{Binding Weight, UpdateSourceTrigger=PropertyChanged}" Width="40"/>
-            <Button HorizontalAlignment="Center" Content="Change Weight" Margin="5" Command="{Binding ChangeWeight}" CommandParameter="{Binding SelectedItemsQuestionsQuizz}"/>
+            <TextBox x:Name="Weight" Text="{Binding Weight}" Width="40"/>
+            <Button HorizontalAlignment="Center" Content="Change Weight" Margin="5" Command="{Binding ChangeWeight}"/>
         </StackPanel>
         <f:MyDataGrid x:Name="lsQuestions" ItemsSource="{Binding QuestionsBank}" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="5"
                   AutoGenerateColumns="False" FontSize="12" IsReadOnly="False" Margin="5" CanUserAddRows="False" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True"

@@ -29,13 +29,5 @@ namespace School04.View {
             InitializeComponent();
             vm.Init(quizz, isNew);
         }
-
-        private void lsQuestionsQuizz_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            if (e.AddedItems.Count == 1)
-                vm.Weight = e.AddedItems.Cast<QuestionQuizz>().First().NbPoint;
-            else
-                vm.Weight = 0;
-            Weight.Text = ((int)vm.Weight).ToString();
-        }
     }
 }
