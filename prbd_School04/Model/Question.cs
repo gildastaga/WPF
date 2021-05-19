@@ -16,6 +16,7 @@ namespace School04.Model {
 
     public class Question : EntityBase<ModelSchool04> {
         public int QuestionId { get; set; }
+       // public int QuestionName { get; set; }
         public string Enonce { get; set; }
         public Boolean IsUpdate { get; set; }
         public Boolean IsDelete { get; set; }
