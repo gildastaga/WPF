@@ -108,7 +108,8 @@ namespace School04.ViewModel {
             get => selectedQuestionQuizz;
             set {
                 SetProperty(ref selectedQuestionQuizz, value);
-                Weight = value.NbPoint;
+                if(value != null)
+                    Weight = value.NbPoint;
             }
         }
 
@@ -132,6 +133,9 @@ namespace School04.ViewModel {
             AddQuestion = new RelayCommand(AddQuestionAction, () => {
                 return !Context.ChangeTracker.HasChanges() && selectedQuestion != null
                     && Weight > 0 && !IsNew;
+            });
+            RemoveQuestion = new RelayCommand(RemoveQuestionAction, () => {
+                return !Context.ChangeTracker.HasChanges() && selectedQuestionQuizz != null && !IsNew;
             });
         }
 
@@ -189,6 +193,19 @@ namespace School04.ViewModel {
                 PosQuestionInQuizz = quizz.QuestionsCount + 1
             };
             Context.Add(qq);
+            Context.SaveChanges();
+            //RaisePropertyChanged(SelectedQuestionQuizz, nameof(QuestionQuizz.NbPoint));
+            NotifyColleagues(AppMessages.MSG_QUIZZ_CHANGED, Quizz);
+            OnRefreshData();
+            //NotifyColleagues(AppMessages.MSG_QUIZZ_CHANGED, Quizz);
+        }
+        private void RemoveQuestionAction() {
+            int pos = SelectedQuestionQuizz.PosQuestionInQuizz;
+            var NextQuestions = QuestionQuizz.GetQuestionsFromQuizzAfterPos(quizz, pos);
+            SelectedQuestionQuizz.Delete();
+            foreach (var q in NextQuestions) {
+                q.PosQuestionInQuizz--;
+            }
             Context.SaveChanges();
             //RaisePropertyChanged(SelectedQuestionQuizz, nameof(QuestionQuizz.NbPoint));
             NotifyColleagues(AppMessages.MSG_QUIZZ_CHANGED, Quizz);

@@ -57,8 +57,8 @@
             </DataGrid.Columns>
         </f:MyDataGrid>
         <StackPanel Grid.Column="2" Grid.Row="5" VerticalAlignment="Center">
-            <Button HorizontalAlignment="Center" Content="Add Question" Margin="5" Command="{Binding AddQuestion}" CommandParameter="{Binding SelectedItemsQuestionsBank}"/>
-            <Button HorizontalAlignment="Center" Content="Remove Question" Margin="5" Command="{Binding RemoveQuestion}" CommandParameter="{Binding SelectedItemsQuestionsQuizz}"/>
+            <Button HorizontalAlignment="Center" Content="Add Question" Margin="5" Command="{Binding AddQuestion}"/>
+            <Button HorizontalAlignment="Center" Content="Remove Question" Margin="5" Command="{Binding RemoveQuestion}"/>
             <TextBlock Text="Number of points :" HorizontalAlignment="Center"/>
             <TextBox x:Name="Weight" Text="{Binding Weight, UpdateSourceTrigger=PropertyChanged}" Width="40"/>
             <Button HorizontalAlignment="Center" Content="Change Weight" Margin="5" Command="{Binding ChangeWeight}"/>
