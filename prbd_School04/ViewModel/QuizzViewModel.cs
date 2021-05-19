@@ -125,7 +125,7 @@ namespace School04.ViewModel {
         public QuizzViewModel() : base() {
             Save = new RelayCommand(SaveAction, CanSaveAction);
             Cancel = new RelayCommand(CancelAction, CanCancelAction);
-            Delete = new RelayCommand(DeleteAction, () => !IsNew);
+            Delete = new RelayCommand(DeleteAction, CanDeleteAction);
             ChangeWeight = new RelayCommand(ChangeWeightAction, () => {
                 return !Context.ChangeTracker.HasChanges() && selectedQuestionQuizz != null
                     && Weight > 0;
@@ -155,7 +155,7 @@ namespace School04.ViewModel {
             if (IsNew)
                 return !string.IsNullOrEmpty(Title);
             if(StartDate != null || EndDate != null)
-                return Quizz != null && StartDate != null && EndDate != null && StartDate < EndDate && (Context?.Entry(Quizz)?.State == EntityState.Modified);
+                return Quizz != null && StartDate != null && EndDate != null && StartDate > DateTime.Now && StartDate < EndDate && (Context?.Entry(Quizz)?.State == EntityState.Modified);
             return Quizz != null && (Context?.Entry(Quizz)?.State == EntityState.Modified);
         }
 
@@ -164,6 +164,7 @@ namespace School04.ViewModel {
                 NotifyColleagues(AppMessages.MSG_CLOSE_QUIZZ_TAB, Quizz);
             } else {
                 Context.Reload(Quizz);
+                NotifyColleagues(AppMessages.MSG_TITLE_QUIZZ_CHANGED, quizz);
                 RaisePropertyChanged();
             }
         }
@@ -177,6 +178,14 @@ namespace School04.ViewModel {
             Quizz.Delete();
             NotifyColleagues(AppMessages.MSG_QUIZZ_CHANGED, Quizz);
             NotifyColleagues(AppMessages.MSG_CLOSE_QUIZZ_TAB, Quizz);
+        }
+
+        private bool CanDeleteAction() {
+            if (IsNew)
+                return false;
+            if (StartDate != null && StartDate < DateTime.Now)
+                return false;
+            return true;
         }
         private void ChangeWeightAction() {
             SelectedQuestionQuizz.NbPoint = Weight;
