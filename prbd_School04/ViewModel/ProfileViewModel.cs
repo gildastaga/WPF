@@ -16,6 +16,12 @@ namespace School04.ViewModel {
             get => CurrentUser;
             set => SetProperty(ref person, value);
         }
+        public ICommand CancelUser {
+            get; set;
+        }
+        public ICommand SaveUser {
+            get; set;
+        }
 
         public ProfileViewModel() : base(){
             makeList();
@@ -23,20 +29,17 @@ namespace School04.ViewModel {
             Name = Person.Name;
             FirstName = Person.FirstName;
             Profile = Person.Profile;
+
+            SaveUser = new RelayCommand(SaveActionUser, CanSaveActionUser);
+            CancelUser = new RelayCommand(CancelActionUser);
+            Register(this, AppMessages.MSG_UPDATE_PROFILE, OnRefreshData);
         }
-        public ICommand CancelUser {
-            get; set;
-        }
-        public ICommand SaveUser {
-            get; set;
-        }
+
         private void SaveActionUser() {
             if (Validate()) {
-                
+
                 Context.SaveChanges();
             }
-                
-            OnRefreshData();
             NotifyColleagues(AppMessages.MSG_UPDATE_PROFILE);
             NotifyColleagues(AppMessages.MSG_CLOSE_TAB_PROFILE);
         }
