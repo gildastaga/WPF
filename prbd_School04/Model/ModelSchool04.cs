@@ -399,7 +399,8 @@ namespace School04.Model {
 
             var quiz1 = new Quizz {
                 Course = prbd,
-                Title = "Premier quiz"
+                Title = "Premier quiz",
+                ExaminationStartDate = new DateTime(2019, 1, 1)
             };
             
             var quiz2 = new Quizz {

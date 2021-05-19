@@ -36,7 +36,7 @@ namespace School04.ViewModel {
             get { return availableQuestions; }
             set {
                 availableQuestions = value;
-                RaisePropertyChanged(nameof(AvailableQuestions), nameof(QuestionsQuizz));
+                RaisePropertyChanged(nameof(AvailableQuestions), nameof(QuestionsBank));
             }
         }
         public ICollectionView QuestionsBank => AvailableQuestions.GetCollectionView(nameof(Question.Enonce), ListSortDirection.Ascending);
@@ -128,14 +128,15 @@ namespace School04.ViewModel {
             Delete = new RelayCommand(DeleteAction, CanDeleteAction);
             ChangeWeight = new RelayCommand(ChangeWeightAction, () => {
                 return !Context.ChangeTracker.HasChanges() && selectedQuestionQuizz != null
-                    && Weight > 0;
+                    && Weight > 0 && (StartDate == null || StartDate > DateTime.Now);
             });
             AddQuestion = new RelayCommand(AddQuestionAction, () => {
                 return !Context.ChangeTracker.HasChanges() && selectedQuestion != null
-                    && Weight > 0 && !IsNew;
+                    && Weight > 0 && !IsNew && (StartDate == null || StartDate > DateTime.Now);
             });
             RemoveQuestion = new RelayCommand(RemoveQuestionAction, () => {
-                return !Context.ChangeTracker.HasChanges() && selectedQuestionQuizz != null && !IsNew;
+                return !Context.ChangeTracker.HasChanges() && selectedQuestionQuizz != null && !IsNew
+                    && (StartDate == null || StartDate > DateTime.Now);
             });
         }
 
