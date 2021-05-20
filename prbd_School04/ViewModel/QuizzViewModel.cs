@@ -138,6 +138,8 @@ namespace School04.ViewModel {
                 return !Context.ChangeTracker.HasChanges() && selectedQuestionQuizz != null && !IsNew
                     && (StartDate == null || StartDate > DateTime.Now);
             });
+
+            Register<Course>(this, AppMessages.MSG_COURSE_CHANGED, course => RaisePropertyChanged(nameof(Course)));
         }
 
         private void SaveAction() {
