@@ -108,7 +108,7 @@ namespace School04.Model {
                 Enonce = "-Quelle est le langage utilisé ?",
                 IsUpdate = false,
                 IsDelete = false,
-                Course = prwb,
+                Course = prbd,
                 typeQuestion = TypeQuestion.ManyAnswer
 
             };
@@ -135,7 +135,7 @@ namespace School04.Model {
                 Enonce = "-Qu'est-ce que le SQL Server?",
                 IsUpdate = false,
                 IsDelete = false,
-                Course = sgbd,
+                Course = prbd,
                 typeQuestion = TypeQuestion.OneAnswer
             };
 
@@ -399,7 +399,8 @@ namespace School04.Model {
 
             var quiz1 = new Quizz {
                 Course = prbd,
-                Title = "Premier quiz"
+                Title = "Premier quiz",
+                ExaminationStartDate = new DateTime(2019, 1, 1)
             };
             
             var quiz2 = new Quizz {

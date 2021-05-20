@@ -22,7 +22,7 @@ namespace School04.Model {
         public Boolean IsDelete { get; set; }
         public TypeQuestion typeQuestion { get; set; } = TypeQuestion.OneAnswer;
         public virtual ICollection<Category> Categories{get; set;} = new HashSet<Category>();
-        public virtual ICollection<Question> QuestionQuizz {get; set;} = new HashSet<Question>();
+        public virtual ICollection<QuestionQuizz> QuestionQuizz {get; set;} = new HashSet<QuestionQuizz>();
 
        public virtual ICollection<Answer> Answers{get; set;} = new HashSet<Answer>();
 
@@ -38,6 +38,15 @@ namespace School04.Model {
             IsUpdate = isUpdate;
             IsDelete = isDelete;
             Course = course;
+        }
+
+        public static IQueryable<Question> GetAvailableQuestionsForQuizz(Quizz quizz) {
+            return Context.Questions.Where(q => q.Course.CourseId == quizz.Course.CourseId && !q.QuestionQuizz.Any(qq => qq.QuestionId == q.QuestionId && qq.Quizz.QuizzId == quizz.QuizzId));
+            /*var availableQuestions = from qq in Context.QuestionQuizzs
+                where qq.Question.Course == quizz.Course
+                orderby qq.Question.Enonce
+                select qq.Question;
+            return availableQuestions;*/
         }
 
     }
