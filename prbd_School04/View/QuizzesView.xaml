@@ -24,7 +24,7 @@
                 <DataGridTextColumn Header="Title" Binding="{Binding Path=Title}" IsReadOnly="True" SortDirection="Descending" Width="auto" MinWidth="80"/>
                 <DataGridTextColumn Header="Start" Binding="{Binding Path=ExaminationStartDate, StringFormat=\{0:dd/MM/yyyy HH:mm:ss\}}" IsReadOnly="True" Width="auto" MinWidth="80" />
                 <DataGridTextColumn Header="Finish" Binding="{Binding Path=ExaminationEndDate, StringFormat=\{0:dd/MM/yyyy HH:mm:ss\}}" IsReadOnly="True" Width="auto" MinWidth="80" />
-                <DataGridTextColumn Header="# Questions" Binding="{Binding Path=QuestionsCount}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="# Questions" Binding="{Binding Path=QuestionsCount}" IsReadOnly="True" Width="*"/>
             </DataGrid.Columns>
         </f:MyDataGrid>
         <Button HorizontalAlignment="Right" Content="New Quiz" Margin="5" Command="{Binding CreateQuizz}"/>

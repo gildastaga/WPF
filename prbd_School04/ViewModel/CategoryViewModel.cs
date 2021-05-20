@@ -15,6 +15,8 @@ namespace School04.ViewModel {
         public ICommand Cancel { get; set; }
         public ICommand Delete { get; set; }
 
+        public event Action OnCategorySuccess;
+
         private Category category;
         public Category Category { get => category; set => SetProperty(ref category, value); }
 
@@ -62,18 +64,24 @@ namespace School04.ViewModel {
         private void SaveAction() {
             if (IsNew) {   
                 Category.Name = Category.Name;
+                //Question question = App.Context.Questions.Where(q => q.Enonce == enonce).FirstOrDefault();
                 Context.Add(Category);
                 IsNew = false;
+                Context.SaveChanges();
+                OnCategorySuccess?.Invoke();
+            } else {
+                Context.SaveChanges();
             }
             Context.SaveChanges();
-           // NotifyColleagues(AppMessages.MSG_CATEGORY_CHANGED, Category);
+            NotifyColleagues(AppMessages.MSG_NEW_CATEGORY, Category);
         }
 
         private void CancelAction() {
             if (IsNew) {
-               // NotifyColleagues(AppMessages.MSG_CLOSE_TAB, Category);
+               NotifyColleagues(AppMessages.MSG_CLOSE_TAB_CATEGORY, Category);
             } else {
                 Context.Reload(Category);
+                OnCategorySuccess?.Invoke();
                 RaisePropertyChanged();
             }
         }
@@ -81,9 +89,16 @@ namespace School04.ViewModel {
         private void DeleteAction() {
             CancelAction();
             Category.Delete();
-            //NotifyColleagues(AppMessages.MSG_CATEGORY_CHANGED, Category);
-            //NotifyColleagues(AppMessages.MSG_CLOSE_TAB, Category);
+            OnCategorySuccess?.Invoke();
+            NotifyColleagues(AppMessages.MSG_CATEGORY_CHANGED, Category);
+            NotifyColleagues(AppMessages.MSG_CLOSE_TAB_CATEGORY, Category);
         }
+
+        protected override void OnRefreshData() {
+        }
+
+
+
 
     }
 }

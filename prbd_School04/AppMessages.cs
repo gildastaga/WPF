@@ -2,6 +2,7 @@
     public enum AppMessages {
         MSG_NEW_COURSE,
         MSG_NEW_QUIZZ,
+        MSG_NEW_CATEGORY,
         NEW_STUDENT_ADDED,
         MSG_DISPLAY_COURSE,
         MSG_DISPLAY_QUIZZ,
@@ -12,11 +13,16 @@
         // changement de titre de course
         MSG_COURSE_CHANGED,
         MSG_CLOSE_TAB_COURSE,
+        MSG_CLOSE_TAB_CATEGORY,
         MSG_REFRESH_DATA,
         MSG_PROFILE,
         MSG_PROFILE_CHANGED,
         MSG_CLOSE_TAB_PROFILE,
         MSG_UPDATE_PROFILE,
+<<<<<<< HEAD
         MSG_ADD_REGISTRATION
+=======
+        MSG_CATEGORY_CHANGED
+>>>>>>> ca691659fdee778cefd7db421889734e1cbecaee
     }
 }

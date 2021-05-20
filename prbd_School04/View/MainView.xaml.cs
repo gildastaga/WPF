@@ -37,11 +37,11 @@ namespace School04.View {
         }
         private void Vm_DisplayQuizz(Quizz quizz, bool isNew) {
             if (quizz != null) {
-                var tab = tabControl.FindByTag(quizz.QuizzId.ToString());
+                var tab = tabControl.FindByTag(quizz.Title);
                 if (tab == null)
                     tabControl.Add(
                         new QuizzView(quizz, isNew),
-                        isNew ? "<new quizz>" : quizz.Title, quizz.QuizzId.ToString()
+                        isNew ? "<new quizz>" : quizz.Title, quizz.Title
                     );
                 else
                     tabControl.SetFocus(tab);
