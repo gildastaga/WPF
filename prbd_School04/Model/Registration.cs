@@ -9,7 +9,7 @@ using PRBD_Framework;
 namespace School04.Model {
     public enum State { Active, Valide, Inactive }
     public class Registration : EntityBase<ModelSchool04> {
-
+        public static List<Registration> lsRegistration = new List<Registration>();
         public State RegistrationState {
             get; set;
         } = State.Inactive;
@@ -32,10 +32,12 @@ namespace School04.Model {
             Student = student;
             Course = course;
         }
+        //return une collection de registration inscrit à un cours spécifique
         public static IQueryable<Registration> GetCurrentRegistrationsFromCourse(Course course) {
             return Context.Registrations.Where(r => r.Course == course);
         }
-        public static IQueryable<User> GetNoRegistrationsFromCourse(Course course) {
+        //return une collection de registration qui ne sont pas inscrit à un cours spécifique
+        public static IQueryable<Student> GetNoRegistrationsFromCourse(Course course) {
             var noRegistrations = from s in Context.Students
                            where s.CoursesStudent.All(s => s.Course != course)
                            orderby s.FirstName

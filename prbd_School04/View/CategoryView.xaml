@@ -10,9 +10,6 @@
         xmlns:local="clr-namespace:School04.View"
         mc:Ignorable="d"
        Height="450" Width="800">
-    <Window.DataContext>
-        <vm:CategoryViewModel x:Name="vm" OnLoginSuccess="Vm_OnLoginSuccess"/>
-    </Window.DataContext>
 
 
     <Grid>

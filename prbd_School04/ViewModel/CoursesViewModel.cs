@@ -29,6 +29,11 @@ namespace School04.ViewModel {
         public ICommand DisplayCourseDetails {
             get; set;
         }
+        //commande pour l'étudiant afin de s'inscrire ou pas d'un cours
+        public ICommand AskRegistration {
+            get; set;
+        }
+
         public void makeList() {
             //Affiche la bonne liste des cours : soit le user connecté est un prof 
             // et donc affiche les cours que ce prof donne
@@ -54,8 +59,24 @@ namespace School04.ViewModel {
                  NotifyColleagues(AppMessages.MSG_DISPLAY_COURSE, course);
             });
 
+            AskRegistration = new RelayCommand <Course>(AddRegistration); 
+            //register afin de mettre à jour le profil 
             Register(this, AppMessages.MSG_UPDATE_PROFILE, OnRefreshData);
         }
+        private void AddRegistration(Course course) {
+            var registration = new Registration {
+                Course = course,
+                Student = (Student)CurrentUser,
+                RegistrationState = State.Valide
+            };
+            Console.WriteLine("addRegistration");
+            Context.Add(registration);
+            Context.SaveChanges();
+            NotifyColleagues(AppMessages.MSG_ADD_REGISTRATION);
+            OnRefreshData(); 
+        }
+
+        //Filtre les cours par rapport à ce que contiens le filtre
         private void ApplyFilterAction() {
             Console.WriteLine("Search clicked! " + Filter);
             IEnumerable<Course> query = Context.Courses;
@@ -65,13 +86,8 @@ namespace School04.ViewModel {
                         select m;
             Courses = new ObservableCollection<Course>(query);
             Console.WriteLine($"{query.Count()} courses found");
-        } 
-
-        public bool CanSubscribe() {
-            /*if ()
-                return true;*/
-            return false;
         }
+
         protected override void OnRefreshData() {
             makeList();
         }

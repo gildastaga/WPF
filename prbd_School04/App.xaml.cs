@@ -42,6 +42,21 @@ namespace School04 {
                     Console.Write($"{ course.Title} ");
                 }
                 Console.WriteLine();
+            }
+            Console.WriteLine();
+            Console.WriteLine("Liste de tous les étiants avec les cours auxquels ils sont enregistés");
+            foreach (var t in Context.Students.ToList()) {
+                Console.Write($"{t.FirstName} {t.Name}");
+                foreach (var registration in t.CoursesStudent) {
+                    Console.Write($"{ registration.Course.Title} ");
+                }
+                Console.WriteLine();
+            }
+
+            foreach (var t in Context.Students.ToList()) {
+                foreach (var regi in t.CoursesStudent.ToList()) {
+                    Console.WriteLine(regi.Course.Title);
+                }
 
             }
 

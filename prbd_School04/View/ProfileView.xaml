@@ -23,6 +23,7 @@
 
         <Button Content="Cancel" Command="{Binding CancelUser}" HorizontalAlignment="Left" Margin="315,491,0,0" VerticalAlignment="Top" Width="90" Height="40" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="Gray" BorderThickness="4" Background="{x:Null}"/>
         <Button Content="Save" Command="{Binding SaveUser}" HorizontalAlignment="Left" Margin="504,491,0,0" VerticalAlignment="Top" Width="90" Height="40" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="Gray" BorderThickness="4" Background="{x:Null}"/>
+
         <Image Source="/Images/user_white.png" Margin="114,10,114,415"/>
     </Grid>
 </UserControl>
