@@ -31,21 +31,9 @@ namespace School04.View {
             InitializeComponent();
         }
 
-        private void bt_save_Click(object sender, RoutedEventArgs e) {
-            string name = tb_name.Text;
-            string enonce = tb_question.Text;
-            Question question = App.Context.Questions.Where(q => q.Enonce == enonce).FirstOrDefault();
+        private void Vm_OnCategorySuccess() {
+           // App.NavigateTo<MainView>();
 
-            Category category = new Category(name, question);
-            dataGrid.Items.Add(category);
-        }
-
-        private void bt_cancel_Click(object sender, RoutedEventArgs e) {
-            
-        }
-
-        private void bt_delete_Click(object sender, RoutedEventArgs e) {
-            dataGrid.Items.Clear();
         }
     }
 }
