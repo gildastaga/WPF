@@ -10,13 +10,10 @@
         xmlns:local="clr-namespace:School04.View"
         mc:Ignorable="d"
        Height="450" Width="800">
-<<<<<<< HEAD
 
-=======
     <UserControl.DataContext>
         <vm:CategoryViewModel x:Name="vm" OnCategorySuccess="Vm_OnCategorySuccess"/>
     </UserControl.DataContext>
->>>>>>> ca691659fdee778cefd7db421889734e1cbecaee
 
     <Grid>
         <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10, 44, 0, 0" VerticalAlignment="Top" Height="119" Width="497">
