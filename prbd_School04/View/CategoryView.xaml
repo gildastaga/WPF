@@ -12,7 +12,7 @@
        Height="450" Width="800">
 
     <UserControl.DataContext>
-        <vm:CategoryViewModel x:Name="vm" OnCategorySuccess="Vm_OnCategorySuccess"/>
+        <vm:CategoryViewModel x:Name="vm" OnCategorySuccess="Vm_OnCategorySuccess" save_Click="save_Click" delete_Click="delete_Click"/>
     </UserControl.DataContext>
 
     <Grid>
