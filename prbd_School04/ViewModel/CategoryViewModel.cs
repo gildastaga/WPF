@@ -17,7 +17,7 @@ namespace School04.ViewModel {
         public ICommand Delete { get; set; }
 
         public event Action OnCategorySuccess;
-        public event Action save_Click;
+        public event Action SaveClick;
         public event Action delete_Click;
 
         private Category category;
@@ -86,8 +86,8 @@ namespace School04.ViewModel {
                 Context.Add(Category);
                 IsNew = false;
                 Context.SaveChanges();
-                save_Click?.Invoke(); 
-                OnCategorySuccess?.Invoke();
+                //SaveClick?.Invoke(); 
+                //OnCategorySuccess?.Invoke();
             } else {
                 Context.SaveChanges();
             }
@@ -100,7 +100,7 @@ namespace School04.ViewModel {
                NotifyColleagues(AppMessages.MSG_CLOSE_TAB_CATEGORY, Category);
             } else */{
                 Context.Reload(Category);
-                OnCategorySuccess?.Invoke();
+                //OnCategorySuccess?.Invoke();
                 RaisePropertyChanged();
             }
         }
@@ -108,8 +108,8 @@ namespace School04.ViewModel {
         private void DeleteAction() {
             CancelAction();
             Category.Delete();
-            delete_Click?.Invoke();
-            OnCategorySuccess?.Invoke();
+            //delete_Click?.Invoke();
+            //OnCategorySuccess?.Invoke();
 
             //NotifyColleagues(AppMessages.MSG_CATEGORY_CHANGED, Category);
             // NotifyColleagues(AppMessages.MSG_CLOSE_TAB_CATEGORY, Category);

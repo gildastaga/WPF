@@ -31,7 +31,7 @@ namespace School04.View {
             InitializeComponent();
         }
 
-        private void save_Click(object sender, RoutedEventArgs e) {
+        private void vm_saveClick(object sender, RoutedEventArgs e) {
             string Name = tb_name.Text;
             string enonce = tb_question.Text;
             Question question = App.Context.Questions.Where(q => q.Enonce == enonce).FirstOrDefault();
