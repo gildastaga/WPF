@@ -14,7 +14,8 @@ namespace School04.ViewModel {
         //Action pour l'affichage des cours
         public event Action<Course, bool> DisplayCourse;
         //Action pour l'affichage des Quizz
-        public event Action<Quizz, bool> DisplayQuizz;
+        public event Action<Quizz, bool> DisplayQuizzTeacher;
+        public event Action<Quizz, bool> DisplayQuizzStudent;
         //action pour fermer une fenetre (userControl) Course
         public event Action<Course> CloseTabCourse;
         public event Action CloseTabProfile;
@@ -56,14 +57,14 @@ namespace School04.ViewModel {
             Register<Quizz>(this, AppMessages.MSG_DISPLAY_QUIZZ, quizz => {
                 Console.WriteLine("Test");
                 if(CurrentUser.IsTeacher())
-                    DisplayQuizz?.Invoke(quizz, false);
+                    DisplayQuizzTeacher?.Invoke(quizz, false);
                 else if(CurrentUser.IsStudent() && DateTime.Now >= quizz.ExaminationStartDate && (quizz.ExaminationEndDate == null || DateTime.Now <= quizz.ExaminationEndDate))
-                    DisplayQuizz?.Invoke(quizz, false);
+                    DisplayQuizzStudent?.Invoke(quizz, false);
             });
 
             Register<Quizz>(this, AppMessages.MSG_NEW_QUIZZ, quizz => {
                 Console.WriteLine("Test");
-                DisplayQuizz?.Invoke(quizz, true);
+                DisplayQuizzTeacher?.Invoke(quizz, true);
             });
 
             Register<Quizz>(this, AppMessages.MSG_TITLE_QUIZZ_CHANGED, quizz => {

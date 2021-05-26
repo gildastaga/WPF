@@ -43,5 +43,9 @@ namespace School04.Model {
         }
 
         public int QuestionsCount => QuestionsQuizz.Count();
+
+        public Question getQuestionInPosition(int pos) {
+            return Context.QuestionQuizzs.Where(q => q.QuizzId == this.QuizzId && q.PosQuestionInQuizz == pos).Select(q => q.Question).Single();
+        }
     }
 }

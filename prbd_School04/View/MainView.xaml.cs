@@ -35,13 +35,26 @@ namespace School04.View {
                     tabControl.SetFocus(tab);
             }
         }
-        private void Vm_DisplayQuizz(Quizz quizz, bool isNew) {
+        private void Vm_DisplayQuizzTeacher(Quizz quizz, bool isNew) {
             if (quizz != null) {
                 var tab = tabControl.FindByTag(quizz.Title);
                 if (tab == null)
                     tabControl.Add(
                         new QuizzView(quizz, isNew),
                         isNew ? "<new quizz>" : quizz.Title, quizz.Title
+                    );
+                else
+                    tabControl.SetFocus(tab);
+            }
+        }
+
+        private void Vm_DisplayQuizzStudent(Quizz quizz, bool isNew) {
+            if (quizz != null) {
+                var tab = tabControl.FindByTag(quizz.Title);
+                if (tab == null)
+                    tabControl.Add(
+                        new ResponseQuizzView(quizz, isNew),
+                        quizz.Title, quizz.Title
                     );
                 else
                     tabControl.SetFocus(tab);
