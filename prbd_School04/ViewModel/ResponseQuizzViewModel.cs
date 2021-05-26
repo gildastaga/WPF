@@ -12,6 +12,9 @@ using School04.Model;
 
 namespace School04.ViewModel {
     class ResponseQuizzViewModel : ViewModelCommon {
+        public ICommand PreviousQuestion { get; set; }
+        public ICommand NextQuestion { get; set; }
+
         private Quizz quizz;
         public Quizz Quizz { get => quizz; set => SetProperty(ref quizz, value); }
 
@@ -94,7 +97,29 @@ namespace School04.ViewModel {
         }
 
         public ResponseQuizzViewModel() : base() {
+            PreviousQuestion = new RelayCommand(PreviousQuestionAction, () => {
+                return !Context.ChangeTracker.HasChanges() && CurrentPos > 1
+                    && (EndDate == null || EndDate < DateTime.Now);
+            });
+            NextQuestion = new RelayCommand(NextQuestionAction, () => {
+                return !Context.ChangeTracker.HasChanges() && CurrentPos < Total
+                    && (EndDate == null || EndDate < DateTime.Now);
+            });
             Register<Course>(this, AppMessages.MSG_COURSE_CHANGED, course => RaisePropertyChanged(nameof(Course)));
+        }
+
+        private void PreviousQuestionAction() {
+            Question = quizz.getQuestionInPosition(QuestionQuizz.PosQuestionInQuizz - 1);
+            QuestionQuizz = QuestionQuizz.GetByQuizzQuestion(Quizz, Question);
+            RaisePropertyChanged();
+            //OnRefreshData();
+            //NotifyColleagues(AppMessages.MSG_QUIZZ_CHANGED, Quizz);
+        }
+        private void NextQuestionAction() {
+            Question = quizz.getQuestionInPosition(QuestionQuizz.PosQuestionInQuizz + 1);
+            QuestionQuizz = QuestionQuizz.GetByQuizzQuestion(Quizz, Question);
+            RaisePropertyChanged();
+            //OnRefreshData();
         }
 
         private void SaveAction() {
@@ -153,7 +178,8 @@ namespace School04.ViewModel {
             if (IsNew || Quizz == null) return;
             Quizz = Quizz.GetById(Quizz.QuizzId);
             Question = Question.GetById(Question.QuestionId);
-            QuestionQuizz = QuestionQuizz.GetById(QuestionQuizz.QuestionQuizzId);
+            QuestionQuizz = QuestionQuizz.GetByQuizzQuestion(Quizz, Question);
+
             RaisePropertyChanged();
         }
     }
