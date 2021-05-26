@@ -50,6 +50,5 @@ namespace School04.Model {
             Context.QuestionQuizzs.Remove(this);
             Context.SaveChanges();
         }
-
     }
 }

@@ -109,7 +109,7 @@ namespace School04.Model {
                 IsUpdate = false,
                 IsDelete = false,
                 Course = prbd,
-                typeQuestion = TypeQuestion.ManyAnswer
+                typeQuestion = TypeQuestion.OneAnswer
 
             };
 
@@ -136,7 +136,7 @@ namespace School04.Model {
                 IsUpdate = false,
                 IsDelete = false,
                 Course = prbd,
-                typeQuestion = TypeQuestion.OneAnswer
+                typeQuestion = TypeQuestion.ManyAnswer
             };
 
             var quest22 = new Question {
