@@ -34,7 +34,7 @@
             <ColumnDefinition Width="125"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="auto"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
             <ColumnDefinition Width="150"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -44,7 +44,7 @@
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="500"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock Text="Id:" FontSize="20" TextAlignment="Left" Margin="5,5,5,0"></TextBlock>
@@ -62,5 +62,17 @@
                   FontSize="12" Margin="5" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True"
                   ItemTemplateSelector = "{StaticResource myDataTemplateSelector}">
         </ListView>
+        <Button Content="&lt;&lt;" Command="{Binding PreviousQuestion}" Grid.Row="7" Margin="5,5,5,5" Width="50" HorizontalAlignment="Left"></Button>
+        <DockPanel Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center">
+            <Button Content="Valider la réponse" Command="{Binding ValidateResponse}" Margin="5,5,5,5"></Button>
+            <Button Content="Changer la réponse" Command="{Binding ChangeResponse}" Margin="5,5,5,5"></Button>
+            <Button Content="Passer la question" Command="{Binding ChangeResponse}" Margin="5,5,5,5"></Button>
+        </DockPanel>
+        <DockPanel Grid.Row="7" Grid.Column="4">
+            <TextBlock Text="1" Foreground="White" FontSize="16" FontWeight="Bold"></TextBlock>
+            <TextBlock Text="/" Foreground="White" FontSize="16" FontWeight="Bold"></TextBlock>
+            <TextBlock Text="{Binding Total}" Foreground="White" FontSize="16" FontWeight="Bold"></TextBlock>
+            <Button Content=">>" Command="{Binding NextQuestion}" Margin="5,5,5,5" Width="50" HorizontalAlignment="Right"></Button>
+        </DockPanel>
     </Grid>
 </f:UserControlBase>

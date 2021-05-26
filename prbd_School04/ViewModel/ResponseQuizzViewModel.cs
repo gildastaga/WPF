@@ -12,18 +12,14 @@ using School04.Model;
 
 namespace School04.ViewModel {
     class ResponseQuizzViewModel : ViewModelCommon {
-        public ICommand Save { get; set; }
-        public ICommand Cancel { get; set; }
-        public ICommand Delete { get; set; }
-        public ICommand AddQuestion { get; set; }
-        public ICommand RemoveQuestion { get; set; }
-        public ICommand ChangeWeight { get; set; }
-
         private Quizz quizz;
         public Quizz Quizz { get => quizz; set => SetProperty(ref quizz, value); }
 
         private Question question;
         public Question Question { get => question; set => SetProperty(ref question, value); }
+
+        private QuestionQuizz questionQuizz;
+        public QuestionQuizz QuestionQuizz { get => questionQuizz; set => SetProperty(ref questionQuizz, value); }
 
         private bool isNew;
         public bool IsNew {
@@ -33,33 +29,11 @@ namespace School04.ViewModel {
                 RaisePropertyChanged(nameof(IsNew));
             }
         }
-
-        private ObservableCollectionFast<Question> availableQuestions = new ObservableCollectionFast<Question>();
-        public ObservableCollectionFast<Question> AvailableQuestions {
-            get { return availableQuestions; }
-            set {
-                availableQuestions = value;
-                RaisePropertyChanged(nameof(AvailableQuestions), nameof(QuestionsBank));
-            }
-        }
-        public ICollectionView QuestionsBank => AvailableQuestions.GetCollectionView(nameof(Question.Enonce), ListSortDirection.Ascending);
-
-        private ObservableCollectionFast<QuestionQuizz> currentQuestions = new ObservableCollectionFast<QuestionQuizz>();
-        public ObservableCollectionFast<QuestionQuizz> CurrentQuestions {
-            get { return currentQuestions; }
-            set {
-                currentQuestions = value;
-                RaisePropertyChanged(nameof(CurrentQuestions), nameof(QuestionsQuizz));
-            }
-        }
-        public ICollectionView QuestionsQuizz => CurrentQuestions.GetCollectionView(nameof(QuestionQuizz.PosQuestionInQuizz), ListSortDirection.Ascending);
-
         public void Init(Quizz quizz, bool isNew) {
             Quizz = isNew ? quizz : Quizz.GetById(quizz.QuizzId);
             IsNew = isNew;
-            CurrentQuestions = new ObservableCollectionFast<QuestionQuizz>(QuestionQuizz.GetQuestionsFromQuizz(Quizz));
-            AvailableQuestions = new ObservableCollectionFast<Question>(Question.GetAvailableQuestionsForQuizz(Quizz));
             Question = quizz.getQuestionInPosition(1);
+            QuestionQuizz = QuestionQuizz.GetByQuizzQuestion(Quizz, Question);
 
             RaisePropertyChanged();
         }
@@ -107,42 +81,19 @@ namespace School04.ViewModel {
             set => SetProperty(ref weight, value);
         }
 
-        private QuestionQuizz selectedQuestionQuizz;
-        public QuestionQuizz SelectedQuestionQuizz {
-            get => selectedQuestionQuizz;
-            set {
-                SetProperty(ref selectedQuestionQuizz, value);
-                if(value != null)
-                    Weight = value.NbPoint;
-            }
+        private int? total;
+        public int? Total {
+            get { return Quizz?.QuestionsCount; }
+            set => SetProperty(ref total, value);
         }
 
-        private Question selectedQuestion;
-        public Question SelectedQuestion {
-            get => selectedQuestion;
-            set {
-                SetProperty(ref selectedQuestion, value);
-                Weight = 0;
-            }
+        private int? currentPos;
+        public int? CurrentPos {
+            get { return QuestionQuizz?.PosQuestionInQuizz; }
+            set => SetProperty(ref currentPos, value);
         }
 
         public ResponseQuizzViewModel() : base() {
-            Save = new RelayCommand(SaveAction, CanSaveAction);
-            Cancel = new RelayCommand(CancelAction, CanCancelAction);
-            Delete = new RelayCommand(DeleteAction, CanDeleteAction);
-            ChangeWeight = new RelayCommand(ChangeWeightAction, () => {
-                return !Context.ChangeTracker.HasChanges() && selectedQuestionQuizz != null
-                    && Weight > 0 && (StartDate == null || StartDate > DateTime.Now);
-            });
-            AddQuestion = new RelayCommand(AddQuestionAction, () => {
-                return !Context.ChangeTracker.HasChanges() && selectedQuestion != null
-                    && Weight > 0 && !IsNew && (StartDate == null || StartDate > DateTime.Now);
-            });
-            RemoveQuestion = new RelayCommand(RemoveQuestionAction, () => {
-                return !Context.ChangeTracker.HasChanges() && selectedQuestionQuizz != null && !IsNew
-                    && (StartDate == null || StartDate > DateTime.Now);
-            });
-
             Register<Course>(this, AppMessages.MSG_COURSE_CHANGED, course => RaisePropertyChanged(nameof(Course)));
         }
 
@@ -194,40 +145,6 @@ namespace School04.ViewModel {
                 return false;
             return true;
         }
-        private void ChangeWeightAction() {
-            SelectedQuestionQuizz.NbPoint = Weight;
-            Context.SaveChanges();
-            RaisePropertyChanged(SelectedQuestionQuizz, nameof(QuestionQuizz.NbPoint));
-            //OnRefreshData();
-            //NotifyColleagues(AppMessages.MSG_QUIZZ_CHANGED, Quizz);
-        }
-        private void AddQuestionAction() {
-            var qq = new QuestionQuizz {
-                Quizz = quizz,
-                Question = SelectedQuestion,
-                NbPoint = Weight,
-                PosQuestionInQuizz = quizz.QuestionsCount + 1
-            };
-            Context.Add(qq);
-            Context.SaveChanges();
-            //RaisePropertyChanged(SelectedQuestionQuizz, nameof(QuestionQuizz.NbPoint));
-            NotifyColleagues(AppMessages.MSG_QUIZZ_CHANGED, Quizz);
-            OnRefreshData();
-            //NotifyColleagues(AppMessages.MSG_QUIZZ_CHANGED, Quizz);
-        }
-        private void RemoveQuestionAction() {
-            int pos = SelectedQuestionQuizz.PosQuestionInQuizz;
-            var NextQuestions = QuestionQuizz.GetQuestionsFromQuizzAfterPos(quizz, pos);
-            SelectedQuestionQuizz.Delete();
-            foreach (var q in NextQuestions) {
-                q.PosQuestionInQuizz--;
-            }
-            Context.SaveChanges();
-            //RaisePropertyChanged(SelectedQuestionQuizz, nameof(QuestionQuizz.NbPoint));
-            NotifyColleagues(AppMessages.MSG_QUIZZ_CHANGED, Quizz);
-            OnRefreshData();
-            //NotifyColleagues(AppMessages.MSG_QUIZZ_CHANGED, Quizz);
-        }
 
         public override void Dispose() {
             base.Dispose();
@@ -235,9 +152,8 @@ namespace School04.ViewModel {
         protected override void OnRefreshData() {
             if (IsNew || Quizz == null) return;
             Quizz = Quizz.GetById(Quizz.QuizzId);
-            CurrentQuestions.Reset(QuestionQuizz.GetQuestionsFromQuizz(Quizz));
-            AvailableQuestions.Reset(Question.GetAvailableQuestionsForQuizz(Quizz));
-            Weight = 0;
+            Question = Question.GetById(Question.QuestionId);
+            QuestionQuizz = QuestionQuizz.GetById(QuestionQuizz.QuestionQuizzId);
             RaisePropertyChanged();
         }
     }

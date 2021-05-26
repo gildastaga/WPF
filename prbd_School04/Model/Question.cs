@@ -41,13 +41,15 @@ namespace School04.Model {
         }
 
         public static IQueryable<Question> GetAvailableQuestionsForQuizz(Quizz quizz) {
-            return Context.Questions.Where(q => q.Course.CourseId == quizz.Course.CourseId && !q.QuestionQuizz.Any(qq => qq.QuestionId == q.QuestionId && qq.Quizz.QuizzId == quizz.QuizzId));
+            return Context.Questions.Where(q => q.Course.CourseId == quizz.Course.CourseId && !q.QuestionQuizz.Any(qq => qq.Question.QuestionId == q.QuestionId && qq.Quizz.QuizzId == quizz.QuizzId));
             /*var availableQuestions = from qq in Context.QuestionQuizzs
                 where qq.Question.Course == quizz.Course
                 orderby qq.Question.Enonce
                 select qq.Question;
             return availableQuestions;*/
         }
-
+        public static Question GetById(int id) {
+            return Context.Questions.SingleOrDefault(q => q.QuestionId == id);
+        }
     }
 }
