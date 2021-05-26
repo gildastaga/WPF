@@ -9,6 +9,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
         <Style x:Key="wrapColumn">
             <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
         </Style>
@@ -27,6 +28,6 @@
                 <DataGridTextColumn Header="# Questions" Binding="{Binding Path=QuestionsCount}" IsReadOnly="True" Width="*"/>
             </DataGrid.Columns>
         </f:MyDataGrid>
-        <Button HorizontalAlignment="Right" Content="New Quiz" Margin="5" Command="{Binding CreateQuizz}"/>
+        <Button HorizontalAlignment="Right" Content="New Quiz" Margin="5" Command="{Binding CreateQuizz}"  Visibility="{Binding IsTeacher, Converter={StaticResource BoolToVis}}"/>
     </StackPanel>
 </f:UserControlBase>

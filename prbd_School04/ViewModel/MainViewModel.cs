@@ -55,7 +55,10 @@ namespace School04.ViewModel {
 
             Register<Quizz>(this, AppMessages.MSG_DISPLAY_QUIZZ, quizz => {
                 Console.WriteLine("Test");
-                DisplayQuizz?.Invoke(quizz, false);
+                if(CurrentUser.IsTeacher())
+                    DisplayQuizz?.Invoke(quizz, false);
+                else if(CurrentUser.IsStudent() && DateTime.Now >= quizz.ExaminationStartDate && (quizz.ExaminationEndDate == null || DateTime.Now <= quizz.ExaminationEndDate))
+                    DisplayQuizz?.Invoke(quizz, false);
             });
 
             Register<Quizz>(this, AppMessages.MSG_NEW_QUIZZ, quizz => {
