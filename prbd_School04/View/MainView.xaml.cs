@@ -26,10 +26,12 @@ namespace School04.View {
         private void Vm_DisplayCourse(Course course, bool isNew) {
             if (course != null) {
                 var tab = tabControl.FindByTag(course.Title);
+                if (isNew)
+                    tab = tabControl.FindByTag("<new course>");
                 if (tab == null)
                     tabControl.Add(
                         new CourseDetailsView(course, isNew),
-                        isNew ? "<new course>" : course.Title, course.Title
+                        isNew ? "<new course>" : course.Title, isNew ? "<new course>" : course.Title
                     );
                 else
                     tabControl.SetFocus(tab);
@@ -38,10 +40,12 @@ namespace School04.View {
         private void Vm_DisplayQuizzTeacher(Quizz quizz, bool isNew) {
             if (quizz != null) {
                 var tab = tabControl.FindByTag(quizz.Title);
+                if (isNew)
+                    tab = tabControl.FindByTag("<new quizz>");
                 if (tab == null)
                     tabControl.Add(
                         new QuizzView(quizz, isNew),
-                        isNew ? "<new quizz>" : quizz.Title, quizz.Title
+                        isNew ? "<new quizz>" : quizz.Title, isNew ? "<new quizz>" : quizz.Title
                     );
                 else
                     tabControl.SetFocus(tab);
@@ -88,10 +92,14 @@ namespace School04.View {
         }
         private void Vm_CloseTabQuizz(Quizz quizz) {
             var tab = tabControl.FindByTag(quizz.Title);
+            if(tab == null)
+                tab = tabControl.FindByTag("<new quizz>");
             tabControl.Items.Remove(tab);
         }
         private void Vm_CloseTabCourse( Course course ) {
             var tab = tabControl.FindByTag(course.Title);
+            if (tab == null)
+                tab = tabControl.FindByTag("<new course>");
             tabControl.Items.Remove(tab);
         }
         private void Vm_CloseTabProfile() {

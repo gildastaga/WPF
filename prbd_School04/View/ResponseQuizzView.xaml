@@ -14,12 +14,12 @@
         </Style>
         <DataTemplate x:Key="Check">
             <CheckBox Content="{Binding Body}"
-                         IsChecked="{Binding IsSelected, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}}"/>
+                         IsChecked="{Binding IsSelected, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListViewItem}}}"/>
         </DataTemplate>
         <DataTemplate x:Key="Radio">
             <RadioButton Content="{Binding Body}"
-                         GroupName="DisplayPage"
-                         IsChecked="{Binding IsSelected, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}}"/>
+                         GroupName="RadioQuizz"
+                         IsChecked="{Binding IsSelected, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListViewItem}}}"/>
         </DataTemplate>
         <local:MyDataTemplateSelector
             Check="{StaticResource Check}" 
@@ -71,6 +71,7 @@
         <DockPanel Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center">
             <Button Content="Valider la réponse" Command="{Binding ValidateResponse}" CommandParameter="{Binding ElementName=listPropositions, Path=SelectedItems}" Margin="5,5,5,5"></Button>
             <Button Content="Changer la réponse" Command="{Binding ChangeResponse}" CommandParameter="{Binding ElementName=listPropositions, Path=SelectedItems}" Margin="5,5,5,5"></Button>
+            <Button Content="Fermer le quizz" Command="{Binding CloseQuizz}" Margin="5,5,5,5"></Button>
         </DockPanel>
         <DockPanel Grid.Row="8" Grid.Column="4">
             <TextBlock Text="{Binding CurrentPos}" Foreground="White" FontSize="16" FontWeight="Bold"></TextBlock>

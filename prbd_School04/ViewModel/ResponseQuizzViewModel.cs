@@ -16,6 +16,7 @@ namespace School04.ViewModel {
         public ICommand NextQuestion { get; set; }
         public ICommand ValidateResponse { get; set; }
         public ICommand ChangeResponse { get; set; }
+        public ICommand CloseQuizz { get; set; }
 
         private Quizz quizz;
         public Quizz Quizz { get => quizz; set => SetProperty(ref quizz, value); }
@@ -135,6 +136,7 @@ namespace School04.ViewModel {
                 selected => { return selected?.Count == Question?.GoodPropositionsCount && Answer == null; });
             ChangeResponse = new RelayCommand<IList>(ChangeResponseAction,
                 selected => { return selected?.Count == Question?.GoodPropositionsCount && Answer != null; });
+            CloseQuizz = new RelayCommand(CloseAction);
             Register<Course>(this, AppMessages.MSG_COURSE_CHANGED, course => RaisePropertyChanged(nameof(Course)));
         }
 
@@ -189,54 +191,8 @@ namespace School04.ViewModel {
             // notifie le reste de l'application que les messages de ce membre ont été modifiés
             //NotifyColleagues(AppMessages.MSG_REFRESH_REGISTRATIONS, null);
         }
-
-        private void SaveAction() {
-            if (IsNew) {
-                // Un petit raccourci ;-)
-                Quizz.Title = Title;
-                Context.Add(Quizz);
-                IsNew = false;
-            }
-            Context.SaveChanges();
-            OnRefreshData();
-            NotifyColleagues(AppMessages.MSG_QUIZZ_CHANGED, Quizz);
-        }
-
-        private bool CanSaveAction() {
-            if (IsNew)
-                return !string.IsNullOrEmpty(Title);
-            if(StartDate != null || EndDate != null)
-                return Quizz != null && StartDate != null && EndDate != null && StartDate > DateTime.Now && StartDate < EndDate && (Context?.Entry(Quizz)?.State == EntityState.Modified);
-            return Quizz != null && (Context?.Entry(Quizz)?.State == EntityState.Modified);
-        }
-
-        private void CancelAction() {
-            if (IsNew) {
-                NotifyColleagues(AppMessages.MSG_CLOSE_QUIZZ_TAB, Quizz);
-            } else {
-                Context.Reload(Quizz);
-                NotifyColleagues(AppMessages.MSG_TITLE_QUIZZ_CHANGED, quizz);
-                RaisePropertyChanged();
-            }
-        }
-
-        private bool CanCancelAction() {
-            return Quizz != null && (IsNew || Context?.Entry(Quizz)?.State == EntityState.Modified);
-        }
-
-        private void DeleteAction() {
-            CancelAction();
-            Quizz.Delete();
-            NotifyColleagues(AppMessages.MSG_QUIZZ_CHANGED, Quizz);
+        private void CloseAction() {
             NotifyColleagues(AppMessages.MSG_CLOSE_QUIZZ_TAB, Quizz);
-        }
-
-        private bool CanDeleteAction() {
-            if (IsNew)
-                return false;
-            if (StartDate != null && StartDate < DateTime.Now)
-                return false;
-            return true;
         }
 
         public override void Dispose() {
