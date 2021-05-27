@@ -49,6 +49,18 @@ namespace School04.ViewModel {
             //CheckCategory = new RelayCommand<CheckCategory>(checkCategory => {});
             None = new RelayCommand(CheckedNoneCategoryAction);
             All = new RelayCommand(CheckedAllCategoryAction);
+
+            DisplayQuestion = new RelayCommand<Quizz>(question => {
+                NotifyColleagues(AppMessages.MSG_DISPLAY_QUESTION, question);
+            });
+
+            NewQuestion = new RelayCommand(() => {
+                NotifyColleagues(AppMessages.MSG_NEW_QUESTION, new Question("", false, false, Course));
+            });
+
+            Register<Question>(this, AppMessages.MSG_QUESTION_CHANGED, question => {
+                OnRefreshData();
+            });
         }
 
 
