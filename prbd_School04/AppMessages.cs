@@ -19,10 +19,10 @@
         MSG_PROFILE_CHANGED,
         MSG_CLOSE_TAB_PROFILE,
         MSG_UPDATE_PROFILE,
-<<<<<<< HEAD
-        MSG_ADD_REGISTRATION
-=======
+
+        MSG_ADD_REGISTRATION,
+
         MSG_CATEGORY_CHANGED
->>>>>>> ca691659fdee778cefd7db421889734e1cbecaee
+
     }
 }
