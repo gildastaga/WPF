@@ -10,7 +10,8 @@ using School04.Model;
 
 namespace School04.ViewModel {
     class CourseDetailsViewModel : ViewModelCommon {
-        public event Action<Course> DisplayCourseTabs;
+        public event Action<Course> DisplayCourseTabsTeacher;
+        public event Action<Course> DisplayCourseTabsStudent;
 
         private Course course;
         public Course Course { get => course; set => SetProperty(ref course, value); }
@@ -57,6 +58,10 @@ namespace School04.ViewModel {
             // Il faut recharger ce membre dans le contexte courant pour pouvoir le modifier
             Course = isNew ? course : Course.GetById(course.CourseId);
             IsNew = isNew;
+            if(!isNew && CurrentUser.IsTeacher())
+                DisplayCourseTabsTeacher?.Invoke(Course);
+            else if(!isNew && CurrentUser.IsStudent())
+                DisplayCourseTabsStudent?.Invoke(Course);
 
             RaisePropertyChanged();
         }
@@ -74,7 +79,7 @@ namespace School04.ViewModel {
                 Context.Add(Course);
                 IsNew = false;
                 Context.SaveChanges();
-                DisplayCourseTabs?.Invoke(Course);
+                DisplayCourseTabsTeacher?.Invoke(Course);
             } else {
                 Context.SaveChanges();
             }

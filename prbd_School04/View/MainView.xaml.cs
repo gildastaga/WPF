@@ -35,7 +35,7 @@ namespace School04.View {
                     tabControl.SetFocus(tab);
             }
         }
-        private void Vm_DisplayQuizz(Quizz quizz, bool isNew) {
+        private void Vm_DisplayQuizzTeacher(Quizz quizz, bool isNew) {
             if (quizz != null) {
                 var tab = tabControl.FindByTag(quizz.Title);
                 if (tab == null)
@@ -44,6 +44,32 @@ namespace School04.View {
                         isNew ? "<new quizz>" : quizz.Title, quizz.Title
                     );
                 else
+                    tabControl.SetFocus(tab);
+            }
+        }
+
+        private void Vm_DisplayQuizzStudent(Quizz quizz, bool isNew) {
+            if (quizz != null) {
+                var tab = tabControl.FindByTag(quizz.Title);
+                if (tab == null)
+                    tabControl.Add(
+                        new ResponseQuizzView(quizz, isNew),
+                        quizz.Title, quizz.Title
+                    );
+                else
+                    tabControl.SetFocus(tab);
+            }
+        }
+
+        private void Vm_DisplayQuestion(Question question, bool isNew) {
+            if (question != null) {
+                var tab = tabControl.FindByTag(question.Enonce);
+                /*if (tab == null)
+                    tabControl.Add(
+                        new QuestionView(question, isNew),
+                        isNew ? "<NewQuestion>" : question.Enonce, question.Enonce
+                    );
+                else*/
                     tabControl.SetFocus(tab);
             }
         }

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace School04.Model {
     public class QuestionQuizz : EntityBase<ModelSchool04> {
-        //public int QuestionQuizzId {
-        //    get; set; 
-        //}
+        /*public int QuestionQuizzId {
+            get; set; 
+        }*/
         public int NbPoint {
             get; set;
         }
@@ -50,6 +50,9 @@ namespace School04.Model {
             Context.QuestionQuizzs.Remove(this);
             Context.SaveChanges();
         }
-
+        
+        public static QuestionQuizz GetByQuizzQuestion(Quizz quizz, Question question) {
+            return Context.QuestionQuizzs.SingleOrDefault(q => q.Question.QuestionId == question.QuestionId && q.Quizz.QuizzId == quizz.QuizzId);
+        }
     }
 }

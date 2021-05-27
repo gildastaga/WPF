@@ -158,7 +158,7 @@ namespace School04.ViewModel {
             if (IsNew)
                 return !string.IsNullOrEmpty(Title);
             if(StartDate != null || EndDate != null)
-                return Quizz != null && StartDate != null && EndDate != null && StartDate > DateTime.Now && StartDate < EndDate && (Context?.Entry(Quizz)?.State == EntityState.Modified);
+                return Quizz != null && StartDate != null && StartDate > DateTime.Now && (EndDate == null || StartDate < EndDate) && (Context?.Entry(Quizz)?.State == EntityState.Modified);
             return Quizz != null && (Context?.Entry(Quizz)?.State == EntityState.Modified);
         }
 

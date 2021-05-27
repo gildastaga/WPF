@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,9 +17,22 @@ namespace School04.ViewModel {
         public ICommand Delete { get; set; }
 
         public event Action OnCategorySuccess;
+        public event Action SaveClick;
+        public event Action delete_Click;
 
         private Category category;
         public Category Category { get => category; set => SetProperty(ref category, value); }
+
+        private ObservableCollection<Category> categories;
+        public ObservableCollection<Category> Categories {
+            get {
+                return categories;
+            }
+            set {
+                categories = value;
+                RaisePropertyChanged(nameof(Categories));
+            }
+        }
 
         private bool isNew;
         public bool IsNew {
@@ -29,14 +43,14 @@ namespace School04.ViewModel {
             }
         }
 
-        public bool IsExisting { get => !isNew; }
+        //public bool IsExisting { get => !isNew; }
 
         public string Name {
             get { return Category?.Name; }
             set {
                 Category.Name = value;
                 RaisePropertyChanged(nameof(Name));
-               // NotifyColleagues(AppMessages.MSG_NAME_CHANGED, Category);
+                //NotifyColleagues(AppMessages.MSG_NAME_CHANGED, Category);
             }
         }
 
@@ -53,6 +67,10 @@ namespace School04.ViewModel {
             Save = new RelayCommand(SaveAction);
             Cancel = new RelayCommand(CancelAction);
             Delete = new RelayCommand(DeleteAction, () => !IsNew);
+
+           /* Register<Category>(this, AppMessages.MSG_CATEGORY_CHANGED, category => {
+                Categories = new ObservableCollection<Category>(App.Context.Categories);
+            });*/
         }
 
         public void Init(Category category, bool isNew) {
@@ -63,25 +81,26 @@ namespace School04.ViewModel {
 
         private void SaveAction() {
             if (IsNew) {   
-                Category.Name = Category.Name;
+                //Category.Name = Category.Name;
                 //Question question = App.Context.Questions.Where(q => q.Enonce == enonce).FirstOrDefault();
                 Context.Add(Category);
                 IsNew = false;
                 Context.SaveChanges();
-                OnCategorySuccess?.Invoke();
+                //SaveClick?.Invoke(); 
+                //OnCategorySuccess?.Invoke();
             } else {
                 Context.SaveChanges();
             }
             Context.SaveChanges();
-            NotifyColleagues(AppMessages.MSG_NEW_CATEGORY, Category);
+           // NotifyColleagues(AppMessages.MSG_CATEGORY_CHANGED, Category);
         }
 
         private void CancelAction() {
-            if (IsNew) {
+            /*if (IsNew) {
                NotifyColleagues(AppMessages.MSG_CLOSE_TAB_CATEGORY, Category);
-            } else {
+            } else */{
                 Context.Reload(Category);
-                OnCategorySuccess?.Invoke();
+                //OnCategorySuccess?.Invoke();
                 RaisePropertyChanged();
             }
         }
@@ -89,9 +108,11 @@ namespace School04.ViewModel {
         private void DeleteAction() {
             CancelAction();
             Category.Delete();
-            OnCategorySuccess?.Invoke();
-            NotifyColleagues(AppMessages.MSG_CATEGORY_CHANGED, Category);
-            NotifyColleagues(AppMessages.MSG_CLOSE_TAB_CATEGORY, Category);
+            //delete_Click?.Invoke();
+            //OnCategorySuccess?.Invoke();
+
+            //NotifyColleagues(AppMessages.MSG_CATEGORY_CHANGED, Category);
+            // NotifyColleagues(AppMessages.MSG_CLOSE_TAB_CATEGORY, Category);
         }
 
         protected override void OnRefreshData() {

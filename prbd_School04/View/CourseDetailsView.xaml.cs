@@ -30,16 +30,18 @@ namespace School04.View {
         public CourseDetailsView(Course course, bool isNew) {
             InitializeComponent();
             vm.Init(course, isNew);
-            if (course != null && !isNew) {
+        }
+        private void Vm_DisplayCourseTabsTeacher(Course course) {
+            if (course != null) {
                 this.course = course;
                 tabControl.Add(
                        new RegistrationsView(course),
                        "Registrations", "registationsTab"
                 );
-                tabControl.Add(
-                       new CategoryView(course),
-                       "Categories", "categoriesTab"
-                );
+                //tabControl.Add(
+                //       new CategoryView(course),
+                //       "Categories", "categoriesTab"
+                //);
                 tabControl.Add(
                        new QuestionView(course),
                        "Questions", "questionsTab"
@@ -55,21 +57,22 @@ namespace School04.View {
                 tabControl.SetFocus(tabControl.FindByTag("registationsTab"));
             }
         }
-        private void Vm_DisplayCourseTabs(Course course) {
+
+        private void Vm_DisplayCourseTabsStudent(Course course) {
             if (course != null) {
                 this.course = course;
-                tabControl.Add(
+                /*tabControl.Add(
                        new RegistrationsView(course),
                        "Registrations", "registationsTab"
-                );
-                tabControl.Add(
-                       new CategoryView(course),
-                       "Categories", "categoriesTab"
-                );
-                tabControl.Add(
+                );*/
+                //tabControl.Add(
+                //       new CategoryView(course),
+                //       "Categories", "categoriesTab"
+                //);
+                /*tabControl.Add(
                        new QuestionView(course),
                        "Questions", "questionsTab"
-                );
+                );*/
                 tabControl.Add(
                        new QuizzesView(course),
                        "Quizzes", "quizzesTab"
@@ -78,7 +81,7 @@ namespace School04.View {
                        new registrationsView(course),
                        "Registrations", "registationsTab"
                 );*/
-                tabControl.SetFocus(tabControl.FindByTag("registationsTab"));
+                tabControl.SetFocus(tabControl.FindByTag("quizzesTab"));
             }
         }
     }
