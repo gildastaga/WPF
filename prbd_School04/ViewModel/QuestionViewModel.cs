@@ -52,9 +52,6 @@ namespace School04.ViewModel {
 
         public void Init(Course course) {
             Course = course;
-            /*foreach (var question in Course.QuestionList) {
-                Console.WriteLine(question.Enonce);
-            }*/
             Questions = new ObservableCollection<Question>(Course.QuestionList);
 
             RaisePropertyChanged();
