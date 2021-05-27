@@ -21,6 +21,7 @@ namespace School04.View {
         private Course course;
 
         public QuestionView() {
+            //test push
             InitializeComponent();
             DataContext = this;
         }
