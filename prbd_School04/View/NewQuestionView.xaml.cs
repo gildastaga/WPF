@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PRBD_Framework;
+using School04.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,9 +19,18 @@ namespace School04.View {
     /// <summary>
     /// Logique d'interaction pour NewQuestionView.xaml
     /// </summary>
-    public partial class NewQuestionView : Page {
+    public partial class NewQuestionView : UserControlBase {
+        private Question question1 { get; set; }
+
         public NewQuestionView() {
             InitializeComponent();
         }
+
+        public NewQuestionView(Question question, bool isNew) {
+            this.question1 = question;
+            InitializeComponent();
+            //vm.Init(question, isNew);
+        }
     }
+
 }
