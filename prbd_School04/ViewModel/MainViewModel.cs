@@ -68,6 +68,14 @@ namespace School04.ViewModel {
                 DisplayQuizzTeacher?.Invoke(quizz, true);
             });
 
+            Register<Question>(this, AppMessages.MSG_NEW_QUESTION, question => {
+                DisplayQuestion?.Invoke(question, true);
+            });
+
+            Register<Question>(this, AppMessages.MSG_DISPLAY_QUESTION, question => {
+                DisplayQuestion?.Invoke(question, false);
+            });
+
             Register<Quizz>(this, AppMessages.MSG_TITLE_QUIZZ_CHANGED, quizz => {
                 RenameTabQuizz?.Invoke(quizz, quizz.Title);
             });
