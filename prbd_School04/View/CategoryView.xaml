@@ -10,12 +10,11 @@
         xmlns:local="clr-namespace:School04.View"
         mc:Ignorable="d"
        Height="450" Width="800">
-
     <UserControl.DataContext>
-        <vm:CategoryViewModel x:Name="vm" />
+         <vm:CategoryViewModel x:Name="vm" />
     </UserControl.DataContext>
 
-    <Grid>
+        <Grid>
         <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10, 44, 0, 0" VerticalAlignment="Top" Height="119" Width="497">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}"/>
