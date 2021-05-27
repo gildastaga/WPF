@@ -39,6 +39,8 @@ namespace School04.ViewModel {
         //public ICommand CheckCategory { get; set; }
         public ICommand None { get; set; }
         public ICommand All { get; set; }
+        public ICommand NewQuestion { get; set; }
+        public ICommand DisplayQuestion { get; set; }
 
         public QuestionViewModel() : base() {
             Questions = new ObservableCollection<Question>(App.Context.Questions);
