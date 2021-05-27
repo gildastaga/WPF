@@ -51,5 +51,7 @@ namespace School04.Model {
         public static Question GetById(int id) {
             return Context.Questions.SingleOrDefault(q => q.QuestionId == id);
         }
+
+        public int GoodPropositionsCount => Propositions.Where(p => p.Type == Type.True).Count();
     }
 }

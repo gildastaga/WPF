@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace School04.Model {
     public class QuestionQuizz : EntityBase<ModelSchool04> {
-        public int QuestionQuizzId {
+        /*public int QuestionQuizzId {
             get; set; 
-        }
+        }*/
         public int NbPoint {
             get; set;
         }
@@ -52,9 +52,7 @@ namespace School04.Model {
         }
         
         public static QuestionQuizz GetByQuizzQuestion(Quizz quizz, Question question) {
-            var test = Context.QuestionQuizzs.Where(q => q.Question.QuestionId == question.QuestionId && q.Quizz.QuizzId == quizz.QuizzId).Single();
-            Console.WriteLine(test.PosQuestionInQuizz);
-            return test;
+            return Context.QuestionQuizzs.SingleOrDefault(q => q.Question.QuestionId == question.QuestionId && q.Quizz.QuizzId == quizz.QuizzId);
         }
     }
 }
