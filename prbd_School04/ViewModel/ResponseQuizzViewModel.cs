@@ -132,9 +132,9 @@ namespace School04.ViewModel {
                     && (EndDate == null || EndDate < DateTime.Now);
             });
             ValidateResponse = new RelayCommand<IList>(ValidateResponseAction,
-                selected => { return selected?.Count > 0 && Answer == null; });
+                selected => { return selected?.Count == Question?.GoodPropositionsCount && Answer == null; });
             ChangeResponse = new RelayCommand<IList>(ChangeResponseAction,
-                selected => { return selected?.Count > 0 && Answer != null; });
+                selected => { return selected?.Count == Question?.GoodPropositionsCount && Answer != null; });
             Register<Course>(this, AppMessages.MSG_COURSE_CHANGED, course => RaisePropertyChanged(nameof(Course)));
         }
 
