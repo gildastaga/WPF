@@ -13,6 +13,9 @@ namespace School04.ViewModel {
         protected override void OnRefreshData() {
         }
 
+        private Course course;
+        public Course Course { get => course; set => SetProperty(ref course, value); }
+
         private ObservableCollection<Question> questions;
         public ObservableCollection<Question> Questions {
             get {
@@ -44,6 +47,17 @@ namespace School04.ViewModel {
             //CheckCategory = new RelayCommand<CheckCategory>(checkCategory => {});
             None = new RelayCommand(CheckedNoneCategoryAction);
             All = new RelayCommand(CheckedAllCategoryAction);
+        }
+
+
+        public void Init(Course course) {
+            Course = course;
+            /*foreach (var question in Course.QuestionList) {
+                Console.WriteLine(question.Enonce);
+            }*/
+            Questions = new ObservableCollection<Question>(Course.QuestionList);
+
+            RaisePropertyChanged();
         }
 
         private void LoadCategoryChecked() {

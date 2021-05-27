@@ -16,12 +16,12 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace School04.View {
- 
+
     public partial class QuestionView : UserControlBase {
         private Course course;
 
+
         public QuestionView() {
-            //test push
             InitializeComponent();
             DataContext = this;
         }
@@ -29,6 +29,7 @@ namespace School04.View {
         public QuestionView(Course course) {
             this.course = course;
             InitializeComponent();
+            vm.Init(course);
         }
 
         private void Cancell_Click(object sender, RoutedEventArgs e) {
