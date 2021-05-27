@@ -53,5 +53,10 @@ namespace School04.Model {
         }
 
         public int GoodPropositionsCount => Propositions.Where(p => p.Type == Type.True).Count();
+
+        public void Delete() { //TODO: Remove the linked QuestionsQuizz
+            Context.Questions.Remove(this);
+            Context.SaveChanges();
+        }
     }
 }
