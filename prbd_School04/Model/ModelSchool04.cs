@@ -386,16 +386,129 @@ namespace School04.Model {
             quest1.Propositions.Add(prop1);
             quest1.Propositions.Add(prop11);
             quest1.Propositions.Add(prop111);
+            quest11.Propositions.Add(prop1);
+            quest11.Propositions.Add(prop11);
+            quest11.Propositions.Add(prop111);
+            quest111.Propositions.Add(prop1);
+            quest111.Propositions.Add(prop11);
+            quest111.Propositions.Add(prop111);
+
             quest2.Propositions.Add(prop2);
             quest2.Propositions.Add(prop22);
+            quest2.Propositions.Add(prop2);
+            quest22.Propositions.Add(prop2);
+            quest22.Propositions.Add(prop22);
+            quest22.Propositions.Add(prop2);
+            quest222.Propositions.Add(prop2);
+            quest222.Propositions.Add(prop22);
+            quest222.Propositions.Add(prop2);
+
             quest3.Propositions.Add(prop3);
             quest3.Propositions.Add(prop33);
             quest3.Propositions.Add(prop333);
+            quest33.Propositions.Add(prop3);
+            quest33.Propositions.Add(prop33);
+            quest33.Propositions.Add(prop333);
+            quest333.Propositions.Add(prop3);
+            quest333.Propositions.Add(prop33);
+            quest333.Propositions.Add(prop333);
+
             quest4.Propositions.Add(prop4);
             quest4.Propositions.Add(prop44);
+            quest44.Propositions.Add(prop4);
+            quest44.Propositions.Add(prop44);
+            quest444.Propositions.Add(prop4);
+            quest444.Propositions.Add(prop44);
+
             quest5.Propositions.Add(prop5);
             quest5.Propositions.Add(prop55);
             quest5.Propositions.Add(prop555);
+            quest55.Propositions.Add(prop5);
+            quest55.Propositions.Add(prop55);
+            quest55.Propositions.Add(prop555);
+            quest555.Propositions.Add(prop5);
+            quest555.Propositions.Add(prop55);
+            quest555.Propositions.Add(prop555);
+
+            quest6.Propositions.Add(prop1);
+            quest6.Propositions.Add(prop11);
+            quest6.Propositions.Add(prop111);
+            quest66.Propositions.Add(prop1);
+            quest66.Propositions.Add(prop11);
+            quest66.Propositions.Add(prop111);
+            quest665.Propositions.Add(prop1);
+            quest665.Propositions.Add(prop11);
+            quest665.Propositions.Add(prop111);
+
+            quest7.Propositions.Add(prop1);
+            quest7.Propositions.Add(prop11);
+            quest7.Propositions.Add(prop111);
+            quest77.Propositions.Add(prop1);
+            quest77.Propositions.Add(prop11);
+            quest77.Propositions.Add(prop111);
+            quest777.Propositions.Add(prop1);
+            quest777.Propositions.Add(prop11);
+            quest777.Propositions.Add(prop111);
+
+            quest8.Propositions.Add(prop3);
+            quest8.Propositions.Add(prop33);
+            quest8.Propositions.Add(prop333);
+            quest88.Propositions.Add(prop3);
+            quest88.Propositions.Add(prop33);
+            quest88.Propositions.Add(prop333);
+            quest888.Propositions.Add(prop3);
+            quest888.Propositions.Add(prop33);
+            quest888.Propositions.Add(prop333);
+
+            quest9.Propositions.Add(prop3);
+            quest9.Propositions.Add(prop33);
+            quest9.Propositions.Add(prop333);
+            quest99.Propositions.Add(prop3);
+            quest99.Propositions.Add(prop33);
+            quest99.Propositions.Add(prop333);
+            quest999.Propositions.Add(prop3);
+            quest999.Propositions.Add(prop33);
+            quest999.Propositions.Add(prop333);
+
+            quest10.Propositions.Add(prop5);
+            quest10.Propositions.Add(prop55);
+            quest10.Propositions.Add(prop555);
+            quest100.Propositions.Add(prop5);
+            quest100.Propositions.Add(prop55);
+            quest100.Propositions.Add(prop555);
+            quest1000.Propositions.Add(prop5);
+            quest1000.Propositions.Add(prop55);
+            quest1000.Propositions.Add(prop555);
+
+            quest12.Propositions.Add(prop5);
+            quest12.Propositions.Add(prop55);
+            quest12.Propositions.Add(prop555);
+            quest122.Propositions.Add(prop5);
+            quest122.Propositions.Add(prop55);
+            quest122.Propositions.Add(prop555);
+            quest1222.Propositions.Add(prop5);
+            quest1222.Propositions.Add(prop55);
+            quest1222.Propositions.Add(prop555);
+
+            quest13.Propositions.Add(prop3);
+            quest13.Propositions.Add(prop33);
+            quest13.Propositions.Add(prop333);
+            quest133.Propositions.Add(prop3);
+            quest133.Propositions.Add(prop33);
+            quest133.Propositions.Add(prop333);
+            quest1333.Propositions.Add(prop3);
+            quest1333.Propositions.Add(prop33);
+            quest1333.Propositions.Add(prop333);
+
+            quest14.Propositions.Add(prop3);
+            quest14.Propositions.Add(prop33);
+            quest14.Propositions.Add(prop333);
+            quest144.Propositions.Add(prop3);
+            quest144.Propositions.Add(prop33);
+            quest144.Propositions.Add(prop333);
+            quest1444.Propositions.Add(prop3);
+            quest1444.Propositions.Add(prop33);
+            quest1444.Propositions.Add(prop333);
 
             var quiz1 = new Quizz {
                 Course = prbd,
@@ -433,10 +546,33 @@ namespace School04.Model {
             var cat5 = new Category("Test", quest4);
             Categories.AddRange(cat1, cat2, cat3, cat4, cat5);
 
+            quest1.Categories.Add(cat1);
+            quest1.Categories.Add(cat4);
+            quest11.Categories.Add(cat2);
+            quest11.Categories.Add(cat3);
+            quest111.Categories.Add(cat5);
+            quest111.Categories.Add(cat4);
+            quest111.Categories.Add(cat1);
+            quest2.Categories.Add(cat3);
+            quest2.Categories.Add(cat4);
+            quest22.Categories.Add(cat5);
+            quest222.Categories.Add(cat1);
+            quest222.Categories.Add(cat3);
+            quest3.Categories.Add(cat2);
+            quest3.Categories.Add(cat1);
+            quest33.Categories.Add(cat2);
+            quest33.Categories.Add(cat5);
+            quest333.Categories.Add(cat4);
+            quest333.Categories.Add(cat1);
+            quest333.Categories.Add(cat5);
+            quest4.Categories.Add(cat3);
+            quest4.Categories.Add(cat4);
+
             SaveChanges();
 
             Database.CommitTransaction();
-            
+
+
         }
 
         public DbSet<User> Users {

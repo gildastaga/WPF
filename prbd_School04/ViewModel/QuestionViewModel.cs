@@ -43,6 +43,7 @@ namespace School04.ViewModel {
         public ICommand DisplayQuestion { get; set; }
 
         public QuestionViewModel() : base() {
+
             Questions = new ObservableCollection<Question>(App.Context.Questions);
             LoadCategoryChecked();
            
