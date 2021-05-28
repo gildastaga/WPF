@@ -33,7 +33,7 @@ namespace School04.ViewModel {
             }
         }
 
-        public ICommand Save { get; set; }
+        public ICommand Save { get; set; }     //TODO
         public ICommand Cancel { get; set; }
         public ICommand Delete { get; set; }
 
