@@ -44,8 +44,8 @@ namespace School04.ViewModel {
 
         public QuestionViewModel() : base() {
 
-            Questions = new ObservableCollection<Question>(App.Context.Questions);
-            LoadCategoryChecked();
+            //Questions = new ObservableCollection<Question>(App.Context.Questions);
+            //LoadCategoryChecked();
            
             //CheckCategory = new RelayCommand<CheckCategory>(checkCategory => {});
             None = new RelayCommand(CheckedNoneCategoryAction);
@@ -68,6 +68,7 @@ namespace School04.ViewModel {
         public void Init(Course course) {
             Course = course;
             Questions = new ObservableCollection<Question>(Course.QuestionList);
+            LoadCategoryChecked();
 
             RaisePropertyChanged();
         }

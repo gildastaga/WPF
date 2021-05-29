@@ -47,7 +47,7 @@
                         </ListBox.ItemsPanel>
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <CheckBox Content="{Binding Name}" IsChecked="{Binding Checked, UpdateSourceTrigger=PropertyChanged}" Command="{Binding CheckCategory}" CommandParameter="{Binding}" Margin="0" Background="{x:Null}" Foreground="White"/>
+                                <CheckBox Content="{Binding Name}" IsChecked="{Binding Checked, UpdateSourceTrigger=PropertyChanged}" Command="{Binding CheckCategory}" CommandParameter="{Binding}" Margin="0" Background="{x:Null}" Foreground="Black"/>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
@@ -67,7 +67,7 @@
                     <Run Text=")" />
                 </TextBlock>
 
-                <ListView x:Name="listView" Grid.Row="1" ItemsSource="{Binding Questions}" BorderBrush="White" Foreground="White" Background="{x:Null}">
+                <ListView x:Name="listView" Grid.Row="1" ItemsSource="{Binding Questions}" BorderBrush="White" Foreground="Black" Background="{x:Null}">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <UniformGrid Columns="1"/>
