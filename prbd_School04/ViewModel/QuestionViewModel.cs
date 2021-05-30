@@ -10,7 +10,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace School04.ViewModel {
     public class QuestionViewModel : ViewModelBase<ModelSchool04> {
-        public event Action<Question> CloseTab;
 
         private bool isNew;
         public bool IsNew
@@ -109,15 +108,17 @@ namespace School04.ViewModel {
         public ICommand Save { get; set; }
         public ICommand Delete { get; set; }
         public ICommand Cancel { get; set; }
+        public ICommand CheckCategory { get; set; }
+        
 
         public QuestionViewModel() : base() {
 
             //Questions = new ObservableCollection<Question>(App.Context.Questions);
             //LoadCategoryChecked();
 
-            //CheckCategory = new RelayCommand<CheckCategory>(checkCategory => {});
-            //None = new RelayCommand(CheckedNoneCategoryAction);
-            //All = new RelayCommand(CheckedAllCategoryAction);
+            CheckCategory = new RelayCommand<CheckCategory>(checkCategory => {});
+            None = new RelayCommand(CheckedNoneCategoryAction);
+            All = new RelayCommand(CheckedAllCategoryAction);
 
             Save = new RelayCommand(
                 SaveAction,
@@ -128,34 +129,33 @@ namespace School04.ViewModel {
                 DeleteAction, () => !IsNew);
 
             Cancel = new RelayCommand(
-                CancelAction, CanCancelAction);
+                CancelAction);
 
             NewQuestion = new RelayCommand(() => {
-                //this.Enonce = "";
-                //this.Answers = "";
+
                 Question = new Question("", Course);
                 isNew = true;
-                if (!isNew)
+
+                //if(!isNew || Context?.Entry(Question)?.State == EntityState.Modified)
                 {
                     this.Enonce = "";
                     this.Answers = "";
                     isNew = false;
                 }
+                this.Enonce = "";
+                this.Answers = "";
             });
 
             Register(this, AppMessages.MSG_QUESTION_CHANGED, () => {
                 Questions = new ObservableCollection<Question>(Course.QuestionList);
-            });
-
-            Register(this, AppMessages.MSG_CLOSE_QUESTION_TAB, () => {
-                CloseTab?.Invoke(question);
             });
         }
 
         public void Init(Course course) {
             Course = course;
             Questions = new ObservableCollection<Question>(Course.QuestionList);
-            //LoadCategoryChecked();
+            //Categories = new ObservableCollection<CheckCategory>(Question.Categories);
+            LoadCategoryChecked();
             RaisePropertyChanged();
         }
 
@@ -206,34 +206,30 @@ namespace School04.ViewModel {
 
         private void CancelAction()
         {
-            if (IsNew)
+            if (IsNew && Question != null)
             {
-                NotifyColleagues(AppMessages.MSG_CLOSE_QUESTION_TAB, Question);
+                //Context.Reload(Question);
+                this.Enonce = "";
+                this.Answers = "";
+                isNew = false;
             }
-            //else
-            //{
-            Context.Reload(Question);
-            //this.Enonce = "";
+            this.Enonce = "";
+            this.Answers = "";
             RaisePropertyChanged();
-            //}
-            Validate();
-            RaisePropertyChanged();
-        }
-
-        private bool CanCancelAction()
-        {
-            return Question != null && (IsNew || Context?.Entry(Question)?.State == EntityState.Modified);
         }
 
         private void DeleteAction()
         {
-            CancelAction();
-            Question.Delete();
-            NotifyColleagues(AppMessages.MSG_QUESTION_CHANGED, Question);
-            NotifyColleagues(AppMessages.MSG_CLOSE_QUESTION_TAB, Question);
+            if (!IsNew && Question != null)
+            {
+                CancelAction();
+                Question.Delete();
+            }
+            RaisePropertyChanged();
+            //NotifyColleagues(AppMessages.MSG_QUESTION_CHANGED, Question);
         }
 
-        //private void LoadCategoryChecked() {
+        private void LoadCategoryChecked() {
         //    Categories = new ObservableCollection<CheckCategory>();// je cree une liste vide, ensuite je parcoure ma BD, je récupère les noms de chaque catégorie et j'ajoute à ma nouvelle liste
 
         //    foreach (var category in App.Context.Categories)               
@@ -244,10 +240,10 @@ namespace School04.ViewModel {
         //        };
         //        Categories.Add(p);                              
         //    }
-        //}
+        }
 
-        ////implémentation du bouton All
-        //private void CheckedAllCategoryAction() {
+        //implémentation du bouton All
+        private void CheckedAllCategoryAction() {
         //    var Categs = new ObservableCollection<CheckCategory>(); //je creer une nouvelle liste de catégorie que je mets à jour avec ma liste de catégorie.
 
         //    foreach (var category in Categories) {
@@ -255,10 +251,10 @@ namespace School04.ViewModel {
         //        Categs.Add(category);
         //    }
         //    Categories = new ObservableCollection<CheckCategory>(Categs);
-        //}
+        }
 
         ////implémentation du bouton None
-        //private void CheckedNoneCategoryAction() {
+        private void CheckedNoneCategoryAction() {
         //    var Categs = new ObservableCollection<CheckCategory>();   
 
         //    foreach (var category in Categories) {
@@ -266,7 +262,7 @@ namespace School04.ViewModel {
         //        Categs.Add(category);
         //    }
         //    Categories = new ObservableCollection<CheckCategory>(Categs);
-        //}
+        }
 
         protected override void OnRefreshData()
         {

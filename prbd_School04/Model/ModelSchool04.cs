@@ -108,7 +108,7 @@ namespace School04.Model {
                 Enonce = "-Quelle est le langage utilisé ?",
                 IsUpdate = false,
                 IsDelete = false,
-                Course = prbd,
+                Course = prwb,
                 typeQuestion = TypeQuestion.ManyAnswer
 
             };
@@ -117,7 +117,7 @@ namespace School04.Model {
                 Enonce = "-Quelle est le langage utilisé ?",
                 IsUpdate = false,
                 IsDelete = false,
-                Course = sgbd,
+                Course = tgpr,
                 typeQuestion = TypeQuestion.ManyAnswer
 
             };
@@ -135,7 +135,7 @@ namespace School04.Model {
                 Enonce = "-Qu'est-ce que le SQL Server?",
                 IsUpdate = false,
                 IsDelete = false,
-                Course = prbd,
+                Course = prwb,
                 typeQuestion = TypeQuestion.OneAnswer
             };
 
@@ -176,7 +176,7 @@ namespace School04.Model {
                 Enonce = "-Choisir la réponse avec un (V) :",
                 IsUpdate = false,
                 IsDelete = false,
-                Course = sgbd,
+                Course = tgpr,
                 typeQuestion = TypeQuestion.ManyAnswer
             };
 
@@ -368,147 +368,66 @@ namespace School04.Model {
                 quest14, quest144, quest1444);  
 
             var prop1 = new Proposition ("C#", Type.True);
-            var prop11 = new Proposition("javaFX", Type.False);
-            var prop111 = new Proposition("wpf", Type.True);
-            var prop2 = new Proposition ("server mobile", Type.False);
-            var prop22 = new Proposition("système de gestion de BD", Type.True) ;
-            var prop3 = new Proposition ("acess", Type.False);
-            var prop33 = new Proposition("programmation", Type.True);
-            var prop333 = new Proposition("informatique", Type.True);
-            var prop4 = new Proposition("langage", Type.False);
-            var prop44 = new Proposition("langage informatique", Type.True);
-            var prop5 = new Proposition("6", Type.True);
-            var prop55 = new Proposition("1", Type.False);
-            var prop555 = new Proposition("8", Type.True);
-            Propositions.AddRange(prop1, prop11, prop111, prop2, prop22, prop3, prop33, prop333, prop4, prop44,
-                prop5, prop55, prop555);
+            var prop2 = new Proposition("WPF", Type.True);
+            var prop3 = new Proposition("javaFX", Type.False);
+            var prop4 = new Proposition("wpf", Type.True);
+            var prop5 = new Proposition ("server mobile", Type.False);
+            var prop6 = new Proposition("système de gestion de BD", Type.True) ;
+            var prop7 = new Proposition ("acess", Type.False);
+            var prop8 = new Proposition("programmation", Type.True);
+            var prop9 = new Proposition("informatique", Type.True);
+            var prop10 = new Proposition("langage", Type.False);
+            var prop11 = new Proposition("langage informatique", Type.True);
+            var prop12 = new Proposition("6", Type.True);
+            var prop13 = new Proposition("1", Type.False);
+            var prop14 = new Proposition("8", Type.True);
+            var prop15 = new Proposition("Angular", Type.True);
+            var prop16 = new Proposition("Data Acess", Type.True);
+            var prop17 = new Proposition("Information", Type.True);
+            var prop18 = new Proposition("10", Type.True);
+            var prop19 = new Proposition("Réseaux", Type.True);
+            var prop20 = new Proposition("Routage", Type.True);
+            var prop21 = new Proposition("Machine Virtuelle", Type.True);
+            var prop22 = new Proposition("20", Type.True);
+            var prop23 = new Proposition("Php", Type.True);
+            var prop24 = new Proposition("JavaScript", Type.True);
+            var prop25 = new Proposition("React", Type.True);
+            Propositions.AddRange(prop1, prop2, prop3, prop4, prop5, prop3, prop6, prop7, prop8, prop9,
+                prop10, prop11, prop12, prop13, prop14, prop15, prop16, prop17, prop18, prop19, prop20, prop21,
+                prop22, prop23, prop24, prop25);
             
+            //Propositions de PRWB
             quest1.Propositions.Add(prop1);
-            quest1.Propositions.Add(prop11);
-            quest1.Propositions.Add(prop111);
-            quest11.Propositions.Add(prop1);
-            quest11.Propositions.Add(prop11);
-            quest11.Propositions.Add(prop111);
-            quest111.Propositions.Add(prop1);
-            quest111.Propositions.Add(prop11);
-            quest111.Propositions.Add(prop111);
+            quest1.Propositions.Add(prop2);
+            quest1.Propositions.Add(prop3); 
+            quest2.Propositions.Add(prop4);
+            quest2.Propositions.Add(prop5);
+            quest2.Propositions.Add(prop6);
+            
+            //Propositions de TGPR
+            quest11.Propositions.Add(prop7);
+            quest11.Propositions.Add(prop8);
+            quest11.Propositions.Add(prop9);
+            quest333.Propositions.Add(prop10);
+            quest333.Propositions.Add(prop11);
+            quest333.Propositions.Add(prop12);
 
-            quest2.Propositions.Add(prop2);
-            quest2.Propositions.Add(prop22);
-            quest2.Propositions.Add(prop2);
-            quest22.Propositions.Add(prop2);
-            quest22.Propositions.Add(prop22);
-            quest22.Propositions.Add(prop2);
-            quest222.Propositions.Add(prop2);
-            quest222.Propositions.Add(prop22);
-            quest222.Propositions.Add(prop2);
+            //Propositions de ANC3
+            quest4.Propositions.Add(prop13);
+            quest4.Propositions.Add(prop14);
+            quest55.Propositions.Add(prop15);
+            quest55.Propositions.Add(prop16);
+            quest55.Propositions.Add(prop17);
+            quest665.Propositions.Add(prop18);
+            quest665.Propositions.Add(prop19);
+            quest665.Propositions.Add(prop20);
 
-            quest3.Propositions.Add(prop3);
-            quest3.Propositions.Add(prop33);
-            quest3.Propositions.Add(prop333);
-            quest33.Propositions.Add(prop3);
-            quest33.Propositions.Add(prop33);
-            quest33.Propositions.Add(prop333);
-            quest333.Propositions.Add(prop3);
-            quest333.Propositions.Add(prop33);
-            quest333.Propositions.Add(prop333);
-
-            quest4.Propositions.Add(prop4);
-            quest4.Propositions.Add(prop44);
-            quest44.Propositions.Add(prop4);
-            quest44.Propositions.Add(prop44);
-            quest444.Propositions.Add(prop4);
-            quest444.Propositions.Add(prop44);
-
-            quest5.Propositions.Add(prop5);
-            quest5.Propositions.Add(prop55);
-            quest5.Propositions.Add(prop555);
-            quest55.Propositions.Add(prop5);
-            quest55.Propositions.Add(prop55);
-            quest55.Propositions.Add(prop555);
-            quest555.Propositions.Add(prop5);
-            quest555.Propositions.Add(prop55);
-            quest555.Propositions.Add(prop555);
-
-            quest6.Propositions.Add(prop1);
-            quest6.Propositions.Add(prop11);
-            quest6.Propositions.Add(prop111);
-            quest66.Propositions.Add(prop1);
-            quest66.Propositions.Add(prop11);
-            quest66.Propositions.Add(prop111);
-            quest665.Propositions.Add(prop1);
-            quest665.Propositions.Add(prop11);
-            quest665.Propositions.Add(prop111);
-
-            quest7.Propositions.Add(prop1);
-            quest7.Propositions.Add(prop11);
-            quest7.Propositions.Add(prop111);
-            quest77.Propositions.Add(prop1);
-            quest77.Propositions.Add(prop11);
-            quest77.Propositions.Add(prop111);
-            quest777.Propositions.Add(prop1);
-            quest777.Propositions.Add(prop11);
-            quest777.Propositions.Add(prop111);
-
-            quest8.Propositions.Add(prop3);
-            quest8.Propositions.Add(prop33);
-            quest8.Propositions.Add(prop333);
-            quest88.Propositions.Add(prop3);
-            quest88.Propositions.Add(prop33);
-            quest88.Propositions.Add(prop333);
-            quest888.Propositions.Add(prop3);
-            quest888.Propositions.Add(prop33);
-            quest888.Propositions.Add(prop333);
-
-            quest9.Propositions.Add(prop3);
-            quest9.Propositions.Add(prop33);
-            quest9.Propositions.Add(prop333);
-            quest99.Propositions.Add(prop3);
-            quest99.Propositions.Add(prop33);
-            quest99.Propositions.Add(prop333);
-            quest999.Propositions.Add(prop3);
-            quest999.Propositions.Add(prop33);
-            quest999.Propositions.Add(prop333);
-
-            quest10.Propositions.Add(prop5);
-            quest10.Propositions.Add(prop55);
-            quest10.Propositions.Add(prop555);
-            quest100.Propositions.Add(prop5);
-            quest100.Propositions.Add(prop55);
-            quest100.Propositions.Add(prop555);
-            quest1000.Propositions.Add(prop5);
-            quest1000.Propositions.Add(prop55);
-            quest1000.Propositions.Add(prop555);
-
-            quest12.Propositions.Add(prop5);
-            quest12.Propositions.Add(prop55);
-            quest12.Propositions.Add(prop555);
-            quest122.Propositions.Add(prop5);
-            quest122.Propositions.Add(prop55);
-            quest122.Propositions.Add(prop555);
-            quest1222.Propositions.Add(prop5);
-            quest1222.Propositions.Add(prop55);
-            quest1222.Propositions.Add(prop555);
-
-            quest13.Propositions.Add(prop3);
-            quest13.Propositions.Add(prop33);
-            quest13.Propositions.Add(prop333);
-            quest133.Propositions.Add(prop3);
-            quest133.Propositions.Add(prop33);
-            quest133.Propositions.Add(prop333);
-            quest1333.Propositions.Add(prop3);
-            quest1333.Propositions.Add(prop33);
-            quest1333.Propositions.Add(prop333);
-
-            quest14.Propositions.Add(prop3);
-            quest14.Propositions.Add(prop33);
-            quest14.Propositions.Add(prop333);
-            quest144.Propositions.Add(prop3);
-            quest144.Propositions.Add(prop33);
-            quest144.Propositions.Add(prop333);
-            quest1444.Propositions.Add(prop3);
-            quest1444.Propositions.Add(prop33);
-            quest1444.Propositions.Add(prop333);
+            //Propositions de MAP4
+            quest66.Propositions.Add(prop21);
+            quest66.Propositions.Add(prop22);
+            quest66.Propositions.Add(prop23);
+            quest44.Propositions.Add(prop24);
+            quest44.Propositions.Add(prop25);
 
             var quiz1 = new Quizz {
                 Course = prbd,
