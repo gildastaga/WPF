@@ -370,7 +370,7 @@ namespace School04.Model {
             var prop1 = new Proposition ("C#", Type.True);
             var prop2 = new Proposition("WPF", Type.True);
             var prop3 = new Proposition("javaFX", Type.False);
-            var prop4 = new Proposition("wpf", Type.True);
+            var prop4 = new Proposition("wpf", Type.False);
             var prop5 = new Proposition ("server mobile", Type.False);
             var prop6 = new Proposition("système de gestion de BD", Type.True) ;
             var prop7 = new Proposition ("acess", Type.False);
