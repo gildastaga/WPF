@@ -89,7 +89,7 @@ namespace School04.ViewModel {
             Register<Course>(this, AppMessages.MSG_CLOSE_TAB_COURSE, course => {
                 CloseTabCourse?.Invoke(course);
             });
-            
+
             Register(this, AppMessages.MSG_CLOSE_TAB_PROFILE, () => {
                 CloseTabProfile?.Invoke();
             });

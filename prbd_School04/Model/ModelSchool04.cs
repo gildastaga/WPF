@@ -465,28 +465,39 @@ namespace School04.Model {
             var cat5 = new Category("Test", quest4);
             Categories.AddRange(cat1, cat2, cat3, cat4, cat5);
 
-            quest1.Categories.Add(cat1);
-            quest1.Categories.Add(cat4);
-            quest11.Categories.Add(cat2);
-            quest11.Categories.Add(cat3);
-            quest111.Categories.Add(cat5);
-            quest111.Categories.Add(cat4);
-            quest111.Categories.Add(cat1);
-            quest2.Categories.Add(cat3);
-            quest2.Categories.Add(cat4);
-            quest22.Categories.Add(cat5);
-            quest222.Categories.Add(cat1);
-            quest222.Categories.Add(cat3);
-            quest3.Categories.Add(cat2);
-            quest3.Categories.Add(cat1);
-            quest33.Categories.Add(cat2);
-            quest33.Categories.Add(cat5);
-            quest333.Categories.Add(cat4);
-            quest333.Categories.Add(cat1);
-            quest333.Categories.Add(cat5);
-            quest4.Categories.Add(cat3);
-            quest4.Categories.Add(cat4);
 
+
+
+            var QuestionCateg1 = new QuestionCateg(quest1, cat1);
+            var QuestionCateg2 = new QuestionCateg(quest1, cat4);
+            var QuestionCateg3 = new QuestionCateg(quest11, cat2);
+            var QuestionCateg4 = new QuestionCateg(quest11, cat3);
+            var QuestionCateg5 = new QuestionCateg(quest665, cat5);
+            var QuestionCateg6 = new QuestionCateg(quest665, cat4);
+            var QuestionCateg7 = new QuestionCateg(quest665, cat1);
+
+            var QuestionCateg8 = new QuestionCateg(quest2, cat3);
+            var QuestionCateg9 = new QuestionCateg(quest2, cat4);
+            var QuestionCateg10 = new QuestionCateg(quest22, cat5);
+            var QuestionCateg11 = new QuestionCateg(quest222, cat1);
+            var QuestionCateg12 = new QuestionCateg(quest222, cat3);
+            var QuestionCateg13 = new QuestionCateg(quest3, cat2);
+
+            
+            var QuestionCateg17 = new QuestionCateg(quest333, cat4);
+            var QuestionCateg18 = new QuestionCateg(quest333, cat1);
+            var QuestionCateg19 = new QuestionCateg(quest333, cat5);
+            var QuestionCateg14 = new QuestionCateg(quest55, cat1);
+            var QuestionCateg15 = new QuestionCateg(quest55, cat2);
+            var QuestionCateg16 = new QuestionCateg(quest55, cat5);
+
+            var QuestionCateg20 = new QuestionCateg(quest4, cat3);
+            var QuestionCateg21 = new QuestionCateg(quest4, cat4);
+
+            QuestionCategs.AddRange(QuestionCateg1, QuestionCateg2, QuestionCateg3, QuestionCateg4, QuestionCateg5,
+                QuestionCateg6, QuestionCateg7, QuestionCateg8, QuestionCateg9, QuestionCateg10, QuestionCateg11,
+                QuestionCateg12, QuestionCateg13, QuestionCateg14, QuestionCateg15, QuestionCateg16, QuestionCateg17,
+                QuestionCateg18, QuestionCateg19, QuestionCateg20, QuestionCateg21);
             SaveChanges();
 
             Database.CommitTransaction();
@@ -525,6 +536,10 @@ namespace School04.Model {
             get; set;
         }
         public DbSet<Quizz> Quizz {
+            get; set;
+        }
+        public DbSet<QuestionCateg> QuestionCategs
+        {
             get; set;
         }
     }

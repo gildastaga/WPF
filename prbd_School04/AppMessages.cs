@@ -12,6 +12,7 @@
         MSG_QUIZZ_CHANGED,
         MSG_QUESTION_CHANGED,
         MSG_CLOSE_QUIZZ_TAB,
+        MSG_QUESTION_DELETE,
         // Pour pouvoir mettre à jour l'en-tête de l'onglet en cas de 
         // changement de titre de course
         MSG_COURSE_CHANGED,
@@ -22,7 +23,6 @@
         MSG_PROFILE,
         MSG_PROFILE_CHANGED,
         MSG_CLOSE_TAB_PROFILE,
-        MSG_CLOSE_QUESTION_TAB,
         MSG_UPDATE_PROFILE,
         MSG_ADD_REGISTRATION,
         //MSG_CATEGORY_CHANGED,

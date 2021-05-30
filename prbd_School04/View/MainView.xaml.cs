@@ -90,6 +90,7 @@ namespace School04.View {
                 tab = tabControl.FindByTag("<new course>");
             tabControl.Items.Remove(tab);
         }
+        
         private void Vm_CloseTabProfile() {
             var tab = tabControl.FindByTag("Profile");
             tabControl.Items.Remove(tab);

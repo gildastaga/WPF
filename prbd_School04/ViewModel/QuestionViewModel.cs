@@ -152,7 +152,7 @@ namespace School04.ViewModel {
                 DeleteAction, () => !IsNew);
 
             Cancel = new RelayCommand(
-                CancelAction);
+                CancelActionQuestion, CanCancelActionNewCourse);
 
             NewQuestion = new RelayCommand(() => {
 
@@ -230,31 +230,37 @@ namespace School04.ViewModel {
 
             Context.SaveChanges();
             NotifyColleagues(AppMessages.MSG_QUESTION_CHANGED);
+        }  
+
+        private void CancelActionQuestion()
+        {
+            if (IsNew && QuestionSelect != null)
+            {
+                Context.Reload(QuestionSelect);
+                RaisePropertyChanged();
+            }      
+            
         }
 
-        private void CancelAction()
+        private bool CanCancelActionNewCourse()
         {
-            if (IsNew && Question != null)
-            {
-                //Context.Reload(Question);
-                this.Enonce = "";
-                this.Answers = "";
-                isNew = false;
-            }
-            this.Enonce = "";
-            this.Answers = "";
-            RaisePropertyChanged();
+            return Question != null && (IsNew || Context?.Entry(Question)?.State == EntityState.Modified);
         }
 
         private void DeleteAction()
         {
-            if (!IsNew && Question != null)
+            if (QuestionSelect != null)
             {
-                CancelAction();
-                Question.Delete();
+                Console.WriteLine("delete1");
+                CancelActionQuestion();
+                QuestionSelect.Delete();
+                Questions.Remove(QuestionSelect);
+                answers = "";
+                Console.WriteLine("delete2");
+                RaisePropertyChanged();
+                Console.WriteLine("delete3");
             }
-            RaisePropertyChanged();
-            //NotifyColleagues(AppMessages.MSG_QUESTION_CHANGED, Question);
+           
         }
 
         private void LoadCategoryChecked()

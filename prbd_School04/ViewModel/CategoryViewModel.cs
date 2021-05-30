@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using PRBD_Framework;
 using School04.Model;
@@ -22,6 +23,10 @@ namespace School04.ViewModel {
 
         private Category category;
         public Category Category { get => category; set => SetProperty(ref category, value); }
+
+        private QuestionCateg questionCateg;
+        public QuestionCateg QuestionCateg { get => questionCateg; set => SetProperty(ref questionCateg, value); }
+
 
         private ObservableCollection<Category> categories;
         public ObservableCollection<Category> Categories {
@@ -80,10 +85,11 @@ namespace School04.ViewModel {
         }
 
         private void SaveAction() {
-            if (IsNew) {   
-                //Category.Name = Category.Name;
+            if (IsNew && Category != null) {   
+                QuestionCateg.Category = QuestionCateg.Category;
+                QuestionCateg.Question = QuestionCateg.Question;
                 //Question question = App.Context.Questions.Where(q => q.Enonce == enonce).FirstOrDefault();
-                Context.Add(Category);
+                Context.Add(QuestionCateg);
                 IsNew = false;
                 Context.SaveChanges();
                 //SaveClick?.Invoke(); 
@@ -117,6 +123,8 @@ namespace School04.ViewModel {
 
         protected override void OnRefreshData() {
         }
+
+ 
 
 
 

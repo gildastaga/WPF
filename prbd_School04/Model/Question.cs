@@ -64,5 +64,12 @@ namespace School04.Model {
             Context.Questions.Remove(this);
             Context.SaveChanges();
         }
+
+        public void RemoveElem(Answer a)
+        {
+            this.RemoveElem(a);
+            Context.SaveChanges();
+        }
+
     }
 }

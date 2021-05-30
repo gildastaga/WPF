@@ -38,10 +38,10 @@ namespace School04.View {
                        new RegistrationsView(course),
                        "Registrations", "registationsTab"
                 );
-                //tabControl.Add(
-                //       new CategoryView(course),
-                //       "Categories", "categoriesTab"
-                //);
+                tabControl.Add(
+                      new CategoryView(course),
+                       "Categories", "categoriesTab"
+                );
                 tabControl.Add(
                        new QuestionView(course),
                        "Questions", "questionsTab"
