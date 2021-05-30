@@ -7,10 +7,7 @@
       xmlns:vm="clr-namespace:School04.ViewModel"
       xmlns:f="clr-namespace:PRBD_Framework;assembly=PRBD_Framework"
       mc:Ignorable="d" 
-      Title="{Binding TitleWindow}" Height="750" Width="920" WindowStartupLocation="CenterScreen" KeyDown="WindowBase_KeyDown" Visibility="Visible" FontSize="14">
-    <!--<f:WindowBase.Background>
-        <ImageBrush ImageSource="/Ressources/auditoire1.jpg" Stretch="Fill" TileMode="None" />
-    </f:WindowBase.Background>-->
+      Title="{Binding TitleWindow}" Height="750" Width="920" WindowStartupLocation="CenterScreen" KeyDown="WindowBase_KeyDown" Visibility="Visible" FontSize="14" Background="#FFD1C9C9">
     <Window.DataContext>
         <vm:MainViewModel x:Name="vm" DisplayCourse="Vm_DisplayCourse" RenameTabCourseDetail="Vm_RenameTabCourseDetail" 
                           DisplayQuizzTeacher="Vm_DisplayQuizzTeacher" DisplayQuizzStudent="Vm_DisplayQuizzStudent" 
@@ -22,13 +19,13 @@
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Menu FontFamily="Comic Sans MS" FontSize="14" VerticalAlignment="Stretch" Height="32" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" Background="{x:Null}" FontWeight="Bold" FontStyle="Italic" HorizontalAlignment="Stretch">
+        <Menu FontFamily="Comic Sans MS" Foreground="white" FontSize="14" VerticalAlignment="Stretch" Height="32" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" Background="{x:Null}" FontWeight="Bold" FontStyle="Italic" HorizontalAlignment="Stretch">
             <MenuItem Header="Logout" Command="{Binding LogoutCommand}"  />
             <MenuItem Header="Reload" Command="{Binding ReloadDataCommand}" />
             <MenuItem Header="Profile" Click="Menu_ProfileUser_Click" />
         </Menu>
-        <f:MyTabControl x:Name="tabControl" Margin="10" Grid.Row="1">
-            <TabItem x:Name="coursesTab" Header="Courses" Tag="Courses">
+        <f:MyTabControl x:Name="tabControl" Margin="10" Grid.Row="1" Background="{x:Null}">
+            <TabItem x:Name="coursesTab" Header="Courses" Tag="Courses" Background="{x:Null}">
                 <ContentControl>
                     <local:CoursesView/>
                 </ContentControl>
