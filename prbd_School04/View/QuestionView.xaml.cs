@@ -20,18 +20,26 @@ namespace School04.View {
     public partial class QuestionView : UserControlBase {
         private Course course;
 
-        public QuestionView() {
+        public QuestionView()
+        {
             InitializeComponent();
             DataContext = this;
         }
 
-        public QuestionView(Course course) {
+        public QuestionView(Course course)
+        {
             this.course = course;
             InitializeComponent();
             vm.Init(course);
         }
 
-        private void Cancell_Click(object sender, RoutedEventArgs e) {
+        private void charge_Question(object sender, RoutedEventArgs e)
+        {
+            vm.Check.Execute(listQuestions.SelectedItem);
+        }
+
+        private void Cancell_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }
