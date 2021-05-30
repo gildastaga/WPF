@@ -12,17 +12,17 @@
     </UserControl.DataContext>
     <Grid Margin="10">
         <!-- Name -->
-        <Label Content="Name : " HorizontalAlignment="Center" Margin="0,180,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Foreground="White"/>
+        <Label Content="Name : " HorizontalAlignment="Center" Margin="0,180,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
         <TextBox x:Name="txtName" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="0,220,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="610" Height="25"/>
         <!-- FirstName -->
-        <Label Content="FirstName : " HorizontalAlignment="Center" Margin="0,260,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Foreground="White"/>
+        <Label Content="FirstName : " HorizontalAlignment="Center" Margin="0,260,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
         <TextBox x:Name="txtFstName" Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="0,300,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="610" Height="25"/>
         <!-- Profile -->
-        <Label Content="Profile : " HorizontalAlignment="Center" Margin="0,340,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Foreground="White"/>
+        <Label Content="Profile : " HorizontalAlignment="Center" Margin="0,340,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
         <TextBox x:Name="txtProfile" Text="{Binding Profile, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="0,380,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="610" Height="70"/>
 
-        <Button Content="Cancel" Command="{Binding CancelUser}" HorizontalAlignment="Left" Margin="315,491,0,0" VerticalAlignment="Top" Width="90" Height="40" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="Gray" BorderThickness="4" Background="{x:Null}"/>
-        <Button Content="Save" Command="{Binding SaveUser}" HorizontalAlignment="Left" Margin="504,491,0,0" VerticalAlignment="Top" Width="90" Height="40" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="Gray" BorderThickness="4" Background="{x:Null}"/>
+        <Button Content="Cancel" Command="{Binding CancelUser}" HorizontalAlignment="Left" Margin="315,491,0,0" VerticalAlignment="Top" Width="90" Height="40" FontSize="18" FontWeight="Bold" BorderBrush="Gray" BorderThickness="4"/>
+        <Button Content="Save" Command="{Binding SaveUser}" HorizontalAlignment="Left" Margin="504,491,0,0" VerticalAlignment="Top" Width="90" Height="40" FontSize="18" FontWeight="Bold" BorderBrush="Gray" BorderThickness="4"/>
 
         <Image Source="/Images/user_white.png" Margin="114,10,114,415"/>
     </Grid>

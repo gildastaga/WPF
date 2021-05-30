@@ -53,7 +53,7 @@ namespace School04.View {
         }
 
         private void Vm_DisplayQuizzStudent(Quizz quizz, bool isNew) {
-            if (quizz != null) {
+            if (quizz != null && quizz.QuestionsCount > 0) {
                 var tab = tabControl.FindByTag(quizz.Title);
                 if (tab == null)
                     tabControl.Add(

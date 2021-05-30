@@ -58,15 +58,15 @@
         <f:MyDateTimePicker SelectedDateTime="{Binding EndDate}" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="3" IsEnabled="false" Margin="5,5,5,5" HorizontalAlignment="Left"></f:MyDateTimePicker>
         <TextBlock Text="Course:" Grid.Row="4" FontSize="20" TextAlignment="Left" Margin="5,5,5,0"></TextBlock>
         <TextBox Text="{Binding Course, Mode=OneWay}" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="4" Margin="5,5,5,5" IsReadOnly="true"></TextBox>
-        <TextBlock Text="{Binding Question.Enonce}" Grid.ColumnSpan="5" Grid.Row="5" HorizontalAlignment="Center" Foreground="White" FontSize="20" FontWeight="Bold" Margin="5,5,5,5"></TextBlock>
+        <TextBlock Text="{Binding Question.Enonce}" Grid.ColumnSpan="5" Grid.Row="5" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="5,5,5,5"></TextBlock>
         <ListView Grid.Row="6" Grid.ColumnSpan="5" x:Name="listPropositions" ItemsSource="{Binding Question.Propositions}"
                   FontSize="12" Margin="5" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True"
                   ItemTemplateSelector = "{StaticResource myDataTemplateSelector}" SelectionMode="Multiple">
         </ListView>
-        <TextBlock Text="{Binding CurrentAnswers}" Grid.Row="7" Grid.ColumnSpan="5" Margin="5,5,5,5" Foreground="White" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center"></TextBlock>
+        <TextBlock Text="{Binding CurrentAnswers}" Grid.Row="7" Grid.ColumnSpan="5" Margin="5,5,5,5" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center"></TextBlock>
         <DockPanel Grid.Row="8" Grid.ColumnSpan="2">
             <Button Content="&lt;&lt;" Command="{Binding PreviousQuestion}" Margin="5,5,5,5" Width="50" HorizontalAlignment="Left"></Button>
-            <TextBlock Text="{Binding NbGoodProps}" Grid.Row="7" Grid.ColumnSpan="5" Margin="5,5,5,5" Foreground="White" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left"></TextBlock>
+            <TextBlock Text="{Binding NbGoodProps}" Grid.Row="7" Grid.ColumnSpan="5" Margin="5,5,5,5" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left"></TextBlock>
         </DockPanel>
         <DockPanel Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center">
             <Button Content="Valider la réponse" Command="{Binding ValidateResponse}" CommandParameter="{Binding ElementName=listPropositions, Path=SelectedItems}" Margin="5,5,5,5"></Button>
