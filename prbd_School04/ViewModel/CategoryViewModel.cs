@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using Microsoft.EntityFrameworkCore;
 using PRBD_Framework;
 using School04.Model;
 
@@ -29,7 +30,8 @@ namespace School04.ViewModel {
 
 
         private ObservableCollection<Category> categories;
-        public ObservableCollection<Category> Categories {
+        public ObservableCollection<Category> Categories
+        {
             get {
                 return categories;
             }
@@ -59,7 +61,6 @@ namespace School04.ViewModel {
             }
         }
 
-
         public Question Question {
             get { return Category?.Question; }
             set {
@@ -70,7 +71,7 @@ namespace School04.ViewModel {
 
         public CategoryViewModel() : base() {
             Save = new RelayCommand(SaveAction);
-            Cancel = new RelayCommand(CancelAction);
+            Cancel = new RelayCommand(CancelAction, CanCancelActionNewCourse);
             Delete = new RelayCommand(DeleteAction, () => !IsNew);
 
            /* Register<Category>(this, AppMessages.MSG_CATEGORY_CHANGED, category => {
@@ -78,49 +79,59 @@ namespace School04.ViewModel {
             });*/
         }
 
-        public void Init(Category category, bool isNew) {
+        public void Init() {
+            Categories = new ObservableCollection<Category>(App.Context.Categories);
+            foreach(var c in Categories)
+            {
+                Console.WriteLine("categories: " + c.Name);
+            }
             Category = category;
-            IsNew = isNew;
+           // IsNew = isNew;
             RaisePropertyChanged();
         }
 
-        private void SaveAction() {
-            if (IsNew && Category != null) {   
+        private void SaveAction()
+        {
+            if (isNew &&  Category.Name != null)
+            {
                 QuestionCateg.Category = QuestionCateg.Category;
                 QuestionCateg.Question = QuestionCateg.Question;
-                //Question question = App.Context.Questions.Where(q => q.Enonce == enonce).FirstOrDefault();
-                Context.Add(QuestionCateg);
-                IsNew = false;
-                Context.SaveChanges();
-                //SaveClick?.Invoke(); 
-                //OnCategorySuccess?.Invoke();
-            } else {
-                Context.SaveChanges();
+
+                App.Context.Categories.Add(Category);
+                App.Context.SaveChanges();
+                isNew = false;
             }
+
             Context.SaveChanges();
-           // NotifyColleagues(AppMessages.MSG_CATEGORY_CHANGED, Category);
+            //NotifyColleagues(AppMessages.MSG_QUESTION_CHANGED);
         }
 
-        private void CancelAction() {
-            /*if (IsNew) {
-               NotifyColleagues(AppMessages.MSG_CLOSE_TAB_CATEGORY, Category);
-            } else */{
+        private void CancelAction()
+        {
+            if (IsNew && Category != null)
+            {
                 Context.Reload(Category);
-                //OnCategorySuccess?.Invoke();
                 RaisePropertyChanged();
             }
+
         }
 
-        private void DeleteAction() {
-            CancelAction();
-            Category.Delete();
-            //delete_Click?.Invoke();
-            //OnCategorySuccess?.Invoke();
-
-            //NotifyColleagues(AppMessages.MSG_CATEGORY_CHANGED, Category);
-            // NotifyColleagues(AppMessages.MSG_CLOSE_TAB_CATEGORY, Category);
+        private bool CanCancelActionNewCourse()
+        {
+            return Category != null && (IsNew || Context?.Entry(Category)?.State == EntityState.Modified);
         }
 
+
+        private void DeleteAction()
+        {
+            if (Category != null)
+            {
+                CancelAction();
+                Category.Delete();
+                RaisePropertyChanged();
+            }
+
+        }
         protected override void OnRefreshData() {
         }
 

@@ -29,6 +29,7 @@ namespace School04.View {
         public CategoryView(Course course) {
             this.course = course;
             InitializeComponent();
+            vm.Init();
         }
 
         private void vm_saveClick(object sender, RoutedEventArgs e) {
@@ -44,6 +45,11 @@ namespace School04.View {
         }
 
         private void Vm_OnCategorySuccess(object sender, RoutedEventArgs e) {
+
+        }
+
+        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
         }
     }
