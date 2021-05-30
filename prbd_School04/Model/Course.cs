@@ -77,6 +77,12 @@ namespace School04.Model {
                 return App.CurrentUser.IsTeacher();
             }
         }
+
+        public bool isStudent {
+            get {
+                return App.CurrentUser.IsStudent();
+            }
+        }
         public bool CanSubscribe {
             get {
                 return App.CurrentUser.IsStudent() &&
