@@ -27,5 +27,8 @@ namespace School04.Model {
             Context.SaveChanges();
         }
 
+        [NotMapped]
+        public bool IsChecked { get; set; } = true;
+
     }
 }

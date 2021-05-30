@@ -28,13 +28,27 @@ namespace School04.ViewModel {
         public Course Course { get => course; set => SetProperty(ref course, value); }
 
         private ObservableCollection<Question> questions;
-        public ObservableCollection<Question> Questions {
-            get {
+        public ObservableCollection<Question> Questions
+        {
+            get
+            {
                 return questions;
             }
-            set {
+            set
+            {
                 questions = value;
                 RaisePropertyChanged(nameof(Questions));
+            }
+        }
+
+        private ObservableCollection<Category> categs;
+        public ObservableCollection<Category> Categs
+        {
+            get => categs;
+            set
+            {
+                categs = value;
+                RaisePropertyChanged(nameof(Categs));
             }
         }
 
@@ -90,13 +104,18 @@ namespace School04.ViewModel {
         }
 
         private Question questionSelect;
-        public Question QuestionSelect {
+        public Question QuestionSelect
+        {
             get { return questionSelect; }
             set
             {
                 questionSelect = question = value;
-                typeQuestion = question.typeQuestion;
-                LoardAnswers();
+                if (question != null)
+                {
+                    typeQuestion = question.typeQuestion;
+                    LoardAnswers();
+                }
+
                 RaisePropertyChanged(nameof(QuestionSelect));
                 RaisePropertyChanged();
             }
@@ -108,18 +127,22 @@ namespace School04.ViewModel {
         public ICommand Save { get; set; }
         public ICommand Delete { get; set; }
         public ICommand Cancel { get; set; }
+
+        public ICommand Check { get; set; }
         public ICommand CheckCategory { get; set; }
         
 
         public QuestionViewModel() : base() {
 
-            //Questions = new ObservableCollection<Question>(App.Context.Questions);
-            //LoadCategoryChecked();
+            Check = new RelayCommand<Category>(
+               c => {
 
-            CheckCategory = new RelayCommand<CheckCategory>(checkCategory => {});
+                   loardQuestionByCategs();
+               }
+           );
+
             None = new RelayCommand(CheckedNoneCategoryAction);
             All = new RelayCommand(CheckedAllCategoryAction);
-
             Save = new RelayCommand(
                 SaveAction,
                 () => { return true; }
@@ -151,26 +174,31 @@ namespace School04.ViewModel {
             });
         }
 
-        public void Init(Course course) {
+        public void Init(Course course)
+        {
             Course = course;
             Questions = new ObservableCollection<Question>(Course.QuestionList);
-            //Categories = new ObservableCollection<CheckCategory>(Question.Categories);
-            LoadCategoryChecked();
+            Categs = new ObservableCollection<Category>(App.Context.Categories);
             RaisePropertyChanged();
         }
 
         public void LoardAnswers()
         {
             List<string> AnswersQuestion = new List<string>();
-            foreach (var answer in question.Propositions) {
-                if (answer.IsChecked) {
+            foreach (var answer in question.Propositions)
+            {
+                if (answer.IsChecked)
+                {
                     var bodyRemoveStart = answer.Body.Insert(0, "*");
                     AnswersQuestion.Add(bodyRemoveStart);
-                } else {
+                }
+                else
+                {
                     AnswersQuestion.Add(answer.Body);
                 }
             }
             Answers = String.Join(System.Environment.NewLine, AnswersQuestion);
+            LoadCategoryChecked();
         }
 
         private void SaveAction()
@@ -229,43 +257,99 @@ namespace School04.ViewModel {
             //NotifyColleagues(AppMessages.MSG_QUESTION_CHANGED, Question);
         }
 
-        private void LoadCategoryChecked() {
-        //    Categories = new ObservableCollection<CheckCategory>();// je cree une liste vide, ensuite je parcoure ma BD, je récupère les noms de chaque catégorie et j'ajoute à ma nouvelle liste
-
-        //    foreach (var category in App.Context.Categories)               
-        //    {
-        //        var p = new CheckCategory() {
-        //            Name = category.Name,
-        //            //Checked = Question.Categories.Contains(category)
-        //        };
-        //        Categories.Add(p);                              
-        //    }
+        private void LoadCategoryChecked()
+        {
+            Categories = new ObservableCollection<CheckCategory>();// je cree une liste vide, ensuite je parcoure ma BD, je récupère les noms de chaque catégorie et j'ajoute à ma nouvelle liste
+            var lsCateg = new List<Category>(Question.Categories);
+            foreach (var category in App.Context.Categories)
+            {
+                var c = new CheckCategory()
+                {
+                    Name = category.Name,
+                    Checked = lsCateg.Contains(category)
+                };
+                Categories.Add(c);
+            }
         }
 
         //implémentation du bouton All
-        private void CheckedAllCategoryAction() {
-        //    var Categs = new ObservableCollection<CheckCategory>(); //je creer une nouvelle liste de catégorie que je mets à jour avec ma liste de catégorie.
+        private void CheckedAllCategoryAction()
+        {
+            var Categss = new ObservableCollection<Category>();
 
-        //    foreach (var category in Categories) {
-        //        category.Checked = true;
-        //        Categs.Add(category);
-        //    }
-        //    Categories = new ObservableCollection<CheckCategory>(Categs);
+            foreach (var category in Categs)
+            {
+                category.IsChecked = true;
+                Categss.Add(category);
+            }
+            Categs = new ObservableCollection<Category>(Categss);
+            loardQuestionByCategs();
         }
 
         ////implémentation du bouton None
-        private void CheckedNoneCategoryAction() {
-        //    var Categs = new ObservableCollection<CheckCategory>();   
+        private void CheckedNoneCategoryAction()
+        {
+            var Categss = new ObservableCollection<Category>();
 
-        //    foreach (var category in Categories) {
-        //        category.Checked = false;
-        //        Categs.Add(category);
-        //    }
-        //    Categories = new ObservableCollection<CheckCategory>(Categs);
+            foreach (var category in Categs)
+            {
+                category.IsChecked = false;
+                Categss.Add(category);
+            }
+
+            Categs = new ObservableCollection<Category>(Categss);
+
+            if (QuestionSelect != null)
+            {
+                ResetInput();
+            }
+
+            loardQuestionByCategs();
+        }
+
+
+        private void loardQuestionByCategs()
+        {
+            var qs = new ObservableCollection<Question>();
+            //var myQuestions = (from mq in App.Context.Questions
+            //                   where mq.Course.CourseId.Equals(Course.CourseId)
+            //                   select mq).ToList();
+            var myQuestions = new ObservableCollection<Question>(Course.QuestionList);
+
+            foreach (var c in Categs)
+            {
+                if (c.IsChecked)
+                {
+                    foreach (var q in myQuestions)
+                    {
+                        var lscategs = new List<Category>(q.Categories);
+                        if (lscategs.Contains(c))
+                        {
+                            qs.Add(q);
+                        }
+                    }
+                }
+            }
+            Questions = new ObservableCollection<Question>(qs);
+
+            if (QuestionSelect != null && !Questions.Contains(QuestionSelect))
+            {
+                ResetInput();
+            }
+        }
+
+
+        private void ResetInput()
+        {
+            // Enonce = "";
+            Answers = "";
+            TypeQuestion = TypeQuestion.OneAnswer;
+            Categories = new ObservableCollection<CheckCategory>();
         }
 
         protected override void OnRefreshData()
         {
         }
+
     }
 }
