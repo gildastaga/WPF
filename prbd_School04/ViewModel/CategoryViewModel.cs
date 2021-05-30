@@ -16,9 +16,9 @@ namespace School04.ViewModel {
         public ICommand Cancel { get; set; }
         public ICommand Delete { get; set; }
 
-        public event Action OnCategorySuccess;
-        public event Action SaveClick;
-        public event Action delete_Click;
+        //public event Action OnCategorySuccess;
+        //public event Action SaveClick;
+        //public event Action delete_Click;
 
         private Category category;
         public Category Category { get => category; set => SetProperty(ref category, value); }

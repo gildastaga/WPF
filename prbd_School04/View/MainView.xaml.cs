@@ -65,19 +65,6 @@ namespace School04.View {
             }
         }
 
-        private void Vm_DisplayQuestion(Question question, bool isNew) {
-            if (question != null) {
-                var tab = tabControl.FindByTag(question.Enonce);
-                if (tab == null)
-                    tabControl.Add(
-                        new NewQuestionView(question, isNew),
-                        isNew ? "<NewQuestion>" : question.Enonce, question.Enonce
-                    );
-                else
-                    tabControl.SetFocus(tab);
-            }
-        }
-
         //handler pour l'en-tete de l'onglet du nouveau course
         private void Vm_RenameTabCourseDetail( Course course, string header ) {
             var tab = tabControl.SelectedItem as TabItem;

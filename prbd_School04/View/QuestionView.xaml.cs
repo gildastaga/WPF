@@ -20,7 +20,6 @@ namespace School04.View {
     public partial class QuestionView : UserControlBase {
         private Course course;
 
-
         public QuestionView() {
             InitializeComponent();
             DataContext = this;
@@ -30,6 +29,11 @@ namespace School04.View {
             this.course = course;
             InitializeComponent();
             vm.Init(course);
+        }
+
+        private void Vm_CloseTab(Question question)
+        {
+            Console.WriteLine("canceAction");
         }
 
         private void Cancell_Click(object sender, RoutedEventArgs e) {

@@ -40,6 +40,12 @@ namespace School04.Model {
             Course = course;
         }
 
+        public Question(string enonce, Course course)
+        {
+            Enonce = enonce;
+            Course = course;
+        }
+
         public static IQueryable<Question> GetAvailableQuestionsForQuizz(Quizz quizz) {
             return Context.Questions.Where(q => q.Course.CourseId == quizz.Course.CourseId && !q.QuestionQuizz.Any(qq => qq.Question.QuestionId == q.QuestionId && qq.Quizz.QuizzId == quizz.QuizzId));
             /*var availableQuestions = from qq in Context.QuestionQuizzs

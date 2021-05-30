@@ -15,7 +15,7 @@
         <vm:MainViewModel x:Name="vm" DisplayCourse="Vm_DisplayCourse" RenameTabCourseDetail="Vm_RenameTabCourseDetail" 
                           DisplayQuizzTeacher="Vm_DisplayQuizzTeacher" DisplayQuizzStudent="Vm_DisplayQuizzStudent" 
                           OnLogout="Vm_OnLogout" RenameTabQuizz="Vm_RenameTabQuizz" CloseTabQuizz="Vm_CloseTabQuizz" 
-                          CloseTabCourse="Vm_CloseTabCourse" CloseTabProfile="Vm_CloseTabProfile" DisplayQuestion="Vm_DisplayQuestion"/>
+                          CloseTabCourse="Vm_CloseTabCourse" CloseTabProfile="Vm_CloseTabProfile" />
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
