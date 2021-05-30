@@ -67,7 +67,7 @@ namespace School04.ViewModel {
             var registration = new Registration {
                 Course = course,
                 Student = (Student)CurrentUser,
-                RegistrationState = State.Valide
+                RegistrationState = State.Pending
             };
             Console.WriteLine("addRegistration");
             Context.Add(registration);

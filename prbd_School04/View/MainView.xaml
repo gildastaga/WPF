@@ -8,9 +8,9 @@
       xmlns:f="clr-namespace:PRBD_Framework;assembly=PRBD_Framework"
       mc:Ignorable="d" 
       Title="{Binding TitleWindow}" Height="750" Width="920" WindowStartupLocation="CenterScreen" KeyDown="WindowBase_KeyDown" Visibility="Visible" FontSize="14">
-    <!--<f:WindowBase.Background>
+    <f:WindowBase.Background>
         <ImageBrush ImageSource="/Ressources/auditoire1.jpg" Stretch="Fill" TileMode="None" />
-    </f:WindowBase.Background>-->
+    </f:WindowBase.Background>
     <Window.DataContext>
         <vm:MainViewModel x:Name="vm" DisplayCourse="Vm_DisplayCourse" RenameTabCourseDetail="Vm_RenameTabCourseDetail" 
                           DisplayQuizzTeacher="Vm_DisplayQuizzTeacher" DisplayQuizzStudent="Vm_DisplayQuizzStudent" 

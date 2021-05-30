@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using PRBD_Framework;
 
 namespace School04.Model {
-    public enum State { Active, Valide, Inactive }
+    public enum State { Active, Pending, Inactive }
     public class Registration : EntityBase<ModelSchool04> {
         public static List<Registration> lsRegistration = new List<Registration>();
         public State RegistrationState {
