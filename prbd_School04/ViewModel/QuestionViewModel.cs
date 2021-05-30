@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.Linq;
 using Type = School04.Model.Type;
+using Microsoft.EntityFrameworkCore;
 
 namespace School04.ViewModel {
     public class QuestionViewModel : ViewModelBase<ModelSchool04> {
@@ -127,11 +128,19 @@ namespace School04.ViewModel {
                 DeleteAction, () => !IsNew);
 
             Cancel = new RelayCommand(
-                CancelAction);
+                CancelAction, CanCancelAction);
 
             NewQuestion = new RelayCommand(() => {
+                //this.Enonce = "";
+                //this.Answers = "";
                 Question = new Question("", Course);
                 isNew = true;
+                if (!isNew)
+                {
+                    this.Enonce = "";
+                    this.Answers = "";
+                    isNew = false;
+                }
             });
 
             Register(this, AppMessages.MSG_QUESTION_CHANGED, () => {
@@ -201,11 +210,19 @@ namespace School04.ViewModel {
             {
                 NotifyColleagues(AppMessages.MSG_CLOSE_QUESTION_TAB, Question);
             }
-            else
-            {
-                Context.Reload(Question);
-                RaisePropertyChanged();
-            }
+            //else
+            //{
+            Context.Reload(Question);
+            //this.Enonce = "";
+            RaisePropertyChanged();
+            //}
+            Validate();
+            RaisePropertyChanged();
+        }
+
+        private bool CanCancelAction()
+        {
+            return Question != null && (IsNew || Context?.Entry(Question)?.State == EntityState.Modified);
         }
 
         private void DeleteAction()

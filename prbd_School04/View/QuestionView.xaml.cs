@@ -31,11 +31,6 @@ namespace School04.View {
             vm.Init(course);
         }
 
-        private void Vm_CloseTab(Question question)
-        {
-            Console.WriteLine("canceAction");
-        }
-
         private void Cancell_Click(object sender, RoutedEventArgs e) {
 
         }

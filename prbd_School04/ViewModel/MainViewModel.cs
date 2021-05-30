@@ -16,7 +16,6 @@ namespace School04.ViewModel {
         //Action pour l'affichage des Quizz
         public event Action<Quizz, bool> DisplayQuizzTeacher;
         public event Action<Quizz, bool> DisplayQuizzStudent;
-        public event Action<Question, bool> DisplayQuestion;
         //action pour fermer une fenetre (userControl) Course
         public event Action<Course> CloseTabCourse;
         public event Action CloseTabProfile;

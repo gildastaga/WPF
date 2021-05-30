@@ -15,10 +15,10 @@
       d:DesignHeight="450" d:DesignWidth="800">
 
     <UserControl.DataContext>
-        <vm:QuestionViewModel x:Name="vm" CloseTab ="Vm_CloseTab"/>
+        <vm:QuestionViewModel x:Name="vm"/>
     </UserControl.DataContext>
 
-    <UserControl.Resources>
+    <UserControl.Resources >
         <Style x:Key="wrapColumn">
             <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
         </Style>
@@ -30,6 +30,8 @@
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
     </UserControl.Resources>
+    
+    
 
     <ScrollViewer>
         <Grid>
@@ -114,7 +116,7 @@
                 </ListView>
             </StackPanel>
 
-            <StackPanel Grid.Column="2" Grid.RowSpan="3">
+            <StackPanel Grid.Column="2" Grid.RowSpan="3" >
                 <TextBlock TextAlignment="Center" FontWeight="Bold" FontSize="16" Width="338" RenderTransformOrigin="0.494,2.89" Text="Edit Selected Question"/>
                 <Label x:Name="title" 
                         Content="Title:"
