@@ -97,12 +97,14 @@ namespace School04.Model {
                     Student student = (Student)App.CurrentUser;
                     if (Registration.GetNoRegistrationsFromCourse(this).Contains(student)) {
                         return "#FFCE3838";
+                    } else if (student.CoursesStudent.Where(s => s.Course.CourseId == this.CourseId).SingleOrDefault().RegistrationState == State.Inactive) {
+                        return "#FFCE3838";
+                    } else if (student.CoursesStudent.Where(s => s.Course.CourseId == this.CourseId).SingleOrDefault().RegistrationState == State.Pending) {
+                        return "orange";
                     } else {
                         return "lightGreen";
-                    }
-                    
+                    }                    
                 }
-
                 return "#FFB0A8A8";
             }
         }
