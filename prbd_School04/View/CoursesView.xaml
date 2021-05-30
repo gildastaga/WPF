@@ -43,13 +43,13 @@
                         BorderThickness="2"
                         Padding="8">
                         <StackPanel >
-                            <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" Text="{Binding Code}" Foreground="White"/>
-                            <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" Text="{Binding Title}" Foreground="White" />
-                            <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" TextWrapping="Wrap" Text="{Binding Description}" Foreground="White"/>
-                            <TextBlock FontSize="14" FontStyle="Italic" Width="180" FontWeight="Bold" TextAlignment="Center" Text="Teacher : " Foreground="White"/>
-                            <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" Text="{Binding TeacherCourse}" Foreground="White" />
-                            <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" Text="Nombre d'élève inscrit au cours : " Foreground="White" />
-                            <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" Text="{Binding Path=StudentsCourse.Count}" Foreground="White" />
+                            <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" Text="{Binding Code}"/>
+                            <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" Text="{Binding Title}"/>
+                            <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" TextWrapping="Wrap" Text="{Binding Description}"/>
+                            <TextBlock FontSize="14" FontStyle="Italic" Width="180" FontWeight="Bold" TextAlignment="Center" Text="Teacher : "/>
+                            <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" Text="{Binding TeacherCourse}" />
+                            <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" Text="Nombre d'élève inscrit : " />
+                            <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" Text="{Binding Path=StudentsCourse.Count}" />
                             <Button x:Name="btnRegistration" Content="Register" Command="{Binding AskRegistration, ElementName=vm}" CommandParameter="{Binding}" Visibility="{Binding CanSubscribe, Converter={StaticResource BoolToVis}}"/>
                         </StackPanel>
                     </Border>

@@ -19,7 +19,7 @@
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Menu FontFamily="Comic Sans MS" Foreground="white" FontSize="14" VerticalAlignment="Stretch" Height="32" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" Background="{x:Null}" FontWeight="Bold" FontStyle="Italic" HorizontalAlignment="Stretch">
+        <Menu FontFamily="Comic Sans MS" FontSize="14" VerticalAlignment="Stretch" Height="32" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" Background="{x:Null}" FontWeight="Bold" FontStyle="Italic" HorizontalAlignment="Stretch">
             <MenuItem Header="Logout" Command="{Binding LogoutCommand}"  />
             <MenuItem Header="Reload" Command="{Binding ReloadDataCommand}" />
             <MenuItem Header="Profile" Click="Menu_ProfileUser_Click" />
