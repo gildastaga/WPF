@@ -12,7 +12,7 @@
     </UserControl.DataContext>
     <Grid Margin="10">
         <!-- Name -->
-        <Label Content="Name : " HorizontalAlignment="Center" Margin="0,200,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Foreground="White"/>
+        <Label Content="Name : " HorizontalAlignment="Center" Margin="0,200,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
         <TextBox x:Name="txtName" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="0,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="610" Height="25"/>
         <!-- FirstName -->
         <Label Content="FirstName : " HorizontalAlignment="Center" Margin="0,280,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" />

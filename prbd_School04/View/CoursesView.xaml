@@ -38,8 +38,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border CornerRadius="6"
-                        BorderBrush="Gray"
-                        Background="#FFB0A8A8"
+                        Background="{Binding ColorBackground}"
                         BorderThickness="2"
                         Padding="8">
                         <StackPanel >
@@ -48,8 +47,8 @@
                             <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" TextWrapping="Wrap" Text="{Binding Description}"/>
                             <TextBlock FontSize="14" FontStyle="Italic" Width="180" FontWeight="Bold" TextAlignment="Center" Text="Teacher : "/>
                             <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" Text="{Binding TeacherCourse}" />
-                            <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" Text="Nombre d'élève inscrit : " />
-                            <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" Text="{Binding Path=StudentsCourse.Count}" />
+                            <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" Text="Nombre d'élève inscrit : " Visibility="{Binding isTeacher, Converter={StaticResource BoolToVis}}"/>
+                            <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" Text="{Binding Path=StudentsCourse.Count}" Visibility="{Binding isTeacher, Converter={StaticResource BoolToVis}}"/>
                             <Button x:Name="btnRegistration" Content="Register" Command="{Binding AskRegistration, ElementName=vm}" CommandParameter="{Binding}" Visibility="{Binding CanSubscribe, Converter={StaticResource BoolToVis}}"/>
                         </StackPanel>
                     </Border>

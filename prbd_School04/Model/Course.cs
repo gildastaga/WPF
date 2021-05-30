@@ -72,11 +72,32 @@ namespace School04.Model {
             return Context.Courses.SingleOrDefault(c => c.CourseId == courseId);
         }
 
+        public bool isTeacher {
+            get {
+                return App.CurrentUser.IsTeacher();
+            }
+        }
         public bool CanSubscribe {
             get {
                 return App.CurrentUser.IsStudent() &&
                 Registration.GetNoRegistrationsFromCourse(this).Contains((Student)App.CurrentUser) &&
                 this.StudentsCourse.Count() < this.MaxStudent;
+            }
+        }
+
+        public string ColorBackground {
+            get {
+                if (App.CurrentUser.IsStudent()) {
+                    Student student = (Student)App.CurrentUser;
+                    if (Registration.GetNoRegistrationsFromCourse(this).Contains(student)) {
+                        return "#FFCE3838";
+                    } else {
+                        return "lightGreen";
+                    }
+                    
+                }
+
+                return "#FFB0A8A8";
             }
         }
     }
