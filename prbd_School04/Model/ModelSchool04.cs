@@ -92,6 +92,10 @@ namespace School04.Model {
             var enreg8 = new Registration(Pierre, prbd);
             var enreg9 = new Registration(Paul, prbd);
             var enreg10 = new Registration(Jean, prbd);
+            enreg2.RegistrationState = State.Active;
+            enreg3.RegistrationState = State.Active;
+            enreg4.RegistrationState = State.Pending;
+            enreg6.RegistrationState = State.Active;
             enreg5.RegistrationState = State.Active;
             Registrations.AddRange(enreg1, enreg2, enreg3, enreg4, enreg5, enreg6, enreg7, enreg8, enreg9, enreg10);
             Katia.CoursesStudent.Add(enreg2);
