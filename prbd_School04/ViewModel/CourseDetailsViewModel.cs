@@ -84,7 +84,7 @@ namespace School04.ViewModel {
                 Context.SaveChanges();
             }
             //OnRefreshData();
-            //NotifyColleagues(AppMessages.MSG_COURSE_CHANGED, Course);
+            NotifyColleagues(AppMessages.MSG_COURSE_CHANGED, Course);
         }
         // determine si le bouton peut etre actif ou pas
         private bool CanSaveActionCourse() {
@@ -107,7 +107,7 @@ namespace School04.ViewModel {
         private void DeleteActionCourse() {
             CancelActionCourse();
             Course.Delete();
-            //NotifyColleagues(AppMessages.MSG_COURSE_CHANGED, Course);
+            NotifyColleagues(AppMessages.MSG_COURSE_CHANGED, Course);
             //ferme le tabControl
             NotifyColleagues(AppMessages.MSG_CLOSE_TAB_COURSE, Course);
         }
