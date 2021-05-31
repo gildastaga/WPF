@@ -90,9 +90,6 @@ namespace School04.ViewModel {
             Cancel = new RelayCommand(CancelAction, CanCancelAction);
             Delete = new RelayCommand(DeleteAction, () => !IsNew);
 
-           /* Register<Category>(this, AppMessages.MSG_CATEGORY_CHANGED, category => {
-                Categories = new ObservableCollection<Category>(App.Context.Categories);
-            });*/
         }
 
         public void Init() {

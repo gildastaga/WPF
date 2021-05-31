@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace School04.Model {
 
@@ -21,6 +22,8 @@ namespace School04.Model {
         public Boolean IsUpdate { get; set; }
         public Boolean IsDelete { get; set; }
         public TypeQuestion typeQuestion { get; set; } = TypeQuestion.OneAnswer;
+        public virtual ICollection<QuestionCateg> QuestionsCategories { get; set; } = new HashSet<QuestionCateg>();
+
         public virtual ICollection<Category> Categories{get; set;} = new HashSet<Category>();
         public virtual ICollection<QuestionQuizz> QuestionQuizz {get; set;} = new HashSet<QuestionQuizz>();
 
@@ -63,6 +66,22 @@ namespace School04.Model {
         public void Delete() { //TODO: Remove the linked QuestionsQuizz
             Context.Questions.Remove(this);
             Context.SaveChanges();
+        }
+
+        public Visibility GetRadio
+        {
+            get
+            {
+                return typeQuestion == TypeQuestion.OneAnswer ? Visibility.Visible : Visibility.Collapsed;
+            }
+        }
+
+        public Visibility GetCheck
+        {
+            get
+            {
+                return typeQuestion == TypeQuestion.ManyAnswer ? Visibility.Visible : Visibility.Collapsed;
+            }
         }
 
 

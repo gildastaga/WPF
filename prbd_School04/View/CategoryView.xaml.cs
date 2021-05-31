@@ -22,8 +22,7 @@ namespace School04.View {
         private Course course;
 
         public CategoryView() {
-            //InitializeComponent();
-            //vmc.Init(category, isNew);
+            
         }
 
         public CategoryView(Course course) {
@@ -31,14 +30,6 @@ namespace School04.View {
             InitializeComponent();
             vm.Init();
         }
-
-        //private void vm_saveClick(object sender, RoutedEventArgs e) {
-            //string Name = tb_name.Text;
-            //string enonce = tb_question.Text;
-            //Question question = App.Context.Questions.Where(q => q.Enonce == enonce).FirstOrDefault();
-            // App.NavigateTo<MainView>();
-
-        //}
 
         private void delete_Click(object sender, RoutedEventArgs e) {
             dataGrid.Items.Clear();

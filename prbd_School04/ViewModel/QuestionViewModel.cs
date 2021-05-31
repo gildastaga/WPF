@@ -314,9 +314,7 @@ namespace School04.ViewModel {
         private void loardQuestionByCategs()
         {
             var qs = new ObservableCollection<Question>();
-            //var myQuestions = (from mq in App.Context.Questions
-            //                   where mq.Course.CourseId.Equals(Course.CourseId)
-            //                   select mq).ToList();
+            
             var myQuestions = new ObservableCollection<Question>(Course.QuestionList);
 
             foreach (var c in Categs)
@@ -344,7 +342,6 @@ namespace School04.ViewModel {
 
         private void ResetInput()
         {
-            // Enonce = "";
             Answers = "";
             TypeQuestion = TypeQuestion.OneAnswer;
             Categories = new ObservableCollection<CheckCategory>();
