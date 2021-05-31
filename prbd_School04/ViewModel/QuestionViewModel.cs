@@ -339,7 +339,6 @@ namespace School04.ViewModel {
             }
         }
 
-
         private void ResetInput()
         {
             Answers = "";
@@ -347,9 +346,7 @@ namespace School04.ViewModel {
             Categories = new ObservableCollection<CheckCategory>();
         }
 
-        protected override void OnRefreshData()
-        {
-        }
+        protected override void OnRefreshData(){}
 
     }
 }
