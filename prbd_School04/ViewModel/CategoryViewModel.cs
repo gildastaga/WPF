@@ -75,7 +75,7 @@ namespace School04.ViewModel {
                 {
                     
                     IsNew = false;
-                    Console.WriteLine("Categ...: " + categorySelected.Name);
+                    //Console.WriteLine("Categ...: " + categorySelected.Name);
                 } else
                 {
                     IsNew = true;
@@ -101,7 +101,7 @@ namespace School04.ViewModel {
 
         private void SaveAction()
         {
-            Console.WriteLine(IsNew);
+            //Console.WriteLine(IsNew);
             if (IsNew)
             {
                 var categ = Categories.LastOrDefault();

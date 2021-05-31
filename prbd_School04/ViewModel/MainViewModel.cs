@@ -46,7 +46,6 @@ namespace School04.ViewModel {
             });
 
             Register<Course>(this, AppMessages.MSG_DISPLAY_COURSE, course => {
-                Console.WriteLine("Test");
                 DisplayCourse?.Invoke(course, false);
             });
 
@@ -55,7 +54,6 @@ namespace School04.ViewModel {
             });
 
             Register<Quizz>(this, AppMessages.MSG_DISPLAY_QUIZZ, quizz => {
-                Console.WriteLine("Test");
                 if(CurrentUser.IsTeacher())
                     DisplayQuizzTeacher?.Invoke(quizz, false);
                 else if(CurrentUser.IsStudent() && DateTime.Now >= quizz.ExaminationStartDate && (quizz.ExaminationEndDate == null || DateTime.Now <= quizz.ExaminationEndDate))
@@ -63,7 +61,6 @@ namespace School04.ViewModel {
             });
 
             Register<Quizz>(this, AppMessages.MSG_NEW_QUIZZ, quizz => {
-                Console.WriteLine("Test");
                 DisplayQuizzTeacher?.Invoke(quizz, true);
             });
 

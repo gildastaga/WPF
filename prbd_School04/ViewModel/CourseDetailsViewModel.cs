@@ -72,7 +72,7 @@ namespace School04.ViewModel {
             RaisePropertyChanged();
         }
         private void SaveActionCourse() {
-            Console.WriteLine("SaveCourse");
+            //Console.WriteLine("SaveCourse");
             //On verifie si le course est nouveau
             if (IsNew) {
                 // il faut ajouter l'entité dans la collection des entités gérées par EF

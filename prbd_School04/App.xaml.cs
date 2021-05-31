@@ -35,7 +35,7 @@ namespace School04 {
             Context.Database.EnsureDeleted();
            Context.Database.EnsureCreated();
            Context.SeedData();
-            Console.WriteLine("Liste de tous les teachers");
+            /*Console.WriteLine("Liste de tous les teachers");
             foreach (var t in Context.Teachers.ToList()) {
                 Console.Write($"{t.FirstName} {t.Name}");
                 foreach (var course in t.CourseGiven) {
@@ -60,7 +60,7 @@ namespace School04 {
 
             }
 
-            Console.WriteLine("Chargement de BDD finie");
+            Console.WriteLine("Chargement de BDD finie");*/
         }
         protected override void OnRefreshData() {
             if (CurrentUser?.UserId != null)

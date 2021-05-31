@@ -162,7 +162,7 @@ namespace School04.ViewModel {
             Context.Add(answer);
             Context.SaveChanges();
             foreach (var propositions in selectedPropositions) {
-                Console.WriteLine(propositions.Body);
+                //Console.WriteLine(propositions.Body);
                 answer.ChoosedProposition.Add(propositions);
             }
             Context.SaveChanges();
@@ -182,7 +182,7 @@ namespace School04.ViewModel {
             var answer = Answer;
             answer.ChoosedProposition.Clear();
             foreach (var propositions in selectedPropositions) {
-                Console.WriteLine(propositions.Body);
+                //Console.WriteLine(propositions.Body);
                 answer.ChoosedProposition.Add(propositions);
             }
             Context.SaveChanges();

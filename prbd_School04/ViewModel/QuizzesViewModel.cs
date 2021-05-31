@@ -15,7 +15,7 @@ namespace School04.ViewModel {
         public Course Course { get => course; set => SetProperty(ref course, value); }
         public QuizzesViewModel() : base() {
             DisplayQuizz = new RelayCommand<Quizz>(quizz => {
-                Console.WriteLine(quizz.Title);
+                //Console.WriteLine(quizz.Title);
                 NotifyColleagues(AppMessages.MSG_DISPLAY_QUIZZ, quizz);
             });
 

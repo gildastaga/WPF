@@ -69,7 +69,7 @@ namespace School04.ViewModel {
                 Student = (Student)CurrentUser,
                 RegistrationState = State.Pending
             };
-            Console.WriteLine("addRegistration");
+            //Console.WriteLine("addRegistration");
             Context.Add(registration);
             Context.SaveChanges();
             NotifyColleagues(AppMessages.MSG_ADD_REGISTRATION);
@@ -78,14 +78,14 @@ namespace School04.ViewModel {
 
         //Filtre les cours par rapport à ce que contiens le filtre
         private void ApplyFilterAction() {
-            Console.WriteLine("Search clicked! " + Filter);
+            //Console.WriteLine("Search clicked! " + Filter);
             IEnumerable<Course> query = Context.Courses;
             if(!string.IsNullOrEmpty(Filter))
                 query = from m in Context.Courses
                         where m.Title.Contains(Filter)
                         select m;
             Courses = new ObservableCollection<Course>(query);
-            Console.WriteLine($"{query.Count()} courses found");
+            //Console.WriteLine($"{query.Count()} courses found");
         }
 
         protected override void OnRefreshData() {
