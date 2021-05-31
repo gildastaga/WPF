@@ -18,10 +18,6 @@ namespace School04.ViewModel {
         public ICommand Cancel { get; set; }
         public ICommand Delete { get; set; }
 
-        //public event Action OnCategorySuccess;
-        //public event Action SaveClick;
-        //public event Action delete_Click;
-
         private Category category;
         public Category Category { get => category; set => SetProperty(ref category, value); }
 
@@ -50,14 +46,12 @@ namespace School04.ViewModel {
             }
         }
 
-        //public bool IsExisting { get => !isNew; }
 
         public string Name {
             get { return Category?.Name; }
             set {
                 Category.Name = value;
                 RaisePropertyChanged(nameof(Name));
-                //NotifyColleagues(AppMessages.MSG_NAME_CHANGED, Category);
             }
         }
 
@@ -69,9 +63,31 @@ namespace School04.ViewModel {
             }
         }
 
+        private Category categorySelected;
+        public Category CategorySelected
+        {
+            get { return categorySelected; }
+            set
+            {
+                categorySelected = value;
+                
+                if(categorySelected != null && categorySelected.Name != null)
+                {
+                    
+                    IsNew = false;
+                    Console.WriteLine("Categ...: " + categorySelected.Name);
+                } else
+                {
+                    IsNew = true;
+                }
+                RaisePropertyChanged(nameof(CategorySelected));
+                RaisePropertyChanged();
+            }
+        }
+
         public CategoryViewModel() : base() {
             Save = new RelayCommand(SaveAction);
-            Cancel = new RelayCommand(CancelAction, CanCancelActionNewCourse);
+            Cancel = new RelayCommand(CancelAction, CanCancelAction);
             Delete = new RelayCommand(DeleteAction, () => !IsNew);
 
            /* Register<Category>(this, AppMessages.MSG_CATEGORY_CHANGED, category => {
@@ -81,29 +97,23 @@ namespace School04.ViewModel {
 
         public void Init() {
             Categories = new ObservableCollection<Category>(App.Context.Categories);
-            foreach(var c in Categories)
-            {
-                Console.WriteLine("categories: " + c.Name);
-            }
             Category = category;
-           // IsNew = isNew;
+            IsNew = false; ;
             RaisePropertyChanged();
         }
 
         private void SaveAction()
         {
-            if (isNew &&  Category.Name != null)
+            Console.WriteLine(IsNew);
+            if (IsNew)
             {
-                QuestionCateg.Category = QuestionCateg.Category;
-                QuestionCateg.Question = QuestionCateg.Question;
-
-                App.Context.Categories.Add(Category);
+                var categ = Categories.LastOrDefault();
+                App.Context.Categories.Add(categ);
                 App.Context.SaveChanges();
                 isNew = false;
             }
 
             Context.SaveChanges();
-            //NotifyColleagues(AppMessages.MSG_QUESTION_CHANGED);
         }
 
         private void CancelAction()
@@ -116,7 +126,7 @@ namespace School04.ViewModel {
 
         }
 
-        private bool CanCancelActionNewCourse()
+        private bool CanCancelAction()
         {
             return Category != null && (IsNew || Context?.Entry(Category)?.State == EntityState.Modified);
         }
@@ -124,14 +134,19 @@ namespace School04.ViewModel {
 
         private void DeleteAction()
         {
-            if (Category != null)
+            if (!IsNew)
             {
-                CancelAction();
-                Category.Delete();
-                RaisePropertyChanged();
+                var categ = Categories.LastOrDefault();
+                App.Context.Categories.Remove(categ);
+                Categories.Remove(categ);
+                App.Context.SaveChanges();
+                isNew = false;
             }
 
+            Context.SaveChanges();
+
         }
+        
         protected override void OnRefreshData() {
         }
 

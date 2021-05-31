@@ -19,6 +19,13 @@ namespace School04.Model
             Category = category;
         }
 
+        public void Delete()
+        {
+            // Supprime la catégorie elle-même
+            Context.QuestionCategs.Remove(this);
+            Context.SaveChanges();
+        }
+
         public QuestionCateg()
         {
         }

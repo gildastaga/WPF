@@ -13,6 +13,11 @@ namespace School04.Model {
         public string Name { get; set; }
         public virtual Question Question { get; set; }
 
+        public virtual ICollection<QuestionCateg> QuestionsCateg { get; set; } = new HashSet<QuestionCateg>();
+        [NotMapped]
+        public IEnumerable<Question> Questions { get => QuestionsCateg.Select(qt => qt.Question); }
+
+
         public Category() {}
 
         public Category(string Name, Question Question) {
@@ -29,6 +34,9 @@ namespace School04.Model {
 
         [NotMapped]
         public bool IsChecked { get; set; } = true;
+
+        [NotMapped]
+        public int NbQuestions { get => Questions.Count(); }
 
     }
 }

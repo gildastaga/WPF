@@ -251,14 +251,11 @@ namespace School04.ViewModel {
         {
             if (QuestionSelect != null)
             {
-                Console.WriteLine("delete1");
                 CancelActionQuestion();
                 QuestionSelect.Delete();
                 Questions.Remove(QuestionSelect);
                 answers = "";
-                Console.WriteLine("delete2");
                 RaisePropertyChanged();
-                Console.WriteLine("delete3");
             }
            
         }
