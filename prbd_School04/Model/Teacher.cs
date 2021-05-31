@@ -8,7 +8,14 @@ namespace School04.Model {
     public class Teacher : User {
         public Teacher() {
         }
-        public Teacher( string name, string firstName, string mail, string password ): base(name, firstName, mail, password) {
+        public Teacher( string name, string firstName, string profile, string mail, string password ): base(name, firstName, profile, mail, password) {
+            Name = name;
+            FirstName = firstName;
+            Profile = profile; 
+            Mail = mail;
+            Password = password;
+        }
+        public Teacher( string name, string firstName, string mail, string password ) : base(name, firstName, mail, password) {
             Name = name;
             FirstName = firstName;
             Mail = mail;
@@ -19,6 +26,6 @@ namespace School04.Model {
             get; set;
         } = new HashSet<Course>();
 
-        //public List<Course> Courses { get; } = new List<Course>();
+        public virtual List<Course> lsCourses { get; } = new List<Course>();
     }
 }

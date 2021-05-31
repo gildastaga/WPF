@@ -10,7 +10,10 @@
 	<RootNamespace>School04</RootNamespace>
   </PropertyGroup>
 
+
+
   <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="4.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="5.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.3" />
@@ -47,5 +50,22 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Ressources\" />
+	  <Resource Include="Ressources\background.png" />
+	  <Resource Include="Ressources\proviseur.jpg" />
+	  <Resource Include="Ressources\livre.jpg" />
+	  <Resource Include="Ressources\auditoire.jpg" />
+	  <Resource Include="Ressources\auditoire1.jpg" />
+  </ItemGroup>
+	  
+  <ItemGroup>
+    <Folder Include="Images\" />
+	  <Resource Include="Images\ProfileUser.png" />
+	  <Resource Include="Images\user_white.png" />
+  </ItemGroup>
+	
+
 
 </Project>

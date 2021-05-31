@@ -15,17 +15,22 @@ using PRBD_Framework;
 
 namespace School04.View {
     /// <summary>
-    /// Logique d'interaction pour LoginView.xaml
+    /// Logique d'interaction pour SignupView.xaml
     /// </summary>
-    public partial class LoginView : WindowBase {
-        public LoginView() {
+    public partial class SignupView : WindowBase {
+        public SignupView() {
             InitializeComponent();
         }
-
         private void btnCancel_Click(object sender, RoutedEventArgs e) {
             Close();
         }
+        private void txtFirstName_GotFocus(object sender, RoutedEventArgs e) {
+            txtFirstName.SelectAll();
+        }
 
+        private void txtLastName_GotFocus(object sender, RoutedEventArgs e) {
+            txtLastName.SelectAll();
+        }
         private void txtMail_GotFocus(object sender, RoutedEventArgs e) {
             txtMail.SelectAll();
         }
@@ -33,16 +38,12 @@ namespace School04.View {
         private void txtPassword_GotFocus(object sender, RoutedEventArgs e) {
             txtPassword.SelectAll();
         }
-        private void Vm_OnLoginSuccess() {
-            /*if(App.CurrentUser != null && App.CurrentUser.IsTeacher())
-                App.NavigateTo<TeacherCoursesView>();
-            else if(App.CurrentUser != null && !App.CurrentUser.IsTeacher())
-
+        private void txtPasswordConfirm_GotFocus(object sender, RoutedEventArgs e) {
+            txtPasswordConfirm.SelectAll();
+        }
+        private void Vm_OnSignupSuccess() {
+            if (App.CurrentUser != null)
                 App.NavigateTo<MainView>();
-
-                App.NavigateTo<TeacherCoursesView>();*/
-            App.NavigateTo<MainView>();
-
         }
     }
 }

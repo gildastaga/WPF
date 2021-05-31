@@ -14,8 +14,12 @@ namespace School04.Model {
         public virtual Student Student { get; set; }
 
         [Required]
-        public virtual QuestionQuizz Question { get; set; }
+        public virtual QuestionQuizz QuestionQuizz { get; set; }
 
         public virtual ICollection<Proposition> ChoosedProposition { get; set; } = new HashSet<Proposition>();
+        public static Answer GetByStudentQuestionquizz(Student student, QuestionQuizz questionQuizz) {
+            return Context.Answers.SingleOrDefault(a => a.Student.UserId == student.UserId && a.QuestionQuizz.Quizz.QuizzId == questionQuizz.Quizz.QuizzId
+                && a.QuestionQuizz.Question.QuestionId == questionQuizz.Question.QuestionId);
+        }
     }
 }
