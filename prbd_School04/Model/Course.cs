@@ -30,6 +30,11 @@ namespace School04.Model {
         public virtual Teacher TeacherCourse {
             get; set;
         }
+
+        public virtual Student StudentCourse
+        {
+            get; set;
+        }
         public virtual ICollection<Question> QuestionList {
             get; set;
         } = new HashSet<Question>();

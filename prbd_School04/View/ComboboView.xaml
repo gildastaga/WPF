@@ -13,9 +13,22 @@
         <vm:CamboboxViewModel x:Name="vm"/>
     </UserControl.DataContext>
 
-    <StackPanel Margin="10">
-        <ComboBox  Name="comboBox" ItemsSource="{Binding StudentRegister}">
-            <ComboBoxItem>Etudiants non inscrit</ComboBoxItem>
+    <StackPanel Margin="25">
+        <ComboBox  Name="comboBox" >
+
+            <ListView x:Name="lvSturdents" ItemsSource="{Binding StudentRegister}"  Visibility="{Binding IsTeacher}"  Grid.ColumnSpan="2" Grid.Row="1" >
+           
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+
+                        <StackPanel >
+                            <TextBlock FontSize="14" FontStyle="Italic" Width="180" TextAlignment="Center" Text="{Binding Name}"/>
+                        </StackPanel>
+                        
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
         </ComboBox>
     </StackPanel>
 </f:UserControlBase>

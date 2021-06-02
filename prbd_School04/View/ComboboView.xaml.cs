@@ -24,6 +24,7 @@ namespace School04.View
         public ComboboView()
         {
             InitializeComponent();
+            vm.Init();
         }
     }
 }
