@@ -30,6 +30,14 @@
                     <local:CoursesView/>
                 </ContentControl>
             </TabItem>
+
+            <TabItem x:Name="comboboxTab" Header="Combobox" Tag="Combobox" Background="{x:Null}">
+                <ContentControl>
+                    <local:ComboboView/>
+                </ContentControl>
+            </TabItem>
+
         </f:MyTabControl>
+
     </Grid>
 </f:WindowBase>
